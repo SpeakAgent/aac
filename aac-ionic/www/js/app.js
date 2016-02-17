@@ -24,3 +24,4 @@ angular.module('starter', ['ionic'])
     $scope.title = "Scope title"
   });
 })
+
