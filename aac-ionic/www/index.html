@@ -7,6 +7,7 @@
 
 
     <!-- compiled css output -->
+    <!-- <link href="css/ionic.app.css" rel="stylesheet"> -->
     <link href="css/ionic.app.css" rel="stylesheet">
 
     <!-- ionic/angularjs js -->
@@ -21,11 +22,15 @@
   </head>
 
   <body ng-app="AAC" ng-controller="BoardController">
-    <ion-view view-title="AAC">
-      <ion-content style="background:#50E2E3;">
-        <div class="bar bar-header bar-dark">
+    <ion-header-bar class="bar-dark">
+    </ion-header-bar>
+
+    <ion-view view-title="AAC" class="pane">
+      <ion-content>
+        <img src="/img/AAC_assets/avatar_button.png"/>
+        <!-- <div class="bar bar-header bar-dark">
           <h1 class="title">Placeholder</h1>
-        </div>
+        </div> -->
       </ion-content>
     </ion-view>
 
