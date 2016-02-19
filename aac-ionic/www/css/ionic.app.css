@@ -9756,7 +9756,7 @@ a.button {
   height:70px;
   width:70px;
   font-size: .75em;
-  margin:10px;
+  margin:15px;
   float: left;
 }
 
@@ -9765,3 +9765,26 @@ a.button {
   margin:10px;
 }
 
+.boards{
+  background-color: #ffffff;
+  padding:.5%;
+  height:70px;
+  width:70px;
+  font-size: .75em;
+  margin:15px;
+  float: left;
+  border: 2px solid #979797;
+}
+
+.regulars{
+  background-color: #ffffff;
+  padding: 10%;
+  border-radius: 12px;
+  height:90px;
+  width:80px;
+  font-size: .75em;
+  margin:10px;
+  margin-left: 5px;
+  float: left;
+  border: 2px solid #979797;
+}
