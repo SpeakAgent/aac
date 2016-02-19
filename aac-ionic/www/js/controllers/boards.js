@@ -23,7 +23,7 @@
 
 var app = angular.module('AAC', ['ionic']);
 
-app.controller('BoardController', function($http, $scope) {
+app.controller('BoardController', function($http, $scope, $ionicSideMenuDelegate) {
 
   $scope.title = "This is a title";
   $scope.board = {};
@@ -34,7 +34,17 @@ app.controller('BoardController', function($http, $scope) {
       pk: 15,
   }
   $scope.board.symbols = [sample_symbol, sample_symbol, sample_symbol];
+
+  $scope.toggleLeft = function(){
+    $ionicSideMenuDelegate.toggleLeft();
+  };
 });
+
+app.controller('ionSideMenus', function($http, $scope, $ionicSideMenuDelegate){
+  $scope.toggleLeft = function(){
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+})
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

@@ -9730,3 +9730,38 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+.sidebar{
+  width:10%;
+  background-color: #008485;
+  height:700px;
+}
+
+.sidebar img{
+  padding-left:8%;
+  float:left;
+}
+
+.real-content{
+  width: 40%;
+  float: right;
+  background:yellow;
+}
+
+.tile{
+  background-color: #ffffff;
+  padding:.5%;
+  border: 2px solid #979797;
+  border-radius: 12px;
+  height:70px;
+  width:70px;
+  font-size: .75em;
+  margin:10px;
+  float: left;
+}
+
+.word-builder{
+  height:100px;
+  margin:10px;
+}
+

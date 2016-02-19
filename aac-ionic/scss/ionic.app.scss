@@ -15,10 +15,16 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
-$dark: 						      #000 !default;
+$dark:                            #000000 !default;
+$calm:                            #fff !default;
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+.sidebar{
+	width:300px;
+	background-color: green;
+}

@@ -9,6 +9,7 @@
     <!-- compiled css output -->
     <!-- <link href="css/ionic.app.css" rel="stylesheet"> -->
     <link href="css/ionic.app.css" rel="stylesheet">
+    <link href="css/style.css"
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
@@ -22,15 +23,120 @@
   </head>
 
   <body ng-app="AAC" ng-controller="BoardController">
+
     <ion-header-bar class="bar-dark">
+      <button class="button button-outline button-calm button-small">
+        <i class="icon ion-gear-b"></i> Settings
+      </button>
+      <button class="button button-outline button-calm button-small">
+        <i class="icon ion-edit"></i> Show/Hide Tiles
+      </button>
+      <button class="button button-outline button-calm button-small">
+        <i class="icon ion-ios-chatbubble"></i> Buddy Options 
+        <!-- <span class="item item-toggle">
+          LOCKED<label class="toggle toggle-assertive"><input type="checkbox">
+          <div class="track"></div>></label>
+        </span> -->
+      </button>
+      <button class="button button-outline button-calm button-small">
+        <i class="icon ion-android-search"></i> Search
+      </button>
     </ion-header-bar>
 
     <ion-view view-title="AAC" class="pane">
-      <ion-content>
-        <img src="/img/AAC_assets/avatar_button.png"/>
-        <!-- <div class="bar bar-header bar-dark">
-          <h1 class="title">Placeholder</h1>
-        </div> -->
+      <ion-content style="background: #50E2E3">
+
+        <div class="row">
+          <div class="col col-10" style="background:#008485; height: 600px;">
+            <img src="img/AAC_assets/avatar_default.png"/>
+          </div>
+
+          <div class="col col-90">
+            <div class="word-builder">
+              <img src="img/AAC_assets/delete_button.png"/>
+            </div>
+          
+            <div class="col col-60">
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+
+              <div class="tile">Placeholder</div>
+              <!-- <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div> -->
+            </div>
+
+           <!--  <div class="col col-40" style="float:left; margin-left:5px;">
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+              <div class="tile">Placeholder</div>
+            </div> -->
+          </div>
+
+          <div class="col">
+            <img src="img/AAC_assets/left.png"/>
+            <img src="img/AAC_assets/right.png"/>
+            <img src="img/AAC_assets/tile_tapped_slice.png"/>
+          </div>
+
+        </div>
+
+<!-- Bottom function buttons -->
+        <div class="row">
+          <div class="col col-10" style="background:white;">
+            <img src="img/AAC_assets/home_icon.png"/>
+          </div>
+
+          <div class="col col-60">
+            <img src="img/AAC_assets/sound_fx_icon.png"/>
+            <img src="img/AAC_assets/choose_colors_button.png"/>
+            <img src="img/AAC_assets/avatar_button.png"/>
+            <img src="img/AAC_assets/turn_on_chat.png"/>
+          </div>
+
+          <div class="col col-30">
+            <img src="img/AAC_assets/left.png"/>
+            <img src="img/AAC_assets/right.png"/>
+          </div>
+        </div>
+
       </ion-content>
     </ion-view>
 
