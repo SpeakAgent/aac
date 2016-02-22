@@ -9755,8 +9755,9 @@ a.button {
   height:70px;
   width:70px;
   font-size: .75em;
-  margin:10px;
+  margin:8px;
   float: left;
+  text-align: center;
 }
 
 .word-builder{
@@ -9770,9 +9771,10 @@ a.button {
   height:70px;
   width:70px;
   font-size: .75em;
-  margin:15px;
+  margin:8px;
   float: left;
   border: 2px solid #979797;
+  text-align: center;
 }
 
 .regulars{
@@ -9786,6 +9788,7 @@ a.button {
   margin-left: 5px;
   float: left;
   border: 2px solid #979797;
+  text-align: center;
 }
 
 .appBody{
