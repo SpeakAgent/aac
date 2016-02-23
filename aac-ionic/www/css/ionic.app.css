@@ -3003,7 +3003,7 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, fieldset,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video,{
   margin: 0;
   padding: 0;
   border: 0;
@@ -9792,7 +9792,7 @@ a.button {
 }
 
 .appBody{
-  background: #50E2E3;
+  /*background: #50E2E3;*/
 }
 
 .word-builder-input{
@@ -9802,6 +9802,7 @@ a.button {
   background-color: white;
   border:1px solid #979797;
 }
+
 
 /*.leftBar{
   background-color: #008485; 
