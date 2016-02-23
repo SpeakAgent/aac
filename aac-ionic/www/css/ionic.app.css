@@ -9803,6 +9803,17 @@ a.button {
   border:1px solid #979797;
 }
 
+.triangle-topright {
+  width: 0;
+  height: 0;
+  border-top: 30px solid #50E2E3;
+  border-left: 30px solid transparent;
+  float:right;
+  margin:-4px;
+  padding:0;
+  z-index:3;
+
+}
 
 /*.leftBar{
   background-color: #008485; 
