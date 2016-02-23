@@ -24,29 +24,29 @@
 
   <body ng-app="AAC" ng-controller="BoardController">
 
-    <ion-header-bar class="bar-dark" style="margin:0 auto">
-      <button class="button button-outline button-calm button-small" style="border-color:#50E2E3;color:#50E2E3; border-radius:0; margin-left:8px;">
+    <ion-header-bar class="bar-dark">
+      <button class="button button-outline button-calm button-small" id="btn-styling">
         <i class="icon ion-gear-b"></i> Settings
       </button>
-      <button class="button button-outline button-calm button-small" style="border-color:#50E2E3; color:#50E2E3; border-radius:0; margin-left:8px;">
+      <button class="button button-outline button-calm button-small" id="btn-styling">
         <i class="icon ion-edit"></i> Show/Hide Tiles
       </button>
-      <button class="button button-outline button-calm button-small" style="border-color:#50E2E3; color:#50E2E3; border-radius:0; margin-left:8px;">
+      <button class="button button-outline button-calm button-small" id="btn-styling">
         <i class="icon ion-ios-chatbubble"></i> Buddy Options 
         <!-- <span class="item item-toggle">
           LOCKED<label class="toggle toggle-assertive"><input type="checkbox">
           <div class="track"></div>></label>
         </span> -->
       </button>
-      <button class="button button-outline button-calm button-small" style="border-color:#50E2E3; color:#50E2E3; border-radius:0; margin-left:8px;">
+      <button class="button button-outline button-calm button-small" id="btn-styling">
         <i class="icon ion-android-search"></i> Search
       </button>
     </ion-header-bar>
 
     <ion-view view-title="AAC" class="pane">
-      <ion-content class= "appBody" style="background:#008485;">
-        <div class="row" style="margin:0; padding:0;">
-          <div class="col col-10" style="height: 620px;">
+      <ion-content class= "appBody" id="bodyBack">
+        <div class="row" id="regularRow">
+          <div class="col col-10" id="regularRowBod">
             <img src="img/AAC_assets/avatar_default.png"/>
 
             <div class="regulars">
@@ -71,7 +71,7 @@
               <div class="word-builder-input" style="margin-left:-15px"><img src="img/AAC_assets/delete_button.png" style="float:right; margin-top:12px;"/></div>
             </div>
 
-            <div class="col col-60" style="margin-top:-35px; float:left; border-right: 2px solid #ffffff;">
+            <div class="col col-60" id="tile-section">
               <div class="tile">Tile</div>
               <div class="tile">Tile</div>
               <div class="tile">Tile</div>
@@ -115,7 +115,7 @@
               <div class="tile">Tile</div>
             </div>
 
-            <div class="col col-40" style="margin-top:-35px;float:left; margin-right:-20px;">
+            <div class="col col-40" id="board-section">
               <div class="boards">Board <div class="triangle-topright"></div></div>
               <div class="boards">Board <div class="triangle-topright"></div></div>
               <div class="boards">Board <div class="triangle-topright"></div></div>
@@ -156,21 +156,21 @@
         </div>
 
 <!-- Bottom function buttons -->
-        <div class="row" style="background:#50E2E3; padding:0">
+        <div class="row" id="btn-section">
           <div class="col col-10" style="background:white; margin:0">
             <img src="img/AAC_assets/home_icon.png"/>
           </div>
 
           <div class="col col-60">
-            <img src="img/AAC_assets/sound_fx_icon.png" style="margin-left:20px;"/>
-            <img src="img/AAC_assets/choose_colors_button.png" style="margin-left:20px;"/>
-            <img src="img/AAC_assets/avatar_button.png" style="margin-left:20px;"/>
-            <img src="img/AAC_assets/turn_on_chat.png" style="margin-left:20px;"/>
+            <img src="img/AAC_assets/sound_fx_icon.png" style="margin-left:25px;" />
+            <img src="img/AAC_assets/choose_colors_button.png" style="margin-left:25px;" />
+            <img src="img/AAC_assets/avatar_button.png" style="margin-left:25px;" />
+            <img src="img/AAC_assets/turn_on_chat.png" style="margin-left:25px;" />
           </div>
 
           <div class="col col-30">
-            <img src="img/AAC_assets/left.png" style="margin-left:20px;"/>
-            <img src="img/AAC_assets/right.png" style="margin-left:20px;"/>
+            <img src="img/AAC_assets/left.png" style="margin-left:50px;"/>
+            <img src="img/AAC_assets/right.png" style="margin-left:30px;"/>
           </div>
         </div>
 

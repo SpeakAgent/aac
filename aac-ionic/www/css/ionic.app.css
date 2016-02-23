@@ -9815,6 +9815,42 @@ a.button {
 
 }
 
+#btn-styling{
+  border-color:#50E2E3;
+  color:#50E2E3; 
+  border-radius:0; 
+  margin-left:8px;"
+}
+
+#bodyBack{
+  background:#008485;
+}
+
+#regularRow{
+  margin:0; 
+  padding:0;
+}
+
+#regularRowBod{
+  height: 620px;
+}
+
+#tile-section{
+  margin-top:-35px; 
+  float:left; 
+  border-right: 2px solid #ffffff;"
+}
+
+#board-section{
+  margin-top:-35px;
+  float:left; 
+  margin-right:-20px;
+}
+
+#btn-section{
+  background:#50E2E3; 
+  padding:0;
+}
 /*.leftBar{
   background-color: #008485; 
   height: 635px;
