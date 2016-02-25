@@ -3003,7 +3003,7 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, fieldset,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video,{
+time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -9733,8 +9733,7 @@ a.button {
 
 .sidebar {
   width: 300px;
-  background-color: green; 
-}
+  background-color: green; }
 
 .sidebar img{
   padding-left:8%;
@@ -9819,7 +9818,20 @@ a.button {
   border-color:#50E2E3;
   color:#50E2E3; 
   border-radius:0; 
-  margin-left:8px;"
+  margin-left:8px;
+}
+
+#btn-styling-buddy{
+  border-color:#50E2E3;
+  color:#50E2E3; 
+  border-radius:0; 
+  margin-left:8px;
+  width:20%;
+}
+#btn-styling-buddy p{
+  float:left;
+  color:#50E2E3;
+  font-size: 95%;
 }
 
 #bodyBack{
@@ -9852,8 +9864,25 @@ a.button {
   padding:0;
 }
 
-#home-section{}
-/*.leftBar{
-  background-color: #008485; 
-  height: 635px;
-}*/
+.toggle{
+  float:right;
+}
+
+.track p{
+  font-size:50%;
+}
+
+.toggle-small .track {
+  border: 0;
+  width: 55px;
+}
+
+#home-section{
+  float:right; 
+  margin-top:12px;
+}
+
+#home-button-section{
+  background:white; 
+  margin:0;
+}

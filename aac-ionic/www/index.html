@@ -31,12 +31,19 @@
       <button class="button button-outline button-calm button-small" id="btn-styling">
         <i class="icon ion-edit"></i> Show/Hide Tiles
       </button>
-      <button class="button button-outline button-calm button-small" id="btn-styling">
-        <i class="icon ion-ios-chatbubble"></i> Buddy Options 
-        <!-- <span class="item item-toggle">
-          LOCKED<label class="toggle toggle-assertive"><input type="checkbox">
-          <div class="track"></div>></label>
-        </span> -->
+      <button class="button button-outline button-calm button-small item item-toggle" id="btn-styling-buddy">
+        <p><i class="icon ion-ios-chatbubble"></i> Buddy Options </p>
+
+        <!-- <span class="item item-toggle"> -->
+          <label class="toggle toggle-small toggle-assertive">
+            <input type="checkbox">
+            <div class="track">
+              <p>LOCKED</p>
+              <div class="handle"></div>
+            </div>
+          </label>
+        <!-- </span>
+ -->
       </button>
       <button class="button button-outline button-calm button-small" id="btn-styling">
         <i class="icon ion-android-search"></i> Search
@@ -68,7 +75,7 @@
 
           <div class="col col-90" style="background: #50E2E3;">
             <div class="word-builder">
-              <div class="word-builder-input" style="margin-left:-15px"><img src="img/AAC_assets/delete_button.png" style="float:right; margin-top:12px;"/></div>
+              <div class="word-builder-input" style="margin-left:-15px"><img src="img/AAC_assets/delete_button.png" id="home-section"/></div>
             </div>
 
             <div class="col col-60" id="tile-section">
@@ -157,7 +164,7 @@
 
 <!-- Bottom function buttons -->
         <div class="row" id="btn-section">
-          <div class="col col-10" style="background:white; margin:0">
+          <div class="col col-10" id="home-button-section">
             <img src="img/AAC_assets/home_icon.png"/>
           </div>
 
