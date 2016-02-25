@@ -9848,15 +9848,21 @@ a.button {
 }
 
 #tile-section{
-  margin-top:-35px; 
+  margin-top:-33px; 
   float:left; 
-  border-right: 2px solid #ffffff;"
+  /*border-right: 2px solid #ffffff;*/
+}
+
+.tile-section-border{
+  margin-top:12px; 
+  float:left; 
+  border-right: 2px solid #ffffff;
 }
 
 #board-section{
-  margin-top:-35px;
+  margin-top:-20px;
   float:left; 
-  margin-right:-20px;
+  /*margin-right:-20px;*/
 }
 
 #btn-section{
@@ -9884,5 +9890,23 @@ a.button {
 
 #home-button-section{
   background:white; 
+  padding-left: 15px;
   margin:0;
+}
+
+#btn-styling-buddy .toggle p{
+  float:left;
+  color:white;
+  font-size: 70%;
+  padding-left:3px;
+}
+
+.toggle-small input:checked + .track .handle {
+  -webkit-transform: translate3d(35px, 0, 0);
+  transform: translate3d(35px, 0, 0);
+  background:white;
+}
+
+#full-body{
+  background: #50E2E3;
 }
