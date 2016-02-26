@@ -21,10 +21,202 @@ $calm:                            #fff !default;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
+.real-content{
+  width: 40%;
+  float: right;
+  background:yellow;
+}
+
+.tile{
+  background-color: #ffffff;
+  padding:.5%;
+  border: 2px solid #979797;
+  border-radius: 12px;
+  height:70px;
+  width:70px;
+  font-size: .75em;
+  margin:8px;
+  float: left;
+  text-align: center;
+}
+
+.word-builder{
+  height:100px;
+  margin:10px;
+}
+
+.boards{
+  background-color: #ffffff;
+  padding:.5%;
+  height:70px;
+  width:70px;
+  font-size: .75em;
+  margin:8px;
+  float: left;
+  border: 2px solid #979797;
+  text-align: center;
+}
+
+.regulars{
+  background-color: #ffffff;
+  padding: 10%;
+  border-radius: 12px;
+  height:90px;
+  width:80px;
+  font-size: .75em;
+  margin:10px;
+  margin-left: 5px;
+  float: left;
+  border: 2px solid #979797;
+  text-align: center;
+}
+
+.appBody{
+  /*background: #50E2E3;*/
+}
+
+.word-builder-input{
+  width:800px;
+  height:80px;
+  border-radius: 10px;
+  background-color: white;
+  border:1px solid #979797;
+}
+
+.triangle-topright {
+  width: 0;
+  height: 0;
+  border-top: 30px solid #50E2E3;
+  border-left: 30px solid transparent;
+  float:right;
+  margin:-4px;
+  padding:0;
+  z-index:3;
+
+}
+
+#btn-styling{
+  border-color:#50E2E3;
+  color:#50E2E3; 
+  border-radius:0; 
+  margin-left:8px;
+}
+
+#btn-styling-buddy{
+  border-color:#50E2E3;
+  color:#50E2E3; 
+  border-radius:0; 
+  margin-left:8px;
+  width:20%;
+}
+#btn-styling-buddy p{
+  float:left;
+  color:#50E2E3;
+  font-size: 95%;
+}
+
+#bodyBack{
+  background:#008485;
+}
+
+#regularRow{
+  margin:0; 
+  padding:0;
+}
+
+#regularRowBod{
+  height: 620px;
+}
+
+#tile-section{
+  margin-top:-33px; 
+  float:left; 
+  /*border-right: 2px solid #ffffff;*/
+}
+
+.tile-section-border{
+  margin-top:12px; 
+  float:left; 
+  border-right: 2px solid #ffffff;
+}
+
+#board-section{
+  margin-top:-20px;
+  float:left; 
+  /*margin-right:-20px;*/
+}
+
+#btn-section{
+  background:#50E2E3; 
+  padding:0;
+}
+
+.toggle{
+  float:right;
+}
+
+.track p{
+  font-size:50%;
+}
+
+// .toggle-small .track {
+//   border: 0;
+//   width: 55px;
+// }
+
+#home-section{
+  float:right; 
+  margin-top:12px;
+}
+
+#home-button-section{
+  background:white; 
+  padding-left: 15px;
+  margin:0;
+}
+
+#btn-styling-buddy .toggle p{
+  float:left;
+  color: white;
+  padding:1px;
+  font-size: 55%;
+  padding-left:4px;
+}
+
+// .toggle-small input:checked + .track .handle {
+//   -webkit-transform: translate3d(10px, 0, 0);
+//   transform: translate3d(10px, 0, 0);
+//   background:white;
+// }
+
+#full-body{
+  background: #50E2E3;
+}
+
+.boardline{
+  height:2px;
+  width: 43px;
+  margin-top:-11px;
+  background-color:#979797;
+  margin-left:28px;
+  -ms-transform: rotate(46deg); /* IE 9 */
+  -webkit-transform: rotate(46deg); /* Safari */
+  transform: rotate(46deg);
+}
+
+.toggle-small 
+	  .handle {
+	  top: 5px;
+	  left: 4px;
+	  width: 20px;
+	  height: 15px;
+	  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25); 
+	}
+}
+
+
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
-.sidebar{
-	width:300px;
-	background-color: green;
-}
+
+
