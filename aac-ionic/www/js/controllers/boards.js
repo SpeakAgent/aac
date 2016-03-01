@@ -25,15 +25,17 @@ var app = angular.module('AAC', ['ionic']);
 
 app.controller('BoardController', function($http, $scope, $ionicSideMenuDelegate) {
 
-  $scope.title = "This is a title";
-  $scope.board = {};
-  $scope.board.title = "Home";
-  sample_symbol = {
-      word: "Sample",
-      icon: "img/symbols/a_lot.png",
-      pk: 15,
+  var req = {
+    url: 'https://lexemes-dev.herokuapp.com/board/single/',
+    data: {pk: 1},
+    method: 'POST'
   }
-  $scope.board.symbols = [sample_symbol, sample_symbol, sample_symbol];
+
+  $http(req).success(function(data) {
+    $scope.board = data;
+  })
+
+  
 
   $scope.toggleLeft = function(){
     $ionicSideMenuDelegate.toggleLeft();
