@@ -265,7 +265,7 @@
 
           <div class="col col-60">
             <img src="img/AAC_assets/sound_fx_icon.png" style="margin-left:25px;" />
-            <img src="img/AAC_assets/choose_colors_button.png" style="margin-left:25px;" />
+            <img src="img/AAC_assets/choose_colors_button.png" style="margin-left:25px;" ng-click="openModal()" />
             <img src="img/AAC_assets/avatar_button.png" style="margin-left:25px;" />
             <img src="img/AAC_assets/turn_on_chat.png" style="margin-left:25px;" />
           </div>
@@ -275,7 +275,6 @@
             <img src="img/AAC_assets/right.png" style="margin-left:30px;"/>
           </div>
         </div>
-
       </ion-content>
     </ion-view>
 
@@ -290,5 +289,30 @@
         </span>
       </ion-content>
     </ion-pane> -->
+
+    <script id="contact-modal.html" type="text/ng-template">
+      <div class="modal" id="color-modal-style">
+        <ion-content>
+          <div class="modal-container">
+            <h1 class="title"><strong>Pick a favorite color for your app!</strong></h1>
+
+            <div class="color-choice">Sky Blue</div>
+            <div class="color-choice">Electric Green</div>
+            <div class="color-choice">Hot Pink</div>
+            <div class="color-choice">Tangerine</div>
+
+            <div class="color-choice">Butter Yellow</div>
+            <div class="color-choice">Tomato Red</div>
+            <div class="color-choice">Denim Blue</div>
+            <div class="color-choice">Steel Gray</div>
+
+            <div class="color-choice">Periwinkle Blue</div>
+            <div class="color-choice">Forest Green</div>
+            <div class="color-choice">Intense Purple</div>
+            <div class="color-choice">Seafoam Green</div>
+          </div>
+        </ion-content>
+      </div>
+    </script>
   </body>
 </html>

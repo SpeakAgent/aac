@@ -23,7 +23,7 @@
 
 var app = angular.module('AAC', ['ionic']);
 
-app.controller('BoardController', function($http, $scope, $ionicSideMenuDelegate) {
+app.controller('BoardController', function($http, $scope, $ionicSideMenuDelegate, $ionicModal) {
 
   $scope.title = "This is a title";
   $scope.board = {};
@@ -38,13 +38,42 @@ app.controller('BoardController', function($http, $scope, $ionicSideMenuDelegate
   $scope.toggleLeft = function(){
     $ionicSideMenuDelegate.toggleLeft();
   };
+
+  // $scope.contact ={
+  //   name: 'Mittens Cat',
+  //   info: 'Tap anywhere on the card to open the modal'
+  // }
+
+  $scope.colorName ={
+    color: 'Sky Blue',
+    
+  }
+
+  $ionicModal.fromTemplateUrl('contact-modal.html',{
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal){
+    $scope.modal = modal
+  })
+
+  $scope.openModal = function(){
+    $scope.modal.show()
+  }
+
+  $scope.closeModal = function(){
+    $scope.modal.hide();
+  };
+
+  $scope.$on('$destroy', function(){
+    $scope.modal.remove();
+  });
 });
 
-app.controller('ionSideMenus', function($http, $scope, $ionicSideMenuDelegate){
-  $scope.toggleLeft = function(){
-    $ionicSideMenuDelegate.toggleLeft();
-  };
-})
+// app.controller('ionSideMenus', function($http, $scope, $ionicSideMenuDelegate){
+//   $scope.toggleLeft = function(){
+//     $ionicSideMenuDelegate.toggleLeft();
+//   };
+// })
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

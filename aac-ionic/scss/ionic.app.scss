@@ -21,6 +21,19 @@ $calm:                            #fff !default;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
+.color-choice{
+  background-color: #ffffff;
+  padding:.5%;
+  border: 2px solid #979797;
+  border-radius: 12px;
+  height:100px;
+  width:100px;
+  font-size: .75em;
+  margin:8px;
+  float: left;
+  text-align: center;
+}
+
 .real-content{
   width: 40%;
   float: right;
@@ -159,11 +172,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   font-size:50%;
 }
 
-// .toggle-small .track {
-//   border: 0;
-//   width: 55px;
-// }
-
 #home-section{
   float:right; 
   margin-top:12px;
@@ -182,12 +190,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   font-size: 55%;
   padding-left:4px;
 }
-
-// .toggle-small input:checked + .track .handle {
-//   -webkit-transform: translate3d(10px, 0, 0);
-//   transform: translate3d(10px, 0, 0);
-//   background:white;
-// }
 
 #full-body{
   background: #50E2E3;
