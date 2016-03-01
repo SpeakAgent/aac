@@ -37,7 +37,6 @@ app.controller('BoardController',
 
   $http(req).success(function(data) {
     $scope.board = data;
-    $scope.filled_tiles = Object.keys($scope.board.symbols)
   })
 
   
