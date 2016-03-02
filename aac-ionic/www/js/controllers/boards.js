@@ -78,6 +78,10 @@ app.controller('BoardController', function($http, $scope, $ionicSideMenuDelegate
   $scope.$on('$destroy', function(){
     $scope.modal.remove();
   });
+
+  $scope.doneCancel = function(){
+    this.style.border = "blue";
+  }
 });
 
 // app.controller('ionSideMenus', function($http, $scope, $ionicSideMenuDelegate){

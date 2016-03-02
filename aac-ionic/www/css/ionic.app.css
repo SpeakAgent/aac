@@ -15,10 +15,39 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
+
+.round-button{
+  width:120px;
+  height:40px;
+  border: 2px solid #979797;
+  border-radius: 20px;
+  float:left;
+  text-align: center;
+  font-size: 1.5em;
+  margin-left: 30%;
+  padding-top: 1%;
+  color:#979797;
+
+}
+
+.round-button2{
+  width:120px;
+  height:40px;
+  border: 2px solid #979797;
+  border-radius: 20px;
+  float:left;
+  text-align: center;
+  font-size: 1.5em;
+  margin-left: 10%;
+  padding-top: 1%;
+  color:#979797;
+}
+
 #color-modal-style{
   width:80%; 
   margin-left:-10%; 
-  height:80%; 
+  /*height:80%; */
+  height: 100%;
   margin-top:-5%;
   opacity:.9;
   padding-left: -25px;
