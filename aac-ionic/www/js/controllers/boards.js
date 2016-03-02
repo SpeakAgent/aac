@@ -44,10 +44,21 @@ app.controller('BoardController', function($http, $scope, $ionicSideMenuDelegate
   //   info: 'Tap anywhere on the card to open the modal'
   // }
 
-  $scope.colorName ={
-    color: 'Sky Blue',
-    
-  }
+  $scope.colorName =[
+    {colorTitle: 'Sky Blue'},
+    {colorTitle: 'Electric Green'},
+    {colorTitle: 'Hot Pink'},
+    {colorTitle: 'Tangerine'},
+    {colorTitle: 'Butter Yellow'},
+    {colorTitle: 'Tomato Red'},
+    {colorTitle: 'Denim Blue'},
+    {colorTitle: 'Steel Gray'},
+    {colorTitle: 'Periwinkle Blue'},
+    {colorTitle: 'Forest Green'},
+    {colorTitle: 'Intense Purple'},
+    {colorTitle: 'Seafoam Green'},
+  ]
+  
 
   $ionicModal.fromTemplateUrl('contact-modal.html',{
     scope: $scope,

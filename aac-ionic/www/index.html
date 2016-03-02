@@ -296,20 +296,7 @@
           <div class="modal-container">
             <h1 class="title"><strong>Pick a favorite color for your app!</strong></h1>
 
-            <div class="color-choice">Sky Blue</div>
-            <div class="color-choice">Electric Green</div>
-            <div class="color-choice">Hot Pink</div>
-            <div class="color-choice">Tangerine</div>
-
-            <div class="color-choice">Butter Yellow</div>
-            <div class="color-choice">Tomato Red</div>
-            <div class="color-choice">Denim Blue</div>
-            <div class="color-choice">Steel Gray</div>
-
-            <div class="color-choice">Periwinkle Blue</div>
-            <div class="color-choice">Forest Green</div>
-            <div class="color-choice">Intense Purple</div>
-            <div class="color-choice">Seafoam Green</div>
+            <div class="color-choice" ng-repeat="title in colorName">{{title.colorTitle}}</div>
           </div>
         </ion-content>
       </div>
