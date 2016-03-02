@@ -26,14 +26,18 @@ var app = angular.module('AAC', ['ionic']);
 app.controller('BoardController', 
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element) {
 
+  $scope.columns = "abcdef"
+  $scope.rows = "123456"
+
   var req = {
     url: 'https://lexemes-dev.herokuapp.com/board/single/',
-    data: {pk: 1},
+    data: {pk: 3},
     method: 'POST'
   }
 
   $http(req).success(function(data) {
     $scope.board = data;
+    $scope.filled_tiles = Object.keys($scope.board.symbols)
   })
 
   
