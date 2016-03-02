@@ -29,6 +29,9 @@ app.controller('BoardController',
   $scope.columns = "abcdef"
   $scope.rows = "123456"
 
+  $scope.columns = "abcdef"
+  $scope.rows = "123456"
+
   var req = {
     url: 'https://lexemes-dev.herokuapp.com/board/single/',
     data: {pk: 3},
@@ -37,6 +40,7 @@ app.controller('BoardController',
 
   $http(req).success(function(data) {
     $scope.board = data;
+    $scope.filled_tiles = Object.keys($scope.board.symbols)
   })
 
   
