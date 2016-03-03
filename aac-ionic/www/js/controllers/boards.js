@@ -82,6 +82,81 @@ app.controller('BoardController', function($http, $scope, $ionicSideMenuDelegate
   $scope.doneCancel = function(){
     this.style.border = "blue";
   }
+
+  $scope.dummyBoards =[
+  { 
+    name:"Anmls",
+    img_path:"" },
+
+  { name:"Arts",
+    img_path:"" },
+
+  { name:"Body",
+    img_path:"" },
+
+  { name:"Clths",
+    img_path:"" },
+
+  { name:"Cars",
+    img_path:"" },
+
+  { name:"Feligs",
+    img_path:"" },
+
+  { name:"Food",
+    img_path:"" },
+
+  { name:"KThg",
+    img_path:"" },
+
+  { name:"Morng",
+    img_path:"" },
+
+  { name:"Numr",
+    img_path:"" },
+
+  { name:"Peple",
+    img_path:"" },
+
+  { name:"Plces",
+    img_path:"" },
+
+  { name:"Redng",
+    img_path:"" },
+
+  { name:"Sprts",
+    img_path:"" },
+
+  { name:"Thngs",
+    img_path:"" },
+
+  { name:"Time",
+    img_path:"" },
+
+  { name:"Verbs",
+    img_path:"" },
+
+  { name:"Wethr",
+    img_path:"" },
+
+  { name:"Nouns",
+    img_path:"" },
+
+  { name:"Outdr",
+    img_path:"" },
+
+  { name:"Animl",
+    img_path:"" },
+
+  { name:"Plnts",
+    img_path:"" },
+
+  { name:"Stuf",
+    img_path:"" },
+
+  { name:"Thngs",
+    img_path:""},
+]
 });
 
 // app.controller('ionSideMenus', function($http, $scope, $ionicSideMenuDelegate){
