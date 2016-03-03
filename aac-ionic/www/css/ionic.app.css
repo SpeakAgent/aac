@@ -215,10 +215,10 @@ $dark:                            #444 !default;
 
 .boardline {
   height: 2px;
-  width: 43px;
+  width: 33px;
   margin-top: -11px;
   background-color: #979797;
-  margin-left: 28px;
+  margin-left: 10px;
   -ms-transform: rotate(46deg);
   /* IE 9 */
   -webkit-transform: rotate(46deg);
