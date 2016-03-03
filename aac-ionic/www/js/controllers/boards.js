@@ -86,76 +86,79 @@ app.controller('BoardController', function($http, $scope, $ionicSideMenuDelegate
   $scope.dummyBoards =[
   { 
     name:"Anmls",
-    img_path:"" },
+    img_path:"img/aac_board_imgs/alpaca.png" },
 
   { name:"Arts",
-    img_path:"" },
+    img_path:"img/aac_board_imgs/art.png" },
 
   { name:"Body",
-    img_path:"" },
+    img_path:"img/aac_board_imgs/balloon.png" },
 
   { name:"Clths",
-    img_path:"" },
+    img_path:"img/aac_board_imgs/bird.png" },
 
   { name:"Cars",
-    img_path:"" },
+    img_path:"img/aac_board_imgs/clock.png" },
 
   { name:"Feligs",
-    img_path:"" },
+    img_path:"img/aac_board_imgs/crayon.png" },
+
 
   { name:"Food",
-    img_path:"" },
+    img_path:"img/aac_board_imgs/alpaca.png" },
 
   { name:"KThg",
-    img_path:"" },
+    img_path:"img/aac_board_imgs/art.png" },
 
   { name:"Morng",
-    img_path:"" },
+    img_path:"img/aac_board_imgs/balloon.png" },
 
   { name:"Numr",
-    img_path:"" },
+    img_path:"img/aac_board_imgs/bird.png" },
 
   { name:"Peple",
-    img_path:"" },
+    img_path:"img/aac_board_imgs/clock.png" },
 
   { name:"Plces",
-    img_path:"" },
+    img_path:"img/aac_board_imgs/crayon.png" },
+
 
   { name:"Redng",
-    img_path:"" },
+    img_path:"img/aac_board_imgs/alpaca.png" },
 
   { name:"Sprts",
-    img_path:"" },
+    img_path:"img/aac_board_imgs/art.png" },
 
   { name:"Thngs",
-    img_path:"" },
+    img_path:"img/aac_board_imgs/balloon.png" },
 
   { name:"Time",
-    img_path:"" },
+    img_path:"img/aac_board_imgs/bird.png" },
 
   { name:"Verbs",
-    img_path:"" },
+    img_path:"img/aac_board_imgs/clock.png" },
 
   { name:"Wethr",
-    img_path:"" },
+    img_path:"img/aac_board_imgs/crayon.png" },
+
 
   { name:"Nouns",
-    img_path:"" },
+    img_path:"img/aac_board_imgs/alpaca.png" },
 
   { name:"Outdr",
-    img_path:"" },
+    img_path:"img/aac_board_imgs/art.png" },
 
   { name:"Animl",
-    img_path:"" },
+    img_path:"img/aac_board_imgs/balloon.png" },
 
   { name:"Plnts",
-    img_path:"" },
+    img_path:"img/aac_board_imgs/bird.png" },
 
   { name:"Stuf",
-    img_path:"" },
+    img_path:"img/aac_board_imgs/clock.png" },
 
   { name:"Thngs",
-    img_path:""},
+    img_path:"img/aac_board_imgs/crayon.png"},
 ]
 });
 
