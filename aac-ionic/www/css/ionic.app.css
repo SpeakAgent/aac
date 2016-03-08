@@ -221,7 +221,8 @@ $dark:                            #444 !default;
   padding-left: 4px; }
 
 #full-body {
-  background: #50E2E3; }
+  background: #50E2E3; 
+}
 
 .boardline {
   height: 2px;

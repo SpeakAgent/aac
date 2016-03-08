@@ -136,8 +136,15 @@ app.controller('BoardController',
     console.log($scope.selectedIndex);
     // console.log($scope.colorName[$scope.selectedIndex].primaryColor);
     // console.log($scope.title);
-    var bodyBack = document.getElementById('bodyBack')
+    var bodyBack = document.getElementById('bodyBack');
     bodyBack.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
+
+    var fullBody = document.getElementById('full-body');
+    fullBody.style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
+
+    var btnSection = document.getElementById('btn-section');
+    btnSection.style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
+
   }
 
   $scope.changeBackground = function(){
