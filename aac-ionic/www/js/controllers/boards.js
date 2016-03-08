@@ -23,7 +23,8 @@
 
 var app = angular.module('AAC', ['ionic']);
 
-app.controller('BoardController', function($http, $scope, $ionicSideMenuDelegate, $ionicModal) {
+app.controller('BoardController', 
+  function($http, $scope, $ionicSideMenuDelegate, $ionicModal) {
 
   $scope.title = "This is a title";
   $scope.board = {};
@@ -132,7 +133,18 @@ app.controller('BoardController', function($http, $scope, $ionicSideMenuDelegate
 
   $scope.colorSelect = function(colorIndex){
     $scope.selectedIndex = colorIndex;
-    console.log("Is this even working?");
+    console.log($scope.selectedIndex);
+    // console.log($scope.colorName[$scope.selectedIndex].primaryColor);
+    // console.log($scope.title);
+    var bodyBack = document.getElementById('bodyBack')
+    bodyBack.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
+  }
+
+  $scope.changeBackground = function(){
+    console.log("This is working");
+    // var bodyBack = document.getElementById('bodyBack')
+    // bodyBack.style.backgroundColor = 'green';
+    $scope.modal.hide();
   }
 
   $scope.dummyBoards =[
@@ -210,7 +222,7 @@ app.controller('BoardController', function($http, $scope, $ionicSideMenuDelegate
 
   { name:"Thngs",
     img_path:"img/aac_board_imgs/crayon.png"},
-]
+  ]
 });
 
 // app.controller('ionSideMenus', function($http, $scope, $ionicSideMenuDelegate){
