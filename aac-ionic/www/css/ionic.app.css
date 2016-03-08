@@ -76,6 +76,10 @@ $dark:                            #444 !default;
   text-align: center;
 }
 
+.color-choice.selectedColor{
+  background-color: #000;
+}
+
 .real-content {
   width: 40%;
   float: right;
@@ -92,6 +96,10 @@ $dark:                            #444 !default;
   margin: 8px;
   float: left;
   text-align: center; }
+
+.tile.selectedColor {
+    background-color: #000;
+}
 
 .word-builder {
   height: 100px;

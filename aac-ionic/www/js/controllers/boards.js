@@ -130,6 +130,11 @@ app.controller('BoardController', function($http, $scope, $ionicSideMenuDelegate
     this.style.border = "blue";
   }
 
+  $scope.colorSelect = function(colorIndex){
+    $scope.selectedIndex = colorIndex;
+    console.log("Is this even working?");
+  }
+
   $scope.dummyBoards =[
   { name:"Anmls",
     img_path:"img/aac_board_imgs/alpaca.png" },
