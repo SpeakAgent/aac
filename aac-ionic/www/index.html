@@ -131,9 +131,11 @@
               <div class="boards" ng-repeat="board in dummyBoards">
                 <!-- <div class="triangle-topright"></div> -->
                 <!-- <div class="boardline"></div> -->
-                <img ng-src="{{board.img_path}}" alt="image" style="width:65%; height:65%; position: relative; z-index:2;">
-                <img src="img/new_dev_assets/board_tile_notched_default.svg" alt="board tile" style="">
-                <p style="margin-top:-10%;">{{board.name}}</p>
+                <div class="top-content" style="position: relative; z-index:2;">
+                  <img ng-src="{{board.img_path}}" alt="image" style="width:80%; height:80%;">
+                  <p style="margin-top:-10%;">{{board.name}}</p>
+                </div>
+                <img src="img/new_dev_assets/board_tile_notched_default.svg" alt="board tile" style="position: absolute;">
               </div>
             </div>
           </div>
