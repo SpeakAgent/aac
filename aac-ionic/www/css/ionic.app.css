@@ -106,15 +106,16 @@ $dark:                            #444 !default;
   margin: 10px; }
 
 .boards {
-  background-color: #ffffff;
+  /*background-color: #ffffff;*/
   padding: .5%;
   height: 70px;
   width: 70px;
   font-size: .75em;
   margin: 8px;
   float: left;
-  border: 2px solid #979797;
-  text-align: center; }
+  /*border: 2px solid #979797;*/
+  text-align: center; 
+}
 
 .regulars {
   background-color: #ffffff;
@@ -150,13 +151,36 @@ $dark:                            #444 !default;
   padding: 0;
   z-index: 3; }
 
+  a:active {
+    background color:#579215;
+    border-color:#579215;
+  }
+
+  .button-circle{
+    width:75px;
+    height:75px;
+    background-color: #008485;
+    border-radius: 37.5px;
+    float:left;
+    margin-left:20px;
+  }
+
+  .button-circle2{
+    width:75px;
+    height:75px;
+    background-color: #008485;
+    border-radius: 37.5px;
+   /* float:left;
+    margin-left:20px;*/
+  }
+
  /* #triangle-color {
     border-color: #000000;
   }*/
 
 #btn-styling {
   border-color: #50E2E3;
-  color: #50E2E3;
+  /*color: #50E2E3;*/
   border-radius: 0;
   margin-left: 8px; }
 
@@ -169,7 +193,7 @@ $dark:                            #444 !default;
 
 #btn-styling-buddy p {
   float: left;
-  color: #50E2E3;
+  color: #ffffff;
   font-size: 95%; 
 }
 

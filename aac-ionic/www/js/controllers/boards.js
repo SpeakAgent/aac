@@ -145,10 +145,15 @@ app.controller('BoardController',
     var btnSection = document.getElementById('btn-section');
     btnSection.style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
 
-    var triangleTopright = document.getElementById('triangle-topright');
+    // These are classes (must figure out how to loop through everything in this class)
 
-    // for (triangleTopright = 0; )
-    // triangleTopright.style.borderColor = $scope.colorName[$scope.selectedIndex].primaryColor;
+    var buttonCircle = document.getElementsByClassName('button-circle');
+    var buttonCircle2 = document.getElementsByClassName('button-circle2');
+
+    while (buttonCircle.style.backgroundColor != $scope.selectedIndex && buttonCircle.style.backgroundColor != $scope.selectedIndex) {
+      buttonCircle.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
+      buttonCircle2.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
+    }
   }
 
   $scope.changeBackground = function(){

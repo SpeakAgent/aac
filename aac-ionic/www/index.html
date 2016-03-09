@@ -75,7 +75,9 @@
 
           <div class="col col-90" id="full-body">
             <div class="word-builder">
-              <div class="word-builder-input" style="margin-left:-15px"><img src="img/AAC_assets/delete_button.png" id="home-section"/></div>
+              <div class="word-builder-input" style="margin-left:-15px">
+                <img src="img/AAC_assets/delete_button.png" id="home-section"/>
+              </div>
             </div>
 
             <div class="col col-60" id="tile-section">
@@ -127,9 +129,10 @@
 
             <div class="col col-40" id="board-section">
               <div class="boards" ng-repeat="board in dummyBoards">
-                <div class="triangle-topright"></div>
+                <!-- <div class="triangle-topright"></div> -->
                 <!-- <div class="boardline"></div> -->
-                <img ng-src="{{board.img_path}}" alt="image" style="width:65%; height:65%; margin-top: -25%; padding-left:10%;">
+                <img ng-src="{{board.img_path}}" alt="image" style="width:65%; height:65%; position: relative; z-index:2;">
+                <img src="img/new_dev_assets/board_tile_notched_default.svg" alt="board tile" style="">
                 <p style="margin-top:-10%;">{{board.name}}</p>
               </div>
             </div>
@@ -145,14 +148,27 @@
 <!-- Bottom function buttons -->
         <div class="row" id="btn-section">
           <div class="col col-10" id="home-button-section">
-            <img src="img/AAC_assets/home_icon.png"/>
+            <div class="button-circle2">
+              <img src="img/new_dev_assets/home.png" style="margin-left:15px; margin-top:12px;" />
+            </div>
           </div>
 
           <div class="col col-60">
-            <img src="img/AAC_assets/sound_fx_icon.png" style="margin-left:25px;" />
-            <img src="img/AAC_assets/choose_colors_button.png" style="margin-left:25px;" ng-click="openModal()" />
-            <img src="img/AAC_assets/avatar_button.png" style="margin-left:25px;" />
-            <img src="img/AAC_assets/turn_on_chat.png" style="margin-left:25px;" />
+            <div class="button-circle">
+              <img src="img/new_dev_assets/bell.png" style="margin-left:17px; margin-top:14px;" />
+            </div>
+
+            <div class="button-circle">
+              <img src="img/new_dev_assets/colors.png" style="margin-left:15px; margin-top:14px;" ng-click="openModal()" />
+            </div>
+
+            <div class="button-circle">
+              <img src="img/new_dev_assets/avatar.png" style="margin-left:15px; margin-top:14px;" />
+            </div>
+
+            <div class="button-circle">
+              <img src="img/new_dev_assets/chat.png" style="margin-left:15px; margin-top:14px;" />
+            </div>
           </div>
 
           <div class="col col-30">
@@ -186,7 +202,7 @@
 
           </div>
 
-          <div class="round-button" ng-click="changeBackground()">Done</div>
+          <div class="round-button" ng-click="changeBackground()"><a href=";javascript"></a>Done</div>
           <div class="round-button2" ng-click="closeModal()">Cancel</div>
         </ion-content>
       </div>
