@@ -68,7 +68,7 @@ app.controller('BoardController',
 
     {colorTitle: 'Butter Yellow',
      primaryColor:'#FFDB3B',
-     secondaryColor:'DEC75F',
+     secondaryColor:'#DEC75F',
      url:'img/color_change/colorBlob_butterYellow.svg' },
 
     {colorTitle: 'Tomato Red',
@@ -145,6 +145,10 @@ app.controller('BoardController',
     var btnSection = document.getElementById('btn-section');
     btnSection.style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
 
+    var triangleTopright = document.getElementById('triangle-topright');
+
+    // for (triangleTopright = 0; )
+    // triangleTopright.style.borderColor = $scope.colorName[$scope.selectedIndex].primaryColor;
   }
 
   $scope.changeBackground = function(){

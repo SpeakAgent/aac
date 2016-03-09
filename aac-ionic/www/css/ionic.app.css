@@ -143,11 +143,16 @@ $dark:                            #444 !default;
   width: 0;
   height: 0;
   border-top: 30px solid #50E2E3;
+  /*border-color: #000000;*/
   border-left: 30px solid transparent;
   float: right;
   margin: -4px;
   padding: 0;
   z-index: 3; }
+
+ /* #triangle-color {
+    border-color: #000000;
+  }*/
 
 #btn-styling {
   border-color: #50E2E3;
