@@ -24,7 +24,7 @@
 var app = angular.module('AAC', ['ionic']);
 
 app.controller('BoardController', 
-  function($http, $scope, $ionicSideMenuDelegate, $ionicModal) {
+  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element) {
 
   $scope.title = "This is a title";
   $scope.board = {};
@@ -147,13 +147,30 @@ app.controller('BoardController',
 
     // These are classes (must figure out how to loop through everything in this class)
 
-    var buttonCircle = document.getElementsByClassName('button-circle');
-    var buttonCircle2 = document.getElementsByClassName('button-circle2');
+    var buttonCircle2 = document.getElementById('button-circle2');
+    buttonCircle2.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
 
-    while (buttonCircle.style.backgroundColor != $scope.selectedIndex && buttonCircle.style.backgroundColor != $scope.selectedIndex) {
-      buttonCircle.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
-      buttonCircle2.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
-    }
+    var buttonCircle = document.getElementsByClassName('button-circle');
+    console.log(buttonCircle[1].style.backgroundColor);
+
+      for(var i = 0; i < buttonCircle.length; i++){
+        buttonCircle[i].style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
+      }
+
+    // var buttonCircleTesting = document.querySelector('.button-circle');
+    // console.log(buttonCircleTesting);
+    // buttonCircleTesting.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
+
+
+    // for (index = 0; index < buttonCircle.length; index++){
+    //   console.log(buttonCircle.style.backgroundColor);
+    // }
+    // console.log(buttonCircle2.style.backgroundColor);
+
+    // while (buttonCircle.style.backgroundColor != $scope.selectedIndex && buttonCircle.style.backgroundColor != $scope.selectedIndex) {
+    //   buttonCircle.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
+    //   buttonCircle2.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
+    // }
   }
 
   $scope.changeBackground = function(){

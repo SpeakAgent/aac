@@ -156,6 +156,15 @@ $dark:                            #444 !default;
     border-color:#579215;
   }
 
+  #button-circle{
+    width:75px;
+    height:75px;
+    background-color: #008485;
+    border-radius: 37.5px;
+    float:left;
+    margin-left:20px;
+  }
+
   .button-circle{
     width:75px;
     height:75px;
@@ -165,7 +174,7 @@ $dark:                            #444 !default;
     margin-left:20px;
   }
 
-  .button-circle2{
+  #button-circle2{
     width:75px;
     height:75px;
     background-color: #008485;
