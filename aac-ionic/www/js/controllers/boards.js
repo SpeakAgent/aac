@@ -145,8 +145,6 @@ app.controller('BoardController',
     var btnSection = document.getElementById('btn-section');
     btnSection.style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
 
-    // These are classes (must figure out how to loop through everything in this class)
-
     var buttonCircle2 = document.getElementById('button-circle2');
     buttonCircle2.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
 
@@ -157,20 +155,11 @@ app.controller('BoardController',
         buttonCircle[i].style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
       }
 
-    // var buttonCircleTesting = document.querySelector('.button-circle');
-    // console.log(buttonCircleTesting);
-    // buttonCircleTesting.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
-
-
-    // for (index = 0; index < buttonCircle.length; index++){
-    //   console.log(buttonCircle.style.backgroundColor);
-    // }
-    // console.log(buttonCircle2.style.backgroundColor);
-
-    // while (buttonCircle.style.backgroundColor != $scope.selectedIndex && buttonCircle.style.backgroundColor != $scope.selectedIndex) {
-    //   buttonCircle.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
-    //   buttonCircle2.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
-    // }
+    // var activeColor = document.getElementsByClassName('.selectedColor');
+    // console.log(activeColor);
+    // activeColor.style.backgroundColor = "black";
+    // var colorChoice = document.getElementsByClassName('color-choice');
+    // console.log(colorChoice[$scope.selectedIndex].style.backgroundColor = 'black');
   }
 
   $scope.changeBackground = function(){
