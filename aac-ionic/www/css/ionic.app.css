@@ -262,6 +262,12 @@ $dark:                            #444 !default;
   background: #50E2E3; 
 }
 
+/*.buttonsdiv{
+  width:80%;
+  height:140%;
+  float:left;
+}*/
+
 .boardline {
   height: 2px;
   width: 33px;
