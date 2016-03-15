@@ -29,9 +29,6 @@ app.controller('BoardController',
   $scope.columns = "abcdefg"
   $scope.rows = "123456"
 
-  $scope.columns = "abcdef"
-  $scope.rows = "123456"
-
   var req = {
     url: 'https://lexemes-dev.herokuapp.com/board/single/',
     data: {pk: 3},
