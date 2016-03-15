@@ -26,7 +26,7 @@ var app = angular.module('AAC', ['ionic']);
 app.controller('BoardController', 
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element) {
 
-  $scope.columns = "abcdef"
+  $scope.columns = "abcdefg"
   $scope.rows = "123456"
 
   var req = {
