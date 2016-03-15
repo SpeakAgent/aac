@@ -21,7 +21,7 @@
 
 (function() {
 
-var app = angular.module('AAC', ['ionic']);
+var app = angular.module('starter.boards', ['ionic']);
 
 app.controller('BoardController', 
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element) {
