@@ -25,3 +25,22 @@ angular.module('starter', ['ionic'])
   });
 })
 
+.config(function($stateProvider, $urlRouterProvider) {
+  $stateProvider
+    .state('/',{
+    url:'/',
+    abstract: true,
+    templateUrl: 'templates/home.html',
+    controller: 'BoardController'
+  })
+
+  .state('app.settings',{
+    url: '/settings',
+    views: {
+      'menuContent':{
+        templateUrl: 'templates/settings.html'
+      }
+    }
+  })
+})
+
