@@ -16,6 +16,11 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+#blue-list-item{
+  background-color: #98E3E3;
+  font-weight: bold;
+}
+
 .round-button{
   width:120px;
   height:40px;
