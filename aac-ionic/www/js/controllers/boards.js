@@ -108,7 +108,7 @@ app.controller('BoardController',
   ]
   
 
-  $ionicModal.fromTemplateUrl('contact-modal.html',{
+  $ionicModal.fromTemplateUrl('templates/aac-partials/_color-modal.html',{
     scope: $scope,
     animation: 'slide-in-up'
   }).then(function(modal){

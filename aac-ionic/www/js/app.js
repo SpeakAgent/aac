@@ -30,18 +30,12 @@ angular.module('starter', ['ionic', 'starter.boards'])
 
   $stateProvider.state('home',{
       url: '/home',
-      // views: {
-      //   settings:{
-          templateUrl: 'templates/home.html',
-          controller: 'BoardController'
-      //   }
-      // }
+      templateUrl: 'templates/home.html',
     });
 
   $stateProvider.state('settings',{
       url:'/settings',
       templateUrl: 'templates/settings.html',
-      controller: 'BoardController'
     })
 })
 
