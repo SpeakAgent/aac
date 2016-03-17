@@ -1,81 +1,102 @@
-<ion-header-bar class="bar-stable">
-   <h1 class="title">Settings</h1>
-</ion-header-bar>
+<div class="col col-40">
+	<ion-header-bar class="bar-stable">
+	   <h1 class="title"><strong>Settings</strong></h1>
+	</ion-header-bar>
 
+	<ion-view view-title="AAC" class="pane">
+	    <ion-content class= "appBody" id="bodyBack">
+	    	<!-- <div class="avatar-box">
+				<div class="avatar-icon-placeholder"></div>
+			</div> -->
+			<ion-list> <!--class="list-container" -->
+				<!-- <ion-item id="blue-list-item">General</ion-item> -->
+				<div class="item item-divider"><strong>General</strong></div>
 
-<ion-view view-title="AAC" class="pane">
-<!-- <ion-header-bar class="bar bar-subheader"><h2 class="title">General</h2></ion-header-bar> -->
-    <ion-content class= "appBody" id="bodyBack">
-		<ion-list>
-			<!-- <ion-item id="blue-list-item">General</ion-item> -->
-			<div class="item item-divider">General</div>
+				<ion-item item-toggle>
+					<div class="avatar-icon-placeholder"></div> Compaction
+					<label class="toggle toggle-balanced">
+						<input type="checkbox">
+							<div class="track">
+								<div class="handle"></div>
+							</div>
+					</label>
+					<span class="item-note">Expand symbols into natural language.</span>
+				</ion-item>
 
-			<ion-item item-toggle>
-				<div class="avatar-icon-placeholder"></div> Compaction
-				<label class="toggle toggle-balanced">
-					<input type="checkbox">
+				<ion-item>
+					<div class="avatar-icon-placeholder"></div> Chatting
+					<label class="toggle toggle-balanced">
+						<input type="checkbox">
 						<div class="track">
 							<div class="handle"></div>
 						</div>
-				</label>
-				<span class="item-note">Expand symbols into natural language.</span>
-			</ion-item>
+					</label>
+					<span class="item-note">Enable/disable live chat buddy.</span>
+				</ion-item>
 
-			<ion-item>
-				<div class="avatar-icon-placeholder"></div> Chatting
-				<label class="toggle toggle-balanced">
-					<input type="checkbox">
-					<div class="track">
-						<div class="handle"></div>
-					</div>
-				</label>
-				<span class="item-note">Enable/disable live chat buddy.</span>
-			</ion-item>
+				<ion-item>
+					<div class="avatar-icon-placeholder"></div>Settings Access
+				</ion-item>
+			</ion-list>
 
-			<ion-item>
-				<div class="avatar-icon-placeholder"></div>Settings Access
-			</ion-item>
+			<ion-list>
+				<!-- <ion-item id="blue-list-item">Interface</ion-item> -->
+				<div class="item item-divider"><strong>Interface</strong></div>
 
-			<!-- <ion-item id="blue-list-item">Interface</ion-item> -->
-			<div class="item item-divider">Interface</div>
+				<ion-item>
+					<div class="avatar-icon-placeholder"></div>Synthetic Voice
+					<span class="item-note">
+						<i class="icon ion-chevron-right"></i>
+					</span>
+				</ion-item>
 
-			<ion-item>
-				<div class="avatar-icon-placeholder"></div>Synthetic Voice
-				<span class="item-note">
-					<i class="icon ion-chevron-right"></i>
-				</span>
-			</ion-item>
+				<ion-item>
+					<div class="avatar-icon-placeholder"></div>Sound Effects
+					<span class="item-note">
+						<i class="icon ion-chevron-right"></i>
+					</span>
+				</ion-item>
 
-			<ion-item>
-				<div class="avatar-icon-placeholder"></div>Sound Effects
-				<span class="item-note">
-					<i class="icon ion-chevron-right"></i>
-				</span>
-			</ion-item>
+				<ion-item>
+					<div class="avatar-icon-placeholder"></div>Symbol Labels
+					<span class="item-note">
+						<i class="icon ion-chevron-right"></i>
+					</span>
+				</ion-item>
 
-			<ion-item>
-				<div class="avatar-icon-placeholder"></div>Symbol Labels
-				<span class="item-note">
-					<i class="icon ion-chevron-right"></i>
-				</span>
-			</ion-item>
+				<ion-item>
+					<div class="avatar-icon-placeholder"></div>Phrase Bar
+					<span class="item-note">
+						<i class="icon ion-chevron-right"></i>
+					</span>
+				</ion-item>
+			</ion-list>
 
-			<ion-item>
-				<div class="avatar-icon-placeholder"></div>Phrase Bar
-				<span class="item-note">
-					<i class="icon ion-chevron-right"></i>
-				</span>
-			</ion-item>
+			<ion-list>
+				<!-- <ion-item id="blue-list-item">Layout</ion-item> -->
+				<div class="item item-divider"><strong>Layout</strong></div>
+				<ion-item>
+					<div class="avatar-icon-placeholder"></div>Quickbar
+				</ion-item>
 
-			<!-- <ion-item id="blue-list-item">Layout</ion-item> -->
-			<div class="item item-divider">Layout</div>
-			<ion-item>
-				<div class="avatar-icon-placeholder"></div>Quickbar
-			</ion-item>
+				<ion-item>
+					<div class="avatar-icon-placeholder"></div>Alternate Home Page
+				</ion-item>
+			</ion-list>
+			<!-- <div class="col col-60">
+				Words
+			</div> -->
+		</ion-content>
+	</ion-view>
+</div>
 
-			<ion-item>
-				<div class="avatar-icon-placeholder"></div>Alternate Home Page
-			</ion-item>
-		</ion-list>
-	</ion-content>
-</ion-view>
+<!-- <div class="col">
+	<ion-header-bar class="bar-stable">
+	   <h1 class="title"><strong>Words</strong></h1>
+	</ion-header-bar>
+</div> -->
+<!-- </div> -->
+
+<!-- <div class="avatar-box"> -->
+	<!-- <div class="avatar-icon-placeholder"></div> -->
+<!-- </div> -->
