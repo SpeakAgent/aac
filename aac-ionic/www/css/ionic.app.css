@@ -16,6 +16,18 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+.item.item-divider{
+  background-color: #98E3E3;
+}
+
+.avatar-icon-placeholder{
+  width:30px;
+  height:30px;
+  border-radius: 8px;
+  background-color:#E5E1DF;
+  float:left;
+}
+
 #blue-list-item{
   background-color: #98E3E3;
   font-weight: bold;
