@@ -29,6 +29,7 @@ app.controller('BoardController',
   $scope.title = "This is a title";
   $scope.board = {};
   $scope.board.title = "Home";
+  $scope.settings = true;
   sample_symbol = {
       word: "Sample",
       icon: "img/symbols/a_lot.png",
@@ -245,6 +246,12 @@ app.controller('BoardController',
   { name:"Thngs",
     img_path:"img/aac_board_imgs/crayon.png"},
   ]
+
+  $scope.active =function(){
+    var self = document.getElementById("settings");
+    self.style.backgroundColor = "#008485";
+    self.style.color = "white"
+  }
 });
 
 // app.controller('ionSideMenus', function($http, $scope, $ionicSideMenuDelegate){
