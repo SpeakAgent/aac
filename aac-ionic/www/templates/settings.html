@@ -1,99 +1,119 @@
-<div class="col col-40">
-	<ion-header-bar class="bar-stable">
-	   <h1 class="title"><strong>Settings</strong></h1>
-	</ion-header-bar>
+<!-- <ion-header-bar class="bar-stable">
+	<h1 class="title"><strong>Settings</strong></h1>
+</ion-header-bar> -->
 
-	<ion-view view-title="AAC" class="pane">
-	    <ion-content class= "appBody" id="bodyBack">
-	    	<!-- <div class="avatar-box">
-				<div class="avatar-icon-placeholder"></div>
-			</div> -->
-			<ion-list> <!--class="list-container" -->
-				<!-- <ion-item id="blue-list-item">General</ion-item> -->
-				<div class="item item-divider"><strong>General</strong></div>
+<ion-view view-title="AAC" class="pane">
+	<ion-content class= "appBody" id="bodyBack">
+	    <div class="row">
+			<div class="col col-33" id="settings-menu">
+				<ion-list> 
+					<ion-item>
+						<strong>Settings</strong>
+					</ion-item>
 
-				<ion-item item-toggle>
-					<div class="avatar-icon-placeholder"></div> Compaction
-					<label class="toggle toggle-balanced">
+					<div class="item item-divider"><strong>General</strong></div>
+
+					<ion-item item-toggle>
+						<div class="avatar-icon-placeholder"></div> Compaction
+						<label class="toggle toggle-balanced">
 						<input type="checkbox">
 							<div class="track">
 								<div class="handle"></div>
 							</div>
-					</label>
-					<span class="item-note">Expand symbols into natural language.</span>
-				</ion-item>
+						</label>
 
-				<ion-item>
-					<div class="avatar-icon-placeholder"></div> Chatting
-					<label class="toggle toggle-balanced">
+						<span class="item-note">Expand symbols into natural language.</span>
+					</ion-item>
+
+					<ion-item>
+						<div class="avatar-icon-placeholder"></div> Chatting
+						<label class="toggle toggle-balanced">
 						<input type="checkbox">
-						<div class="track">
-							<div class="handle"></div>
-						</div>
-					</label>
-					<span class="item-note">Enable/disable live chat buddy.</span>
-				</ion-item>
+							<div class="track">
+								<div class="handle"></div>
+							</div>
+						</label>
 
-				<ion-item>
-					<div class="avatar-icon-placeholder"></div>Settings Access
-				</ion-item>
-			</ion-list>
+						<span class="item-note">Enable/disable live chat buddy.</span>
+					</ion-item>
 
-			<ion-list>
-				<!-- <ion-item id="blue-list-item">Interface</ion-item> -->
-				<div class="item item-divider"><strong>Interface</strong></div>
+					<ion-item>
+						<div class="avatar-icon-placeholder"></div>Settings Access
+					</ion-item>
+				</ion-list>
 
-				<ion-item>
-					<div class="avatar-icon-placeholder"></div>Synthetic Voice
-					<span class="item-note">
-						<i class="icon ion-chevron-right"></i>
-					</span>
-				</ion-item>
+				<ion-list>
+					<div class="item item-divider"><strong>Interface</strong></div>
 
-				<ion-item>
-					<div class="avatar-icon-placeholder"></div>Sound Effects
-					<span class="item-note">
-						<i class="icon ion-chevron-right"></i>
-					</span>
-				</ion-item>
+					<ion-item>
+						<div class="avatar-icon-placeholder"></div>Synthetic Voice
+						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
+					</ion-item>
 
-				<ion-item>
-					<div class="avatar-icon-placeholder"></div>Symbol Labels
-					<span class="item-note">
-						<i class="icon ion-chevron-right"></i>
-					</span>
-				</ion-item>
+					<ion-item>
+						<div class="avatar-icon-placeholder"></div>Sound Effects
+						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
+					</ion-item>
 
-				<ion-item>
-					<div class="avatar-icon-placeholder"></div>Phrase Bar
-					<span class="item-note">
-						<i class="icon ion-chevron-right"></i>
-					</span>
-				</ion-item>
-			</ion-list>
+					<ion-item>
+						<div class="avatar-icon-placeholder"></div>Symbol Labels
+						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
+					</ion-item>
 
-			<ion-list>
-				<!-- <ion-item id="blue-list-item">Layout</ion-item> -->
-				<div class="item item-divider"><strong>Layout</strong></div>
-				<ion-item>
-					<div class="avatar-icon-placeholder"></div>Quickbar
-				</ion-item>
+					<ion-item>
+						<div class="avatar-icon-placeholder"></div>Phrase Bar
+						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
+					</ion-item>
+				</ion-list>
 
-				<ion-item>
-					<div class="avatar-icon-placeholder"></div>Alternate Home Page
-				</ion-item>
-			</ion-list>
-			<!-- <div class="col col-60">
-				Words
-			</div> -->
-		</ion-content>
-	</ion-view>
-</div>
+				<ion-list>
+					<div class="item item-divider"><strong>Layout</strong></div>
+					<ion-item>
+						<div class="avatar-icon-placeholder"></div>Quickbar
+					</ion-item>
 
-<!-- <div class="col">
+					<ion-item>
+						<div class="avatar-icon-placeholder"></div>Alternate Home Page
+					</ion-item>
+				</ion-list>
+			</div>
+
+			<div class="col col-67" id="settings-modal">
+				<!-- <div class="bar bar-subheader">
+					<h1 class="title"><strong>Settings</strong></h1>
+				</div> -->
+				<ion-list> 
+					<ion-item style="margin-left:5px;margin-top:-6px;">
+						<strong>Settings Access</strong>
+					</ion-item>
+				</ion-list>
+
+				<div class="settings-box">
+						<label class="toggle toggle-balanced">
+						<input type="checkbox">
+							<div class="track">
+								<div class="handle"></div>
+							</div>
+						</label>
+						
+						PIN-Protection
+				</div>
+				<p class="centered-note">Prevent users from changing settings.</p>
+
+				<div class="settings-box">
+					Set Pin
+					<span class="warning-text">INSERT DEVELOPER MAGIC HERE</span>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>
+
+<!-- <div class="col col-67">
 	<ion-header-bar class="bar-stable">
 	   <h1 class="title"><strong>Words</strong></h1>
 	</ion-header-bar>
+	<p>Words</p>
 </div> -->
 <!-- </div> -->
 

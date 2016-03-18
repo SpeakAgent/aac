@@ -16,6 +16,38 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+.centered-note{
+  margin-left:18%;
+  font-style: italic;
+  font-weight:600;
+  color:#738383;
+}
+.warning-text{
+  margin-left:70px;
+  color:red;
+}
+
+#settings-menu{
+  margin:-10px;
+}
+
+.settings-box{
+  background-color: white;
+  margin-left: 15%;
+  margin-top:5%;
+  padding-top:10px;
+  padding-bottom:10px;
+  padding-left: 30px;
+  font-size: 1.2em;
+  width:70%;
+}
+
+#settings-modal{
+  margin:-5px;
+  /*margin-right:-10px;*/
+  background-color: #98E3E3;
+}
+
 .avatar-box{
 width:10%;
 height:250px;
