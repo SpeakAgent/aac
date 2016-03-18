@@ -16,6 +16,27 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+.icon.ion-locked{
+  font-size:2.5em;
+  color:red;
+  margin-right:30px;
+}
+
+.done-button{
+  background-color: white;
+  color:#008485;
+  /*margin-right: 2%;*/
+  /*margin-left: 1%;*/
+  /*float:left;*/
+  border-radius: 5px;
+}
+
+.icon.ion-unlocked{
+  font-size:2.5em;
+  color:#77CE20;
+  margin-right:30px;
+}
+
 .round-button{
   width:120px;
   height:40px;
@@ -267,6 +288,10 @@ $dark:                            #444 !default;
   height:140%;
   float:left;
 }*/
+
+.buttonsdiv{
+  margin-left: 200px;
+}
 
 .boardline {
   height: 2px;
