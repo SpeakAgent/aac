@@ -16,6 +16,12 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+.show-hide-label{
+  margin-top:-25px;
+  font-size: .75em;
+  margin-bottom:-10px;
+  color:#50E2E3;
+}
 .icon.ion-locked{
   font-size:2.5em;
   color:red;
@@ -24,11 +30,20 @@ $dark:                            #444 !default;
 
 .done-button{
   background-color: white;
-  color:#008485;
   /*margin-right: 2%;*/
   /*margin-left: 1%;*/
-  /*float:left;*/
+  float:right;
   border-radius: 5px;
+  border-style: solid;
+  border-color: #50E2E3;
+}
+
+.done-button p{
+  color:#008485;
+  font-weight:bold;
+  margin-bottom: -1px;
+  margin-left: 5px;
+  margin-right: 6px;
 }
 
 .icon.ion-unlocked{
