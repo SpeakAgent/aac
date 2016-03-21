@@ -30,6 +30,7 @@ app.controller('BoardController',
   $scope.board = {};
   $scope.board.title = "Home";
   $scope.settings = true;
+  $scope.step = 1;
   sample_symbol = {
       word: "Sample",
       icon: "img/symbols/a_lot.png",
@@ -251,6 +252,27 @@ app.controller('BoardController',
     var self = document.getElementById("settings");
     self.style.backgroundColor = "#008485";
     self.style.color = "white"
+  }
+
+  $scope.settingsPanel = function(){
+    $scope.step = 1;
+  }
+
+  $scope.syntheticPanel = function(){
+    $scope.step = 2;
+  }
+  // sound effects, phrase bar, alternate home page
+
+  $scope.soundPanel = function(){
+    $scope.step = 3;
+  }
+
+  $scope.phrasePanel = function(){
+    $scope.step = 4;
+  }
+
+  $scope.alternatePanel= function(){
+    $scope.step = 5;
   }
 });
 
