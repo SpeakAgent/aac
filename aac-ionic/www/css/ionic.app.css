@@ -16,6 +16,9 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+.settings-box.ion-checkbox{
+  border-color: black;
+}
 .centered-note{
   margin-left:18%;
   font-style: italic;
