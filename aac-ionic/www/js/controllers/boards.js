@@ -28,6 +28,7 @@ app.controller('BoardController',
 
   $scope.columns = "abcdefgh"
   $scope.rows = "123456"
+  $scope.selectedTiles = []
 
   var req = {
     url: 'https://lexemes-dev.herokuapp.com/board/single/',
@@ -173,6 +174,14 @@ app.controller('BoardController',
     // var bodyBack = document.getElementById('bodyBack')
     // bodyBack.style.backgroundColor = 'green';
     $scope.modal.hide();
+  }
+
+  $scope.clickTile = function(tile) {
+    $scope.selectedTiles.push(tile);
+  }
+
+  $scope.deleteLastTile = function () {
+    $scope.selectedTiles.pop();
   }
 
   $scope.dummyBoards =[
