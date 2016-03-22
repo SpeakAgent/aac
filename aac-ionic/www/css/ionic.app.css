@@ -16,6 +16,14 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+.greyed-out{
+  color:#F9F8F8;
+}
+
+.checkbox-text{
+  padding-right: 8px;
+}
+
 .settings-box.ion-checkbox{
   border-color: black;
 }
