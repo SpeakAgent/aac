@@ -184,6 +184,23 @@ app.controller('BoardController',
     $scope.selectedTiles.pop();
   }
 
+  $scope.sayPhrase = function () {
+    console.log($scope.selectedTiles);
+    var pks = [];
+    for (i in $scope.selectedTiles) {
+      pks.push($scope.selectedTiles[i].pk);
+    }
+    var req = {
+      url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
+      data: {pks: "[" + pks.toString() + "]"},
+      method: 'POST'
+    }
+    console.log(req);
+    $http(req).success(function(data) {
+      console.log(data)
+    })
+  }
+
   $scope.dummyBoards =[
   { name:"Anmls",
     img_path:"img/aac_board_imgs/alpaca.png" },
