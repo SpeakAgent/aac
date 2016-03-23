@@ -272,11 +272,11 @@ app.controller('BoardController',
     img_path:"img/aac_board_imgs/crayon.png"},
   ]
 
-  // for(var i = 0; i < dummyBoards.length; i++){
-  //   if (dummyBoards[i] > 24){
-      
-  //   }
-  // }
+  for(var i = 0; i < $scope.dummyBoards.length; i++){
+    if ($scope.dummyBoards[i] > 24){
+      $scope.dummyBoards(splice, [i]);
+    }
+  }
 });
 
 // app.controller('ionSideMenus', function($http, $scope, $ionicSideMenuDelegate){
