@@ -250,6 +250,25 @@ app.controller('BoardController',
 
   { name:"Thngs",
     img_path:"img/aac_board_imgs/crayon.png"},
+
+  // added for sliding option
+  // { name:"Nouns",
+  //   img_path:"img/aac_board_imgs/alpaca.png" },
+
+  // { name:"Outdr",
+  //   img_path:"img/aac_board_imgs/art.png" },
+
+  // { name:"Animl",
+  //   img_path:"img/aac_board_imgs/balloon.png" },
+
+  // { name:"Plnts",
+  //   img_path:"img/aac_board_imgs/bird.png" },
+
+  // { name:"Stuf",
+  //   img_path:"img/aac_board_imgs/clock.png" },
+
+  // { name:"Thngs",
+  //   img_path:"img/aac_board_imgs/crayon.png"},
   ]
 });
 
