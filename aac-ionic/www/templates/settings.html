@@ -18,12 +18,12 @@
     </ion-header-bar>
 
 <ion-view view-title="AAC" class="pane">
-	<ion-content class= "appBody" id="bodyBack">
+	<ion-content class= "appBody" id="bodyBack" style="background-color:#98E3E3;">
 	    <div class="row">
 			<div class="col col-33" id="settings-menu">
 				<ion-list> 
-					<ion-item>
-						<strong>Settings</strong>
+					<ion-item class="centered-title">
+						<h1 class="centered-title"><strong>Settings</strong></h1>
 					</ion-item>
 
 					<div class="item item-divider"><strong>General</strong></div>
@@ -36,8 +36,7 @@
 								<div class="handle"></div>
 							</div>
 						</label>
-
-						<span class="item-note">Expand symbols into natural language.</span>
+						<p style="color:#8F8F8F; padding:3px; font-weight:bold; font-style:italic;">Expand symbols into natural language.</p>
 					</ion-item>
 
 					<ion-item>
@@ -48,8 +47,7 @@
 								<div class="handle"></div>
 							</div>
 						</label>
-
-						<span class="item-note">Enable/disable live chat buddy.</span>
+						<p style="color:#8F8F8F; padding:3px; font-weight:bold; font-style:italic;">Enable/disable live chat buddy</p>
 					</ion-item>
 
 					<ion-item ng-click="settingsPanel()" id="settings">
@@ -114,7 +112,7 @@
 				</div> -->
 				<ion-list> 
 					<ion-item style="margin-left:5px;margin-top:-6px;">
-						<strong>Settings Access</strong>
+						<h1 class="centered-title"><strong>Settings Access</strong></h1>
 					</ion-item>
 				</ion-list>
 
@@ -140,19 +138,19 @@
 			<div class="col col-67" id="settings-modal" ng-show="step == 2">
 				<ion-list> 
 					<ion-item style="margin-left:5px;margin-top:-6px;">
-						<strong>Synthetic Voice</strong>
+						<h1 class="centered-title"><strong>Synthetic Voice</strong></h1>
 					</ion-item>
 				</ion-list>
 
 				<div class="settings-box">
 					<p>Synthetic Voices</p>	
-					<ion-checkbox><span class="checkbox-text">Jane</span><i class="icon ion-play"></i></ion-checkbox>
-					<ion-checkbox><span class="checkbox-text">Malik</span><i class="icon ion-play"></i></ion-checkbox>
-					<ion-checkbox><span class="checkbox-text">Name</span><i class="icon ion-play"></i></ion-checkbox>
+					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Jane</span><i class="icon ion-play"></i></ion-checkbox>
+					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Malik</span><i class="icon ion-play"></i></ion-checkbox>
+					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Name</span><i class="icon ion-play"></i></ion-checkbox>
 				</div>
 
 				<div class="settings-box">
-					<div class="item range">
+					<div class="item range" style="border-color:white;">
 						<div class="avatar-icon-placeholder"></div>
 							<input type="range" name="voice">
 						<div class="avatar-icon-placeholder"></div>
@@ -165,7 +163,7 @@
 			<div class="col col-67" id="settings-modal" ng-show="step == 3">
 				<ion-list> 
 					<ion-item style="margin-left:5px;margin-top:-6px;">
-						<strong>Sound Effects</strong>
+						<h1 class="centered-title"><strong>Sound Effects</strong></h1>
 					</ion-item>
 				</ion-list>
 
@@ -180,10 +178,10 @@
 				</div>
 
 				<div class="settings-box">
-					<ion-checkbox><span class="checkbox-text">School Bell</span></ion-checkbox>
-					<ion-checkbox><span class="checkbox-text">Glissandro</span></ion-checkbox>
-					<ion-checkbox><span class="checkbox-text">Label</span></ion-checkbox>
-					<ion-checkbox><span class="checkbox-text">Label</span></ion-checkbox>
+					<ion-checkbox style="border-color:white;"><span class="checkbox-text">School Bell</span></ion-checkbox>
+					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Glissandro</span></ion-checkbox>
+					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Label</span></ion-checkbox>
+					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Label</span></ion-checkbox>
 				</div>
 			</div>
 
@@ -191,7 +189,7 @@
 			<div class="col col-67" id="settings-modal" ng-show="step == 4">
 				<ion-list> 
 					<ion-item style="margin-left:5px;margin-top:-6px;">
-						<strong>Phrase Bar</strong>
+						<h1 class="centered-title"><strong>Phrase Bar</strong></h1>
 					</ion-item>
 				</ion-list>
 
@@ -220,7 +218,7 @@
 			<div class="col col-67" id="settings-modal" ng-show="step == 5">
 				<ion-list> 
 					<ion-item style="margin-left:5px;margin-top:-6px;">
-						<strong>Alternate Home Page</strong>
+						<h1 class="centered-title"><strong>Alternate Home Page</strong></h1>
 					</ion-item>
 				</ion-list>
 

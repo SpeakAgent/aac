@@ -16,6 +16,11 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+.centered-title{
+  font-size:1em;
+  color:black;
+  text-align: center;
+}
 .greyed-out{
   color:#F9F8F8;
 }
