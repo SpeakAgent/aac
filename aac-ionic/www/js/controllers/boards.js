@@ -320,24 +320,30 @@ app.controller('BoardController',
     img_path:"img/aac_board_imgs/crayon.png"},
 
   // added for sliding option
-  // { name:"Nouns",
-  //   img_path:"img/aac_board_imgs/alpaca.png" },
+  { name:"Nouns",
+    img_path:"img/aac_board_imgs/alpaca.png" },
 
-  // { name:"Outdr",
-  //   img_path:"img/aac_board_imgs/art.png" },
+  { name:"Outdr",
+    img_path:"img/aac_board_imgs/art.png" },
 
-  // { name:"Animl",
-  //   img_path:"img/aac_board_imgs/balloon.png" },
+  { name:"Animl",
+    img_path:"img/aac_board_imgs/balloon.png" },
 
-  // { name:"Plnts",
-  //   img_path:"img/aac_board_imgs/bird.png" },
+  { name:"Plnts",
+    img_path:"img/aac_board_imgs/bird.png" },
 
-  // { name:"Stuf",
-  //   img_path:"img/aac_board_imgs/clock.png" },
+  { name:"Stuf",
+    img_path:"img/aac_board_imgs/clock.png" },
 
-  // { name:"Thngs",
-  //   img_path:"img/aac_board_imgs/crayon.png"},
+  { name:"Thngs",
+    img_path:"img/aac_board_imgs/crayon.png"},
   ]
+
+  // for(var i = 0; i < dummyBoards.length; i++){
+  //   if (dummyBoards[i] > 24){
+      
+  //   }
+  // }
 });
 
 // app.controller('ionSideMenus', function($http, $scope, $ionicSideMenuDelegate){
