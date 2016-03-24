@@ -256,7 +256,7 @@ app.controller('BoardController',
 
   $scope.chosenTile = function(){
     // console.log(this.background);
-    this.backgroundColor = "blue";
+    $scope.class = "blue";
   }
 });
 
