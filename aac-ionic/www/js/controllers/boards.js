@@ -248,31 +248,54 @@ app.controller('BoardController',
     img_path:"img/aac_board_imgs/crayon.png"},
   ]
 
-  $scope.active =function(){
-    var self = document.getElementById("settings");
-    self.style.backgroundColor = "#008485";
-    self.style.color = "white"
-  }
+  // $scope.active =function(){
+  //   var self = document.getElementById("settings");
+  //   self.style.backgroundColor = "#008485";
+  //   self.style.color = "white"
+  // }
 
   $scope.settingsPanel = function(){
     $scope.step = 1;
+    var self = document.getElementById("settings");
+
+    if($scope.step = 1){
+      self.style.backgroundColor = "#008485";
+      self.style.color = "white";
+    } 
+
+    if($scope.step != 1){
+      self.style.backgroundColor = "white";
+      self.style.color = "black";
+    }
   }
 
   $scope.syntheticPanel = function(){
     $scope.step = 2;
+    var self = document.getElementById("synthetic");
+    self.style.backgroundColor = "#008485";
+    self.style.color = "white"
   }
   // sound effects, phrase bar, alternate home page
 
   $scope.soundPanel = function(){
     $scope.step = 3;
+    var self = document.getElementById("sound");
+    self.style.backgroundColor = "#008485";
+    self.style.color = "white"
   }
 
   $scope.phrasePanel = function(){
     $scope.step = 4;
+    var self = document.getElementById("phrase");
+    self.style.backgroundColor = "#008485";
+    self.style.color = "white"
   }
 
   $scope.alternatePanel= function(){
     $scope.step = 5;
+    var self = document.getElementById("alternate");
+    self.style.backgroundColor = "#008485";
+    self.style.color = "white"
   }
 });
 

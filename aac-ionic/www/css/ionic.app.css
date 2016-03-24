@@ -93,6 +93,9 @@ float:left;
   border-radius: 8px;
   background-color:#E5E1DF;
   float:left;
+  position: relative;
+  z-index: 5;
+  margin-right:10px;
 }
 
 #blue-list-item{
