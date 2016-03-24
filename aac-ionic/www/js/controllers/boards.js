@@ -40,7 +40,7 @@ app.controller('BoardController',
     $scope.filled_tiles = Object.keys($scope.board.symbols)
   })
 
-  console.log($scope.board);
+  // console.log($scope.board);
 // for(var i = 0; i < $scope.filled_tiles.length; i++ )
 //   console.log($scope.filled_tiles);
 
