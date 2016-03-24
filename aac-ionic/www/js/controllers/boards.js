@@ -40,7 +40,9 @@ app.controller('BoardController',
     $scope.filled_tiles = Object.keys($scope.board.symbols)
   })
 
-  
+  console.log($scope.board);
+// for(var i = 0; i < $scope.filled_tiles.length; i++ )
+//   console.log($scope.filled_tiles);
 
   $scope.toggleLeft = function(){
     $ionicSideMenuDelegate.toggleLeft();
@@ -251,6 +253,11 @@ app.controller('BoardController',
   { name:"Thngs",
     img_path:"img/aac_board_imgs/crayon.png"},
   ]
+
+  $scope.chosenTile = function(){
+    // console.log(this.background);
+    this.backgroundColor = "blue";
+  }
 });
 
 // app.controller('ionSideMenus', function($http, $scope, $ionicSideMenuDelegate){
