@@ -197,9 +197,20 @@ app.controller('BoardController',
     }
     console.log(req);
     $http(req).success(function(data) {
-      console.log(data)
+      console.log(data);
+      $scope.speakText(data.sentence);
     })
   }
+
+  $scope.speakText = function(text) {
+    TTS.speak({
+           text: text,
+       }, function () {
+           // Do Something after success
+       }, function (reason) {
+           // Handle the error case
+       });
+  };
 
   $scope.dummyBoards =[
   { name:"Anmls",
