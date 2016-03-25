@@ -159,7 +159,7 @@
           <div class="modal-container">
             <h1 class="title"><strong>Pick a favorite color for your app!</strong></h1>
 
-            <div class="color-choice" ng-repeat="title in colorName" ng-click="colorSelect($index)" ng-class="{selectedColor:$index==selectedIndex}">{{title.colorTitle}}
+            <div class="color-choice" ng-repeat="title in colorName" ng-click="colorSelect($index)" ng-class="{selectedColor:$index='{{title.primaryColor}}'}" id="container">{{title.colorTitle}}
             <img ng-src="{{title.url}}" alt="image" style="width:70%; height:70%;" /></div>
 
           </div>
@@ -171,3 +171,4 @@
     </script>
   </body>
 </html>
+<!-- ng-class="{selectedColor:$index==selectedIndex}" -->
