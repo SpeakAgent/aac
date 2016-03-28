@@ -26,7 +26,7 @@ var app = angular.module('AAC', ['ionic']);
 app.controller('BoardController', 
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element) {
 
-  $scope.columns = "abcdefgh"
+  $scope.columns = "abcdef"
   $scope.rows = "123456"
 
   var req = {
@@ -160,16 +160,21 @@ app.controller('BoardController',
 
     var colorChoice = document.getElementsByClassName('color-choice')
 
+    var scribble = document.getElementById('scribble');
+
       for(var i = 0; i < buttonCircle.length; i++){
         buttonCircle[i].style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
         colorChoice[$scope.selectedIndex].style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
+        while(colorChoice[$scope.selectedIndex].style.backgroundColor == $scope.colorName[$scope.selectedIndex].primaryColor){
+          scribble.remove(scribble.selectedIndex);
+        }
       }
   }
 
   $scope.changeBackground = function(){
     var buttonCircle = document.getElementsByClassName('button-circle');
     for(var i = 0; i < buttonCircle.length; i++){
-      var colorChoice = document.getElementsByClassName('color-choice')
+      var colorChoice = document.getElementsByClassName('color-choice');
       for(var n = 0; i < buttonCircle.length; n++){
         colorChoice[n].style.backgroundColor = "white";
         $scope.modal.hide();
