@@ -167,7 +167,12 @@ app.controller('BoardController',
   }
 
   $scope.changeBackground = function(){
-    console.log("This is working");
+    var buttonCircle = document.getElementsByClassName('button-circle');
+    for(var i = 0; i < buttonCircle.length; i++){
+      var colorChoice = document.getElementsByClassName('color-choice')
+      colorChoice[$scope.selectedIndex].style.backgroundColor = "white";
+    }
+    // console.log("This is working");
     // var bodyBack = document.getElementById('bodyBack')
     // bodyBack.style.backgroundColor = 'green';
     $scope.modal.hide();
