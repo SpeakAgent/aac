@@ -170,12 +170,12 @@ app.controller('BoardController',
     var buttonCircle = document.getElementsByClassName('button-circle');
     for(var i = 0; i < buttonCircle.length; i++){
       var colorChoice = document.getElementsByClassName('color-choice')
-      colorChoice[$scope.selectedIndex].style.backgroundColor = "white";
+      for(var n = 0; i < buttonCircle.length; n++){
+        colorChoice[n].style.backgroundColor = "white";
+        $scope.modal.hide();
+      }
     }
-    // console.log("This is working");
-    // var bodyBack = document.getElementById('bodyBack')
-    // bodyBack.style.backgroundColor = 'green';
-    $scope.modal.hide();
+    // $scope.modal.hide();
   }
 
   $scope.dummyBoards =[
