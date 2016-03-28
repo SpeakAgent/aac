@@ -40,6 +40,17 @@ app.controller('BoardController',
     $scope.filled_tiles = Object.keys($scope.board.symbols)
   })
 
+
+  $scope.chosenTile = function(){
+    // console.log(this.background);
+    // $scope.class = "blue";
+    // var tile = document.getElementsByClassName("tile");
+    // for(i = 0; i < tile.length; i++){
+    //   console.log(tile);
+    // }
+    console.log($scope.filled_tiles.indexOf($scope.columns+$scope.rows));
+    $scope.filled_tiles.indexOf($scope.columns+$scope.rows).backgroundColor = "blue";
+  }
   // console.log($scope.board);
 // for(var i = 0; i < $scope.filled_tiles.length; i++ )
 //   console.log($scope.filled_tiles);
@@ -253,11 +264,6 @@ app.controller('BoardController',
   { name:"Thngs",
     img_path:"img/aac_board_imgs/crayon.png"},
   ]
-
-  $scope.chosenTile = function(){
-    // console.log(this.background);
-    $scope.class = "blue";
-  }
 });
 
 // app.controller('ionSideMenus', function($http, $scope, $ionicSideMenuDelegate){
