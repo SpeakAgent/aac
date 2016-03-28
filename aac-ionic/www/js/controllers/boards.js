@@ -139,13 +139,9 @@ app.controller('BoardController',
 
   $scope.colorSelect = function(colorIndex){
     $scope.selectedIndex = colorIndex;
-    // for(i = 0; i < $scope.colorName.length; i++){
-    //   console.log($scope.colorName[i]);
-    // };
+    
     console.log($scope.selectedIndex);
     var container = document.getElementById('container');
-    // var container = document.getElementsByClassName('color-choice');
-    // container.style.backgroundColor = $scope.selectedIndex;
 
     var bodyBack = document.getElementById('bodyBack');
     bodyBack.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
@@ -163,13 +159,10 @@ app.controller('BoardController',
     console.log(buttonCircle[1].style.backgroundColor);
 
     var colorChoice = document.getElementsByClassName('color-choice')
-    console.log(colorChoice);
 
       for(var i = 0; i < buttonCircle.length; i++){
-        // var container = document.getElementById('container');
         buttonCircle[i].style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
         colorChoice[$scope.selectedIndex].style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
-        // container[i].style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
       }
   }
 
