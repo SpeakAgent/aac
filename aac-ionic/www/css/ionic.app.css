@@ -16,6 +16,52 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+.board-search{
+  background-color: white;
+  border-style: solid;
+  border-color: #008485;
+  border-radius: 20px;
+  padding:2px 10px 2px 10px;
+  color: #008485;
+  font-weight:700;
+}
+
+.forward-buttons{
+  padding-top: 5%;
+  margin-left: 49%;
+}
+
+#newboard{
+  padding:40px;
+}
+
+.factory-title{
+  font-size:  1.75em;
+  font-weight:400;
+  color:#008485;
+}
+
+.ion-help-circled{
+  color: #008485;
+}
+
+.board-instructions{
+  color: #008485;
+  font-weight: 500;
+  margin-bottom: 80px;
+  width:90%;
+}
+
+.custom-button{
+  background-color: #008485;
+  border-style: solid;
+  border-color: #008485;
+  border-radius: 20px;
+  color: white;
+  padding:5px;
+  font-weight:600;
+}
+
 .centered-title{
   font-size:1em;
   color:black;
