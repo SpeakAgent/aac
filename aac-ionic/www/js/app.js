@@ -21,7 +21,7 @@ angular.module('starter', ['ionic', 'starter.boards'])
       StatusBar.styleDefault();
     }
 
-    $scope.title = "Scope title"
+    // $scope.title = "Scope title"
   });
 })
 
@@ -36,6 +36,11 @@ angular.module('starter', ['ionic', 'starter.boards'])
   $stateProvider.state('settings',{
       url:'/settings',
       templateUrl: 'templates/settings.html',
-    })
+    });
+
+  $stateProvider.state('board_factory',{
+    url:'/board_factory',
+    templateUrl: 'templates/board_factory.html',
+  })
 })
 
