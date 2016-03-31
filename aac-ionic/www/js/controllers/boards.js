@@ -55,74 +55,62 @@ app.controller('BoardController',
     {colorTitle: 'Sky Blue',
      primaryColor:'#50E2E3',
      secondaryColor:'#008484',
-     url:'img/color_change/colorBlob-skyBlue.svg',
-     placeholder:'img/color_change/colorBlob_white.svg' },
+     url:'img/color_change/colorBlob-skyBlue.svg'},
 
     {colorTitle: 'Electric Green',
      primaryColor:'#BCE72B', 
      secondaryColor:'#18745C', 
-     url:'img/color_change/colorBlob_electricGreen.svg',
-     placeholder:'img/color_change/colorBlob_white.svg' },
+     url:'img/color_change/colorBlob_electricGreen.svg'},
 
     {colorTitle: 'Hot Pink',
      primaryColor:'#D5388A',
      secondaryColor:'#F787C6', 
-     url:'img/color_change/colorBlob_hotPink.svg',
-     placeholder:'img/color_change/colorBlob_white.svg' },
+     url:'img/color_change/colorBlob_hotPink.svg'},
 
     {colorTitle: 'Tangerine',
      primaryColor:'#E07600',
      secondaryColor:'#982900', 
-     url:'img/color_change/colorBlob_tangerine.svg',
-     placeholder:'img/color_change/colorBlob_white.svg' },
+     url:'img/color_change/colorBlob_tangerine.svg'},
 
     {colorTitle: 'Butter Yellow',
      primaryColor:'#FFDB3B',
      secondaryColor:'#DEC75F',
-     url:'img/color_change/colorBlob_butterYellow.svg',
-     placeholder:'img/color_change/colorBlob_white.svg' },
+     url:'img/color_change/colorBlob_butterYellow.svg'},
 
     {colorTitle: 'Tomato Red',
      primaryColor:'#E6213F',
      secondaryColor:'#E899A6',
-     url:'img/color_change/colorBlob_tomatoRed.svg',
-     placeholder:'img/color_change/colorBlob_white.svg' },
+     url:'img/color_change/colorBlob_tomatoRed.svg'},
 
     {colorTitle: 'Denim Blue',
      primaryColor:'#325DC1',
      secondaryColor:'#ADB1E8',
-     url:'img/color_change/colorBlob_denimBlue.svg',
-     placeholder:'img/color_change/colorBlob_white.svg' },
+     url:'img/color_change/colorBlob_denimBlue.svg'},
 
     {colorTitle: 'Steel Gray',
      primaryColor:'#7D989A',
      secondaryColor:'#A9CED1',
-     url:'img/color_change/colorBlob_steelGray.svg',
-     placeholder:'img/color_change/colorBlob_white.svg' },
+     url:'img/color_change/colorBlob_steelGray.svg'},
 
     {colorTitle: 'Periwinkle Blue',
      primaryColor:'#8AB6E1',
      secondaryColor:'#3496C7', 
-     url:'img/color_change/colorBlob_periwinkleBlue.svg',
-     placeholder:'img/color_change/colorBlob_white.svg' },
+     url:'img/color_change/colorBlob_periwinkleBlue.svg'},
 
     {colorTitle: 'Forest Green',
      primaryColor:'#18745C',
      secondaryColor:'#7BB59F',
-     url:'img/color_change/colorBlob_forestGreen.svg',
-     placeholder:'img/color_change/colorBlob_white.svg' },
+     url:'img/color_change/colorBlob_forestGreen.svg'},
 
     {colorTitle: 'Intense Purple',
      primaryColor:'#6B28C6',
      secondaryColor:'#C6A4EB',
-     url:'img/color_change/colorBlob_intensePurple.svg',
-     placeholder:'img/color_change/colorBlob_white.svg' },
+     url:'img/color_change/colorBlob_intensePurple.svg'},
 
     {colorTitle: 'Seafoam Green',
      primaryColor:'#2FCB95',
      secondaryColor:'#A7E8C5',
-     url:'img/color_change/colorBlob_seafoamGreen.svg',
-     placeholder:'img/color_change/colorBlob_white.svg' },
+     url:'img/color_change/colorBlob_seafoamGreen.svg'},
   ]
   
 
@@ -173,34 +161,50 @@ app.controller('BoardController',
     var colorChoice = document.getElementsByClassName('color-choice')
 
     var scribble = document.getElementById('scribble');
+    var originalImg = document.getElementsByClassName('originalImg');
 
     var placeholder = document.createElement("img");
     placeholder.src = "img/color_change/colorBlob_white.svg";
-    placeholder.style.marginTop = "-150px";
+    // placeholder.style.marginTop = "-50px";
     placeholder.style.width = "70%";
     placeholder.style.height = "70%"; 
+    placeholder.id = "placeholder";
+    // placeholder.style.paddingTop = "-20px";
 
 
       for(var i = 0; i < buttonCircle.length; i++){
         buttonCircle[i].style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
         colorChoice[$scope.selectedIndex].style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
         colorChoice[$scope.selectedIndex].appendChild(placeholder);
-        // $scope.inverse = true;
-        // colorChoice[$scope.selectedIndex].appendChild();
+        // console.log(originalImg[$scope.selectedIndex]);
+        // originalImg[$scope.selectedIndex].style.marginTop = "-50px;"
       }
+      colorChoice[$scope.selectedIndex].removeChild(originalImg[$scope.selectedIndex]);
+
+      // for(var i = 0; i < colorChoice.length; i++){
+      //   colorChoice[$scope.selectedIndex].removeChild(originalImg);
+      // }
   }
 
   $scope.changeBackground = function(){
     var buttonCircle = document.getElementsByClassName('button-circle');
+    var originalImg = document.getElementsByClassName('originalImg');
     for(var i = 0; i < buttonCircle.length; i++){
       var colorChoice = document.getElementsByClassName('color-choice');
+      var placeholder = document.getElementById("placeholder");
+      colorChoice[$scope.selectedIndex].removeChild(placeholder);
       for(var n = 0; i < buttonCircle.length; n++){
         colorChoice[n].style.backgroundColor = "white";
+        // colorChoice[$scope.selectedIndex].appendChild(originalImg[formerIn]);
+        // colorChoice[$scope.selectedIndex].appendChild(originalImg[$scope.selectedIndex]);
         $scope.modal.hide();
       }
     }
     // $scope.modal.hide();
   }
+
+  // Instead of outright removing the primaryColor Hash, replace it in the colorselect function, then 
+  // remove it from that index in the changeBackground function
 
   $scope.dummyBoards =[
   { name:"Anmls",
