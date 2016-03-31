@@ -174,25 +174,20 @@ app.controller('BoardController',
 
     var scribble = document.getElementById('scribble');
 
+    var placeholder = document.createElement("img");
+    placeholder.src = "img/color_change/colorBlob_white.svg";
+    placeholder.style.marginTop = "-150px";
+    placeholder.style.width = "70%";
+    placeholder.style.height = "70%"; 
+
+
       for(var i = 0; i < buttonCircle.length; i++){
         buttonCircle[i].style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
-        // colorChoice[$scope.selectedIndex].style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
+        colorChoice[$scope.selectedIndex].style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
+        colorChoice[$scope.selectedIndex].appendChild(placeholder);
         // $scope.inverse = true;
+        // colorChoice[$scope.selectedIndex].appendChild();
       }
-      colorChoice[$scope.selectedIndex].style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
-      
-      if(colorChoice[$scope.selectedIndex].style.backgroundColor != $scope.colorName[$scope.selectedIndex].primaryColor){
-        $scope.inverse = true;
-      } else{
-        $scope.inverse = false;
-      }
-      // if (colorChoice[$scope.selectedIndex].style.backgroundColor.inverse = true 
-
-        // for(var i = 0; i < colorChoice.length; i++){
-        //   if(colorChoice[i] = colorchoice[$scope.selectedIndex]){
-        //     $scope.inverse = false;
-        //   }
-        // }
   }
 
   $scope.changeBackground = function(){
