@@ -175,15 +175,16 @@ app.controller('BoardController',
       for(var i = 0; i < buttonCircle.length; i++){
         buttonCircle[i].style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
         colorChoice[$scope.selectedIndex].style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
+        // $scope.colorName[$scope.selectedIndex].primaryColor = "#FFFFFF";
         colorChoice[$scope.selectedIndex].appendChild(placeholder);
         // console.log(originalImg[$scope.selectedIndex]);
         // originalImg[$scope.selectedIndex].style.marginTop = "-50px;"
       }
-      colorChoice[$scope.selectedIndex].removeChild(originalImg[$scope.selectedIndex]);
-
-      // for(var i = 0; i < colorChoice.length; i++){
-      //   colorChoice[$scope.selectedIndex].removeChild(originalImg);
-      // }
+      var savedHash = $scope.colorName[$scope.selectedIndex].primaryColor
+      console.log(savedHash);
+      // colorChoice[$scope.selectedIndex].removeChild(originalImg[$scope.selectedIndex]);
+      originalImg[$scope.selectedIndex].style.display = "none";
+      // $scope.colorName[$scope.selectedIndex].primaryColor = "#FFFFFF";
   }
 
   $scope.changeBackground = function(){
@@ -195,6 +196,8 @@ app.controller('BoardController',
       colorChoice[$scope.selectedIndex].removeChild(placeholder);
       for(var n = 0; i < buttonCircle.length; n++){
         colorChoice[n].style.backgroundColor = "white";
+        originalImg[$scope.selectedIndex].style.display = "inline";
+        // $scope.colorName.splice(1,[$scope.selectedIndex], $scope.placeholder);
         // colorChoice[$scope.selectedIndex].appendChild(originalImg[formerIn]);
         // colorChoice[$scope.selectedIndex].appendChild(originalImg[$scope.selectedIndex]);
         $scope.modal.hide();
