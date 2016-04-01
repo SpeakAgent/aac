@@ -175,16 +175,12 @@ app.controller('BoardController',
       for(var i = 0; i < buttonCircle.length; i++){
         buttonCircle[i].style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
         colorChoice[$scope.selectedIndex].style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
-        // $scope.colorName[$scope.selectedIndex].primaryColor = "#FFFFFF";
-        colorChoice[$scope.selectedIndex].appendChild(placeholder);
-        // console.log(originalImg[$scope.selectedIndex]);
-        // originalImg[$scope.selectedIndex].style.marginTop = "-50px;"
+        // colorChoice[$scope.selectedIndex].appendChild(placeholder);
+        if(originalImg[$scope.selectedIndex].style.display = "none"){
+          colorChoice[$scope.selectedIndex].appendChild(placeholder);
+        }
       }
-      var savedHash = $scope.colorName[$scope.selectedIndex].primaryColor
-      console.log(savedHash);
-      // colorChoice[$scope.selectedIndex].removeChild(originalImg[$scope.selectedIndex]);
       originalImg[$scope.selectedIndex].style.display = "none";
-      // $scope.colorName[$scope.selectedIndex].primaryColor = "#FFFFFF";
   }
 
   $scope.changeBackground = function(){
@@ -193,21 +189,22 @@ app.controller('BoardController',
     for(var i = 0; i < buttonCircle.length; i++){
       var colorChoice = document.getElementsByClassName('color-choice');
       var placeholder = document.getElementById("placeholder");
+      // originalImg[$scope.selectedIndex].style.display = "inline";
+      originalImg[$scope.selectedIndex].style.display = "inline";
+      // placeholder[$scope.selectedIndex].style.display = "none";
       colorChoice[$scope.selectedIndex].removeChild(placeholder);
+      // originalImg[$scope.selectedIndex].style.display = "inline";
       for(var n = 0; i < buttonCircle.length; n++){
+        // if(colorChoice[n] > 1){
+        //   $scope.modal.hide();
+        // }
         colorChoice[n].style.backgroundColor = "white";
-        originalImg[$scope.selectedIndex].style.display = "inline";
-        // $scope.colorName.splice(1,[$scope.selectedIndex], $scope.placeholder);
-        // colorChoice[$scope.selectedIndex].appendChild(originalImg[formerIn]);
-        // colorChoice[$scope.selectedIndex].appendChild(originalImg[$scope.selectedIndex]);
+        // colorChoice[$scope.selectedIndex].removeChild(placeholder);
+        // originalImg[$scope.selectedIndex].style.display = "inline";
         $scope.modal.hide();
       }
     }
-    // $scope.modal.hide();
   }
-
-  // Instead of outright removing the primaryColor Hash, replace it in the colorselect function, then 
-  // remove it from that index in the changeBackground function
 
   $scope.dummyBoards =[
   { name:"Anmls",
