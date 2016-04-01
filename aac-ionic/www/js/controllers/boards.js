@@ -255,47 +255,45 @@ app.controller('BoardController',
   // }
 
   $scope.settingsPanel = function(){
-    $scope.step = 1;
-    var self = document.getElementById("settings");
-
-    if($scope.step = 1){
+    // while($scope.step = 1){
+      var self = document.getElementById("settings");
       self.style.backgroundColor = "#008485";
       self.style.color = "white";
-    } 
-
-    if($scope.step != 1){
-      self.style.backgroundColor = "white";
-      self.style.color = "black";
-    }
+      console.log($scope.step);
+    // }
   }
 
   $scope.syntheticPanel = function(){
     $scope.step = 2;
     var self = document.getElementById("synthetic");
-    self.style.backgroundColor = "#008485";
-    self.style.color = "white"
+    // self.style.backgroundColor = "#008485";
+    // self.style.color = "white";
+    console.log($scope.step);
   }
   // sound effects, phrase bar, alternate home page
 
   $scope.soundPanel = function(){
     $scope.step = 3;
     var self = document.getElementById("sound");
-    self.style.backgroundColor = "#008485";
-    self.style.color = "white"
+    // self.style.backgroundColor = "#008485";
+    // self.style.color = "white";
+    console.log($scope.step);
   }
 
   $scope.phrasePanel = function(){
     $scope.step = 4;
     var self = document.getElementById("phrase");
-    self.style.backgroundColor = "#008485";
-    self.style.color = "white"
+    // self.style.backgroundColor = "#008485";
+    // self.style.color = "white";
+    console.log($scope.step);
   }
 
   $scope.alternatePanel= function(){
     $scope.step = 5;
     var self = document.getElementById("alternate");
-    self.style.backgroundColor = "#008485";
-    self.style.color = "white"
+    // self.style.backgroundColor = "#008485";
+    // self.style.color = "white";
+    console.log($scope.step);
   }
 });
 
