@@ -15,18 +15,42 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
-
-.item.item-input{
-  font-size: .75em;
+.icon.ion-ios-minus-outline{
+  color:#B70016;
+  font-weight: 1000;
+  font-size: 2em;
+  position:relative;
+  z-index:4;
+  margin-right: 80px;
 }
 
+input[type="text"]{
+  font-size: 1em;
+  padding: 1px;
+  border-style: solid;
+  border-color: black;
+  border-width: 10px;
+}
+
+input[type="text"]:focus{
+  background:#FFF8D9;
+  /*border-color: #6EE8E9;*/
+}
+
+.item.item-input{
+  padding: 0;
+  margin: 0;
+}
 .edit-subheading{
   font-style: italic;
   margin-bottom: 1px;
 }
+.title-section, .symbol-section, .tag-section{
+  padding-bottom:20px;
+}
 
 .edit-title{
-  font-size: 1.5em;
+  font-size: 1.25em;
   text-align:center;
   font-weight: bold;
   padding-bottom: 15px;
@@ -93,12 +117,26 @@ $dark:                            #444 !default;
   width:90%;
 }
 
+#edit-input-section{
+  padding:35px;
+}
+
 .custom-button{
   background-color: #008485;
   border-style: solid;
   border-color: #008485;
   border-radius: 20px;
   color: white;
+  padding:5px;
+  font-weight:600;
+}
+
+.custom-button-inverse{
+  background-color: white;
+  border-style: solid;
+  border-color: #008485;
+  border-radius: 20px;
+  color: #008485;
   padding:5px;
   font-weight:600;
 }
