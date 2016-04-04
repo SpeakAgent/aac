@@ -36,7 +36,7 @@ app.controller('BoardController',
       icon: "img/symbols/a_lot.png",
       pk: 15,
     }
-  $scope.columns = "abcdefgh"
+  $scope.columns = "abcdef"
   $scope.rows = "123456"
   $scope.selectedTiles = []
 

@@ -16,6 +16,27 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+.item.item-input{
+  font-size: .75em;
+}
+
+.edit-subheading{
+  font-style: italic;
+  margin-bottom: 1px;
+}
+
+.edit-title{
+  font-size: 1.5em;
+  text-align:center;
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+
+.board-factory-tile-section{
+  width:90%;
+  margin-left:10%;
+}
+
 .icon.ion-ios-arrow-left{
   font-size: 2em;
   color: #7C7C7D;
@@ -44,6 +65,10 @@ $dark:                            #444 !default;
   padding:40px;
 }
 
+#newboard2{
+  padding:10px 30px 30px 25px;
+}
+
 .factory-title{
   font-size:  1.75em;
   font-weight:400;
@@ -58,6 +83,13 @@ $dark:                            #444 !default;
   color: #008485;
   font-weight: 500;
   margin-bottom: 80px;
+  width:90%;
+}
+
+.board-instructions2{
+  color: #008485;
+  font-weight: 500;
+  margin-bottom: -10px;
   width:90%;
 }
 

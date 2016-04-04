@@ -18,14 +18,52 @@
   <div class="row">
     <div class="col col-67" style="background-color:#50E2E3;">
       <i class="icon ion-ios-arrow-left"></i>
-      <div id="newboard">
+      <!-- <div id="newboard">
         <h1 class="factory-title">Editing Copy of Art {Board Title}</h1>
-        <p class="board-instructions"><i class="icon ion-help-circled"></i> Tap a tile to select a Board to edit. Press and hold a Board tile to move it to a different place. Tap the minus sign to remove the tile from the Board.</p>
-        
-       </div>
+        <p class="board-instructions2"><i class="icon ion-help-circled"></i> Tap a tile to select a Board to edit. Press and hold a Board tile to move it to a different place. Tap the minus sign to remove the tile from the Board.</p>
+      </div> -->
+
+      <div class="board-factory-tile-section">
+        <div id="newboard2">
+          <h1 class="factory-title">Editing Copy of Art {Board Title}</h1>
+          <p class="board-instructions2"><i class="icon ion-help-circled"></i> Tap a tile to select a Board to edit. Press and hold a Board tile to move it to a different place. Tap the minus sign to remove the tile from the Board.</p>
+        </div>
+
+        <span ng-repeat="row in rows">
+          <div class="tile" ng-repeat="col in columns" ng-click="clickTile(board.symbols[col+row])">
+            <span ng-show="filled_tiles.indexOf(col+row)!=-1">
+              {{board.symbols[col+row].word}}<br>
+              <img src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px">
+            </span>
+          </div>
+        </span>
+      </div>
+
     </div>
     <div class="col" style="background-color:#FFFFFF;">
-      <p>More Words</p>
+      <!-- <p>More Words</p> -->
+      <h1 class="edit-title">Edit Copy of Art {Board Title}</h1>
+
+      <div class="title-section">
+        <p class="edit-subheading">Enter new title</p>
+        <label class="item item-input">
+          <input type="text" name="title">
+        </label> 
+      </div>
+
+      <div class="symbol-section">
+        <p class="edit-subheading">Choose a symbol to identify your board</p>
+        <button><i class="icon ion-search"></i> Browse for image</button>
+      </div>
+
+      <div class="tag-section">
+        <p class="edit-subheading">Add Tags, comma separated</p>
+        <label class="item item-input">
+          <input type="text" name="tags">
+        </label>
+      </div>
+
+      <button class="custom-button">Save</button>
     </div>
   </div>
   </ion-content>
