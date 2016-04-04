@@ -16,6 +16,15 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+.icon.ion-ios-arrow-left{
+  font-size: 2em;
+  color: #7C7C7D;
+}
+
+.boards a{
+  color:black;
+  text-decoration: none;
+}
 .board-search{
   background-color: white;
   border-style: solid;
