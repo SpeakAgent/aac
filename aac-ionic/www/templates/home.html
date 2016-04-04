@@ -39,53 +39,25 @@
           <div class="col col-90" id="full-body">
             <div class="word-builder">
               <div class="word-builder-input" style="margin-left:-15px">
-                <img src="img/AAC_assets/delete_button.png" id="home-section"/>
+                <!-- <img src="img/AAC_assets/delete_button.png" id="home-section"/> -->
+                <div class="tile" ng-repeat="symbol in selectedTiles">
+                  {{symbol.word}}</br>
+                  <img src="{{symbol.symbol.image}}" style="width:40px;height:40px;">
+                </div>
+                <img src="img/AAC_assets/delete_button.png" id="home-section" ng-click="deleteLastTile()" />
               </div>
             </div>
 
             <div class="col col-60" id="tile-section">
             <div class="tile-section-border">
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
+              <span ng-repeat="row in rows">
+                <div class="tile" ng-repeat="col in columns" ng-click="clickTile(board.symbols[col+row])">
+                  <span ng-show="filled_tiles.indexOf(col+row)!=-1">
+                    {{board.symbols[col+row].word}}<br>
+                    <img src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px">
+                  </span>
+                </div>
+              </span>
             </div>
             </div>
             <!-- <div class="col col-2" style="float:left;"></div> -->
