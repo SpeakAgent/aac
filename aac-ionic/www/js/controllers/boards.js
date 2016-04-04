@@ -297,6 +297,10 @@ app.controller('BoardController',
     self.style.backgroundColor = "#008485";
     self.style.color = "white"
   }
+
+  // $scope.editSection = function(){
+  //   console.log("working");
+  // }
 });
 
 // app.controller('ionSideMenus', function($http, $scope, $ionicSideMenuDelegate){
