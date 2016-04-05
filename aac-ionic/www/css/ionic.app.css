@@ -61,21 +61,28 @@ $dark:                            #444 !default;
 }
 
 input[type="text"]{
-  font-size: 1em;
-  padding: 1px;
-  border-style: solid;
-  border-color: black;
-  border-width: 10px;
+  display: block;
+  margin: 0;
+  width: 100%;
+  font-family: sans-serif;
+  font-size: 18px;
+  box-shadow: none;
+  border-radius: none;
+  outline: 1px solid #979797;
 }
 
-input[type="text"]:focus{
+input[type="text"]:focus, textarea:focus{
   background:#FFF8D9;
-  /*border-color: #6EE8E9;*/
+  box-shadow: 0 0 5px #6EE8E9;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #6EE8E9;
+  outline:none;
 }
 
 .item.item-input{
-  padding: 0;
-  margin: 0;
+  padding: 0px;
+  margin-top: -2px;
 }
 .edit-subheading{
   font-style: italic;
@@ -93,8 +100,8 @@ input[type="text"]:focus{
 }
 
 .board-factory-tile-section{
-  width:90%;
-  margin-left:10%;
+  width:80%;
+  margin-left:11%;
 }
 
 .icon.ion-ios-arrow-left{
@@ -106,15 +113,6 @@ input[type="text"]:focus{
   color:black;
   text-decoration: none;
 }
-.board-search{
-  background-color: white;
-  border-style: solid;
-  border-color: #008485;
-  border-radius: 20px;
-  padding:2px 10px 2px 10px;
-  color: #008485;
-  font-weight:700;
-}
 
 .forward-buttons{
   padding-top: 5%;
@@ -122,7 +120,7 @@ input[type="text"]:focus{
 }
 
 #newboard{
-  padding:40px;
+  padding:0px;
 }
 
 #newboard2{
@@ -165,6 +163,7 @@ input[type="text"]:focus{
   color: white;
   padding:5px;
   font-weight:600;
+  box-shadow: 0px 3px 0px 0px #006364;
 }
 
 .custom-button-inverse{
@@ -175,6 +174,7 @@ input[type="text"]:focus{
   color: #008485;
   padding:5px;
   font-weight:600;
+  box-shadow: 0px 3px 0px 0px;
 }
 
 .centered-title{
