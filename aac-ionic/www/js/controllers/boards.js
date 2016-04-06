@@ -176,6 +176,8 @@ app.controller('BoardController',
     $scope.modal.hide();
   }
 
+  $scope.dummyLimit = 24;
+  
   $scope.dummyBoards =[
   { name:"Anmls",
     img_path:"img/aac_board_imgs/alpaca.png" },
@@ -273,10 +275,11 @@ app.controller('BoardController',
   ]
 
   for(var i = 0; i < $scope.dummyBoards.length; i++){
-    if ($scope.dummyBoards[i] > 24){
-      $scope.dummyBoards(splice, [i]);
+      if ($scope.dummyBoards[i] > 24){
+        // $scope.dummyBoards(splice, [i]);
+        $scope.dummyBoards[i].style.display = 'none';
+      }
     }
-  }
 });
 
 // app.controller('ionSideMenus', function($http, $scope, $ionicSideMenuDelegate){
