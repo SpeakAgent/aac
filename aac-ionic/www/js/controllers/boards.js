@@ -340,10 +340,11 @@ app.controller('BoardController',
   ]
 
   for(var i = 0; i < $scope.dummyBoards.length; i++){
-    if ($scope.dummyBoards[i] > 24){
-      $scope.dummyBoards(splice, [i]);
+      if ($scope.dummyBoards[i] > 24){
+        // $scope.dummyBoards(splice, [i]);
+        $scope.dummyBoards[i].style.display = 'none';
+      }
     }
-  }
 });
 
 // app.controller('ionSideMenus', function($http, $scope, $ionicSideMenuDelegate){
