@@ -100,11 +100,11 @@
             </div>
           </div>
 
-          <div class="col" style="background: #50E2E3;">
-            <img src="img/AAC_assets/left.png"/>
-            <img src="img/AAC_assets/right.png"/>
+          <!-- <div class="col" style="background: #50E2E3;"> -->
+            <!-- <img src="img/AAC_assets/left.png"/>
+            <img src="img/AAC_assets/right.png"/> -->
             <!-- <img src="img/AAC_assets/tile_tapped_slice.png"/> -->
-          </div>
+          <!-- </div> -->
         </div>
 
 <!-- Bottom function buttons -->
@@ -134,8 +134,8 @@
           </div>
 
           <div class="col col-30">
-            <img src="img/AAC_assets/left.png" style="margin-left:50px;"/>
-            <img src="img/AAC_assets/right.png" style="margin-left:30px;"/>
+            <img ng-click="lastSet($index)" src="img/AAC_assets/left.png" style="margin-left:50px;"/>
+            <img ng-click="nextSet($index)" src="img/AAC_assets/right.png" style="margin-left:30px;"/>
           </div>
         </div>
       </ion-content>
