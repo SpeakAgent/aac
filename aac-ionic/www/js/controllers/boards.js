@@ -339,12 +339,35 @@ app.controller('BoardController',
     img_path:"img/aac_board_imgs/crayon.png"},
   ]
 
-  for(var i = 0; i < $scope.dummyBoards.length; i++){
-      if ($scope.dummyBoards[i] > 24){
-        // $scope.dummyBoards(splice, [i]);
-        $scope.dummyBoards[i].style.display = 'none';
-      }
+  $scope.lastSet = function(index){
+    console.log("Last Set button is working");
+    // console.log($scope.dummyBoards[index]);
+    if ($scope.dummyLimit > 24){
+      $scope.dummyLimit = $scope.dummyLimit - 24;
     }
+  }
+
+  $scope.nextSet = function(index){
+    console.log("Next Set button is working");
+    $scope.dummyLimit = $scope.dummyLimit + 24;
+   if($scope.dummyLimit > 24){
+    for(i = 0; i < $scope.dummyBoards.length; i++){
+      console.log($scope.dummyBoards[i].name);
+      $scope.dummyBoards[i].name.display = "none";
+      // console.log(i);
+      // if($scope.dummyBoards[i] <= 24){
+        // $scope.dummyBoards[i].style.display = "none";
+        // console.log($scope.dummyBoards.name[i]);
+      // }
+    }
+   }
+  }
+  // for(var i = 0; i < $scope.dummyBoards.length; i++){
+  //   if ($scope.dummyBoards[i] > 24){
+  //     // $scope.dummyBoards(splice, [i]);
+  //     $scope.dummyBoards[i].style.display = 'none';
+  //   }
+  // }
 });
 
 // app.controller('ionSideMenus', function($http, $scope, $ionicSideMenuDelegate){
