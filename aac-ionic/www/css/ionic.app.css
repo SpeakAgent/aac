@@ -15,31 +15,6 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
-/*.icon.ion-ios-minus-outline{
-  color:#B70016;
-  font-weight: 1000;
-  font-size: 2em;
-  position:relative;
-  z-index:4;
-  /*margin-right: 80px;*/
-  /*float:right;*/
-  /*padding-left: -5px;*/
-  /*margin-top: -14px;*/
-  /*background-color: #FFE0D4;*/
-/*}*/
-
-/*.ion-android-remove-circle{
-  color:#B70016;
-  font-weight: 1000;
-  font-size: 2em;
-  position:relative;
-  z-index:4;*/
-  /*margin-right: 80px;*/
-  /*float:right;*/
-  /*padding-left: -5px;*/
-  /*margin-top: -14px;*/
-  /*background-color: #FFE0D4;*/
-/*}*/
 
 .manual-minus{
   width:20px;
