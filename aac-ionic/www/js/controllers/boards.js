@@ -249,49 +249,11 @@ app.controller('BoardController',
   ]
 
 $scope.panel = function(number){
-  // console.log(number);
-  // if(number == "2"){
-  //   console.log ("This is 2 right?!?")
-  // }
-
-  // if(self = "settings" || self = "synthetic" || self = "sound" || self = "phrase" || self = "alternate"){
-  //   switch(self){
-  //     case 
-  //   }
-  // }
-  // switch(self){
-  //   case "settings":
-  //   self.style.backgroundColor = white;
-  //   self.style.color = black;
-  //   break
-
-  //   case "synthetic":
-  //   self.style.backgroundColor = white;
-  //   self.style.color = black;
-  //   break 
-
-  //   case "sound":
-  //   self.style.backgroundColor = white;
-  //   self.style.color = black;
-  //   break
-
-  //   case "phrase":
-  //   self.style.backgroundColor = white;
-  //   self.style.color = black;
-  //   break
-
-  //   case "alternate":
-  //   self.style.backgroundColor = white;
-  //   self.style.color = black;
-  //   break
-
-  //   default:
-  //     console.log("Ugh!!!");
-  // }
   if(number == "1"){
     var self = document.getElementById("settings");
     self.style.backgroundColor = "#008485";
     self.style.color = "white";
+    $scope.step = 1;
       // if (number == "2" || number == "3" || number == "4" || number == "5"){
       var synthetic = document.getElementById("synthetic");
       synthetic.style.backgroundColor = "white";
@@ -314,6 +276,7 @@ $scope.panel = function(number){
       var self = document.getElementById("synthetic");
       self.style.backgroundColor = "#008485";
       self.style.color = "white";
+      $scope.step = 2;
 
       var settings = document.getElementById("settings");
       settings.style.backgroundColor = "white";
@@ -335,6 +298,7 @@ $scope.panel = function(number){
       var self = document.getElementById("sound");
       self.style.backgroundColor = "#008485";
       self.style.color = "white";
+      $scope.step = 3;
 
       var synthetic = document.getElementById("synthetic");
       synthetic.style.backgroundColor = "white";
@@ -356,6 +320,7 @@ $scope.panel = function(number){
       var self = document.getElementById("phrase");
       self.style.backgroundColor = "#008485";
       self.style.color = "white";
+      $scope.step = 4;
 
       var synthetic = document.getElementById("synthetic");
       synthetic.style.backgroundColor = "white";
@@ -377,6 +342,7 @@ $scope.panel = function(number){
       var self = document.getElementById("alternate");
       self.style.backgroundColor = "#008485";
       self.style.color = "white";
+      $scope.step = 5;
 
       var synthetic = document.getElementById("synthetic");
       synthetic.style.backgroundColor = "white";
@@ -398,58 +364,7 @@ $scope.panel = function(number){
     console.log("This isn't working either?!? God!?!?");
   }
 }
-// }
-  // $scope.active =function(){
-  //   var self = document.getElementById("settings");
-  //   self.style.backgroundColor = "#008485";
-  //   self.style.color = "white"
-  // }
 
-  // $scope.settingsPanel = function(){
-  //     $scope.step == 1;
-  //     var self = document.getElementById("settings");
-  //     if($scope.step == 1){
-  //       self.style.backgroundColor = "#008485";
-  //       self.style.color = "white";
-  //       console.log($scope.step);
-  //     } else{
-  //       self.style.backgroundColor = "white";
-  //       self.style.color = "black";
-  //     }
-  // }
-
-  // $scope.syntheticPanel = function(){
-  //   $scope.step = 2;
-  //   var self = document.getElementById("synthetic");
-  //   self.style.backgroundColor = "#008485";
-  //   self.style.color = "white";
-  //   console.log($scope.step);
-  // }
-  // // sound effects, phrase bar, alternate home page
-
-  // $scope.soundPanel = function(){
-  //   $scope.step = 3;
-  //   var self = document.getElementById("sound");
-  //   self.style.backgroundColor = "#008485";
-  //   self.style.color = "white";
-  //   console.log($scope.step);
-  // }
-
-  // $scope.phrasePanel = function(){
-  //   $scope.step = 4;
-  //   var self = document.getElementById("phrase");
-  //   self.style.backgroundColor = "#008485";
-  //   self.style.color = "white";
-  //   console.log($scope.step);
-  // }
-
-  // $scope.alternatePanel= function(){
-  //   $scope.step = 5;
-  //   var self = document.getElementById("alternate");
-  //   self.style.backgroundColor = "#008485";
-  //   self.style.color = "white";
-  //   console.log($scope.step);
-  // }
 });
 
 // app.controller('ionSideMenus', function($http, $scope, $ionicSideMenuDelegate){
