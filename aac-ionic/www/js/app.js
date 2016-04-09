@@ -38,4 +38,3 @@ angular.module('starter', ['ionic', 'starter.boards'])
       templateUrl: 'templates/settings.html',
     })
 })
-
