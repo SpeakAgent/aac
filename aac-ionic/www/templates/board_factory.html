@@ -24,7 +24,7 @@
        </div>
       </div>
       <div class="col">
-          <div class="boards" ng-repeat="board in dummyBoards">
+          <div class="boards" ng-repeat="board in dummyBoards | slice:start:end">
             <a href="#/board_factory/sample_edit">
               <img ng-src="{{board.img_path}}" alt="image" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-60px;"\>
 
@@ -47,8 +47,8 @@
     <div class="row">
       <div class="col">
         <div class="forward-buttons">
-            <img src="img/AAC_assets/left.png"/>
-            <img src="img/AAC_assets/right.png"/>
+            <img ng-click="lastSet($index)" src="img/AAC_assets/left.png"/>
+            <img ng-click="nextSet($index)" src="img/AAC_assets/right.png" style="margin-left:25px;"/>
         </div>
       </div>
     </div>

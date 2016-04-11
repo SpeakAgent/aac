@@ -23,6 +23,12 @@
 
 var app = angular.module('starter.boards', ['ionic']);
 
+app.filter('slice', function(){
+  return function(arr, start, end){
+    return arr.slice(start, end);
+  };
+});
+
 app.controller('BoardController', 
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element) {
 
@@ -123,7 +129,10 @@ app.controller('BoardController',
      secondaryColor:'#A7E8C5',
      url:'img/color_change/colorBlob_seafoamGreen.svg'  },
   ]
-  
+
+  $scope.start = 0;
+  $scope.end = 24;
+
 
   $ionicModal.fromTemplateUrl('templates/aac-partials/_color-modal.html',{
     scope: $scope,
@@ -297,7 +306,63 @@ app.controller('BoardController',
 
   { name:"Thngs",
     img_path:"img/aac_board_imgs/crayon.png"},
+
+  // testing extras
+
+  { name:"Nouns",
+    img_path:"img/aac_board_imgs/alpaca.png" },
+
+  { name:"Outdr",
+    img_path:"img/aac_board_imgs/art.png" },
+
+  { name:"Animl",
+    img_path:"img/aac_board_imgs/balloon.png" },
+
+  { name:"Plnts",
+    img_path:"img/aac_board_imgs/bird.png" },
+
+  { name:"Stuf",
+    img_path:"img/aac_board_imgs/clock.png" },
+
+  { name:"Thngs",
+    img_path:"img/aac_board_imgs/crayon.png"},
+
+  { name:"Nouns",
+    img_path:"img/aac_board_imgs/alpaca.png" },
+
+  { name:"Outdr",
+    img_path:"img/aac_board_imgs/art.png" },
+
+  { name:"Animl",
+    img_path:"img/aac_board_imgs/balloon.png" },
+
+  { name:"Plnts",
+    img_path:"img/aac_board_imgs/bird.png" },
+
+  { name:"Stuf",
+    img_path:"img/aac_board_imgs/clock.png" },
+
+  { name:"Thngs",
+    img_path:"img/aac_board_imgs/crayon.png"},
   ]
+
+   $scope.lastSet = function(index){
+    console.log("Last Set button is working");
+    if ($scope.start > 0){
+      $scope.start = $scope.start - 24;
+      $scope.end = $scope.end - 24;
+    }
+  }
+
+  $scope.nextSet = function(index){
+    console.log("Next Set button is working");
+    if ($scope.end < $scope.dummyBoards.length){
+      $scope.start = $scope.start + 24;
+      $scope.end = $scope.end + 24;
+    }else{
+      console.log("No more left");
+    }
+  }
 
   // $scope.active =function(){
   //   var self = document.getElementById("settings");
