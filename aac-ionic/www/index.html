@@ -100,7 +100,7 @@
             <!-- <div class="col col-2" style="float:left;"></div> -->
 
             <div class="col col-40" id="board-section" style="margin-top:-43px;">
-              <div class="boards" ng-repeat="board in dummyBoards | limitTo:dummyLimit">
+              <div class="boards" ng-repeat="board in dummyBoards | slice:start:end">
                 <!-- <div class="triangle-topright"></div> -->
                 <!-- <div class="boardline"></div> -->
                 <!-- <div class="top-content" style="position: relative; z-index:2;"> -->

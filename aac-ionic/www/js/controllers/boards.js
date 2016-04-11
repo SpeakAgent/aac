@@ -23,6 +23,12 @@
 
 var app = angular.module('AAC', ['ionic']);
 
+app.filter('slice', function(){
+  return function(arr, start, end){
+    return arr.slice(start, end);
+  };
+});
+
 app.controller('BoardController', 
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element) {
 
@@ -114,6 +120,8 @@ app.controller('BoardController',
      url:'img/color_change/colorBlob_seafoamGreen.svg'},
   ]
   
+  $scope.start = 0;
+  $scope.end = 24;
 
   $ionicModal.fromTemplateUrl('contact-modal.html',{
     scope: $scope,
@@ -337,44 +345,81 @@ app.controller('BoardController',
 
   { name:"Thngs",
     img_path:"img/aac_board_imgs/crayon.png"},
+
+    // also added for testing purposes
+  { name:"Nouns",
+    img_path:"img/aac_board_imgs/alpaca.png" },
+
+  { name:"Outdr",
+    img_path:"img/aac_board_imgs/art.png" },
+
+  { name:"Animl",
+    img_path:"img/aac_board_imgs/balloon.png" },
+
+  { name:"Plnts",
+    img_path:"img/aac_board_imgs/bird.png" },
+
+  { name:"Stuf",
+    img_path:"img/aac_board_imgs/clock.png" },
+
+  { name:"Thngs",
+    img_path:"img/aac_board_imgs/crayon.png"},
+
+  { name:"Nouns",
+    img_path:"img/aac_board_imgs/alpaca.png" },
+
+  { name:"Outdr",
+    img_path:"img/aac_board_imgs/art.png" },
+
+  { name:"Animl",
+    img_path:"img/aac_board_imgs/balloon.png" },
+
+  { name:"Plnts",
+    img_path:"img/aac_board_imgs/bird.png" },
+
+  { name:"Stuf",
+    img_path:"img/aac_board_imgs/clock.png" },
+
+  { name:"Thngs",
+    img_path:"img/aac_board_imgs/crayon.png"},
+
+  { name:"Nouns",
+    img_path:"img/aac_board_imgs/alpaca.png" },
+
+  { name:"Outdr",
+    img_path:"img/aac_board_imgs/art.png" },
+
+  { name:"Animl",
+    img_path:"img/aac_board_imgs/balloon.png" },
+
+  { name:"Plnts",
+    img_path:"img/aac_board_imgs/bird.png" },
+
+  { name:"Stuf",
+    img_path:"img/aac_board_imgs/clock.png" },
+
+  { name:"Thngs",
+    img_path:"img/aac_board_imgs/crayon.png"},
   ]
 
   $scope.lastSet = function(index){
     console.log("Last Set button is working");
     // console.log($scope.dummyBoards[index]);
-    if ($scope.dummyLimit > 24){
-      $scope.dummyLimit = $scope.dummyLimit - 24;
-    }
+    // if ($scope.dummyBoards.length > 0){
+      // $scope.dummyLimit = $scope.dummyLimit - 24;
+      $scope.start = $scope.start - 24;
+      $scope.end = $scope.end - 24;
+    // }
+    // }
   }
 
   $scope.nextSet = function(index){
     console.log("Next Set button is working");
-    $scope.dummyLimit = $scope.dummyLimit + 24;
-   if($scope.dummyLimit > 24){
-    for(i = 0; i < $scope.dummyBoards.length; i++){
-      console.log($scope.dummyBoards[i].name);
-      $scope.dummyBoards[i].name.display = "none";
-      // console.log(i);
-      // if($scope.dummyBoards[i] <= 24){
-        // $scope.dummyBoards[i].style.display = "none";
-        // console.log($scope.dummyBoards.name[i]);
-      // }
-    }
-   }
+    $scope.start = $scope.start + 24;
+    $scope.end = $scope.end + 24;
   }
-  // for(var i = 0; i < $scope.dummyBoards.length; i++){
-  //   if ($scope.dummyBoards[i] > 24){
-  //     // $scope.dummyBoards(splice, [i]);
-  //     $scope.dummyBoards[i].style.display = 'none';
-  //   }
-  // }
-});
 
-// app.controller('ionSideMenus', function($http, $scope, $ionicSideMenuDelegate){
-//   $scope.toggleLeft = function(){
-//     $ionicSideMenuDelegate.toggleLeft();
-//   };
-// })
+});
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
