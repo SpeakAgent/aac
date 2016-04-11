@@ -35,6 +35,7 @@ app.controller('BoardController',
   // $scope.columns = "abcdefgh"
   $scope.columns = "abcdef"
   $scope.rows = "123456"
+  $scope.selectedTiles = []
 
   var req = {
     url: 'https://lexemes-dev.herokuapp.com/board/single/',
@@ -184,7 +185,41 @@ app.controller('BoardController',
     $scope.modal.hide();
   }
 
-  $scope.dummyLimit = 24;
+  $scope.clickTile = function(tile) {
+    $scope.selectedTiles.push(tile);
+  }
+
+  $scope.deleteLastTile = function () {
+    $scope.selectedTiles.pop();
+  }
+
+  $scope.sayPhrase = function () {
+    console.log($scope.selectedTiles);
+    var pks = [];
+    for (i in $scope.selectedTiles) {
+      pks.push($scope.selectedTiles[i].pk);
+    }
+    var req = {
+      url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
+      data: {pks: "[" + pks.toString() + "]"},
+      method: 'POST'
+    }
+    console.log(req);
+    $http(req).success(function(data) {
+      console.log(data);
+      $scope.speakText(data.sentence);
+    })
+  }
+
+  $scope.speakText = function(text) {
+    TTS.speak({
+           text: text,
+       }, function () {
+           // Do Something after success
+       }, function (reason) {
+           // Handle the error case
+       });
+  };
 
   $scope.dummyBoards =[
   { name:"Anmls",
