@@ -404,19 +404,20 @@ app.controller('BoardController',
 
   $scope.lastSet = function(index){
     console.log("Last Set button is working");
-    // console.log($scope.dummyBoards[index]);
-    // if ($scope.dummyBoards.length > 0){
-      // $scope.dummyLimit = $scope.dummyLimit - 24;
+    if ($scope.start > 0){
       $scope.start = $scope.start - 24;
       $scope.end = $scope.end - 24;
-    // }
-    // }
+    }
   }
 
   $scope.nextSet = function(index){
     console.log("Next Set button is working");
-    $scope.start = $scope.start + 24;
-    $scope.end = $scope.end + 24;
+    if ($scope.end < $scope.dummyBoards.length){
+      $scope.start = $scope.start + 24;
+      $scope.end = $scope.end + 24;
+    }else{
+      console.log("No more left");
+    }
   }
 
 });
