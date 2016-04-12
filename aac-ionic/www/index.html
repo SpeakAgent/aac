@@ -41,7 +41,8 @@
       <ion-content class= "appBody" id="bodyBack">
         <div class="row" id="regularRow">
           <div class="col col-10" id="regularRowBod">
-            <img src="img/AAC_assets/avatar_default.png"/>
+            <img src="img/AAC_assets/avatar_default.png"
+              ng-click="sayPhrase()"/>
 
             <div class="regulars">
               Yes
@@ -63,15 +64,21 @@
           <div class="col col-90" id="full-body">
             <div class="word-builder">
               <div class="word-builder-input" style="margin-left:-15px">
-                <img src="img/AAC_assets/delete_button.png" id="home-section"/>
+                <div class="tile" ng-repeat="symbol in selectedTiles">
+                  {{ symbol.word }}<br>
+                  <img src = "{{symbol.symbol.image}}"
+                    style="width:40px;height:40px">
+                </div>
+                <img src="img/AAC_assets/delete_button.png" id="home-section"
+                  ng-click="deleteLastTile()" />
               </div>
             </div>
 
             <div class="col col-60" id="tile-section">
             <div class="tile-section-border">
               <span ng-repeat="row in rows">
-
-              <div class="tile" ng-repeat="col in columns" ng-click="chosenTile()">
+              <div class="tile" ng-repeat="col in columns"
+                ng-click="clickTile(board.symbols[col+row])">
                   <!-- {{col}}{{row}} -->
                   <span ng-show="filled_tiles.indexOf(col+row)!=-1" ng-click="chosenTile()">
                   {{ board.symbols[col+row].word }}<br>
