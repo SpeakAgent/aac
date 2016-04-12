@@ -41,21 +41,6 @@ app.controller('BoardController',
     $scope.filled_tiles = Object.keys($scope.board.symbols)
   })
 
-
-  $scope.chosenTile = function(){
-    // console.log(this.background);
-    // $scope.class = "blue";
-    // var tile = document.getElementsByClassName("tile");
-    // for(i = 0; i < tile.length; i++){
-    //   console.log(tile);
-    // }
-    console.log($scope.filled_tiles.indexOf($scope.columns+$scope.rows));
-    $scope.filled_tiles.indexOf($scope.columns+$scope.rows).backgroundColor = "blue";
-  }
-  // console.log($scope.board);
-// for(var i = 0; i < $scope.filled_tiles.length; i++ )
-//   console.log($scope.filled_tiles);
-
   $scope.toggleLeft = function(){
     $ionicSideMenuDelegate.toggleLeft();
   };
@@ -223,6 +208,17 @@ app.controller('BoardController',
        }, function (reason) {
            // Handle the error case
        });
+  };
+
+  $scope.class ="white";
+
+  $scope.chosenTile = function(tile){
+    console.log("Chosen selected");
+    if($scope.class = "white"){
+      $scope.class = "light-blue";
+    } else{
+      $scope.class = "white";
+    };
   };
 
   $scope.dummyBoards =[

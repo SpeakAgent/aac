@@ -16,6 +16,14 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+.tile.white{
+  background-color:white;
+}
+
+.tile.light-blue{
+  background-color:#83EFF0;
+  border-color:white;
+}
 
 .round-button{
   width:120px;
