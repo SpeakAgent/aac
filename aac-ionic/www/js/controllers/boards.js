@@ -210,11 +210,12 @@ app.controller('BoardController',
        });
   };
 
-  $scope.class ="white";
+  $scope.class = "white";
 
-  $scope.chosenTile = function(tile){
+  $scope.chosenTile = function(){
+    // $scope.class = tile;
     console.log("Chosen selected");
-    if($scope.class = "white"){
+    if($scope.class === "white"){
       $scope.class = "light-blue";
     } else{
       $scope.class = "white";
