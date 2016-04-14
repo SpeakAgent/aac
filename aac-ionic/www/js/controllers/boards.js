@@ -176,6 +176,12 @@ app.controller('BoardController',
 
   $scope.clickTile = function(tile) {
     $scope.selectedTiles.push(tile);
+
+     if($scope.class === "white"){
+      $scope.class = "light-blue";
+    } else{
+      $scope.class = "white";
+    };
   }
 
   $scope.deleteLastTile = function () {
@@ -213,6 +219,8 @@ app.controller('BoardController',
   $scope.class = "white";
 
   $scope.chosenTile = function(){
+    // $scope.selectedIndex = colorIndex;
+    // console.log($scope.selectedIndex);
     // $scope.class = tile;
     console.log("Chosen selected");
     if($scope.class === "white"){
