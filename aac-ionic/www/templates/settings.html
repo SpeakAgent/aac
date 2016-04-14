@@ -4,18 +4,24 @@
 
 <ion-header-bar class="bar-dark">
       <div class="buttonsdiv">
+        <i class="icon ion-unlocked"></i>
+        <!-- <i class="icon ion-locked"></i> -->
         <button class="button button-outline button-calm button-small" id="btn-styling">
-          <i class="icon ion-gear-b"></i> <a href="#/settings">Settings</a>
-        </button>
-        <button class="button button-outline button-calm button-small" id="btn-styling">
-          <i class="icon ion-eye-disabled"></i> Show/Hide Tiles
+          <a href="/#/settings"><i class="icon ion-gear-b"></i> Settings</a>
         </button>
         <button class="button button-outline button-calm button-small item item-toggle" id="btn-styling">
-          <i class="icon ion-ios-chatbubble"></i> Board Factory
+          <i class="icon ion-grid"></i> Board Factory
         </button>
-        <button class="button"><a href="#/home">Done</a></button>
+        <button class="button button-outline button-calm button-small" id="btn-styling" style="margin-right:10px;">
+          <!-- <i class="icon ion-eye-disabled"></i>  -->
+          <i class="icon ion-eye"></i>Show All Tiles
+          <br>
+          <p class="show-hide-label">*Requires Wifi</p>
+        </button>
+
+        <button class="done-button"><p><a href="#/home">DONE</a></p></div>
       </div>
-    </ion-header-bar>
+ </ion-header-bar>
 
 <ion-view view-title="AAC" class="pane">
 	<ion-content class= "appBody" id="bodyBack" style="background-color:#98E3E3;">
