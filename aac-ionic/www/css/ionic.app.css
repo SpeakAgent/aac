@@ -16,6 +16,142 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+.manual-minus{
+  width:20px;
+  height:20px;
+  border-radius:10px;
+  background-color:#FFE0D4;
+  float:right;
+  border-style: solid;
+  border-width: 2px;
+  color:#B70016;
+  margin-top: -10px;
+  margin-right: -10px;
+}
+
+.manual-minus p{
+  color:#B70016;
+  font-size: 3em;
+  margin-top: -4px;
+}
+
+input[type="text"]{
+  display: block;
+  margin: 0;
+  width: 100%;
+  font-family: sans-serif;
+  font-size: 18px;
+  box-shadow: none;
+  border-radius: none;
+  outline: 1px solid #979797;
+}
+
+input[type="text"]:focus, textarea:focus{
+  background:#FFF8D9;
+  box-shadow: 0 0 5px #6EE8E9;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #6EE8E9;
+  outline:none;
+}
+
+.item.item-input{
+  padding: 0px;
+  margin-top: -2px;
+}
+.edit-subheading{
+  font-style: italic;
+  margin-bottom: 1px;
+}
+.title-section, .symbol-section, .tag-section{
+  padding-bottom:20px;
+}
+
+.edit-title{
+  font-size: 1.25em;
+  text-align:center;
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+
+.board-factory-tile-section{
+  width:80%;
+  margin-left:11%;
+}
+
+.icon.ion-ios-arrow-left{
+  font-size: 2em;
+  color: #7C7C7D;
+}
+
+.boards a{
+  color:black;
+  text-decoration: none;
+}
+
+.forward-buttons{
+  padding-top: 5%;
+  margin-left: 49%;
+}
+
+#newboard{
+  padding:0px;
+}
+
+#newboard2{
+  padding:10px 30px 30px 25px;
+}
+
+.factory-title{
+  font-size:  1.75em;
+  font-weight:400;
+  color:#008485;
+}
+
+.ion-help-circled{
+  color: #008485;
+}
+
+.board-instructions{
+  color: #008485;
+  font-weight: 500;
+  margin-bottom: 80px;
+  width:90%;
+}
+
+.board-instructions2{
+  color: #008485;
+  font-weight: 500;
+  margin-bottom: -10px;
+  width:90%;
+}
+
+#edit-input-section{
+  padding:35px;
+}
+
+.custom-button{
+  background-color: #008485;
+  border-style: solid;
+  border-color: #008485;
+  border-radius: 20px;
+  color: white;
+  padding:5px;
+  font-weight:600;
+  box-shadow: 0px 3px 0px 0px #006364;
+}
+
+.custom-button-inverse{
+  background-color: white;
+  border-style: solid;
+  border-color: #008485;
+  border-radius: 20px;
+  color: #008485;
+  padding:5px;
+  font-weight:600;
+  box-shadow: 0px 3px 0px 0px;
+}
+
 .centered-title{
   font-size:1em;
   color:black;
