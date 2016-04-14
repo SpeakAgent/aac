@@ -1,4 +1,4 @@
-    <ion-header-bar class="bar-dark">
+    <!-- <ion-header-bar class="bar-dark">
       <div class="buttonsdiv">
         <button class="button button-outline button-calm button-small" id="btn-styling">
           <i class="icon ion-gear-b"></i> <a href="#/settings">Settings</a>
@@ -10,6 +10,27 @@
           <i class="icon ion-ios-chatbubble"></i> Board Factory
         </button>
         <button class="button"><a href="#/home">Done</a></button>
+      </div>
+    </ion-header-bar> -->
+
+    <ion-header-bar class="bar-dark">
+      <div class="buttonsdiv">
+        <i class="icon ion-unlocked"></i>
+        <!-- <i class="icon ion-locked"></i> -->
+        <button class="button button-outline button-calm button-small" id="btn-styling">
+          <a href="/#/settings"><i class="icon ion-gear-b"></i> Settings</a>
+        </button>
+        <button class="button button-outline button-calm button-small item item-toggle" id="btn-styling">
+          <i class="icon ion-grid"></i> Board Factory
+        </button>
+        <button class="button button-outline button-calm button-small" id="btn-styling" style="margin-right:10px;">
+          <!-- <i class="icon ion-eye-disabled"></i>  -->
+          <i class="icon ion-eye"></i>Show All Tiles
+          <br>
+          <p class="show-hide-label">*Requires Wifi</p>
+        </button>
+
+        <button class="done-button"><p><a href="#/home">DONE</a></p></div>
       </div>
     </ion-header-bar>
 
@@ -38,14 +59,36 @@
 
           <div class="col col-90" id="full-body">
             <div class="word-builder">
-              <div class="word-builder-input" style="margin-left:-15px">
+              <!-- <div class="word-builder-input" style="margin-left:-15px">
                 <img src="img/AAC_assets/delete_button.png" id="home-section"/>
+              </div> -->
+              <div class="word-builder-input" style="margin-left:-15px">
+                <div class="tile" ng-repeat="symbol in selectedTiles">
+                  {{ symbol.word }}<br>
+                  <img src = "{{symbol.symbol.image}}"
+                    style="width:40px;height:40px">
+                </div>
+                <img src="img/AAC_assets/delete_button.png" id="home-section"
+                  ng-click="deleteLastTile()" />
               </div>
             </div>
 
             <div class="col col-60" id="tile-section">
             <div class="tile-section-border">
-              <div class="tile">Tile</div>
+              <span ng-repeat="row in rows">
+
+              <div class="tile" ng-repeat="col in columns"
+                ng-click="clickTile(board.symbols[col+row])">
+                  <!-- {{col}}{{row}} -->
+                  <span ng-show="filled_tiles.indexOf(col+row)!=-1">
+                  {{ board.symbols[col+row].word }}<br>
+                  <img src = "{{board.symbols[col+row].symbol.image}}"
+                    style="width:40px;height:40px">
+                  </span>
+                </div>
+
+              </span>
+              <!-- <div class="tile">Tile</div>
               <div class="tile">Tile</div>
               <div class="tile">Tile</div>
               <div class="tile">Tile</div>
@@ -85,13 +128,13 @@
               <div class="tile">Tile</div>
               <div class="tile">Tile</div>
               <div class="tile">Tile</div>
-              <div class="tile">Tile</div>
+              <div class="tile">Tile</div> -->
             </div>
             </div>
             <!-- <div class="col col-2" style="float:left;"></div> -->
 
             <div class="col col-40" id="board-section" style="margin-top:-43px;">
-              <div class="boards" ng-repeat="board in dummyBoards">
+              <div class="boards" ng-repeat="board in dummyBoards | slice:start:end">
                 <!-- <div class="triangle-topright"></div> -->
                 <!-- <div class="boardline"></div> -->
                 <!-- <div class="top-content" style="position: relative; z-index:2;"> -->
@@ -105,11 +148,11 @@
             </div>
           </div>
 
-          <div class="col" style="background: #50E2E3;">
+          <!-- <div class="col" style="background: #50E2E3;">
             <img src="img/AAC_assets/left.png"/>
-            <img src="img/AAC_assets/right.png"/>
+            <img src="img/AAC_assets/right.png"/> -->
             <!-- <img src="img/AAC_assets/tile_tapped_slice.png"/> -->
-          </div>
+          <!-- </div> -->
         </div>
 
 <!-- Bottom function buttons -->
@@ -139,8 +182,8 @@
           </div>
 
           <div class="col col-30">
-            <img src="img/AAC_assets/left.png" style="margin-left:50px;"/>
-            <img src="img/AAC_assets/right.png" style="margin-left:30px;"/>
+            <img ng-click="lastSet($index)" src="img/AAC_assets/left.png" style="margin-left:50px;"/>
+            <img ng-click="nextSet($index)" src="img/AAC_assets/right.png" style="margin-left:30px;"/>
           </div>
         </div>
       </ion-content>
