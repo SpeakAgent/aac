@@ -1,0 +1,258 @@
+<!-- <ion-header-bar class="bar-stable">
+	<h1 class="title"><strong>Settings</strong></h1>
+</ion-header-bar> -->
+
+<ion-header-bar class="bar-dark">
+      <div class="buttonsdiv">
+        <i class="icon ion-unlocked"></i>
+        <!-- <i class="icon ion-locked"></i> -->
+        <button class="button button-outline button-calm button-small" id="btn-styling">
+          <a href="/#/settings"><i class="icon ion-gear-b"></i> Settings</a>
+        </button>
+        <button class="button button-outline button-calm button-small item item-toggle" id="btn-styling">
+          <i class="icon ion-grid"></i> Board Factory
+        </button>
+        <button class="button button-outline button-calm button-small" id="btn-styling" style="margin-right:10px;">
+          <!-- <i class="icon ion-eye-disabled"></i>  -->
+          <i class="icon ion-eye"></i>Show All Tiles
+          <br>
+          <p class="show-hide-label">*Requires Wifi</p>
+        </button>
+
+        <button class="done-button"><p><a href="#/home">DONE</a></p></div>
+      </div>
+ </ion-header-bar>
+
+<ion-view view-title="AAC" class="pane">
+	<ion-content class= "appBody" id="bodyBack" style="background-color:#98E3E3;">
+	    <div class="row">
+			<div class="col col-33" id="settings-menu">
+				<ion-list> 
+					<ion-item class="centered-title">
+						<h1 class="centered-title"><strong>Settings</strong></h1>
+					</ion-item>
+
+					<div class="item item-divider"><strong>General</strong></div>
+
+					<ion-item item-toggle>
+						<div class="avatar-icon-placeholder"></div> Compaction
+						<label class="toggle toggle-balanced">
+						<input type="checkbox">
+							<div class="track">
+								<div class="handle"></div>
+							</div>
+						</label>
+						<p style="color:#8F8F8F; padding:3px; font-weight:bold; font-style:italic;">Expand symbols into natural language.</p>
+					</ion-item>
+
+					<ion-item>
+						<div class="avatar-icon-placeholder"></div> Chatting
+						<label class="toggle toggle-balanced">
+						<input type="checkbox">
+							<div class="track">
+								<div class="handle"></div>
+							</div>
+						</label>
+						<p style="color:#8F8F8F; padding:3px; font-weight:bold; font-style:italic;">Enable/disable live chat buddy</p>
+					</ion-item>
+
+					<ion-item ng-click="panel(1)" id="settings">
+						<div class="avatar-icon-placeholder"></div>Settings Access
+						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
+					</ion-item>
+				</ion-list>
+
+				<ion-list>
+					<div class="item item-divider"><strong>Interface</strong></div>
+
+					<ion-item ng-click="panel(2)" id="synthetic">
+						<div class="avatar-icon-placeholder"></div>Synthetic Voice
+						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
+					</ion-item>
+
+					<ion-item ng-click="panel(3)" id="sound">
+						<div class="avatar-icon-placeholder"></div>Sound Effects
+						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
+					</ion-item>
+
+					<ion-item item-toggle>
+						<div class="avatar-icon-placeholder"></div>Symbol Labels
+						<label class="toggle toggle-balanced">
+						<input type="checkbox">
+							<div class="track">
+								<div class="handle"></div>
+							</div>
+						</label>
+					</ion-item>
+
+					<ion-item ng-click="panel(4)" id="phrase">
+						<div class="avatar-icon-placeholder"></div>Phrase Bar
+						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
+					</ion-item>
+				</ion-list>
+
+				<ion-list>
+					<div class="item item-divider"><strong>Layout</strong></div>
+
+					<ion-item item-toggle>
+						<div class="avatar-icon-placeholder"></div>Quickbar
+						<label class="toggle toggle-balanced">
+						<input type="checkbox">
+							<div class="track">
+								<div class="handle"></div>
+							</div>
+						</label>
+					</ion-item>
+
+					<ion-item ng-click="panel(5)" id="alternate">
+						<div class="avatar-icon-placeholder"></div>Alternate Home Page
+						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
+					</ion-item>
+				</ion-list>
+			</div>
+
+<!-- Settings Access Panel -->
+			<div class="col col-67" id="settings-modal" ng-hide="step != 1">
+				<!-- <div class="bar bar-subheader">
+					<h1 class="title"><strong>Settings</strong></h1>
+				</div> -->
+				<ion-list> 
+					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
+						<h1 class="centered-title"><strong>Settings Access</strong></h1>
+					</ion-item>
+				</ion-list>
+
+				<div class="settings-box">
+						<label class="toggle toggle-balanced" style="margin-right:5px;">
+						<input type="checkbox">
+							<div class="track">
+								<div class="handle"></div>
+							</div>
+						</label>
+						
+						<p>PIN-Protection</p>
+				</div>
+				<p class="centered-note">Prevent users from changing settings.</p>
+
+				<div class="settings-box">
+					Set Pin
+					<span class="warning-text">INSERT DEVELOPER MAGIC HERE</span>
+				</div>
+			</div>
+
+<!-- Synthetic Voice Panel -->
+			<div class="col col-67" id="settings-modal" ng-show="step == 2">
+				<ion-list> 
+					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
+						<h1 class="centered-title"><strong>Synthetic Voice</strong></h1>
+					</ion-item>
+				</ion-list>
+
+				<div class="settings-box">
+					<p>Synthetic Voices</p>	
+					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Jane</span><i class="icon ion-play"></i></ion-checkbox>
+					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Malik</span><i class="icon ion-play"></i></ion-checkbox>
+					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Name</span><i class="icon ion-play"></i></ion-checkbox>
+				</div>
+
+				<div class="settings-box">
+					<div class="item range" style="border-color:white;">
+						<div class="avatar-icon-placeholder"></div>
+							<input type="range" name="voice">
+						<div class="avatar-icon-placeholder"></div>
+					</div>
+					<p>Voice Speed</p>
+				</div>
+			</div>
+
+<!-- Sound Effects Panel -->
+			<div class="col col-67" id="settings-modal" ng-show="step == 3">
+				<ion-list> 
+					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
+						<h1 class="centered-title"><strong>Sound Effects</strong></h1>
+					</ion-item>
+				</ion-list>
+
+				<div class="settings-box">
+					<label class="toggle toggle-balanced" style="margin-right:5px;">
+						<input type="checkbox">
+							<div class="track">
+								<div class="handle"></div>
+							</div>
+					</label>
+					<p>Sound Effects</p>
+				</div>
+
+				<div class="settings-box">
+					<ion-checkbox style="border-color:white;"><span class="checkbox-text">School Bell</span></ion-checkbox>
+					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Glissandro</span></ion-checkbox>
+					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Label</span></ion-checkbox>
+					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Label</span></ion-checkbox>
+				</div>
+			</div>
+
+<!-- Phrase Bar Panel -->
+			<div class="col col-67" id="settings-modal" ng-show="step == 4">
+				<ion-list> 
+					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
+						<h1 class="centered-title"><strong>Phrase Bar</strong></h1>
+					</ion-item>
+				</ion-list>
+
+				<div class="settings-box">
+						<label class="toggle toggle-balanced" style="margin-right:5px;">
+						<input type="checkbox">
+							<div class="track">
+								<div class="handle"></div>
+							</div>
+						</label>
+						<p>Speak Each Symbol When Added</p>
+				</div>
+
+				<div class="settings-box">
+						<label class="toggle toggle-balanced" style="margin-right:5px;">
+						<input type="checkbox">
+							<div class="track">
+								<div class="handle"></div>
+							</div>
+						</label>
+						<p>Clear Phrase Bar After Speaking</p>
+				</div>
+			</div>
+
+<!-- Alternate Home Page -->
+			<div class="col col-67" id="settings-modal" ng-show="step == 5">
+				<ion-list> 
+					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
+						<h1 class="centered-title"><strong>Alternate Home Page</strong></h1>
+					</ion-item>
+				</ion-list>
+
+				<div class="settings-box">
+						<label class="toggle toggle-balanced" style="margin-right:5px;">
+						<input type="checkbox">
+							<div class="track">
+								<div class="handle"></div>
+							</div>
+						</label>
+						<p>Default Grid</p>
+
+						<br>
+
+						<label class="toggle toggle-balanced" style="margin-right:5px;">
+						<input type="checkbox">
+							<div class="track">
+								<div class="handle"></div>
+							</div>
+						</label>
+						<p>Emergent Communicator Grid</p>
+
+						<br>
+
+						<p class="greyed-out">PIN-Protection</p>
+				</div>
+			</div>
+
+		</div>
+	</ion-content>
+</ion-view>

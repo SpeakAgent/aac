@@ -21,7 +21,7 @@
 
 (function() {
 
-var app = angular.module('AAC', ['ionic']);
+var app = angular.module('starter.boards', ['ionic']);
 
 app.filter('slice', function(){
   return function(arr, start, end){
@@ -31,6 +31,17 @@ app.filter('slice', function(){
 
 app.controller('BoardController', 
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element) {
+
+  $scope.title = "This is a title";
+  $scope.board = {};
+  $scope.board.title = "Home";
+  $scope.settings = true;
+  $scope.step = 1;
+  sample_symbol = {
+      word: "Sample",
+      icon: "img/symbols/a_lot.png",
+      pk: 15,
+    }
 
   $scope.columns = "abcdef"
   $scope.rows = "123456"
@@ -123,7 +134,7 @@ app.controller('BoardController',
   $scope.start = 0;
   $scope.end = 24;
 
-  $ionicModal.fromTemplateUrl('contact-modal.html',{
+  $ionicModal.fromTemplateUrl('templates/aac-partials/_color-modal.html',{
     scope: $scope,
     animation: 'slide-in-up'
   }).then(function(modal){
@@ -401,6 +412,123 @@ app.controller('BoardController',
   { name:"Thngs",
     img_path:"img/aac_board_imgs/crayon.png"},
   ]
+
+$scope.panel = function(number){
+  if(number == "1"){
+    var self = document.getElementById("settings");
+    self.style.backgroundColor = "#008485";
+    self.style.color = "white";
+    $scope.step = 1;
+      // if (number == "2" || number == "3" || number == "4" || number == "5"){
+      var synthetic = document.getElementById("synthetic");
+      synthetic.style.backgroundColor = "white";
+      synthetic.style.color = "black";
+
+      var sound = document.getElementById("sound");
+      sound.style.backgroundColor = "white";
+      sound.style.color = "black";
+
+      var phrase = document.getElementById("phrase");
+      phrase.style.backgroundColor = "white";
+      phrase.style.color = "black";
+
+      var alternate = document.getElementById("alternate");
+      alternate.style.backgroundColor = "white";
+      alternate.style.color = "black";
+      // }
+
+  } else if(number == "2"){
+      var self = document.getElementById("synthetic");
+      self.style.backgroundColor = "#008485";
+      self.style.color = "white";
+      $scope.step = 2;
+
+      var settings = document.getElementById("settings");
+      settings.style.backgroundColor = "white";
+      settings.style.color = "black";
+
+      var sound = document.getElementById("sound");
+      sound.style.backgroundColor = "white";
+      sound.style.color = "black";
+
+      var phrase = document.getElementById("phrase");
+      phrase.style.backgroundColor = "white";
+      phrase.style.color = "black";
+
+      var alternate = document.getElementById("alternate");
+      alternate.style.backgroundColor = "white";
+        alternate.style.color = "black";
+
+  } else if(number == "3"){
+      var self = document.getElementById("sound");
+      self.style.backgroundColor = "#008485";
+      self.style.color = "white";
+      $scope.step = 3;
+
+      var synthetic = document.getElementById("synthetic");
+      synthetic.style.backgroundColor = "white";
+      synthetic.style.color = "black";
+
+      var settings = document.getElementById("settings");
+      settings.style.backgroundColor = "white";
+      settings.style.color = "black";
+
+      var phrase = document.getElementById("phrase");
+      phrase.style.backgroundColor = "white";
+      phrase.style.color = "black";
+
+      var alternate = document.getElementById("alternate");
+      alternate.style.backgroundColor = "white";
+      alternate.style.color = "black";
+
+  } else if(number == "4"){
+      var self = document.getElementById("phrase");
+      self.style.backgroundColor = "#008485";
+      self.style.color = "white";
+      $scope.step = 4;
+
+      var synthetic = document.getElementById("synthetic");
+      synthetic.style.backgroundColor = "white";
+      synthetic.style.color = "black";
+
+      var sound = document.getElementById("sound");
+      sound.style.backgroundColor = "white";
+      sound.style.color = "black";
+
+      var settings = document.getElementById("settings");
+      settings.style.backgroundColor = "white";
+      settings.style.color = "black";
+
+      var alternate = document.getElementById("alternate");
+      alternate.style.backgroundColor = "white";
+      alternate.style.color = "black";
+
+  } else if(number == "5"){
+      var self = document.getElementById("alternate");
+      self.style.backgroundColor = "#008485";
+      self.style.color = "white";
+      $scope.step = 5;
+
+      var synthetic = document.getElementById("synthetic");
+      synthetic.style.backgroundColor = "white";
+      synthetic.style.color = "black";
+
+      var sound = document.getElementById("sound");
+      sound.style.backgroundColor = "white";
+      sound.style.color = "black";
+
+      var phrase = document.getElementById("phrase");
+      phrase.style.backgroundColor = "white";
+      phrase.style.color = "black";
+
+      var settings = document.getElementById("settings");
+      settings.style.backgroundColor = "white";
+      settings.style.color = "black";
+
+  } else {
+    console.log("This isn't working either?!? God!?!?");
+  }
+}
 
   $scope.lastSet = function(index){
     console.log("Last Set button is working");

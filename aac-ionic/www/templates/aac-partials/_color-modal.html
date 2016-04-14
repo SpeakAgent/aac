@@ -1,0 +1,14 @@
+<div class="modal" id="color-modal-style">
+  <ion-content>
+    <div class="modal-container">
+      <h1 class="title"><strong>Pick a favorite color for your app!</strong></h1>
+
+      <div class="color-choice" ng-repeat="title in colorName" ng-click="colorSelect($index)" ng-class="{selectedColor:$index==selectedIndex}" id="container">{{title.colorTitle}}
+      <img ng-src="{{title.url}}" alt="image" style="width:70%; height:70%;" class="originalImg" />
+      </div>
+
+      <div class="round-button" ng-click="changeBackground()"><a href=";javascript"></a>Done</div>
+      <div class="round-button2" ng-click="closeModal()">Cancel</div>
+    </div>
+  </ion-content>
+</div>

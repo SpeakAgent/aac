@@ -16,6 +16,92 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+.centered-title{
+  font-size:1em;
+  color:black;
+  text-align: center;
+}
+.greyed-out{
+  color:#F9F8F8;
+}
+
+.checkbox-text{
+  padding-right: 8px;
+}
+
+.settings-box.ion-checkbox{
+  border-color: black;
+}
+.centered-note{
+  margin-left:18%;
+  font-style: italic;
+  font-weight:600;
+  color:#738383;
+}
+.warning-text{
+  margin-left:70px;
+  color:red;
+}
+
+#settings-menu{
+  margin:-10px;
+}
+
+.settings-box{
+  background-color: white;
+  margin-left: 15%;
+  margin-top:5%;
+  padding-top:10px;
+  padding-bottom:10px;
+  padding-left: 30px;
+  font-size: 1.2em;
+  width:70%;
+}
+
+#settings-modal{
+  margin:-5px;
+  /*margin-right:-10px;*/
+  background-color: #98E3E3;
+}
+
+.avatar-box{
+width:10%;
+height:250px;
+background-color: white;
+float:left;
+}
+
+.list-container{
+  float:right;
+  width:90%;
+}
+
+.button a{
+  position:relative;
+  z-index:3;
+  text-decoration: none;
+  color:white;
+}
+
+.item.item-divider{
+  background-color: #98E3E3;
+}
+
+.avatar-icon-placeholder{
+  width:30px;
+  height:30px;
+  border-radius: 8px;
+  background-color:#E5E1DF;
+  float:left;
+  position: relative;
+  z-index: 5;
+  margin-right:10px;
+}
+
+#blue-list-item{
+  background-color: #98E3E3;
+  font-weight: bold;
+} 
 .show-hide-label{
   margin-top:-25px;
   font-size: .75em;
