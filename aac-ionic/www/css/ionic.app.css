@@ -112,9 +112,9 @@ $dark:                            #444 !default;
   text-align: center;
 }
 
-.color-choice.selectedColor{
+/*.color-choice.selectedColor{
   background-color: blue;
-}
+}*/
 
 .real-content {
   width: 40%;

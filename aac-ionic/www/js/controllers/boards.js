@@ -26,7 +26,7 @@ var app = angular.module('AAC', ['ionic']);
 app.controller('BoardController', 
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element) {
 
-  $scope.columns = "abcdefgh"
+  $scope.columns = "abcdef"
   $scope.rows = "123456"
   $scope.selectedTiles = []
 
@@ -56,62 +56,62 @@ app.controller('BoardController',
     {colorTitle: 'Sky Blue',
      primaryColor:'#50E2E3',
      secondaryColor:'#008484',
-     url:'img/color_change/colorBlob-skyBlue.svg' },
+     url:'img/color_change/colorBlob-skyBlue.svg'},
 
     {colorTitle: 'Electric Green',
      primaryColor:'#BCE72B', 
      secondaryColor:'#18745C', 
-     url:'img/color_change/colorBlob_electricGreen.svg' },
+     url:'img/color_change/colorBlob_electricGreen.svg'},
 
     {colorTitle: 'Hot Pink',
      primaryColor:'#D5388A',
      secondaryColor:'#F787C6', 
-     url:'img/color_change/colorBlob_hotPink.svg' },
+     url:'img/color_change/colorBlob_hotPink.svg'},
 
     {colorTitle: 'Tangerine',
      primaryColor:'#E07600',
      secondaryColor:'#982900', 
-     url:'img/color_change/colorBlob_tangerine.svg' },
+     url:'img/color_change/colorBlob_tangerine.svg'},
 
     {colorTitle: 'Butter Yellow',
      primaryColor:'#FFDB3B',
      secondaryColor:'#DEC75F',
-     url:'img/color_change/colorBlob_butterYellow.svg' },
+     url:'img/color_change/colorBlob_butterYellow.svg'},
 
     {colorTitle: 'Tomato Red',
      primaryColor:'#E6213F',
      secondaryColor:'#E899A6',
-     url:'img/color_change/colorBlob_tomatoRed.svg' },
+     url:'img/color_change/colorBlob_tomatoRed.svg'},
 
     {colorTitle: 'Denim Blue',
      primaryColor:'#325DC1',
      secondaryColor:'#ADB1E8',
-     url:'img/color_change/colorBlob_denimBlue.svg' },
+     url:'img/color_change/colorBlob_denimBlue.svg'},
 
     {colorTitle: 'Steel Gray',
      primaryColor:'#7D989A',
      secondaryColor:'#A9CED1',
-     url:'img/color_change/colorBlob_steelGray.svg' },
+     url:'img/color_change/colorBlob_steelGray.svg'},
 
     {colorTitle: 'Periwinkle Blue',
      primaryColor:'#8AB6E1',
      secondaryColor:'#3496C7', 
-     url:'img/color_change/colorBlob_periwinkleBlue.svg' },
+     url:'img/color_change/colorBlob_periwinkleBlue.svg'},
 
     {colorTitle: 'Forest Green',
      primaryColor:'#18745C',
      secondaryColor:'#7BB59F',
-     url:'img/color_change/colorBlob_forestGreen.svg'  },
+     url:'img/color_change/colorBlob_forestGreen.svg'},
 
     {colorTitle: 'Intense Purple',
      primaryColor:'#6B28C6',
      secondaryColor:'#C6A4EB',
-     url:'img/color_change/colorBlob_intensePurple.svg'  },
+     url:'img/color_change/colorBlob_intensePurple.svg'},
 
     {colorTitle: 'Seafoam Green',
      primaryColor:'#2FCB95',
      secondaryColor:'#A7E8C5',
-     url:'img/color_change/colorBlob_seafoamGreen.svg'  },
+     url:'img/color_change/colorBlob_seafoamGreen.svg'},
   ]
   
 
@@ -140,9 +140,10 @@ app.controller('BoardController',
 
   $scope.colorSelect = function(colorIndex){
     $scope.selectedIndex = colorIndex;
+    
     console.log($scope.selectedIndex);
-    // console.log($scope.colorName[$scope.selectedIndex].primaryColor);
-    // console.log($scope.title);
+    var container = document.getElementById('container');
+
     var bodyBack = document.getElementById('bodyBack');
     bodyBack.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
 
@@ -158,22 +159,52 @@ app.controller('BoardController',
     var buttonCircle = document.getElementsByClassName('button-circle');
     console.log(buttonCircle[1].style.backgroundColor);
 
+    var colorChoice = document.getElementsByClassName('color-choice')
+
+    var scribble = document.getElementById('scribble');
+    var originalImg = document.getElementsByClassName('originalImg');
+
+    var placeholder = document.createElement("img");
+    placeholder.src = "img/color_change/colorBlob_white.svg";
+    // placeholder.style.marginTop = "-50px";
+    placeholder.style.width = "70%";
+    placeholder.style.height = "70%"; 
+    placeholder.id = "placeholder";
+    // placeholder.style.paddingTop = "-20px";
+
+
       for(var i = 0; i < buttonCircle.length; i++){
         buttonCircle[i].style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
+        colorChoice[$scope.selectedIndex].style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
+        // colorChoice[$scope.selectedIndex].appendChild(placeholder);
+        if(originalImg[$scope.selectedIndex].style.display = "none"){
+          colorChoice[$scope.selectedIndex].appendChild(placeholder);
+        }
       }
-
-    // var activeColor = document.getElementsByClassName('.selectedColor');
-    // console.log(activeColor);
-    // activeColor.style.backgroundColor = "black";
-    // var colorChoice = document.getElementsByClassName('color-choice');
-    // console.log(colorChoice[$scope.selectedIndex].style.backgroundColor = 'black');
+      originalImg[$scope.selectedIndex].style.display = "none";
   }
 
   $scope.changeBackground = function(){
-    console.log("This is working");
-    // var bodyBack = document.getElementById('bodyBack')
-    // bodyBack.style.backgroundColor = 'green';
-    $scope.modal.hide();
+    var buttonCircle = document.getElementsByClassName('button-circle');
+    var originalImg = document.getElementsByClassName('originalImg');
+    for(var i = 0; i < buttonCircle.length; i++){
+      var colorChoice = document.getElementsByClassName('color-choice');
+      var placeholder = document.getElementById("placeholder");
+      // originalImg[$scope.selectedIndex].style.display = "inline";
+      originalImg[$scope.selectedIndex].style.display = "inline";
+      // placeholder[$scope.selectedIndex].style.display = "none";
+      colorChoice[$scope.selectedIndex].removeChild(placeholder);
+      // originalImg[$scope.selectedIndex].style.display = "inline";
+      for(var n = 0; i < buttonCircle.length; n++){
+        // if(colorChoice[n] > 1){
+        //   $scope.modal.hide();
+        // }
+        colorChoice[n].style.backgroundColor = "white";
+        // colorChoice[$scope.selectedIndex].removeChild(placeholder);
+        // originalImg[$scope.selectedIndex].style.display = "inline";
+        $scope.modal.hide();
+      }
+    }
   }
 
   $scope.clickTile = function(tile) {
