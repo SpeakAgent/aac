@@ -1,0 +1,104 @@
+<ion-header-bar class="bar-dark">
+  <div class="buttonsdiv">
+    <i class="icon ion-unlocked"></i>
+        <!-- <i class="icon ion-locked"></i> -->
+    <button class="button button-outline button-calm button-small" id="btn-styling">
+      <a href="/#/settings"><i class="icon ion-gear-b"></i> Settings</a>
+    </button>
+    <button class="button button-outline button-calm button-small" id="btn-styling">
+      <i class="icon ion-grid"></i><a href="#/board_factory">Board Factory</a>
+    </button>
+    <button class="button button-outline button-calm button-small" id="btn-styling" style="margin-right:10px;">
+          <!-- <i class="icon ion-eye-disabled"></i>  -->
+      <i class="icon ion-eye"></i>Show All Tiles
+      <br>
+      <p class="show-hide-label">*Requires Wifi</p>
+    </button>
+
+    <button class="done-button"><p><a href="#/home">DONE</a></p></div>
+  </div>
+</ion-header-bar>
+
+<ion-view view-title="AAC" class="pane">
+  <ion-content class= "appBody" id="bodyBack">
+    <div class="row" style="margin:-5px; width: 101%; height:800px;">
+
+        <div class="col col-67" style="background-color:#50E2E3;">
+          <a href="#/board_factory"><i class="icon ion-ios-arrow-left"></i></a>
+          <div class="board-factory-tile-section2">
+            <!-- <div id="newboard3"> -->
+              <h1 class="factory-title">Creating {Board Title}</h1>
+              <div class="new-board-placeholder">
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+                <div class="board-factory-placeholder"></div>
+
+                <div class="top-button"><button class="custom-button">Add Tiles</button></div>
+              </div>
+            <!-- </div> -->
+          </div>
+        </div>
+
+        <div class="col" style="background-color:#FFFFFF;" id="edit-input-section">
+          <h1 class="edit-title">Creating {Board Title}</h1>
+
+          <div class="title-section">
+            <p class="edit-subheading">Enter Board title</p>
+              <input type="text" name="title">
+          </div>
+
+          <div class="symbol-section">
+            <p class="edit-subheading">Choose a symbol to identify your board</p>
+            <button class="custom-button-inverse"><i class="icon ion-search"></i> Browse for image</button>
+          </div>
+
+          <div class="tag-section">
+            <p class="edit-subheading">Add Tags, comma separated</p>
+            <label>
+              <input type="text" name="tags">
+            </label>
+          </div>
+
+          <button class="custom-button">Save</button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

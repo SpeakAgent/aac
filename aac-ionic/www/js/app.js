@@ -45,4 +45,9 @@ angular.module('starter', ['ionic', 'starter.boards'])
     url:'/board_factory/sample_edit',
     templateUrl: 'templates/sample_edit.html'
   })
+
+  $stateProvider.state('board_factory/new',{
+    url:'/board_factory/new',
+    templateUrl: 'templates/board_factory_new.html'
+  })
 })
