@@ -237,6 +237,41 @@ float:left;
 #blue-list-item{
   background-color: #98E3E3;
   font-weight: bold;
+} 
+.show-hide-label{
+  margin-top:-25px;
+  font-size: .75em;
+  margin-bottom:-10px;
+  color:#50E2E3;
+}
+.icon.ion-locked{
+  font-size:2.5em;
+  color:red;
+  margin-right:30px;
+}
+
+.done-button{
+  background-color: white;
+  /*margin-right: 2%;*/
+  /*margin-left: 1%;*/
+  float:right;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: #50E2E3;
+}
+
+.done-button p{
+  color:#008485;
+  font-weight:bold;
+  margin-bottom: -1px;
+  margin-left: 5px;
+  margin-right: 6px;
+}
+
+.icon.ion-unlocked{
+  font-size:2.5em;
+  color:#77CE20;
+  margin-right:30px;
 }
 
 .round-button{
@@ -299,9 +334,9 @@ float:left;
   text-align: center;
 }
 
-.color-choice.selectedColor{
+/*.color-choice.selectedColor{
   background-color: blue;
-}
+}*/
 
 .real-content {
   width: 40%;
@@ -490,6 +525,10 @@ float:left;
   height:140%;
   float:left;
 }*/
+
+.buttonsdiv{
+  margin-left: 200px;
+}
 
 .boardline {
   height: 2px;

@@ -20,8 +20,6 @@ angular.module('starter', ['ionic', 'starter.boards'])
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
-
-    // $scope.title = "Scope title"
   });
 })
 
@@ -48,4 +46,3 @@ angular.module('starter', ['ionic', 'starter.boards'])
     templateUrl: 'templates/sample_edit.html'
   })
 })
-
