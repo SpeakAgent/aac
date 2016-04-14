@@ -25,6 +25,264 @@ $dark:                            #444 !default;
   border-color:white;
 }
 
+.manual-minus{
+  width:20px;
+  height:20px;
+  border-radius:10px;
+  background-color:#FFE0D4;
+  float:right;
+  border-style: solid;
+  border-width: 2px;
+  color:#B70016;
+  margin-top: -10px;
+  margin-right: -10px;
+}
+
+.manual-minus p{
+  color:#B70016;
+  font-size: 3em;
+  margin-top: -4px;
+}
+
+input[type="text"]{
+  display: block;
+  margin: 0;
+  width: 100%;
+  font-family: sans-serif;
+  font-size: 18px;
+  box-shadow: none;
+  border-radius: none;
+  outline: 1px solid #979797;
+}
+
+input[type="text"]:focus, textarea:focus{
+  background:#FFF8D9;
+  box-shadow: 0 0 5px #6EE8E9;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #6EE8E9;
+  outline:none;
+}
+
+.item.item-input{
+  padding: 0px;
+  margin-top: -2px;
+}
+.edit-subheading{
+  font-style: italic;
+  margin-bottom: 1px;
+}
+.title-section, .symbol-section, .tag-section{
+  padding-bottom:20px;
+}
+
+.edit-title{
+  font-size: 1.25em;
+  text-align:center;
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+
+.board-factory-tile-section{
+  width:80%;
+  margin-left:11%;
+}
+
+.icon.ion-ios-arrow-left{
+  font-size: 2em;
+  color: #7C7C7D;
+}
+
+.boards a{
+  color:black;
+  text-decoration: none;
+}
+
+.forward-buttons{
+  padding-top: 5%;
+  margin-left: 49%;
+}
+
+#newboard{
+  padding:0px;
+}
+
+#newboard2{
+  padding:10px 30px 30px 25px;
+}
+
+.factory-title{
+  font-size:  1.75em;
+  font-weight:400;
+  color:#008485;
+}
+
+.ion-help-circled{
+  color: #008485;
+}
+
+.board-instructions{
+  color: #008485;
+  font-weight: 500;
+  margin-bottom: 80px;
+  width:90%;
+}
+
+.board-instructions2{
+  color: #008485;
+  font-weight: 500;
+  margin-bottom: -10px;
+  width:90%;
+}
+
+#edit-input-section{
+  padding:35px;
+}
+
+.custom-button{
+  background-color: #008485;
+  border-style: solid;
+  border-color: #008485;
+  border-radius: 20px;
+  color: white;
+  padding:5px;
+  font-weight:600;
+  box-shadow: 0px 3px 0px 0px #006364;
+}
+
+.custom-button-inverse{
+  background-color: white;
+  border-style: solid;
+  border-color: #008485;
+  border-radius: 20px;
+  color: #008485;
+  padding:5px;
+  font-weight:600;
+  box-shadow: 0px 3px 0px 0px;
+}
+
+.centered-title{
+  font-size:1em;
+  color:black;
+  text-align: center;
+}
+.greyed-out{
+  color:#F9F8F8;
+}
+
+.checkbox-text{
+  padding-right: 8px;
+}
+
+.settings-box.ion-checkbox{
+  border-color: black;
+}
+.centered-note{
+  margin-left:18%;
+  font-style: italic;
+  font-weight:600;
+  color:#738383;
+}
+.warning-text{
+  margin-left:70px;
+  color:red;
+}
+
+#settings-menu{
+  margin:-10px;
+}
+
+.settings-box{
+  background-color: white;
+  margin-left: 15%;
+  margin-top:5%;
+  padding-top:10px;
+  padding-bottom:10px;
+  padding-left: 30px;
+  font-size: 1.2em;
+  width:70%;
+}
+
+#settings-modal{
+  margin:-5px;
+  /*margin-right:-10px;*/
+  background-color: #98E3E3;
+}
+
+.avatar-box{
+width:10%;
+height:250px;
+background-color: white;
+float:left;
+}
+
+.list-container{
+  float:right;
+  width:90%;
+}
+
+.button a{
+  position:relative;
+  z-index:3;
+  text-decoration: none;
+  color:white;
+}
+
+.item.item-divider{
+  background-color: #98E3E3;
+}
+
+.avatar-icon-placeholder{
+  width:30px;
+  height:30px;
+  border-radius: 8px;
+  background-color:#E5E1DF;
+  float:left;
+  position: relative;
+  z-index: 5;
+  margin-right:10px;
+}
+
+#blue-list-item{
+  background-color: #98E3E3;
+  font-weight: bold;
+} 
+.show-hide-label{
+  margin-top:-25px;
+  font-size: .75em;
+  margin-bottom:-10px;
+  color:#50E2E3;
+}
+.icon.ion-locked{
+  font-size:2.5em;
+  color:red;
+  margin-right:30px;
+}
+
+.done-button{
+  background-color: white;
+  /*margin-right: 2%;*/
+  /*margin-left: 1%;*/
+  float:right;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: #50E2E3;
+}
+
+.done-button p{
+  color:#008485;
+  font-weight:bold;
+  margin-bottom: -1px;
+  margin-left: 5px;
+  margin-right: 6px;
+}
+
+.icon.ion-unlocked{
+  font-size:2.5em;
+  color:#77CE20;
+  margin-right:30px;
+}
+
 .round-button{
   width:120px;
   height:40px;
@@ -85,9 +343,9 @@ $dark:                            #444 !default;
   text-align: center;
 }
 
-.color-choice.selectedColor{
+/*.color-choice.selectedColor{
   background-color: blue;
-}
+}*/
 
 .real-content {
   width: 40%;
@@ -276,6 +534,10 @@ $dark:                            #444 !default;
   height:140%;
   float:left;
 }*/
+
+.buttonsdiv{
+  margin-left: 200px;
+}
 
 .boardline {
   height: 2px;

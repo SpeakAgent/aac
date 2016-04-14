@@ -21,12 +21,28 @@
 
 (function() {
 
-var app = angular.module('AAC', ['ionic']);
+var app = angular.module('starter.boards', ['ionic']);
+
+app.filter('slice', function(){
+  return function(arr, start, end){
+    return arr.slice(start, end);
+  };
+});
 
 app.controller('BoardController', 
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element) {
 
-  $scope.columns = "abcdefgh"
+  $scope.title = "This is a title";
+  $scope.board = {};
+  $scope.board.title = "Home";
+  $scope.settings = true;
+  $scope.step = 1;
+  sample_symbol = {
+      word: "Sample",
+      icon: "img/symbols/a_lot.png",
+      pk: 15,
+    }
+  $scope.columns = "abcdef"
   $scope.rows = "123456"
   $scope.selectedTiles = []
 
@@ -54,66 +70,68 @@ app.controller('BoardController',
     {colorTitle: 'Sky Blue',
      primaryColor:'#50E2E3',
      secondaryColor:'#008484',
-     url:'img/color_change/colorBlob-skyBlue.svg' },
+     url:'img/color_change/colorBlob-skyBlue.svg'},
 
     {colorTitle: 'Electric Green',
      primaryColor:'#BCE72B', 
      secondaryColor:'#18745C', 
-     url:'img/color_change/colorBlob_electricGreen.svg' },
+     url:'img/color_change/colorBlob_electricGreen.svg'},
 
     {colorTitle: 'Hot Pink',
      primaryColor:'#D5388A',
      secondaryColor:'#F787C6', 
-     url:'img/color_change/colorBlob_hotPink.svg' },
+     url:'img/color_change/colorBlob_hotPink.svg'},
 
     {colorTitle: 'Tangerine',
      primaryColor:'#E07600',
      secondaryColor:'#982900', 
-     url:'img/color_change/colorBlob_tangerine.svg' },
+     url:'img/color_change/colorBlob_tangerine.svg'},
 
     {colorTitle: 'Butter Yellow',
      primaryColor:'#FFDB3B',
      secondaryColor:'#DEC75F',
-     url:'img/color_change/colorBlob_butterYellow.svg' },
+     url:'img/color_change/colorBlob_butterYellow.svg'},
 
     {colorTitle: 'Tomato Red',
      primaryColor:'#E6213F',
      secondaryColor:'#E899A6',
-     url:'img/color_change/colorBlob_tomatoRed.svg' },
+     url:'img/color_change/colorBlob_tomatoRed.svg'},
 
     {colorTitle: 'Denim Blue',
      primaryColor:'#325DC1',
      secondaryColor:'#ADB1E8',
-     url:'img/color_change/colorBlob_denimBlue.svg' },
+     url:'img/color_change/colorBlob_denimBlue.svg'},
 
     {colorTitle: 'Steel Gray',
      primaryColor:'#7D989A',
      secondaryColor:'#A9CED1',
-     url:'img/color_change/colorBlob_steelGray.svg' },
+     url:'img/color_change/colorBlob_steelGray.svg'},
 
     {colorTitle: 'Periwinkle Blue',
      primaryColor:'#8AB6E1',
      secondaryColor:'#3496C7', 
-     url:'img/color_change/colorBlob_periwinkleBlue.svg' },
+     url:'img/color_change/colorBlob_periwinkleBlue.svg'},
 
     {colorTitle: 'Forest Green',
      primaryColor:'#18745C',
      secondaryColor:'#7BB59F',
-     url:'img/color_change/colorBlob_forestGreen.svg'  },
+     url:'img/color_change/colorBlob_forestGreen.svg'},
 
     {colorTitle: 'Intense Purple',
      primaryColor:'#6B28C6',
      secondaryColor:'#C6A4EB',
-     url:'img/color_change/colorBlob_intensePurple.svg'  },
+     url:'img/color_change/colorBlob_intensePurple.svg'},
 
     {colorTitle: 'Seafoam Green',
      primaryColor:'#2FCB95',
      secondaryColor:'#A7E8C5',
-     url:'img/color_change/colorBlob_seafoamGreen.svg'  },
+     url:'img/color_change/colorBlob_seafoamGreen.svg'},
   ]
   
+  $scope.start = 0;
+  $scope.end = 24;
 
-  $ionicModal.fromTemplateUrl('contact-modal.html',{
+  $ionicModal.fromTemplateUrl('templates/aac-partials/_color-modal.html',{
     scope: $scope,
     animation: 'slide-in-up'
   }).then(function(modal){
@@ -138,9 +156,10 @@ app.controller('BoardController',
 
   $scope.colorSelect = function(colorIndex){
     $scope.selectedIndex = colorIndex;
+    
     console.log($scope.selectedIndex);
-    // console.log($scope.colorName[$scope.selectedIndex].primaryColor);
-    // console.log($scope.title);
+    var container = document.getElementById('container');
+
     var bodyBack = document.getElementById('bodyBack');
     bodyBack.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
 
@@ -156,22 +175,44 @@ app.controller('BoardController',
     var buttonCircle = document.getElementsByClassName('button-circle');
     console.log(buttonCircle[1].style.backgroundColor);
 
+    var colorChoice = document.getElementsByClassName('color-choice')
+
+    var scribble = document.getElementById('scribble');
+    var originalImg = document.getElementsByClassName('originalImg');
+
+    var placeholder = document.createElement("img");
+    placeholder.src = "img/color_change/colorBlob_white.svg";
+    // placeholder.style.marginTop = "-50px";
+    placeholder.style.width = "70%";
+    placeholder.style.height = "70%"; 
+    placeholder.id = "placeholder";
+    // placeholder.style.paddingTop = "-20px";
+
+
       for(var i = 0; i < buttonCircle.length; i++){
         buttonCircle[i].style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
+        colorChoice[$scope.selectedIndex].style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
+        // colorChoice[$scope.selectedIndex].appendChild(placeholder);
+        if(originalImg[$scope.selectedIndex].style.display = "none"){
+          colorChoice[$scope.selectedIndex].appendChild(placeholder);
+        }
       }
-
-    // var activeColor = document.getElementsByClassName('.selectedColor');
-    // console.log(activeColor);
-    // activeColor.style.backgroundColor = "black";
-    // var colorChoice = document.getElementsByClassName('color-choice');
-    // console.log(colorChoice[$scope.selectedIndex].style.backgroundColor = 'black');
+      originalImg[$scope.selectedIndex].style.display = "none";
   }
 
   $scope.changeBackground = function(){
-    console.log("This is working");
-    // var bodyBack = document.getElementById('bodyBack')
-    // bodyBack.style.backgroundColor = 'green';
-    $scope.modal.hide();
+    var buttonCircle = document.getElementsByClassName('button-circle');
+    var originalImg = document.getElementsByClassName('originalImg');
+    for(var i = 0; i < buttonCircle.length; i++){
+      var colorChoice = document.getElementsByClassName('color-choice');
+      var placeholder = document.getElementById("placeholder");
+      originalImg[$scope.selectedIndex].style.display = "inline";
+      colorChoice[$scope.selectedIndex].removeChild(placeholder);
+      for(var n = 0; i < buttonCircle.length; n++){
+        colorChoice[n].style.backgroundColor = "white";
+        $scope.modal.hide();
+      }
+    }
   }
 
   $scope.clickTile = function(tile) {
@@ -305,14 +346,218 @@ app.controller('BoardController',
 
   { name:"Thngs",
     img_path:"img/aac_board_imgs/crayon.png"},
-  ]
-});
 
-// app.controller('ionSideMenus', function($http, $scope, $ionicSideMenuDelegate){
-//   $scope.toggleLeft = function(){
-//     $ionicSideMenuDelegate.toggleLeft();
-//   };
-// })
+  // added for sliding option
+  { name:"Nouns",
+    img_path:"img/aac_board_imgs/alpaca.png" },
+
+  { name:"Outdr",
+    img_path:"img/aac_board_imgs/art.png" },
+
+  { name:"Animl",
+    img_path:"img/aac_board_imgs/balloon.png" },
+
+  { name:"Plnts",
+    img_path:"img/aac_board_imgs/bird.png" },
+
+  { name:"Stuf",
+    img_path:"img/aac_board_imgs/clock.png" },
+
+  { name:"Thngs",
+    img_path:"img/aac_board_imgs/crayon.png"},
+
+    // also added for testing purposes
+  { name:"Nouns",
+    img_path:"img/aac_board_imgs/alpaca.png" },
+
+  { name:"Outdr",
+    img_path:"img/aac_board_imgs/art.png" },
+
+  { name:"Animl",
+    img_path:"img/aac_board_imgs/balloon.png" },
+
+  { name:"Plnts",
+    img_path:"img/aac_board_imgs/bird.png" },
+
+  { name:"Stuf",
+    img_path:"img/aac_board_imgs/clock.png" },
+
+  { name:"Thngs",
+    img_path:"img/aac_board_imgs/crayon.png"},
+
+  { name:"Nouns",
+    img_path:"img/aac_board_imgs/alpaca.png" },
+
+  { name:"Outdr",
+    img_path:"img/aac_board_imgs/art.png" },
+
+  { name:"Animl",
+    img_path:"img/aac_board_imgs/balloon.png" },
+
+  { name:"Plnts",
+    img_path:"img/aac_board_imgs/bird.png" },
+
+  { name:"Stuf",
+    img_path:"img/aac_board_imgs/clock.png" },
+
+  { name:"Thngs",
+    img_path:"img/aac_board_imgs/crayon.png"},
+
+  { name:"Nouns",
+    img_path:"img/aac_board_imgs/alpaca.png" },
+
+  { name:"Outdr",
+    img_path:"img/aac_board_imgs/art.png" },
+
+  { name:"Animl",
+    img_path:"img/aac_board_imgs/balloon.png" },
+
+  { name:"Plnts",
+    img_path:"img/aac_board_imgs/bird.png" },
+
+  { name:"Stuf",
+    img_path:"img/aac_board_imgs/clock.png" },
+
+  { name:"Thngs",
+    img_path:"img/aac_board_imgs/crayon.png"},
+  ]
+
+$scope.panel = function(number){
+  if(number == "1"){
+    var self = document.getElementById("settings");
+    self.style.backgroundColor = "#008485";
+    self.style.color = "white";
+    $scope.step = 1;
+      // if (number == "2" || number == "3" || number == "4" || number == "5"){
+      var synthetic = document.getElementById("synthetic");
+      synthetic.style.backgroundColor = "white";
+      synthetic.style.color = "black";
+
+      var sound = document.getElementById("sound");
+      sound.style.backgroundColor = "white";
+      sound.style.color = "black";
+
+      var phrase = document.getElementById("phrase");
+      phrase.style.backgroundColor = "white";
+      phrase.style.color = "black";
+
+      var alternate = document.getElementById("alternate");
+      alternate.style.backgroundColor = "white";
+      alternate.style.color = "black";
+      // }
+
+  } else if(number == "2"){
+      var self = document.getElementById("synthetic");
+      self.style.backgroundColor = "#008485";
+      self.style.color = "white";
+      $scope.step = 2;
+
+      var settings = document.getElementById("settings");
+      settings.style.backgroundColor = "white";
+      settings.style.color = "black";
+
+      var sound = document.getElementById("sound");
+      sound.style.backgroundColor = "white";
+      sound.style.color = "black";
+
+      var phrase = document.getElementById("phrase");
+      phrase.style.backgroundColor = "white";
+      phrase.style.color = "black";
+
+      var alternate = document.getElementById("alternate");
+      alternate.style.backgroundColor = "white";
+        alternate.style.color = "black";
+
+  } else if(number == "3"){
+      var self = document.getElementById("sound");
+      self.style.backgroundColor = "#008485";
+      self.style.color = "white";
+      $scope.step = 3;
+
+      var synthetic = document.getElementById("synthetic");
+      synthetic.style.backgroundColor = "white";
+      synthetic.style.color = "black";
+
+      var settings = document.getElementById("settings");
+      settings.style.backgroundColor = "white";
+      settings.style.color = "black";
+
+      var phrase = document.getElementById("phrase");
+      phrase.style.backgroundColor = "white";
+      phrase.style.color = "black";
+
+      var alternate = document.getElementById("alternate");
+      alternate.style.backgroundColor = "white";
+      alternate.style.color = "black";
+
+  } else if(number == "4"){
+      var self = document.getElementById("phrase");
+      self.style.backgroundColor = "#008485";
+      self.style.color = "white";
+      $scope.step = 4;
+
+      var synthetic = document.getElementById("synthetic");
+      synthetic.style.backgroundColor = "white";
+      synthetic.style.color = "black";
+
+      var sound = document.getElementById("sound");
+      sound.style.backgroundColor = "white";
+      sound.style.color = "black";
+
+      var settings = document.getElementById("settings");
+      settings.style.backgroundColor = "white";
+      settings.style.color = "black";
+
+      var alternate = document.getElementById("alternate");
+      alternate.style.backgroundColor = "white";
+      alternate.style.color = "black";
+
+  } else if(number == "5"){
+      var self = document.getElementById("alternate");
+      self.style.backgroundColor = "#008485";
+      self.style.color = "white";
+      $scope.step = 5;
+
+      var synthetic = document.getElementById("synthetic");
+      synthetic.style.backgroundColor = "white";
+      synthetic.style.color = "black";
+
+      var sound = document.getElementById("sound");
+      sound.style.backgroundColor = "white";
+      sound.style.color = "black";
+
+      var phrase = document.getElementById("phrase");
+      phrase.style.backgroundColor = "white";
+      phrase.style.color = "black";
+
+      var settings = document.getElementById("settings");
+      settings.style.backgroundColor = "white";
+      settings.style.color = "black";
+
+  } else {
+    console.log("This isn't working either?!? God!?!?");
+  }
+}
+
+  $scope.lastSet = function(index){
+    console.log("Last Set button is working");
+    if ($scope.start > 0){
+      $scope.start = $scope.start - 24;
+      $scope.end = $scope.end - 24;
+    }
+  }
+
+  $scope.nextSet = function(index){
+    console.log("Next Set button is working");
+    if ($scope.end < $scope.dummyBoards.length){
+      $scope.start = $scope.start + 24;
+      $scope.end = $scope.end + 24;
+    }else{
+      console.log("No more left");
+    }
+  }
+
+});
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

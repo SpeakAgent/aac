@@ -1,0 +1,77 @@
+<ion-header-bar class="bar-dark">
+  <div class="buttonsdiv">
+    <i class="icon ion-unlocked"></i>
+        <!-- <i class="icon ion-locked"></i> -->
+    <button class="button button-outline button-calm button-small" id="btn-styling">
+      <a href="/#/settings"><i class="icon ion-gear-b"></i> Settings</a>
+    </button>
+    <button class="button button-outline button-calm button-small" id="btn-styling">
+      <i class="icon ion-grid"></i><a href="#/board_factory">Board Factory</a>
+    </button>
+    <button class="button button-outline button-calm button-small" id="btn-styling" style="margin-right:10px;">
+          <!-- <i class="icon ion-eye-disabled"></i>  -->
+      <i class="icon ion-eye"></i>Show All Tiles
+      <br>
+      <p class="show-hide-label">*Requires Wifi</p>
+    </button>
+    <button class="done-button"><p><a href="#/home">DONE</a></p></div>
+  </div>
+</ion-header-bar>
+
+<ion-view view-title="AAC" class="pane">
+  <ion-content class= "appBody" id="bodyBack">
+  <div class="row" style="margin:-5px; width: 101%; height:800px;">
+    <div class="col col-67" style="background-color:#50E2E3;">
+      <a href="#/board_factory"><i class="icon ion-ios-arrow-left"></i></a>
+
+      <div class="board-factory-tile-section">
+        <div id="newboard2">
+          <h1 class="factory-title">Editing Copy of Art {Board Title}</h1>
+          <p class="board-instructions2"><i class="icon ion-help-circled"></i> Tap a tile to select a Board to edit. Press and hold a Board tile to move it to a different place. Tap the minus sign to remove the tile from the Board.</p>
+        </div>
+
+        <span ng-repeat="row in rows">
+          <div class="tile" ng-repeat="col in columns" ng-click="clickTile(board.symbols[col+row])" style="position:relative; z-index:0;">
+            <!-- <span ng-show="filled_tiles.indexOf(col+row)!=-1">
+              <i class="icon ion-ios-minus-outline" style="float:left;"></i>
+            </span> -->
+            <!-- <i class="icon ion-android-remove-circle"></i> -->
+            <div class="manual-minus"><p>-</p></div>
+            <span ng-show="filled_tiles.indexOf(col+row)!=-1">
+              {{board.symbols[col+row].word}}<br>
+              <img src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px; position:relative; z-index:0;">
+            </span>
+          </div>
+        </span>
+      </div>
+    </div>
+
+    <div class="col" style="background-color:#FFFFFF;" id="edit-input-section">
+      <!-- <p>More Words</p> -->
+      <h1 class="edit-title">Edit Copy of Art {Board Title}</h1>
+
+      <div class="title-section">
+        <p class="edit-subheading">Enter new title</p>
+        <!-- <label class="item item-input"> -->
+          <input type="text" name="title">
+        <!-- </label>  -->
+      </div>
+
+      <div class="symbol-section">
+        <p class="edit-subheading">Choose a symbol to identify your board</p>
+        <button class="custom-button-inverse"><i class="icon ion-search"></i> Browse for image</button>
+      </div>
+
+      <div class="tag-section">
+        <p class="edit-subheading">Add Tags, comma separated</p>
+        <!-- <label class="item item-input"> -->
+        <label>
+          <input type="text" name="tags">
+        </label>
+      </div>
+
+      <button class="custom-button">Save</button>
+    </div>
+  </div>
+  </ion-content>
+</ion-view>
