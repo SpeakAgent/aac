@@ -175,7 +175,7 @@ app.controller('BoardController',
     var buttonCircle = document.getElementsByClassName('button-circle');
     console.log(buttonCircle[1].style.backgroundColor);
 
-    var colorChoice = document.getElementsByClassName('color-choice')
+    var colorChoice = document.getElementsByClassName('color-choice');
 
     var scribble = document.getElementById('scribble');
     var originalImg = document.getElementsByClassName('originalImg');
@@ -259,16 +259,18 @@ app.controller('BoardController',
 
   $scope.class = "white";
 
-  $scope.chosenTile = function(){
+  $scope.chosenTile = function(tileIndex){
+    $scope.selectedIndex = tileIndex;
+    console.log(tileIndex);
     // $scope.selectedIndex = colorIndex;
     // console.log($scope.selectedIndex);
     // $scope.class = tile;
-    console.log("Chosen selected");
-    if($scope.class === "white"){
-      $scope.class = "light-blue";
-    } else{
-      $scope.class = "white";
-    };
+    // console.log($scope.columns[0]);
+    // if($scope.class = "white"){
+    //   $scope.class = "light-blue";
+    // } else{
+    //   $scope.class = "white";
+    // };
   };
 
   $scope.dummyBoards =[
