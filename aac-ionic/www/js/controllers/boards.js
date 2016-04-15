@@ -134,18 +134,35 @@ app.controller('BoardController',
   $scope.end = 24;
 
   $ionicModal.fromTemplateUrl('templates/aac-partials/_color-modal.html',{
+    id: '1',
     scope: $scope,
     animation: 'slide-in-up'
   }).then(function(modal){
-    $scope.modal = modal
-  })
+    $scope.oModal1 = modal;
+  });
 
-  $scope.openModal = function(){
-    $scope.modal.show()
+  $ionicModal.fromTemplateUrl('templates/aac-partials/_word-change.html',{
+    id: '2',
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal){
+    $scope.oModal2 = modal;
+  });
+
+  $scope.openModal = function(index){
+    if(index == 1){
+      $scope.oModal1.show();
+    }else{
+      $scope.oModal2.show();
+    }
   }
 
   $scope.closeModal = function(){
-    $scope.modal.hide();
+    if(index == 1){
+      $scope.oModal1.hide();
+    }else{
+      $scope.oModal2.hide();
+    }
   };
 
   $scope.$on('$destroy', function(){
@@ -184,17 +201,14 @@ app.controller('BoardController',
 
     var placeholder = document.createElement("img");
     placeholder.src = "img/color_change/colorBlob_white.svg";
-    // placeholder.style.marginTop = "-50px";
     placeholder.style.width = "70%";
     placeholder.style.height = "70%"; 
     placeholder.id = "placeholder";
-    // placeholder.style.paddingTop = "-20px";
 
 
       for(var i = 0; i < buttonCircle.length; i++){
         buttonCircle[i].style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
         colorChoice[$scope.selectedIndex].style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
-        // colorChoice[$scope.selectedIndex].appendChild(placeholder);
         if(originalImg[$scope.selectedIndex].style.display = "none"){
           colorChoice[$scope.selectedIndex].appendChild(placeholder);
         }
@@ -208,19 +222,11 @@ app.controller('BoardController',
     for(var i = 0; i < buttonCircle.length; i++){
       var colorChoice = document.getElementsByClassName('color-choice');
       var placeholder = document.getElementById("placeholder");
-      // originalImg[$scope.selectedIndex].style.display = "inline";
       originalImg[$scope.selectedIndex].style.display = "inline";
-      // placeholder[$scope.selectedIndex].style.display = "none";
       colorChoice[$scope.selectedIndex].removeChild(placeholder);
-      // originalImg[$scope.selectedIndex].style.display = "inline";
       for(var n = 0; i < buttonCircle.length; n++){
-        // if(colorChoice[n] > 1){
-        //   $scope.modal.hide();
-        // }
         colorChoice[n].style.backgroundColor = "white";
-        // colorChoice[$scope.selectedIndex].removeChild(placeholder);
-        // originalImg[$scope.selectedIndex].style.display = "inline";
-        $scope.modal.hide();
+        $scope.oModal1.hide();
       }
     }
   }
