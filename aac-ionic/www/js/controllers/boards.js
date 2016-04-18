@@ -149,19 +149,31 @@ app.controller('BoardController',
     $scope.oModal2 = modal;
   });
 
+  $ionicModal.fromTemplateUrl('templates/aac-partials/_add-multiple-words.html',{
+    id: '3',
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal){
+    $scope.oModal3 = modal;
+  });
+
   $scope.openModal = function(index){
     if(index == 1){
       $scope.oModal1.show();
-    }else{
+    }else if(index == 2){
       $scope.oModal2.show();
+    }else{
+      $scope.oModal3.show();
     }
   }
 
   $scope.closeModal = function(index){
     if(index == 1){
       $scope.oModal1.hide();
-    }else{
+    }else if(index == 2){
       $scope.oModal2.hide();
+    }else{
+      $scope.oModal3.hide();
     }
   };
 
