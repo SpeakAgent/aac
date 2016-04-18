@@ -16,6 +16,26 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+.icon.ion-close-round{
+  color:#979797;
+  float:right;
+  font-size: 1.5em;
+}
+
+.replace-search{
+  height:250px;
+}
+
+#centered-custom-button{
+  margin-left:38%;
+  margin-top: 50px;
+}
+
+.modal-note{
+  font-style: italic;
+  padding-left: 30px;
+}
+
 .manual-minus{
   width:20px;
   height:20px;

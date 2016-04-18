@@ -157,7 +157,7 @@ app.controller('BoardController',
     }
   }
 
-  $scope.closeModal = function(){
+  $scope.closeModal = function(index){
     if(index == 1){
       $scope.oModal1.hide();
     }else{
