@@ -26,9 +26,28 @@ $dark:                            #444 !default;
   height:250px;
 }
 
+.replace-search2{
+  height:150px;
+}
+
 #centered-custom-button{
   margin-left:38%;
   margin-top: 50px;
+}
+
+#centered-custom-button2{
+  margin-left:34%;
+  margin-top: 30px;
+}
+
+.more-inputs{
+  border-style: solid;
+  border-color: #979797;
+  color: #008485;
+  border-width: 1px;
+  padding:3px;
+  width:556px;
+  margin-left:-1px;
 }
 
 .modal-note{

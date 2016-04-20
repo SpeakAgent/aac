@@ -3,26 +3,30 @@
     <div class="modal-container" style="margin:30px;">
     	<i class="icon ion-close-round" ng-click="closeModal(3)"></i>
     	<p class="modal-header"><strong>Enter Words to Add to Your Board</strong> <span class="modal-note">TIP: Tap to select a word.</span></p>
-    	<label>
-            <input type="text" name="tags" placeholder="NEW WORD">
-        </label>
-        <label>
-            <input type="text" name="tags" placeholder="NEW WORD">
-        </label>
-        <label>
-            <input type="text" name="tags" placeholder="NEW WORD">
-        </label>
-        <label>
-            <input type="text" name="tags" placeholder="NEW WORD">
-        </label>
-        <label>
-            <input type="text" name="tags" placeholder="NEW WORD">
-        </label>
-         <label>
-            <p ng-click="moreInputs()"><i class="icon ion-plus"></i> FIVE ROWS</p>
-        </label>
+        <!-- <div class="list"> -->
+            <div class="replace-search2">
+            	<label class="item item-input">
+                    <input type="text" name="tags" placeholder=" ENTER WORD">
+                </label>
+            </div>
+            <label class="item item-input">
+                <input type="text" name="tags" placeholder=" ENTER WORD">
+            </label>
+            <label class="item item-input">
+                <input type="text" name="tags" placeholder=" ENTER WORD">
+            </label class="item item-input">
+            <label class="item item-input">
+                <input type="text" name="tags" placeholder=" ENTER WORD">
+            </label>
+            <label class="item item-input">
+                <input type="text" name="tags" placeholder=" ENTER WORD">
+            </label>
+        <!-- </div> -->
+        <!-- <label class="more-inputs"> -->
+            <p ng-click="moreInputs()" class="more-inputs"><i class="icon ion-plus"></i> FIVE ROWS</p>
+        <!-- </label> -->
 
-        <button class="custom-button" id="centered-custom-button"><i class="icon ion-plus"></i> Add Words to Board</button>
+        <button class="custom-button" id="centered-custom-button2"><i class="icon ion-plus"></i> Add Words to Board</button>
     </div>
   </ion-content>
 </div>

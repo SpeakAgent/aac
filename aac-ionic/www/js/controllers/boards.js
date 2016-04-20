@@ -565,6 +565,20 @@ $scope.panel = function(number){
     }
   }
 
+  $scope.moreInputs = function(){
+    console.log("More Inputs!!!");
+    $scope.inputs = [
+      {id:2}, {id:3}, {id:4}, {id:5}
+    ];
+
+    $scope.addRows = function(){
+      console.log('Running addRows');
+      newItemNo = $scope.inputs.length+1;
+      $scope.inputs.push({'id':newItemNo+1}, {'id':newItemNo+2}, {'id':newItemNo+3}, {'id':newItemNo+4});
+      console.log($scope.inputs.length);
+  }
+    }
+
 });
 
 app.run(function($ionicPlatform) {
