@@ -547,6 +547,26 @@ $scope.panel = function(number){
     }
   }
 
+  $scope.testDrag =[
+    { word: "Stuff"},
+    { word: "Things"},
+    { word: "It"},
+    { word: "Them"},
+    { word: "What?"}
+  ]
+
+  $scope.onDragComplete=function(data,evt){
+    console.log("drag success, data:", data);
+  }
+
+  $scope.onDropComplete=function(index, obj, evt){
+    // console.log("drop success, data:", data);
+    var otherObj = $scope.columns[index];
+    var otherIndex = $scope.columns.indexOf(obj);
+    $scope.columns[index] = obj;
+    $scope.columns[otherIndex] = otherObj;
+  }
+
 });
 
 app.run(function($ionicPlatform) {

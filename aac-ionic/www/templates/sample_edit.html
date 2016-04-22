@@ -1,7 +1,6 @@
 <ion-header-bar class="bar-dark">
   <div class="buttonsdiv">
     <i class="icon ion-unlocked"></i>
-        <!-- <i class="icon ion-locked"></i> -->
     <button class="button button-outline button-calm button-small" id="btn-styling">
       <a href="/#/settings"><i class="icon ion-gear-b"></i> Settings</a>
     </button>
@@ -9,7 +8,6 @@
       <i class="icon ion-grid"></i><a href="#/board_factory">Board Factory</a>
     </button>
     <button class="button button-outline button-calm button-small" id="btn-styling" style="margin-right:10px;">
-          <!-- <i class="icon ion-eye-disabled"></i>  -->
       <i class="icon ion-eye"></i>Show All Tiles
       <br>
       <p class="show-hide-label">*Requires Wifi</p>
@@ -19,6 +17,13 @@
 </ion-header-bar>
 
 <ion-view view-title="AAC" class="pane">
+<!-- <ion-content>
+  <ul class="object-container">
+    <li ng-repeat="obj in testDrag" ng-drop="true" ng-drop-success="onDropComplete($index, $data, $event)">
+      <div ng-drag="true" ng-drag-data="obj" ng-class="obj.word" style="padding-left:10px; padding-top: 5px;">{{obj.word}}</div>
+    </li>
+  </ul>
+</ion-content> -->
   <ion-content class= "appBody" id="bodyBack">
   <div class="row" style="margin:-5px; width: 101%; height:800px;">
     <div class="col col-67" style="background-color:#50E2E3;">
@@ -31,30 +36,25 @@
         </div>
 
         <span ng-repeat="row in rows">
-          <div class="tile" ng-repeat="col in columns" ng-click="clickTile(board.symbols[col+row])" style="position:relative; z-index:0;">
-            <!-- <span ng-show="filled_tiles.indexOf(col+row)!=-1">
-              <i class="icon ion-ios-minus-outline" style="float:left;"></i>
-            </span> -->
-            <!-- <i class="icon ion-android-remove-circle"></i> -->
-            <div class="manual-minus"><p>-</p></div>
-            <span ng-show="filled_tiles.indexOf(col+row)!=-1">
-              {{board.symbols[col+row].word}}<br>
-              <img src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px; position:relative; z-index:0;">
-            </span>
-          </div>
+          <ul ng-repeat="col in columns" ng-click="clickTile(board.symbols[col+row])" style="position:relative; z-index:0;" ng-drop="true" ng-drop-success="onDropComplete($index, $data, $event)">
+            <div class="tile" ng-drag="true" ng-drag-data="col">
+              <li class="manual-minus"><p>-</p></li>
+              <li ng-show="filled_tiles.indexOf(col+row)!=-1">
+                {{board.symbols[col+row].word}}<br>
+                <img src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px; position:relative; z-index:0;">
+              </li>
+            </div>
+          </ul>
         </span>
       </div>
     </div>
 
     <div class="col" style="background-color:#FFFFFF;" id="edit-input-section">
-      <!-- <p>More Words</p> -->
       <h1 class="edit-title">Edit Copy of Art {Board Title}</h1>
 
       <div class="title-section">
         <p class="edit-subheading">Enter new title</p>
-        <!-- <label class="item item-input"> -->
           <input type="text" name="title">
-        <!-- </label>  -->
       </div>
 
       <div class="symbol-section">
@@ -64,7 +64,6 @@
 
       <div class="tag-section">
         <p class="edit-subheading">Add Tags, comma separated</p>
-        <!-- <label class="item item-input"> -->
         <label>
           <input type="text" name="tags">
         </label>
