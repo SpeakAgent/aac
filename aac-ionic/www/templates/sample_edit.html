@@ -37,7 +37,7 @@
 
         <span ng-repeat="row in rows">
           <ul ng-repeat="col in columns" ng-click="clickTile(board.symbols[col+row])" style="position:relative; z-index:0;" ng-drop="true" ng-drop-success="onDropComplete($index, $data, $event)">
-            <div class="tile" ng-drag="true" ng-drag-data="col">
+            <div class="tile" ng-drag="true" ng-drag-data="col" ng-class="col.word">
               <li class="manual-minus"><p>-</p></li>
               <li ng-show="filled_tiles.indexOf(col+row)!=-1">
                 {{board.symbols[col+row].word}}<br>
