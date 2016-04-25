@@ -216,15 +216,27 @@ app.controller('BoardController',
   }
 
   $scope.clickTile = function(tile) {
+
     $scope.selectedTiles.push(tile);
 
     console.log($scope.selectedTiles);
+    $scope.selectedIndex = tile;
 
+    // $scope.isSelected = function(val) {
+    //    return val in $scope.selectedTiles
+    // }
+
+    // for(i = 0; i < $scope.selectedTiles; i++){
+    //   $scope.selectedTiles[i].style.backgroundColor = "#83EFF0";
+    // }
+    // return tile in  $scope.selectedTiles;
+
+    // $scope.selectedTiles.style.color = 'lightblue';
     // $scope.selectedTiles = ['a1', 'b2', 'c4']
 
-    $scope.isSelected = function(val) {
-       return val in $scope.selectedTiles
-    }
+    // $scope.isSelected = function(val) {
+    //    return val in $scope.selectedTiles
+    // }
   }
 
   $scope.deleteLastTile = function () {
