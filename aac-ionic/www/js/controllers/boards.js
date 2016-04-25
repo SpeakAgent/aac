@@ -45,6 +45,7 @@ app.controller('BoardController',
   $scope.columns = "abcdef"
   $scope.rows = "123456"
   $scope.selectedTiles = []
+  $scope.selectedIndex = -2
 
   var req = {
     url: 'https://lexemes-dev.herokuapp.com/board/single/',
