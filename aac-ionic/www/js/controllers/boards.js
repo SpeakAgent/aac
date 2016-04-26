@@ -57,6 +57,13 @@ app.controller('BoardController',
     $scope.filled_tiles = Object.keys($scope.board.symbols)
   })
 
+  $scope.testDrag =[
+    { word: "Stuff"},
+    { word: "Things"},
+    { word: "It"},
+    { word: "Them"},
+    { word: "What?"}
+  ]
   
 
   $scope.toggleLeft = function(){
@@ -547,20 +554,13 @@ $scope.panel = function(number){
     }
   }
 
-  $scope.testDrag =[
-    { word: "Stuff"},
-    { word: "Things"},
-    { word: "It"},
-    { word: "Them"},
-    { word: "What?"}
-  ]
-
   $scope.onDragComplete=function(data,evt){
     console.log("drag success, data:", data);
   }
 
   $scope.onDropComplete=function(index, obj, evt){
-    // console.log("drop success, data:", data);
+    console.log("Is this working?")
+    obj = filled_tiles[$selectedIndex];
     var otherObj = $scope.columns[index];
     var otherIndex = $scope.columns.indexOf(obj);
     $scope.columns[index] = obj;
