@@ -287,6 +287,14 @@ float:left;
   border-color: #6FCACB; 
 }
 
+button.button-outline.button-calm.button-small.selected-btn2{
+  background-color: #6FCACB;
+  color:white;
+  border-radius: 0;
+  margin-left: 8px;
+  border-color: #6FCACB;
+}
+
 .icon.ion-unlocked{
   font-size:2.5em;
   color:#77CE20;

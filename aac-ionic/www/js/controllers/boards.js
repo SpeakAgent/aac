@@ -547,6 +547,14 @@ $scope.panel = function(number){
     }
   }
 
+  $scope.class = "none";
+  $scope.activeHide = function(){
+    console.log("So, it works ...");
+    if($scope.class === "none"){
+      $scope.class = "selected-btn2";
+    }
+  }
+
 });
 
 app.run(function($ionicPlatform) {
