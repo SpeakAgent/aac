@@ -559,12 +559,19 @@ $scope.panel = function(number){
   }
 
   $scope.onDropComplete=function(index, obj, evt){
-    console.log("Is this working?")
-    obj = filled_tiles[$selectedIndex];
+    console.log(evt);
+    $scope.selectedIndex = index;
+    obj = filled_tiles[$scope.selectedIndex];
     var otherObj = $scope.columns[index];
     var otherIndex = $scope.columns.indexOf(obj);
     $scope.columns[index] = obj;
     $scope.columns[otherIndex] = otherObj;
+  }
+
+  $scope.testingDrag=function(index){
+    $scope.selectedIndex = index;
+    console.log($scope.filled_tiles[$scope.selectedIndex]);
+    console.log($scope.filled_tiles);
   }
 
 });
