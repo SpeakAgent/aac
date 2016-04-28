@@ -278,9 +278,13 @@ float:left;
   margin-right: 6px;
 }
 
-.icon.ion-gear-b, .icon.ion-grid, .icon.ion-eye-disabled{
-  font-size: .75em;
-}
+/*button.icon.ion-gear-b, button.icon.ion-grid, button.icon.ion-eye-disabled{
+  font-size: 3em;
+}*/
+
+/*#small-icon{
+  font-size: 4em;
+}*/
 
 .done-button a{
   color:#008485;
