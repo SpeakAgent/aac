@@ -57,13 +57,13 @@ app.controller('BoardController',
     $scope.filled_tiles = Object.keys($scope.board.symbols)
   })
 
-  $scope.testDrag =[
-    { word: "Stuff"},
-    { word: "Things"},
-    { word: "It"},
-    { word: "Them"},
-    { word: "What?"}
-  ]
+  // $scope.testDrag =[
+  //   { word: "Stuff"},
+  //   { word: "Things"},
+  //   { word: "It"},
+  //   { word: "Them"},
+  //   { word: "What?"}
+  // ]
   
 
   $scope.toggleLeft = function(){
@@ -566,11 +566,13 @@ $scope.panel = function(number){
     var otherIndex = $scope.columns.indexOf(obj);
     $scope.columns[index] = obj;
     $scope.columns[otherIndex] = otherObj;
+    // console.log(itemIndex);
   }
 
   $scope.testingDrag=function(index){
     $scope.selectedIndex = index;
-    console.log($scope.filled_tiles[$scope.selectedIndex]);
+    itemIndex = $scope.filled_tiles[$scope.selectedIndex]
+    console.log(itemIndex);
     console.log($scope.filled_tiles);
   }
 
