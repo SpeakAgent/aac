@@ -226,9 +226,11 @@ app.controller('BoardController',
   }
 
   $scope.clickTile = function(tile) {
-    $scope.selectedTiles.push(tile);
     if ($scope.hide == true){
       console.log("Now editable");
+      // $scope.selectedTiles
+    }else{
+       $scope.selectedTiles.push(tile);
     }
   }
 
