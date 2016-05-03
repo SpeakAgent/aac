@@ -45,6 +45,8 @@ app.controller('BoardController',
   $scope.columns = "abcdef"
   $scope.rows = "123456"
   $scope.selectedTiles = []
+  $scope.selectedIndex = -2;
+  $scope.selectedIndex2 = -3;
 
   var req = {
     url: 'https://lexemes-dev.herokuapp.com/board/single/',
@@ -56,8 +58,6 @@ app.controller('BoardController',
     $scope.board = data;
     $scope.filled_tiles = Object.keys($scope.board.symbols)
   })
-
-  
 
   $scope.toggleLeft = function(){
     $ionicSideMenuDelegate.toggleLeft();
@@ -177,7 +177,7 @@ app.controller('BoardController',
     var buttonCircle = document.getElementsByClassName('button-circle');
     console.log(buttonCircle[1].style.backgroundColor);
 
-    var colorChoice = document.getElementsByClassName('color-choice')
+    var colorChoice = document.getElementsByClassName('color-choice');
 
     var scribble = document.getElementById('scribble');
     var originalImg = document.getElementsByClassName('originalImg');
@@ -208,18 +208,10 @@ app.controller('BoardController',
     for(var i = 0; i < buttonCircle.length; i++){
       var colorChoice = document.getElementsByClassName('color-choice');
       var placeholder = document.getElementById("placeholder");
-      // originalImg[$scope.selectedIndex].style.display = "inline";
       originalImg[$scope.selectedIndex].style.display = "inline";
-      // placeholder[$scope.selectedIndex].style.display = "none";
       colorChoice[$scope.selectedIndex].removeChild(placeholder);
-      // originalImg[$scope.selectedIndex].style.display = "inline";
       for(var n = 0; i < buttonCircle.length; n++){
-        // if(colorChoice[n] > 1){
-        //   $scope.modal.hide();
-        // }
         colorChoice[n].style.backgroundColor = "white";
-        // colorChoice[$scope.selectedIndex].removeChild(placeholder);
-        // originalImg[$scope.selectedIndex].style.display = "inline";
         $scope.modal.hide();
       }
     }
@@ -228,9 +220,11 @@ app.controller('BoardController',
   $scope.clickTile = function(tile) {
     if ($scope.hide == true){
       console.log("Now editable");
-      // $scope.selectedTiles
+      $scope.selectedIndex2 = tile;
+      // $scope.selectedIndex = -2;
     }else{
        $scope.selectedTiles.push(tile);
+       $scope.selectedIndex = tile;
     }
   }
 
@@ -264,6 +258,13 @@ app.controller('BoardController',
        }, function (reason) {
            // Handle the error case
        });
+  };
+
+  $scope.class = "white";
+
+  $scope.chosenTile = function(tileIndex){
+    $scope.selectedIndex = tileIndex;
+    console.log(tileIndex);
   };
 
   $scope.dummyBoards =[

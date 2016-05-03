@@ -16,6 +16,20 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+.tile.white{
+  background-color:white;
+}
+
+.tile.lightBlue{
+  background-color:#83EFF0;
+  border-color:white;
+}
+
+.tile.greyEdit{
+  opacity:.4;
+  background-color: black;
+}
+
 .manual-minus{
   width:20px;
   height:20px;
@@ -40,6 +54,35 @@ $dark:                            #444 !default;
   color:#E6213F;
   margin-top: -8px;
   margin-right: -7px;
+  font-size:1.25em;
+}
+
+.hide-symbol2{
+  width:18px;
+  height:18px;
+  border-radius:10px;
+  background-color:white;
+  float:right;
+  /*border-style: solid;*/
+  /*border-width: 2px;*/
+  color:#E6213F;
+  position:relative; 
+  z-index:4;
+  margin-top: 20px;
+  margin-right: -7px;
+  /*margin-top: 20px;*/
+  font-size:1.25em;
+}
+
+.hide-symbol-common{
+  width:18px;
+  height:18px;
+  border-radius:10px;
+  background-color:white;
+  float:right;
+  color:#E6213F;
+  margin-top: -18px;
+  margin-right: -15px;
   font-size:1.25em;
 }
 
@@ -534,6 +577,7 @@ button.button-outline.button-calm.button-small.selected-btn2{
 #board-section {
   margin-top: -20px;
   float: left;
+  margin-left:-38px;
   /*margin-right:-20px;*/ }
 
 #btn-section {
