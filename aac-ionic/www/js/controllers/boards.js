@@ -555,6 +555,7 @@ $scope.panel = function(number){
       $scope.class = "selected-btn2";
        $scope.hide = true;
     }
+    $scope.editable = true;
   }
 
   $scope.hideDone = function(){
@@ -562,6 +563,7 @@ $scope.panel = function(number){
       $scope.class = "none";
       $scope.hide = false;
     }
+    $scope.editable = false;
   }
 });
 
