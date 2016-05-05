@@ -5,26 +5,22 @@
     	<p class="modal-header"><strong>Enter Words to Add to Your Board</strong> <span class="modal-note">TIP: Tap to select a word.</span></p>
         <!-- <div class="list"> -->
             <div class="replace-search2">
-            	<label class="item item-input">
+            	<label class="item item-input green-blue">
                     <input type="text" name="tags" placeholder=" ENTER WORD">
                 </label>
             </div>
-            <label class="item item-input">
-                <input type="text" name="tags" placeholder=" ENTER WORD">
-            </label>
-            <label class="item item-input">
-                <input type="text" name="tags" placeholder=" ENTER WORD">
-            </label class="item item-input">
-            <label class="item item-input">
-                <input type="text" name="tags" placeholder=" ENTER WORD">
-            </label>
-            <label class="item item-input">
-                <input type="text" name="tags" placeholder=" ENTER WORD">
-            </label>
-        <!-- </div> -->
-        <!-- <label class="more-inputs"> -->
-            <p ng-click="moreInputs()" class="more-inputs"><i class="icon ion-plus"></i> FIVE ROWS</p>
-        <!-- </label> -->
+
+            <ul class="list">
+                <li class="item green-blue" ng-repeat="blank in blankInputs">
+                    <label class="item item-input none">
+                        <input type="text" name="tags" placeholder="{{blank.placeholder}}">
+                    </label>
+                </li>
+
+                <li class="item none green-blue">
+                    <p class="more-inputs" ng-click="moreInputs()"><i class="icon ion-plus"></i> FIVE ROWS</p>
+                </li>
+            </ul>
 
         <button class="custom-button" id="centered-custom-button2"><i class="icon ion-plus"></i> Add Words to Board</button>
     </div>

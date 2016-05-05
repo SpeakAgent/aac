@@ -22,6 +22,20 @@ $dark:                            #444 !default;
   font-size: 1.5em;
 }
 
+.item.green-blue{
+  border-color:#65E5E6;
+}
+
+.item.item-input.none{
+  outline:none;
+  border-style: none;
+  margin: -16px;
+}
+
+/*.item.none.green-blue p{
+  padding: -16px;
+}*/
+
 .replace-search{
   height:250px;
 }
@@ -41,13 +55,7 @@ $dark:                            #444 !default;
 }
 
 .more-inputs{
-  border-style: solid;
-  border-color: #979797;
-  color: #008485;
-  border-width: 1px;
-  padding:3px;
-  width:556px;
-  margin-left:-1px;
+  margin: -10px;
 }
 
 .modal-note{
