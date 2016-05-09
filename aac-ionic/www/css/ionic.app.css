@@ -41,6 +41,8 @@ $dark:                            #444 !default;
   font-size: .75em;
   /*margin: 8px;*/
   float: left;
+  position: relative;
+  z-index: 7;
   text-align: center;
   /*margin-left: -4px;
   margin-top: -2px;*/
