@@ -223,9 +223,9 @@ app.controller('BoardController',
       console.log(specificTile);
       $scope.tile = document.getElementsByClassName("tile");
       // console.log($scope.tile[$scope.selectedIndex2]);
-      angular.element($scope.selectedIndex2).css("backgroundColor", "grey");
-      // angular.element($scope.tile).append("<div class="greyEdit">selected</div>");
-      angular.element($scope.tile).css("opacity", ".4");
+      // angular.element($scope.selectedIndex2).css("backgroundColor", "grey");
+      angular.element($scope.tile).append("<div class='tile greyEdit'>selected</div>");
+      // angular.element($scope.tile).css("opacity", ".4");
       // angular.element($scope.tile).append("<div class='greyEdit'></div>");
     }else{
        $scope.selectedTiles.push(specificTile);
