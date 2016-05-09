@@ -25,9 +25,25 @@ $dark:                            #444 !default;
   border-color:white;
 }
 
-.tile.greyEdit{
+/*.tile.greyEdit{
   opacity:.4;
-  background-color: black;
+  color: black;
+  background:rgba(0, 0, 0, .4);
+}*/
+
+.tile.greyEdit{
+  background:rgba(0, 0, 0, .4);
+  padding: .5%;
+  border: 2px solid #979797;
+  border-radius: 12px;
+  height: 70px;
+  width: 70px;
+  font-size: .75em;
+  /*margin: 8px;*/
+  float: left;
+  text-align: center;
+  /*margin-left: -4px;
+  margin-top: -2px;*/
 }
 
 .manual-minus{

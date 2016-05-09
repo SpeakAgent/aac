@@ -220,8 +220,12 @@ app.controller('BoardController',
   $scope.clickTile = function(tile) {
     if ($scope.hide == true){
       console.log("Now editable");
-      $scope.selectedIndex2 = tile;
-      // $scope.selectedIndex = -2;
+      // $scope.selectedIndex2 = tile;
+      // var opaqueFilter = angular.element(document.querySelector('.greyEdit'));
+      // tile.append(opaqueFilter);
+      // $scope.hidden1 = true;
+      $scope.currentTile = angular.element(document).find('.tile');
+      // console.log(currentTile);
     }else{
        $scope.selectedTiles.push(tile);
        $scope.selectedIndex = tile;
