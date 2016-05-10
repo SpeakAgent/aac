@@ -44,8 +44,9 @@ $dark:                            #444 !default;
   position: relative;
   z-index: 7;
   text-align: center;
-  /*margin-left: -4px;
-  margin-top: -2px;*/
+  /*margin-top: -71px;*/
+  margin-left: -5px;
+  /*margin-top: -3px;*/
 }
 
 .manual-minus{

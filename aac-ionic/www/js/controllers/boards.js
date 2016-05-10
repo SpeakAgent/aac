@@ -222,6 +222,7 @@ app.controller('BoardController',
       $scope.selectedIndex2 = specificTile;
       console.log(specificTile);
       $scope.tile = document.getElementsByClassName("tile");
+      $scope.greyedTiles.indexOf(row+col) = true;
        // angular.element($scope.tile).append("<div class='tile greyEdit'>selected</div>");
     }else{
        $scope.selectedTiles.push(specificTile);
