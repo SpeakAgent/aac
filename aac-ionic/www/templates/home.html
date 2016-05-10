@@ -92,6 +92,9 @@
                         {{board.symbols[col+row].word}}<br>
                         <img src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px">
                       </span>
+
+                      <div class="tile greyEdit" ng-show="$scope.greyedTiles.indexOf(row+col) > -1">{{board.symbols[col+row].word}}</div>
+                      <!-- ng-show="{{$scope.greyedTiles.indexOf(row+col) > -1}}" -->
                   </div>
                 </span>
               </div>
