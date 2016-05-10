@@ -262,6 +262,9 @@ app.controller('BoardController',
   };
 
   $scope.dummyBoards =[
+  { name: "About Me",
+    img_path:"img/aac_board_imgs/crayon.png"},
+
   { name:"Anmls",
     img_path:"img/aac_board_imgs/alpaca.png" },
 
