@@ -74,7 +74,7 @@ $scope.chosenBoard = function(sampleBoard){
       $scope.filled_tiles = Object.keys($scope.board.symbols)
     })
 
-  } else{
+  }else{
     console.log("This icon doesn't have an associated board");
   }
 }
