@@ -47,17 +47,39 @@ app.controller('BoardController',
   $scope.selectedTiles = []
   $scope.selectedIndex = -2
 
-  var req = {
-    url: 'https://lexemes-dev.herokuapp.com/board/single/',
-    data: {pk: 3},
-    method: 'POST'
+$scope.chosenBoard = function(sampleBoard){
+  $scope.selectedIndex = sampleBoard;
+  console.log($scope.selectedIndex);
+  if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
+    console.log("is this working?")
+    var req = {
+      url: 'https://lexemes-dev.herokuapp.com/board/single/',
+      data: {pk: 3},
+      method: 'POST'
+    }
+
+    $http(req).success(function(data) {
+      $scope.board = data;
+      $scope.filled_tiles = Object.keys($scope.board.symbols)
+    })
+  } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
+    console.log("what about this??")
+     var req2 = {
+      url: 'https://lexemes-dev.herokuapp.com/board/single/',
+      data: {pk: 4},
+      method: 'POST'
+    }
+
+    $http(req2).success(function(data) {
+      $scope.board = data;
+      $scope.filled_tiles = Object.keys($scope.board.symbols)
+    })
+
+  } else{
+    console.log("This icon doesn't have an associated board");
   }
-
-  $http(req).success(function(data) {
-    $scope.board = data;
-    $scope.filled_tiles = Object.keys($scope.board.symbols)
-  })
-
+}
+  
   $scope.toggleLeft = function(){
     $ionicSideMenuDelegate.toggleLeft();
   };
@@ -281,10 +303,12 @@ app.controller('BoardController',
 
   $scope.dummyBoards =[
   { name:"Anmls",
-    img_path:"img/aac_board_imgs/alpaca.png" },
+    img_path:"img/aac_board_imgs/alpaca.png",
+    pk: '3' },
 
   { name:"Arts",
-    img_path:"img/aac_board_imgs/art.png" },
+    img_path:"img/aac_board_imgs/art.png",
+    pk: '4' },
 
   { name:"Body",
     img_path:"img/aac_board_imgs/balloon.png" },
@@ -565,6 +589,22 @@ $scope.panel = function(number){
     }
   }
 
+  $scope.class = "none";
+
+  $scope.activeHide = function(){
+    console.log("So, it works ...");
+    if($scope.class === "none"){
+      $scope.class = "selected-btn2";
+       $scope.hide = true;
+    }
+  }
+
+  $scope.hideDone = function(){
+    if($scope.class === "selected-btn2"){
+      $scope.class = "none";
+      $scope.hide = false;
+    }
+  }
 });
 
 app.run(function($ionicPlatform) {
