@@ -16,6 +16,15 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+.tile.white{
+  background-color:white;
+}
+
+.tile.lightBlue{
+  background-color:#83EFF0;
+  border-color:white;
+}
+
 .top-button{
   position:absolute; 
   margin:42% 30% 30% 39%;

@@ -45,6 +45,7 @@ app.controller('BoardController',
   $scope.columns = "abcdef"
   $scope.rows = "123456"
   $scope.selectedTiles = []
+  $scope.selectedIndex = -2
 
 $scope.chosenBoard = function(sampleBoard){
   $scope.selectedIndex = sampleBoard;
@@ -197,7 +198,7 @@ $scope.chosenBoard = function(sampleBoard){
     var buttonCircle = document.getElementsByClassName('button-circle');
     console.log(buttonCircle[1].style.backgroundColor);
 
-    var colorChoice = document.getElementsByClassName('color-choice')
+    var colorChoice = document.getElementsByClassName('color-choice');
 
     var scribble = document.getElementById('scribble');
     var originalImg = document.getElementsByClassName('originalImg');
@@ -228,25 +229,37 @@ $scope.chosenBoard = function(sampleBoard){
     for(var i = 0; i < buttonCircle.length; i++){
       var colorChoice = document.getElementsByClassName('color-choice');
       var placeholder = document.getElementById("placeholder");
-      // originalImg[$scope.selectedIndex].style.display = "inline";
       originalImg[$scope.selectedIndex].style.display = "inline";
-      // placeholder[$scope.selectedIndex].style.display = "none";
       colorChoice[$scope.selectedIndex].removeChild(placeholder);
-      // originalImg[$scope.selectedIndex].style.display = "inline";
       for(var n = 0; i < buttonCircle.length; n++){
-        // if(colorChoice[n] > 1){
-        //   $scope.modal.hide();
-        // }
         colorChoice[n].style.backgroundColor = "white";
-        // colorChoice[$scope.selectedIndex].removeChild(placeholder);
-        // originalImg[$scope.selectedIndex].style.display = "inline";
         $scope.modal.hide();
       }
     }
   }
 
   $scope.clickTile = function(tile) {
+
     $scope.selectedTiles.push(tile);
+
+    console.log($scope.selectedTiles);
+    $scope.selectedIndex = tile;
+
+    // $scope.isSelected = function(val) {
+    //    return val in $scope.selectedTiles
+    // }
+
+    // for(i = 0; i < $scope.selectedTiles; i++){
+    //   $scope.selectedTiles[i].style.backgroundColor = "#83EFF0";
+    // }
+    // return tile in  $scope.selectedTiles;
+
+    // $scope.selectedTiles.style.color = 'lightblue';
+    // $scope.selectedTiles = ['a1', 'b2', 'c4']
+
+    // $scope.isSelected = function(val) {
+    //    return val in $scope.selectedTiles
+    // }
   }
 
   $scope.deleteLastTile = function () {
@@ -279,6 +292,13 @@ $scope.chosenBoard = function(sampleBoard){
        }, function (reason) {
            // Handle the error case
        });
+  };
+
+  $scope.class = "white";
+
+  $scope.chosenTile = function(tileIndex){
+    $scope.selectedIndex = tileIndex;
+    console.log(tileIndex);
   };
 
   $scope.dummyBoards =[

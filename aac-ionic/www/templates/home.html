@@ -71,7 +71,7 @@
             <div class="col col-60" id="tile-section">
               <div class="tile-section-border">
                 <span ng-repeat="row in rows">
-                  <div class="tile" ng-repeat="col in columns" ng-click="clickTile(board.symbols[col+row])">
+                  <div class="tile" ng-repeat="col in columns" ng-click="clickTile(board.symbols[col+row])"  ng-class="{lightBlue:board.symbols[col+row]==selectedIndex}";>
                     <span ng-show="filled_tiles.indexOf(col+row)!=-1">
                       {{board.symbols[col+row].word}}<br>
                       <img src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px">
