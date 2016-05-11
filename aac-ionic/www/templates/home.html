@@ -6,16 +6,29 @@
           <a href="/#/settings"><i class="icon ion-gear-b"></i> Settings</a>
         </button>
         <button class="button button-outline button-calm button-small" id="btn-styling">
-          <i class="icon ion-grid"></i><a href="#/board_factory">Board Factory</a>
-        </button>
-        <button class="button button-outline button-calm button-small" id="btn-styling" style="margin-right:10px;">
-          <!-- <i class="icon ion-eye-disabled"></i>  -->
-          <i class="icon ion-eye"></i>Show All Tiles
+          <i class="icon ion-grid" id="small-icon"></i><a href="#/board_factory">Board Factory</a>
           <br>
           <p class="show-hide-label">*Requires Wifi</p>
         </button>
 
-        <button class="done-button"><p><a href="#/home">DONE</a></p></div>
+        <button class="button button-outline button-calm button-small" id="btn-styling" style="margin-right:10px;" ng-click="activeHide()" ng-class="class">
+          <!-- <i class="icon ion-eye-disabled"></i>  -->
+          <i class="icon ion-eye-disabled"></i>Hide Tiles
+
+          <div class="toggle-content" style="float:right">
+            <label class="toggle toggle-dark-green toggle-small" ng-if="hide">
+              <input type="checkbox">
+              <div class="track" id="track-color">
+                <div class="handle" id="handle-color"></div>
+              </div>
+            </label>
+            <p class="toggle-note" ng-if="hide">Show All Tiles</p>
+          </div>
+        </button>
+
+        <button class="done-button" ng-click="hideDone()" ng-if="hide"><p><i class="icon ion-checkmark-round"></i><a href="#/home">DONE</a></p>
+        </button>
+        <!-- <button class="done-button"><p><a href="#/home">DONE</a></p></div> -->
       </div>
     </ion-header-bar>
 
