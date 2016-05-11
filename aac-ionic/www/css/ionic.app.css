@@ -29,6 +29,13 @@ $dark:                            #444 !default;
   margin-right: -10px;
 }
 
+.about-circle{
+  background-color: #FFDB3B;
+  width:10px;
+  height:10px;
+  border-radius: 5px;
+}
+
 .manual-minus p{
   color:#B70016;
   font-size: 3em;

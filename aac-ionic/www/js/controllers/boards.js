@@ -1,24 +1,3 @@
-// angular.module('speakagentAAC.controllers', ['ionic'])
-
-// .controller('LocationCtrl', function($scope) {
-//     // Get board to display
-
-//     // temp vars until we get remote setup.
-//     $scope.board.title = "Board 1";
-//     $scope.sample_symbol = {
-//         word: "Sample",
-//         icon: "img/symbols/a_lot.png",
-//         pk: 15,
-//     }
-//     $scope.board.symbols = [
-//         $scope.sample_symbol,
-//         $scope.sample_symbol,
-//         $scope.sample_symbol
-//     ]
-    
-
-// })
-
 (function() {
 
 var app = angular.module('starter.boards', ['ionic']);
@@ -30,7 +9,7 @@ app.filter('slice', function(){
 });
 
 app.controller('BoardController', 
-  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element) {
+  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element, $location) {
 
   $scope.title = "This is a title";
   $scope.board = {};
@@ -61,6 +40,9 @@ $scope.chosenBoard = function(sampleBoard){
       $scope.board = data;
       $scope.filled_tiles = Object.keys($scope.board.symbols)
     })
+  } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
+    console.log("Stuff");
+    $scope.aboutcircle = true;
   } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
     console.log("what about this??")
      var req2 = {
@@ -74,6 +56,43 @@ $scope.chosenBoard = function(sampleBoard){
       $scope.filled_tiles = Object.keys($scope.board.symbols)
     })
 
+  } else{
+    console.log("This icon doesn't have an associated board");
+  }
+}
+
+$scope.chosenBoard2 = function(sampleBoard){
+  $scope.selectedIndex = sampleBoard;
+  if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
+    console.log("is this working?")
+    var req = {
+      url: 'https://lexemes-dev.herokuapp.com/board/single/',
+      data: {pk: 3},
+      method: 'POST'
+    }
+    $http(req).success(function(data) {
+      $scope.board = data;
+      $scope.filled_tiles = Object.keys($scope.board.symbols);
+      $window.location.href = "#/board_factory/sample_edit";
+    })
+
+  } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
+    console.log("Stuff");
+    $scope.aboutcircle = true;
+
+  }else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
+    console.log("what about this??")
+     var req2 = {
+      url: 'https://lexemes-dev.herokuapp.com/board/single/',
+      data: {pk: 4},
+      method: 'POST'
+    }
+    $http(req2).success(function(data) {
+      $scope.board = data;
+      $scope.filled_tiles = Object.keys($scope.board.symbols);
+      $window.location.href = "#/board_factory/sample_edit";
+    })
+    
   } else{
     console.log("This icon doesn't have an associated board");
   }
@@ -249,6 +268,10 @@ $scope.chosenBoard = function(sampleBoard){
     $scope.selectedTiles.push(tile);
   }
 
+  // $scope.clickTile2 = function(tile){
+  //   $scope.selectedTiles.push(tile);
+  // }
+
   $scope.deleteLastTile = function () {
     $scope.selectedTiles.pop();
   }
@@ -282,6 +305,10 @@ $scope.chosenBoard = function(sampleBoard){
   };
 
   $scope.dummyBoards =[
+  { name:"About Me",
+    img_path:"img/aac_board_imgs/crayon.png",
+    pk: '5' },
+
   { name:"Anmls",
     img_path:"img/aac_board_imgs/alpaca.png",
     pk: '3' },
