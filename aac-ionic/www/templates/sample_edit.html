@@ -26,8 +26,16 @@
 
       <div class="board-factory-tile-section">
         <div id="newboard2">
-          <h1 class="factory-title">Editing Copy of Art {Board Title}</h1>
-          <p class="board-instructions2"><i class="icon ion-help-circled"></i> Tap a tile to select a Board to edit. Press and hold a Board tile to move it to a different place. Tap the minus sign to remove the tile from the Board.</p>
+          <h1 class="factory-title">Editing Copy of {{board.title}}<i class="icon ion-help-circled" style="font-size: .6em;"></i></h1>
+          <p class="board-instructions2" ng-show="board.title != 'About Me'"><i class="icon ion-help-circled"></i> Tap a tile to select a Board to edit. Press and hold a Board tile to move it to a different place. Tap the minus sign to remove the tile from the Board.</p>
+          <p class="board-instructions2" ng-show="board.title == 'About Me'" style="margin-bottom:3px;">Tips:</p>
+            <ol class="board-instructions2" ng-show="board.title == 'About Me'">
+              <li>Tap a tile to change it's symbol.</li>
+              <li>Press and hold a Board tile to move it to a different place.</li>
+              <li>Tap the Minus sign to remove the tile from the Board.</li>
+              <li>Tap the Refresh button to restore a tile you may have hidden.</li>
+            </ol>
+          <!-- </p> -->
         </div>
 
         <span ng-repeat="row in rows">
@@ -37,6 +45,7 @@
             </span> -->
             <!-- <i class="icon ion-android-remove-circle"></i> -->
             <div class="manual-minus"><p>-</p></div>
+            <div class="yellow-dot" ng-show="board.title == 'About Me'"></div>
             <span ng-show="filled_tiles.indexOf(col+row)!=-1">
               {{board.symbols[col+row].word}}<br>
               <img src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px; position:relative; z-index:0;">
@@ -46,9 +55,9 @@
       </div>
     </div>
 
-    <div class="col" style="background-color:#FFFFFF;" id="edit-input-section">
+    <div class="col" style="background-color:#FFFFFF;" id="edit-input-section" ng-show="board.title != 'About Me'">
       <!-- <p>More Words</p> -->
-      <h1 class="edit-title">Edit Copy of Art {Board Title}</h1>
+      <h1 class="edit-title">Edit Copy of {{board.title}}</h1>
 
       <div class="title-section">
         <p class="edit-subheading">Enter new title</p>
@@ -72,6 +81,21 @@
 
       <button class="custom-button">Save</button>
     </div>
+
+    <!-- About Me Specific -->
+    <div class="col" style="background-color:#FFFFFF;" id="edit-input-section" ng-show="board.title == 'About Me'">
+      <h1 class="edit-title">Edit the {{board.title}} Board</h1>
+      <div class="frame" style="margin-bottom: 15%;">
+        <p class="edit-subheading">You can modify which tiles are hidden here or select a different symbol for a tile.</p>
+      </div>
+      <p class="edit-subheading">The content of the About Me Board is accessed in your Settings.</p>
+      <div class="frame" style="margin-bottom: 15%;">
+        <button class="custom-button"><i class="icon ion-gear-b"></i>Open Settings</button>
+      </div>
+      <button class="custom-button">Save</button>
+    </div>
+
+
   </div>
   </ion-content>
 </ion-view>

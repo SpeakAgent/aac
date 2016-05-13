@@ -62,6 +62,8 @@ $scope.chosenBoard = function(sampleBoard){
     //   $scope.nestedObj = $scope.data.title; 
     // })
 
+    // $scope.aboutMe = true;
+
     $scope.board = {
       "title" :"About Me",
       "symbols" : {
@@ -540,11 +542,11 @@ $scope.chosenBoard = function(sampleBoard){
     img_path:"img/aac_board_imgs/crayon.png",
     pk: '5' },
 
-  { name:"Anmls",
+  { name:"Lunch",
     img_path:"img/aac_board_imgs/alpaca.png",
     pk: '3' },
 
-  { name:"Arts",
+  { name:"Feelings",
     img_path:"img/aac_board_imgs/art.png",
     pk: '4' },
 
