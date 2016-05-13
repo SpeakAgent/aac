@@ -26,16 +26,16 @@ app.controller('BoardController',
   $scope.selectedTiles = []
   $scope.selectedIndex = -2
 
-// var req = {
-//   url: 'https://lexemes-dev.herokuapp.com/board/single/',
-//   data: {pk: 3},
-//   method: 'POST'
-// }
+var req = {
+  url: 'https://lexemes-dev.herokuapp.com/board/single/',
+  data: {pk: 3},
+  method: 'POST'
+}
 
-// $http(req).success(function(data) {
-//   $scope.board = data;
-//   $scope.filled_tiles = Object.keys($scope.board.symbols)
-// })
+$http(req).success(function(data) {
+  $scope.board = data;
+  $scope.filled_tiles = Object.keys($scope.board.symbols)
+})
   
 
 $scope.chosenBoard = function(sampleBoard){
