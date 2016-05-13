@@ -58,8 +58,11 @@ $scope.chosenBoard = function(sampleBoard){
     // console.log("Stuff");
     // // $scope.board = 1;
     // console.log($scope.board.pk);
+    // JsonScv.read('data.json', $scope).then(function(){
+    //   $scope.nestedObj = $scope.data.title; 
+    // })
 
-    "pk" : 3 = {
+    $scope.board = {
       "title" :"About Me",
       "symbols" : {
         "a6" : {
@@ -246,6 +249,8 @@ $scope.chosenBoard = function(sampleBoard){
         }
       }
     }
+
+
 
     $scope.aboutcircle = true;
   } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
