@@ -253,6 +253,18 @@ input[type="text"]:focus, textarea:focus{
   width:70%;
 }
 
+.about-content{
+  width:70%;
+  margin-left: 15%;
+  margin-top:2%;
+}
+
+.about-symbol-select{
+  width:70%;
+  margin-left: 15%;
+  margin-top:2%;
+}
+
 #settings-modal{
   margin:-5px;
   /*margin-right:-10px;*/

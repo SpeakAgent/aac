@@ -56,6 +56,11 @@
 						<div class="avatar-icon-placeholder"></div>Settings Access
 						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
 					</ion-item>
+
+					<ion-item ng-click="panel(6)" id="aboutMe">
+						<div class="avatar-icon-placeholder"></div>About Me Profile
+						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
+					</ion-item>
 				</ion-list>
 
 				<ion-list>
@@ -249,6 +254,74 @@
 				</div>
 			</div>
 
+<!-- About Me Panel -->
+			<div class="col col-67" id="settings-modal" ng-show="step == 6">
+				<ion-list> 
+					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
+						<h1 class="centered-title"><strong>About Me Profile</strong></h1>
+					</ion-item>
+				</ion-list>
+
+				<!-- <div class="settings-content"> -->
+				<div class="settings-box">
+					About Me Profile
+				</div>
+
+				<p class="about-content">DRAFT TEXT: Fill in the information below to create a board all about your communicator. Fields left blank will not display on the About Me Board. You may also upload an image of your communicator to use as the Boards's symbol.</p>
+
+				<div class="about-symbol-select">
+					<img src="img/new_dev_assets/board_tile_notched_default.svg" alt="board tile" style="float:left;">
+
+					<p class="board-instructions2" style="float:left; width:60%; margin-left:30px;">Replace About Me Board symbol</p>
+
+					<button class="done-button" style="float:left; margin-top:20px; margin-left:30px;"><p><i class="icon ion-ios-search"></i> Browse...</p></button>
+				</div>
+				<p class="about-content" style="float:left">Nickname
+					<input type="text">
+				</p>
+				<p class="about-content" style="float:left">Birthday
+					<input type="text">
+				</p>
+				<p class="about-content" style="float:left">Hometown
+					<input type="text">
+				</p>
+				<p class="about-content" style="float:left">Name of best friend
+					<input type="text">
+				</p>
+				<p class="about-content" style="float:left">Siblings
+					<input type="text">
+				</p>
+				<p class="about-content" style="float:left">Pets
+					<input type="text">
+				</p>
+				<p class="about-content" style="float:left">Gender
+					<input type="text">
+				</p>
+				<p class="about-content" style="float:left">Age
+					<input type="text">
+				</p>
+				<p class="about-content" style="float:left">Favorite Toy
+					<input type="text">
+				</p>
+				<p class="about-content" style="float:left">Hobby
+					<input type="text">
+				</p>
+				<p class="about-content" style="float:left">Favorite sports team
+					<input type="text">
+				</p>
+				<p class="about-content" style="float:left">Favorite food
+					<input type="text">
+				</p>
+				<p class="about-content" style="float:left">Favorite ice cream flavor
+					<input type="text">
+				</p>
+				<p class="about-content" style="float:left">Favorite color
+					<input type="text">
+					<button class="custom-button" style="margin-top:20px;">Save</button>
+				</p>
+
+				<!-- </div> -->
+			</div>
 		</div>
 	</ion-content>
 </ion-view>
