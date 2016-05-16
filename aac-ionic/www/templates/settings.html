@@ -15,7 +15,7 @@
           <i class="icon ion-eye-disabled"></i>Hide Tiles
         </button>
 
-        <button class="done-button"><p><i class="icon ion-checkmark-round"></i><a href="#/home">Done</a></p></div>
+        <button class="done-button"><p><i class="icon ion-checkmark-round"></i><a href="#/home">DONE</a></p></div>
       </div>
  </ion-header-bar>
 
@@ -258,7 +258,8 @@
 			<div class="col col-67" id="settings-modal" ng-show="step == 6">
 				<ion-list> 
 					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
-						<h1 class="centered-title"><p style="float:left; font-size:.9em; color:#088788;"><i class="icon ion-chevron-left"></i> General</p><strong>About Me Profile</strong></h1>
+						<!-- <p style="float:left; font-size:.9em; color:#088788;"><i class="icon ion-chevron-left"></i> General</p> -->
+						<h1 class="centered-title"><strong>About Me Profile</strong></h1>
 					</ion-item>
 				</ion-list>
 
@@ -270,7 +271,11 @@
 				<p class="about-content">DRAFT TEXT: Fill in the information below to create a board all about your communicator. Fields left blank will not display on the About Me Board. You may also upload an image of your communicator to use as the Boards's symbol.</p>
 
 				<div class="about-symbol-select">
-					<img src="img/new_dev_assets/board_tile_notched_default.svg" alt="board tile" style="float:left;">
+					<img ng-src="img/aac_board_imgs/fakejsonimg/I.png" alt="image" style="width:6%; height:6%; position:relative; z-index:2; margin-bottom:-60px; margin-left:18px; float:left; margin-top:15px;"\>
+
+					<img src="img/new_dev_assets/board_tile_notched_default.svg" alt="board tile" style="float:left; positon:relative; z-index:0;">
+
+					<!-- <p style="position:relative; z-index:3; margin-top:-60px">About Me</p> -->
 
 					<p class="board-instructions2" style="float:left; width:60%; margin-left:30px;">Replace About Me Board symbol</p>
 
