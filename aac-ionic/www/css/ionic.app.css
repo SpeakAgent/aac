@@ -83,6 +83,11 @@ $dark:                            #444 !default;
   /*float:right;*/
 }
 
+.annotation{
+  color:#6A7777;
+  padding-left:4px;
+}
+
 input[type="text"]{
   display: block;
   margin: 0;
