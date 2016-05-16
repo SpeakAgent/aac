@@ -68,11 +68,21 @@ $dark:                            #444 !default;
   border-radius:10px;
   background-color:#FFDB3B;
   float:left;
-  /*border-style: solid;*/
-  /*border-width: 2px;*/
-  /*color:#B70016;*/
   margin-top: -6px;
   margin-left: -5px;
+}
+
+.about-question{
+  width:15px;
+  height:15px;
+  border-radius:10px;
+  background-color: #008485;
+}
+
+.icon.ion-help{
+  font-size:.75em;
+  color:white;
+  padding-left: 5px;
 }
 
 .about-circle{

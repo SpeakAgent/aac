@@ -67,7 +67,7 @@ $scope.chosenBoard = function(sampleBoard){
     $scope.board = {
       "title" :"About Me",
       "symbols" : {
-        "a6" : {
+        "a1" : {
           "lexeme" : "Nickname",
           "symbol" : {
             "pk" : "0000",
@@ -80,7 +80,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "b1" : {
+        "a2" : {
           "lexeme" : "Birthday",
           "symbol" : {
             "pk" : "0001",
@@ -93,7 +93,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "c4" : {
+        "a3" : {
           "lexeme" : "Hometown",
           "symbol" : {
             "pk" : "0002",
@@ -106,7 +106,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "d3" : {
+        "a4" : {
           "lexeme" : "Name of best friend",
           "symbol" : {
             "pk" : "0003",
@@ -119,7 +119,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "d4" : {
+        "a5" : {
           "lexeme" : "Siblings",
           "symbol" : {
             "pk" : "0004",
@@ -132,7 +132,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "d5" : {
+        "a6" : {
           "lexeme" : "Pets",
           "symbol" : {
             "pk" : "0005",
@@ -145,7 +145,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "e1" : {
+        "b1" : {
           "lexeme" : "Gender",
           "symbol" : {
             "pk" : "0006",
@@ -158,7 +158,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "e5" : {
+        "b2" : {
           "lexeme" : "Age",
           "symbol" : {
             "pk" : "0007",
@@ -171,7 +171,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "f2" : {
+        "b3" : {
           "lexeme" : "Favorite Toy",
           "symbol" : {
             "pk" : "0008",
@@ -184,7 +184,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "f1" : {
+        "b4" : {
           "lexeme" : "Hobby",
           "symbol" : {
             "pk" : "0009",
@@ -197,7 +197,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "b4" : {
+        "b5" : {
           "lexeme" : "Favorite sports team",
           "symbol" : {
             "pk" : "0010",
@@ -236,7 +236,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "c3" : {
+        "c2" : {
           "lexeme" : "Favorite color",
           "symbol" : {
             "pk" : "0013",
@@ -475,6 +475,10 @@ $scope.chosenBoard = function(sampleBoard){
 
     console.log($scope.selectedTiles);
     $scope.selectedIndex = tile;
+
+    if($scope.selectedTiles[$scope.selectedIndex] == undefined){
+      console.log("no index!!");
+    }
 
     // $scope.isSelected = function(val) {
     //    return val in $scope.selectedTiles
