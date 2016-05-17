@@ -1,24 +1,3 @@
-// angular.module('speakagentAAC.controllers', ['ionic'])
-
-// .controller('LocationCtrl', function($scope) {
-//     // Get board to display
-
-//     // temp vars until we get remote setup.
-//     $scope.board.title = "Board 1";
-//     $scope.sample_symbol = {
-//         word: "Sample",
-//         icon: "img/symbols/a_lot.png",
-//         pk: 15,
-//     }
-//     $scope.board.symbols = [
-//         $scope.sample_symbol,
-//         $scope.sample_symbol,
-//         $scope.sample_symbol
-//     ]
-    
-
-// })
-
 (function() {
 
 var app = angular.module('starter.boards', ['ionic']);
@@ -30,7 +9,7 @@ app.filter('slice', function(){
 });
 
 app.controller('BoardController', 
-  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element) {
+  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element, $location) {
 
   $scope.title = "This is a title";
   $scope.board = {};
@@ -47,11 +26,24 @@ app.controller('BoardController',
   $scope.selectedTiles = []
   $scope.selectedIndex = -2
 
+var req = {
+  url: 'https://lexemes-dev.herokuapp.com/board/single/',
+  data: {pk: 3},
+  method: 'POST'
+}
+
+$http(req).success(function(data) {
+  $scope.board = data;
+  $scope.filled_tiles = Object.keys($scope.board.symbols)
+})
+  
+
 $scope.chosenBoard = function(sampleBoard){
   $scope.selectedIndex = sampleBoard;
-  console.log($scope.selectedIndex);
+  // console.log($scope.selectedIndex);
   if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
-    console.log("is this working?")
+    console.log("is this working?");
+    console.log($scope.board.pk);
     var req = {
       url: 'https://lexemes-dev.herokuapp.com/board/single/',
       data: {pk: 3},
@@ -62,8 +54,208 @@ $scope.chosenBoard = function(sampleBoard){
       $scope.board = data;
       $scope.filled_tiles = Object.keys($scope.board.symbols)
     })
+  } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
+    // console.log("Stuff");
+    // // $scope.board = 1;
+    // console.log($scope.board.pk);
+    // JsonScv.read('data.json', $scope).then(function(){
+    //   $scope.nestedObj = $scope.data.title; 
+    // })
+
+    $scope.board = {
+      "title" :"About Me",
+      "symbols" : {
+        "a6" : {
+          "lexeme" : "Nickname",
+          "symbol" : {
+            "pk" : "0000",
+            "title" : "",
+            "alt_text" : "",
+            "image" : "img/aac_board_imgs/fakejsonimg/I.png",
+            "thumb" : "",
+          },
+          "word": "nickname",
+          "pk" : "",
+          "hidden": "false",
+        },
+        "b1" : {
+          "lexeme" : "Birthday",
+          "symbol" : {
+            "pk" : "0001",
+            "title" : "",
+            "alt_text" : "",
+            "image" : "img/aac_board_imgs/fakejsonimg/bunny.png",
+            "thumb" : "",
+          },
+          "word": "birthday",
+          "pk" : "",
+          "hidden": "false",
+        },
+        "c4" : {
+          "lexeme" : "Hometown",
+          "symbol" : {
+            "pk" : "0002",
+            "title" : "",
+            "alt_text" : "",
+            "image" : "img/aac_board_imgs/fakejsonimg/painting.png",
+            "thumb" : "",
+          },
+          "word": "hometown",
+          "pk" : "",
+          "hidden": "false",
+        },
+        "d3" : {
+          "lexeme" : "Name of best friend",
+          "symbol" : {
+            "pk" : "0003",
+            "title" : "",
+            "alt_text" : "",
+            "image" : "img/aac_board_imgs/fakejsonimg/I.png",
+            "thumb" : "",
+          },
+          "word": "best friend",
+          "pk" : "",
+          "hidden": "false",
+        },
+        "d4" : {
+          "lexeme" : "Siblings",
+          "symbol" : {
+            "pk" : "0004",
+            "title" : "",
+            "alt_text" : "",
+            "image" : "img/aac_board_imgs/fakejsonimg/fun.png",
+            "thumb" : "",
+          },
+          "word": "siblings",
+          "pk" : "",
+          "hidden": "false",
+        },
+        "d5" : {
+          "lexeme" : "Pets",
+          "symbol" : {
+            "pk" : "0005",
+            "title" : "",
+            "alt_text" : "",
+            "image" : "img/aac_board_imgs/fakejsonimg/bunny.png",
+            "thumb" : "",
+          },
+          "word": "pets",
+          "pk" : "",
+          "hidden": "false",
+        },
+        "e1" : {
+          "lexeme" : "Gender",
+          "symbol" : {
+            "pk" : "0006",
+            "title" : "",
+            "alt_text" : "",
+            "image" : "img/aac_board_imgs/fakejsonimg/I.png",
+            "thumb" : "",
+          },
+          "word": "gender",
+          "pk" : "",
+          "hidden": "false",
+        },
+        "e5" : {
+          "lexeme" : "Age",
+          "symbol" : {
+            "pk" : "0007",
+            "title" : "",
+            "alt_text" : "",
+            "image" : "img/aac_board_imgs/fakejsonimg/painting.png",
+            "thumb" : "",
+          },
+          "word": "age",
+          "pk" : "",
+          "hidden": "false",
+        },
+        "f2" : {
+          "lexeme" : "Favorite Toy",
+          "symbol" : {
+            "pk" : "0008",
+            "title" : "",
+            "alt_text" : "",
+            "image" : "img/aac_board_imgs/fakejsonimg/sports.png",
+            "thumb" : "",
+          },
+          "word": "toy",
+          "pk" : "",
+          "hidden": "false",
+        },
+        "f1" : {
+          "lexeme" : "Hobby",
+          "symbol" : {
+            "pk" : "0009",
+            "title" : "",
+            "alt_text" : "",
+            "image" : "img/aac_board_imgs/fakejsonimg/book_reading.png",
+            "thumb" : "",
+          },
+          "word": "hobby",
+          "pk" : "",
+          "hidden": "false",
+        },
+        "b4" : {
+          "lexeme" : "Favorite sports team",
+          "symbol" : {
+            "pk" : "0010",
+            "title" : "",
+            "alt_text" : "",
+            "image" : "img/aac_board_imgs/fakejsonimg/sports.png",
+            "thumb" : "",
+          },
+          "word": "sports",
+          "pk" : "",
+          "hidden": "false",
+        },
+        "b6" : {
+          "lexeme" : "Favorite food",
+          "symbol" : {
+            "pk" : "0011",
+            "title" : "",
+            "alt_text" : "",
+            "image" : "img/aac_board_imgs/fakejsonimg/food.png",
+            "thumb" : "",
+          },
+          "word": "food",
+          "pk" : "",
+          "hidden": "false",
+        },
+        "c1" : {
+          "lexeme" : "Favorite ice cream",
+          "symbol" : {
+            "pk" : "0012",
+            "title" : "",
+            "alt_text" : "",
+            "image" : "img/aac_board_imgs/fakejsonimg/food.png",
+            "thumb" : "",
+          },
+          "word": "ice cream",
+          "pk" : "",
+          "hidden": "false",
+        },
+        "c3" : {
+          "lexeme" : "Favorite color",
+          "symbol" : {
+            "pk" : "0013",
+            "title" : "",
+            "alt_text" : "",
+            "image" : "img/aac_board_imgs/fakejsonimg/painting.png",
+            "thumb" : "",
+          },
+          "word": "color",
+          "pk" : "",
+          "hidden": "false",
+        }
+      }
+    }
+
+
+
+    $scope.aboutcircle = true;
   } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
-    console.log("what about this??")
+    console.log("what about this??");
+    console.log($scope.board.pk);
      var req2 = {
       url: 'https://lexemes-dev.herokuapp.com/board/single/',
       data: {pk: 4},
@@ -79,6 +271,43 @@ $scope.chosenBoard = function(sampleBoard){
     console.log("This icon doesn't have an associated board");
   }
 }
+
+// $scope.chosenBoard2 = function(sampleBoard){
+//   $scope.selectedIndex = sampleBoard;
+//   if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
+//     console.log("is this working?")
+//     var req = {
+//       url: 'https://lexemes-dev.herokuapp.com/board/single/',
+//       data: {pk: 3},
+//       method: 'POST'
+//     }
+//     $http(req).success(function(data) {
+//       $scope.board = data;
+//       $scope.filled_tiles = Object.keys($scope.board.symbols);
+//       // $window.location.href = "#/board_factory/sample_edit";
+//     })
+
+//   } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
+//     console.log("Stuff");
+//     $scope.aboutcircle = true;
+
+//   }else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
+//     console.log("what about this??")
+//      var req2 = {
+//       url: 'https://lexemes-dev.herokuapp.com/board/single/',
+//       data: {pk: 4},
+//       method: 'POST'
+//     }
+//     $http(req2).success(function(data) {
+//       $scope.board = data;
+//       $scope.filled_tiles = Object.keys($scope.board.symbols);
+//       // $window.location.href = "#/board_factory/sample_edit";
+//     })
+    
+//   } else{
+//     console.log("This icon doesn't have an associated board");
+//   }
+// }
   
   $scope.toggleLeft = function(){
     $ionicSideMenuDelegate.toggleLeft();
@@ -244,22 +473,6 @@ $scope.chosenBoard = function(sampleBoard){
 
     console.log($scope.selectedTiles);
     $scope.selectedIndex = tile;
-
-    // $scope.isSelected = function(val) {
-    //    return val in $scope.selectedTiles
-    // }
-
-    // for(i = 0; i < $scope.selectedTiles; i++){
-    //   $scope.selectedTiles[i].style.backgroundColor = "#83EFF0";
-    // }
-    // return tile in  $scope.selectedTiles;
-
-    // $scope.selectedTiles.style.color = 'lightblue';
-    // $scope.selectedTiles = ['a1', 'b2', 'c4']
-
-    // $scope.isSelected = function(val) {
-    //    return val in $scope.selectedTiles
-    // }
   }
 
   $scope.deleteLastTile = function () {
@@ -302,6 +515,10 @@ $scope.chosenBoard = function(sampleBoard){
   };
 
   $scope.dummyBoards =[
+  { name:"About Me",
+    img_path:"img/aac_board_imgs/crayon.png",
+    pk: '5' },
+
   { name:"Anmls",
     img_path:"img/aac_board_imgs/alpaca.png",
     pk: '3' },
@@ -476,6 +693,10 @@ $scope.panel = function(number){
       var alternate = document.getElementById("alternate");
       alternate.style.backgroundColor = "white";
       alternate.style.color = "black";
+
+      var aboutMe = document.getElementById("aboutMe");
+      aboutMe.style.backgroundColor = "white";
+      aboutMe.style.color = "black";
       // }
 
   } else if(number == "2"){
@@ -498,7 +719,11 @@ $scope.panel = function(number){
 
       var alternate = document.getElementById("alternate");
       alternate.style.backgroundColor = "white";
-        alternate.style.color = "black";
+      alternate.style.color = "black";
+
+      var aboutMe = document.getElementById("aboutMe");
+      aboutMe.style.backgroundColor = "white";
+      aboutMe.style.color = "black";
 
   } else if(number == "3"){
       var self = document.getElementById("sound");
@@ -522,6 +747,10 @@ $scope.panel = function(number){
       alternate.style.backgroundColor = "white";
       alternate.style.color = "black";
 
+      var aboutMe = document.getElementById("aboutMe");
+      aboutMe.style.backgroundColor = "white";
+      aboutMe.style.color = "black";
+
   } else if(number == "4"){
       var self = document.getElementById("phrase");
       self.style.backgroundColor = "#008485";
@@ -544,6 +773,10 @@ $scope.panel = function(number){
       alternate.style.backgroundColor = "white";
       alternate.style.color = "black";
 
+      var aboutMe = document.getElementById("aboutMe");
+      aboutMe.style.backgroundColor = "white";
+      aboutMe.style.color = "black";
+
   } else if(number == "5"){
       var self = document.getElementById("alternate");
       self.style.backgroundColor = "#008485";
@@ -565,6 +798,36 @@ $scope.panel = function(number){
       var settings = document.getElementById("settings");
       settings.style.backgroundColor = "white";
       settings.style.color = "black";
+
+      var aboutMe = document.getElementById("aboutMe");
+      aboutMe.style.backgroundColor = "white";
+      aboutMe.style.color = "black";
+
+  }else if(number == "6"){
+      var self = document.getElementById("aboutMe");
+      self.style.backgroundColor = "#008485";
+      self.style.color = "white";
+      $scope.step = 6;
+
+      var synthetic = document.getElementById("synthetic");
+      synthetic.style.backgroundColor = "white";
+      synthetic.style.color = "black";
+
+      var sound = document.getElementById("sound");
+      sound.style.backgroundColor = "white";
+      sound.style.color = "black";
+
+      var phrase = document.getElementById("phrase");
+      phrase.style.backgroundColor = "white";
+      phrase.style.color = "black";
+
+      var settings = document.getElementById("settings");
+      settings.style.backgroundColor = "white";
+      settings.style.color = "black";
+
+      var alternate = document.getElementById("alternate");
+      alternate.style.backgroundColor = "white";
+      alternate.style.color = "black";
 
   } else {
     console.log("This isn't working either?!? God!?!?");

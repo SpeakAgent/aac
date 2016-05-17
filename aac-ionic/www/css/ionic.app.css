@@ -62,6 +62,13 @@ $dark:                            #444 !default;
   margin-right: -10px;
 }
 
+.about-circle{
+  background-color: #FFDB3B;
+  width:10px;
+  height:10px;
+  border-radius: 5px;
+}
+
 .manual-minus p{
   color:#B70016;
   font-size: 3em;
@@ -74,6 +81,11 @@ $dark:                            #444 !default;
   margin:-30px -3px -8px 0px;
   font-weight: bold;
   /*float:right;*/
+}
+
+.annotation{
+  color:#6A7777;
+  padding-left:4px;
 }
 
 input[type="text"]{
@@ -244,6 +256,18 @@ input[type="text"]:focus, textarea:focus{
   padding-left: 30px;
   font-size: 1.2em;
   width:70%;
+}
+
+.about-content{
+  width:70%;
+  margin-left: 15%;
+  margin-top:2%;
+}
+
+.about-symbol-select{
+  width:70%;
+  margin-left: 15%;
+  margin-top:2%;
 }
 
 #settings-modal{
