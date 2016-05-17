@@ -473,27 +473,7 @@ $scope.chosenBoard = function(sampleBoard){
 
     console.log($scope.selectedTiles);
     $scope.selectedIndex = tile;
-
-    // $scope.isSelected = function(val) {
-    //    return val in $scope.selectedTiles
-    // }
-
-    // for(i = 0; i < $scope.selectedTiles; i++){
-    //   $scope.selectedTiles[i].style.backgroundColor = "#83EFF0";
-    // }
-    // return tile in  $scope.selectedTiles;
-
-    // $scope.selectedTiles.style.color = 'lightblue';
-    // $scope.selectedTiles = ['a1', 'b2', 'c4']
-
-    // $scope.isSelected = function(val) {
-    //    return val in $scope.selectedTiles
-    // }
   }
-
-  // $scope.clickTile2 = function(tile){
-  //   $scope.selectedTiles.push(tile);
-  // }
 
   $scope.deleteLastTile = function () {
     $scope.selectedTiles.pop();
@@ -713,6 +693,10 @@ $scope.panel = function(number){
       var alternate = document.getElementById("alternate");
       alternate.style.backgroundColor = "white";
       alternate.style.color = "black";
+
+      var aboutMe = document.getElementById("aboutMe");
+      aboutMe.style.backgroundColor = "white";
+      aboutMe.style.color = "black";
       // }
 
   } else if(number == "2"){
@@ -735,7 +719,11 @@ $scope.panel = function(number){
 
       var alternate = document.getElementById("alternate");
       alternate.style.backgroundColor = "white";
-        alternate.style.color = "black";
+      alternate.style.color = "black";
+
+      var aboutMe = document.getElementById("aboutMe");
+      aboutMe.style.backgroundColor = "white";
+      aboutMe.style.color = "black";
 
   } else if(number == "3"){
       var self = document.getElementById("sound");
@@ -759,6 +747,10 @@ $scope.panel = function(number){
       alternate.style.backgroundColor = "white";
       alternate.style.color = "black";
 
+      var aboutMe = document.getElementById("aboutMe");
+      aboutMe.style.backgroundColor = "white";
+      aboutMe.style.color = "black";
+
   } else if(number == "4"){
       var self = document.getElementById("phrase");
       self.style.backgroundColor = "#008485";
@@ -781,6 +773,10 @@ $scope.panel = function(number){
       alternate.style.backgroundColor = "white";
       alternate.style.color = "black";
 
+      var aboutMe = document.getElementById("aboutMe");
+      aboutMe.style.backgroundColor = "white";
+      aboutMe.style.color = "black";
+
   } else if(number == "5"){
       var self = document.getElementById("alternate");
       self.style.backgroundColor = "#008485";
@@ -802,6 +798,36 @@ $scope.panel = function(number){
       var settings = document.getElementById("settings");
       settings.style.backgroundColor = "white";
       settings.style.color = "black";
+
+      var aboutMe = document.getElementById("aboutMe");
+      aboutMe.style.backgroundColor = "white";
+      aboutMe.style.color = "black";
+
+  }else if(number == "6"){
+      var self = document.getElementById("aboutMe");
+      self.style.backgroundColor = "#008485";
+      self.style.color = "white";
+      $scope.step = 6;
+
+      var synthetic = document.getElementById("synthetic");
+      synthetic.style.backgroundColor = "white";
+      synthetic.style.color = "black";
+
+      var sound = document.getElementById("sound");
+      sound.style.backgroundColor = "white";
+      sound.style.color = "black";
+
+      var phrase = document.getElementById("phrase");
+      phrase.style.backgroundColor = "white";
+      phrase.style.color = "black";
+
+      var settings = document.getElementById("settings");
+      settings.style.backgroundColor = "white";
+      settings.style.color = "black";
+
+      var alternate = document.getElementById("alternate");
+      alternate.style.backgroundColor = "white";
+      alternate.style.color = "black";
 
   } else {
     console.log("This isn't working either?!? God!?!?");
