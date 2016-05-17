@@ -385,7 +385,7 @@ $scope.chosenBoard = function(sampleBoard){
   $scope.start = 0;
   $scope.end = 24;
 
-  var template = '<ion-popover-view class="popover-stuff2"><ion-content><p class="popover-stuff">To edit the content of tiles with a yellow dot, go to Settings <button class="custom-button"><i class="icon ion-ios-gear"></i> Open Settings</button></p></ion-popover-view>';
+  var template = '<ion-popover-view class="popover-stuff2"><ion-content><p class="closing-x" ng-click="closePopover()">X</p><p class="popover-stuff">To edit the content of tiles with a yellow dot, go to Settings <button class="custom-button"><i class="icon ion-ios-gear"></i> Open Settings</button></p></ion-popover-view>';
 
   $scope.popover = $ionicPopover.fromTemplate(template, {
     scope: $scope

@@ -92,6 +92,7 @@ $dark:                            #444 !default;
 
 .popover-stuff{
   padding:5px;
+  padding-left: 10px;
   color:#EA465F;
   font-weight: 500;
   font-style: italic;
@@ -101,6 +102,14 @@ $dark:                            #444 !default;
   border-radius: 10px !important;
   height:90px !important;
   width:250px !important;
+}
+
+.closing-x{
+  color:#969696;
+  float:right;
+  margin-right:10px;
+  font-size: 1.25em;
+  font-weight: 700;
 }
 
 .about-circle{
