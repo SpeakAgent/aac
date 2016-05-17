@@ -9,7 +9,7 @@ app.filter('slice', function(){
 });
 
 app.controller('BoardController', 
-  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element, $location) {
+  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element, $location, $ionicPopover) {
 
   $scope.title = "This is a title";
   $scope.board = {};
@@ -385,6 +385,36 @@ $scope.chosenBoard = function(sampleBoard){
   $scope.start = 0;
   $scope.end = 24;
 
+  var template = '<ion-popover-view class="popover-stuff2"><ion-content><p class="popover-stuff">To edit the content of tiles with a yellow dot, go to Settings <button class="custom-button"><i class="icon ion-ios-gear"></i> Open Settings</button></p></ion-popover-view>';
+
+  $scope.popover = $ionicPopover.fromTemplate(template, {
+    scope: $scope
+  });
+
+  $ionicPopover.fromTemplateUrl('settings-popover.html', {
+    scope: $scope
+  }).then(function(popover){
+    $scope.popover = popover;
+  });
+
+  $scope.openPopover = function($event){
+    $scope.popover.show($event);
+  };
+
+  $scope.closePopover = function(){
+    $scope.popover.hide;
+  };
+
+  $scope.$on('$destroy', function(){
+    $scope.popover.remove();
+  });
+
+  $scope.$on('popover.hidden', function(){
+  });
+
+  $scope.$on('popover.removed', function(){
+  });
+
   $ionicModal.fromTemplateUrl('templates/aac-partials/_color-modal.html',{
     scope: $scope,
     animation: 'slide-in-up'
@@ -496,10 +526,6 @@ $scope.chosenBoard = function(sampleBoard){
     //    return val in $scope.selectedTiles
     // }
   }
-
-  // $scope.clickTile2 = function(tile){
-  //   $scope.selectedTiles.push(tile);
-  // }
 
   $scope.deleteLastTile = function () {
     $scope.selectedTiles.pop();
@@ -720,6 +746,10 @@ $scope.panel = function(number){
       var alternate = document.getElementById("alternate");
       alternate.style.backgroundColor = "white";
       alternate.style.color = "black";
+
+      var aboutMe = document.getElementById("aboutMe");
+      aboutMe.style.backgroundColor = "white";
+      aboutMe.style.color = "black";
       // }
 
   } else if(number == "2"){
@@ -742,7 +772,11 @@ $scope.panel = function(number){
 
       var alternate = document.getElementById("alternate");
       alternate.style.backgroundColor = "white";
-        alternate.style.color = "black";
+      alternate.style.color = "black";
+
+      var aboutMe = document.getElementById("aboutMe");
+      aboutMe.style.backgroundColor = "white";
+      aboutMe.style.color = "black";
 
   } else if(number == "3"){
       var self = document.getElementById("sound");
@@ -766,6 +800,10 @@ $scope.panel = function(number){
       alternate.style.backgroundColor = "white";
       alternate.style.color = "black";
 
+      var aboutMe = document.getElementById("aboutMe");
+      aboutMe.style.backgroundColor = "white";
+      aboutMe.style.color = "black";
+
   } else if(number == "4"){
       var self = document.getElementById("phrase");
       self.style.backgroundColor = "#008485";
@@ -788,6 +826,10 @@ $scope.panel = function(number){
       alternate.style.backgroundColor = "white";
       alternate.style.color = "black";
 
+      var aboutMe = document.getElementById("aboutMe");
+      aboutMe.style.backgroundColor = "white";
+      aboutMe.style.color = "black";
+
   } else if(number == "5"){
       var self = document.getElementById("alternate");
       self.style.backgroundColor = "#008485";
@@ -809,6 +851,36 @@ $scope.panel = function(number){
       var settings = document.getElementById("settings");
       settings.style.backgroundColor = "white";
       settings.style.color = "black";
+
+      var aboutMe = document.getElementById("aboutMe");
+      aboutMe.style.backgroundColor = "white";
+      aboutMe.style.color = "black";
+
+  }else if(number == "6"){
+      var self = document.getElementById("aboutMe");
+      self.style.backgroundColor = "#008485";
+      self.style.color = "white";
+      $scope.step = 6;
+
+      var synthetic = document.getElementById("synthetic");
+      synthetic.style.backgroundColor = "white";
+      synthetic.style.color = "black";
+
+      var sound = document.getElementById("sound");
+      sound.style.backgroundColor = "white";
+      sound.style.color = "black";
+
+      var phrase = document.getElementById("phrase");
+      phrase.style.backgroundColor = "white";
+      phrase.style.color = "black";
+
+      var settings = document.getElementById("settings");
+      settings.style.backgroundColor = "white";
+      settings.style.color = "black";
+
+      var alternate = document.getElementById("alternate");
+      alternate.style.backgroundColor = "white";
+      alternate.style.color = "black";
 
   } else {
     console.log("This isn't working either?!? God!?!?");

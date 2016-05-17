@@ -26,7 +26,8 @@
 
       <div class="board-factory-tile-section">
         <div id="newboard2">
-          <h1 class="factory-title">Editing Copy of {{board.title}}</h1><div class="about-question"><i class="icon ion-help"></i></div>
+          <h1 class="factory-title">Editing Copy of {{board.title}}<i class="icon ion-help" ng-click="openPopover($event)"></i></h1>
+          <!-- <div class="about-question"></div> -->
           <p class="board-instructions2" ng-show="board.title != 'About Me'"><i class="icon ion=help"></i> Tap a tile to select a Board to edit. Press and hold a Board tile to move it to a different place. Tap the minus sign to remove the tile from the Board.</p>
           <p class="board-instructions2" ng-show="board.title == 'About Me'" style="margin-bottom:3px;">Tips:</p>
             <ol class="board-instructions2" ng-show="board.title == 'About Me'">
@@ -94,8 +95,15 @@
       </div>
       <button class="custom-button">Save</button>
     </div>
-
-
   </div>
   </ion-content>
+
+  <script id="settings-popover.html" type="text/ng-template">
+    <ion-popover-view class="popover-stuff2">
+      <ion-content>
+        <p>To edit the content of tiles with a yellow dot, go to Settings</p>
+        <button class="custom-button"><i class="icon ion-ios-gear"></i> Open Settings</button>
+      </ion-content>
+    </ion-popover-view>
+  </script>
 </ion-view>
