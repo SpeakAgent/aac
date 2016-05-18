@@ -80,7 +80,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "a2" : {
+        "b1" : {
           "lexeme" : "Birthday",
           "symbol" : {
             "pk" : "0001",
@@ -93,7 +93,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "a3" : {
+        "c1" : {
           "lexeme" : "Hometown",
           "symbol" : {
             "pk" : "0002",
@@ -106,7 +106,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "a4" : {
+        "d1" : {
           "lexeme" : "Name of best friend",
           "symbol" : {
             "pk" : "0003",
@@ -119,7 +119,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "a5" : {
+        "e1" : {
           "lexeme" : "Siblings",
           "symbol" : {
             "pk" : "0004",
@@ -132,7 +132,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "a6" : {
+        "f1" : {
           "lexeme" : "Pets",
           "symbol" : {
             "pk" : "0005",
@@ -145,7 +145,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "b1" : {
+        "a2" : {
           "lexeme" : "Gender",
           "symbol" : {
             "pk" : "0006",
@@ -171,7 +171,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "b3" : {
+        "c2" : {
           "lexeme" : "Favorite Toy",
           "symbol" : {
             "pk" : "0008",
@@ -184,7 +184,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "b4" : {
+        "d2" : {
           "lexeme" : "Hobby",
           "symbol" : {
             "pk" : "0009",
@@ -197,7 +197,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "b5" : {
+        "e2" : {
           "lexeme" : "Favorite sports team",
           "symbol" : {
             "pk" : "0010",
@@ -210,7 +210,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "b6" : {
+        "f2" : {
           "lexeme" : "Favorite food",
           "symbol" : {
             "pk" : "0011",
@@ -223,7 +223,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "c1" : {
+        "a3" : {
           "lexeme" : "Favorite ice cream",
           "symbol" : {
             "pk" : "0012",
@@ -236,7 +236,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "c2" : {
+        "b3" : {
           "lexeme" : "Favorite color",
           "symbol" : {
             "pk" : "0013",
@@ -343,7 +343,7 @@ $scope.chosenBoard = function(sampleBoard){
   $scope.start = 0;
   $scope.end = 24;
 
-  var template = '<ion-popover-view class="popover-stuff2"><ion-content><p class="closing-x" ng-click="closePopover()">X</p><p class="popover-stuff">To edit the content of tiles with a yellow dot, go to Settings <button class="custom-button"><i class="icon ion-ios-gear"></i> Open Settings</button></p></ion-popover-view>';
+  var template = '<ion-popover-view class="popover-stuff2"><ion-content><p class="closing-x" ng-click="closePopover()">X</p><p class="popover-stuff">To edit the content of tiles with a yellow dot, go to Settings <a href="#/settings"><button class="custom-button"><i class="icon ion-gear-a"></i> Open Settings</button></a></p></ion-popover-view>';
 
   $scope.popover = $ionicPopover.fromTemplate(template, {
     scope: $scope

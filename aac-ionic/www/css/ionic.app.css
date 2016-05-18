@@ -80,18 +80,17 @@ $dark:                            #444 !default;
 }
 
 .icon.ion-help{
-  font-size:.4em;
+  position:fixed;
+  font-size:.8em;
   color:white;
-  padding: 2px 6px 2px 6px;
-  border-radius: 15px;
+  padding: 0px 8px 0px 8px;
+  border-radius: 10px;
   background-color: #008485;
-  margin-left: 15px; 
-  margin-bottom: 10px;
-  /*float:right;*/
+  margin-top: -10px;
 }
 
 .popover-stuff{
-  padding:5px;
+  padding:3px;
   padding-left: 10px;
   color:#EA465F;
   font-weight: 500;
@@ -100,7 +99,7 @@ $dark:                            #444 !default;
 
 .popover-stuff2{
   border-radius: 10px !important;
-  height:90px !important;
+  height:95px !important;
   width:250px !important;
 }
 
@@ -512,21 +511,25 @@ button.button-outline.button-calm.button-small.selected-btn2{
   font-size: .75em;
   margin: 8px;
   float: left;
-  text-align: center; }
-
-  .tile2 {
-    background-color: #73E7E8;
-    padding: .5%;
-    /*border: 2px solid #979797;*/
-    border-radius: 12px;
-    height: 70px;
-    width: 70px;
-    font-size: .75em;
-    margin: 8px;
-    /*margin-top: -10px;*/
-    float: left;
-    text-align: center; 
+  text-align: center; 
 }
+
+.tile2 {
+  background-color: #73E7E8;
+  padding: .5%;
+  border-radius: 12px;
+  height: 70px;
+  width: 70px;
+  font-size: .75em;
+  margin: 8px;
+  float: left;
+  text-align: center; 
+}
+
+/*.question-sign{
+  margin-left:-10px;
+  margin-top: 10%;
+}*/
 
 .tile.selectedColor {
     background-color: #000;
