@@ -514,6 +514,20 @@ button.button-outline.button-calm.button-small.selected-btn2{
   float: left;
   text-align: center; }
 
+  .tile2 {
+    background-color: #73E7E8;
+    padding: .5%;
+    /*border: 2px solid #979797;*/
+    border-radius: 12px;
+    height: 70px;
+    width: 70px;
+    font-size: .75em;
+    margin: 8px;
+    /*margin-top: -10px;*/
+    float: left;
+    text-align: center; 
+}
+
 .tile.selectedColor {
     background-color: #000;
 }

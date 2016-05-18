@@ -273,52 +273,10 @@ $scope.chosenBoard = function(sampleBoard){
     console.log("This icon doesn't have an associated board");
   }
 }
-
-// $scope.chosenBoard2 = function(sampleBoard){
-//   $scope.selectedIndex = sampleBoard;
-//   if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
-//     console.log("is this working?")
-//     var req = {
-//       url: 'https://lexemes-dev.herokuapp.com/board/single/',
-//       data: {pk: 3},
-//       method: 'POST'
-//     }
-//     $http(req).success(function(data) {
-//       $scope.board = data;
-//       $scope.filled_tiles = Object.keys($scope.board.symbols);
-//       // $window.location.href = "#/board_factory/sample_edit";
-//     })
-
-//   } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
-//     console.log("Stuff");
-//     $scope.aboutcircle = true;
-
-//   }else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
-//     console.log("what about this??")
-//      var req2 = {
-//       url: 'https://lexemes-dev.herokuapp.com/board/single/',
-//       data: {pk: 4},
-//       method: 'POST'
-//     }
-//     $http(req2).success(function(data) {
-//       $scope.board = data;
-//       $scope.filled_tiles = Object.keys($scope.board.symbols);
-//       // $window.location.href = "#/board_factory/sample_edit";
-//     })
-    
-//   } else{
-//     console.log("This icon doesn't have an associated board");
-//   }
-// }
   
   $scope.toggleLeft = function(){
     $ionicSideMenuDelegate.toggleLeft();
   };
-
-  // $scope.contact ={
-  //   name: 'Mittens Cat',
-  //   info: 'Tap anywhere on the card to open the modal'
-  // }
 
   $scope.colorName =[
     {colorTitle: 'Sky Blue',
@@ -402,7 +360,7 @@ $scope.chosenBoard = function(sampleBoard){
   };
 
   $scope.closePopover = function(){
-    $scope.popover.hide;
+    $scope.popover.hide();
   };
 
   $scope.$on('$destroy', function(){
@@ -509,22 +467,6 @@ $scope.chosenBoard = function(sampleBoard){
     if($scope.selectedTiles[$scope.selectedIndex] == undefined){
       console.log("no index!!");
     }
-
-    // $scope.isSelected = function(val) {
-    //    return val in $scope.selectedTiles
-    // }
-
-    // for(i = 0; i < $scope.selectedTiles; i++){
-    //   $scope.selectedTiles[i].style.backgroundColor = "#83EFF0";
-    // }
-    // return tile in  $scope.selectedTiles;
-
-    // $scope.selectedTiles.style.color = 'lightblue';
-    // $scope.selectedTiles = ['a1', 'b2', 'c4']
-
-    // $scope.isSelected = function(val) {
-    //    return val in $scope.selectedTiles
-    // }
   }
 
   $scope.deleteLastTile = function () {

@@ -40,7 +40,7 @@
         </div>
 
         <span ng-repeat="row in rows">
-          <div class="tile" ng-repeat="col in columns" ng-click="clickTile(board.symbols[col+row])" style="position:relative; z-index:0;" ng-class="{lightBlue:board.symbols[col+row]==selectedIndex}">
+          <div class="tile" ng-repeat="col in columns" ng-click="clickTile(board.symbols[col+row])" style="position:relative; z-index:0;" ng-class="{lightBlue:board.symbols[col+row]==selectedIndex}" ng-if="board.symbols[col+row].word != undefined">
             <!-- <span ng-show="filled_tiles.indexOf(col+row)!=-1">
               <i class="icon ion-ios-minus-outline" style="float:left;"></i>
             </span> -->
@@ -51,6 +51,9 @@
               {{board.symbols[col+row].word}}<br>
               <img src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px; position:relative; z-index:0;">
             </span>
+          </div>
+
+          <div class="tile2" ng-repeat="col in columns" ng-if="board.symbols[col+row].word == undefined">
           </div>
         </span>
       </div>
