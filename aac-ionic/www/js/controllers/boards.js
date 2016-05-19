@@ -9,7 +9,7 @@ app.filter('slice', function(){
 });
 
 app.controller('BoardController', 
-  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element, $location) {
+  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element, $location, $ionicPopover) {
 
   $scope.title = "This is a title";
   $scope.board = {};
@@ -62,10 +62,12 @@ $scope.chosenBoard = function(sampleBoard){
     //   $scope.nestedObj = $scope.data.title; 
     // })
 
+    // $scope.aboutMe = true;
+
     $scope.board = {
       "title" :"About Me",
       "symbols" : {
-        "a6" : {
+        "a1" : {
           "lexeme" : "Nickname",
           "symbol" : {
             "pk" : "0000",
@@ -91,7 +93,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "c4" : {
+        "c1" : {
           "lexeme" : "Hometown",
           "symbol" : {
             "pk" : "0002",
@@ -104,7 +106,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "d3" : {
+        "d1" : {
           "lexeme" : "Name of best friend",
           "symbol" : {
             "pk" : "0003",
@@ -117,7 +119,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "d4" : {
+        "e1" : {
           "lexeme" : "Siblings",
           "symbol" : {
             "pk" : "0004",
@@ -130,7 +132,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "d5" : {
+        "f1" : {
           "lexeme" : "Pets",
           "symbol" : {
             "pk" : "0005",
@@ -143,7 +145,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "e1" : {
+        "a2" : {
           "lexeme" : "Gender",
           "symbol" : {
             "pk" : "0006",
@@ -156,7 +158,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "e5" : {
+        "b2" : {
           "lexeme" : "Age",
           "symbol" : {
             "pk" : "0007",
@@ -169,7 +171,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "f2" : {
+        "c2" : {
           "lexeme" : "Favorite Toy",
           "symbol" : {
             "pk" : "0008",
@@ -182,7 +184,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "f1" : {
+        "d2" : {
           "lexeme" : "Hobby",
           "symbol" : {
             "pk" : "0009",
@@ -195,7 +197,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "b4" : {
+        "e2" : {
           "lexeme" : "Favorite sports team",
           "symbol" : {
             "pk" : "0010",
@@ -208,7 +210,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "b6" : {
+        "f2" : {
           "lexeme" : "Favorite food",
           "symbol" : {
             "pk" : "0011",
@@ -221,7 +223,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "c1" : {
+        "a3" : {
           "lexeme" : "Favorite ice cream",
           "symbol" : {
             "pk" : "0012",
@@ -234,7 +236,7 @@ $scope.chosenBoard = function(sampleBoard){
           "pk" : "",
           "hidden": "false",
         },
-        "c3" : {
+        "b3" : {
           "lexeme" : "Favorite color",
           "symbol" : {
             "pk" : "0013",
@@ -267,56 +269,14 @@ $scope.chosenBoard = function(sampleBoard){
       $scope.filled_tiles = Object.keys($scope.board.symbols)
     })
 
-  } else{
+  }else{
     console.log("This icon doesn't have an associated board");
   }
 }
-
-// $scope.chosenBoard2 = function(sampleBoard){
-//   $scope.selectedIndex = sampleBoard;
-//   if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
-//     console.log("is this working?")
-//     var req = {
-//       url: 'https://lexemes-dev.herokuapp.com/board/single/',
-//       data: {pk: 3},
-//       method: 'POST'
-//     }
-//     $http(req).success(function(data) {
-//       $scope.board = data;
-//       $scope.filled_tiles = Object.keys($scope.board.symbols);
-//       // $window.location.href = "#/board_factory/sample_edit";
-//     })
-
-//   } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
-//     console.log("Stuff");
-//     $scope.aboutcircle = true;
-
-//   }else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
-//     console.log("what about this??")
-//      var req2 = {
-//       url: 'https://lexemes-dev.herokuapp.com/board/single/',
-//       data: {pk: 4},
-//       method: 'POST'
-//     }
-//     $http(req2).success(function(data) {
-//       $scope.board = data;
-//       $scope.filled_tiles = Object.keys($scope.board.symbols);
-//       // $window.location.href = "#/board_factory/sample_edit";
-//     })
-    
-//   } else{
-//     console.log("This icon doesn't have an associated board");
-//   }
-// }
   
   $scope.toggleLeft = function(){
     $ionicSideMenuDelegate.toggleLeft();
   };
-
-  // $scope.contact ={
-  //   name: 'Mittens Cat',
-  //   info: 'Tap anywhere on the card to open the modal'
-  // }
 
   $scope.colorName =[
     {colorTitle: 'Sky Blue',
@@ -382,6 +342,36 @@ $scope.chosenBoard = function(sampleBoard){
   
   $scope.start = 0;
   $scope.end = 24;
+
+  var template = '<ion-popover-view class="popover-stuff2"><ion-content><p class="closing-x" ng-click="closePopover()">X</p><p class="popover-stuff">To edit the content of tiles with a yellow dot, go to Settings <a href="#/settings"><button class="custom-button"><i class="icon ion-gear-a"></i> Open Settings</button></a></p></ion-popover-view>';
+
+  $scope.popover = $ionicPopover.fromTemplate(template, {
+    scope: $scope
+  });
+
+  $ionicPopover.fromTemplateUrl('settings-popover.html', {
+    scope: $scope
+  }).then(function(popover){
+    $scope.popover = popover;
+  });
+
+  $scope.openPopover = function($event){
+    $scope.popover.show($event);
+  };
+
+  $scope.closePopover = function(){
+    $scope.popover.hide();
+  };
+
+  $scope.$on('$destroy', function(){
+    $scope.popover.remove();
+  });
+
+  $scope.$on('popover.hidden', function(){
+  });
+
+  $scope.$on('popover.removed', function(){
+  });
 
   $ionicModal.fromTemplateUrl('templates/aac-partials/_color-modal.html',{
     scope: $scope,
@@ -473,6 +463,10 @@ $scope.chosenBoard = function(sampleBoard){
 
     console.log($scope.selectedTiles);
     $scope.selectedIndex = tile;
+
+    if($scope.selectedTiles[$scope.selectedIndex] == undefined){
+      console.log("no index!!");
+    }
   }
 
   $scope.deleteLastTile = function () {
@@ -515,15 +509,16 @@ $scope.chosenBoard = function(sampleBoard){
   };
 
   $scope.dummyBoards =[
+
   { name:"About Me",
     img_path:"img/aac_board_imgs/crayon.png",
     pk: '5' },
 
-  { name:"Anmls",
+  { name:"Lunch",
     img_path:"img/aac_board_imgs/alpaca.png",
     pk: '3' },
 
-  { name:"Arts",
+  { name:"Feelings",
     img_path:"img/aac_board_imgs/art.png",
     pk: '4' },
 
