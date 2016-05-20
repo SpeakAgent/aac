@@ -36,7 +36,8 @@ app.directive('hiding',function($compile){
     element.bind('click', function(){
       // if($scope.hide = true){
         scope.count++;
-        angular.element(document.getElementById('thisTile')).append($compile('<div class="greyEdit"></div>')(scope));
+        angular.element(document.getElementsByClassName('tile')).append($compile('<div class="greyEdit"></div>')(scope));
+        // angular.element(document.getElementById('thisTile')).append($compile('<div class="greyEdit"></div>')(scope));
       // };
     });
   };
@@ -475,10 +476,11 @@ $scope.chosenBoard = function(sampleBoard){
       // console.log($scope.selectedIndex2);
       // $scope.tile = document.getElementsByClassName("tile");
       // console.log($scope.tile[1]);
+
       var tile = document.getElementsByClassName("tile");
       angular.element($scope.selectedIndex2).append('<div id="thisTile"></div>');
+
       // angular.element(document.getElementById('thisTile')).append($compile('<div class="greyEdit"></div>')(scope));
-      console.log($scope.tile[1]);
 
       // tile.bind('click', function(event){
       //   var elem = event.currentTarget;
