@@ -55,14 +55,6 @@ $scope.chosenBoard = function(sampleBoard){
       $scope.filled_tiles = Object.keys($scope.board.symbols)
     })
   } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
-    // console.log("Stuff");
-    // // $scope.board = 1;
-    // console.log($scope.board.pk);
-    // JsonScv.read('data.json', $scope).then(function(){
-    //   $scope.nestedObj = $scope.data.title; 
-    // })
-
-    // $scope.aboutMe = true;
 
     $scope.board = {
       "title" :"About Me",
