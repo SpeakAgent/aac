@@ -136,6 +136,10 @@ $dark:                            #444 !default;
   margin-top: -10px;
 }
 
+.icon.ion-gear, .icon.ion-grid, .icon.ion-eye-disabled, .hide-label{
+  color:#b2b2b2;
+}
+
 .popover-stuff{
   padding:3px;
   padding-left: 10px;
@@ -389,7 +393,7 @@ float:left;
   position:relative;
   z-index:3;
   text-decoration: none;
-  color:white;
+  color:#b2b2b2;
 }
 
 .item.item-divider{
@@ -416,8 +420,13 @@ float:left;
   padding-top: 2px;
   font-size: .75em;
   margin-bottom:-10px;
+  color:#b2b2b2;
   /*color:#50E2E3;*/
 }
+
+/*.show-hide-label2{
+  
+}*/
 .icon.ion-locked{
   font-size:2.5em;
   color:red;
@@ -451,14 +460,6 @@ float:left;
 .done-button a{
   color:#008485;
   text-decoration: none;
-}
-
-#selected-btn{
-  background-color: #6FCACB;
-  color:white;
-  border-radius: 0;
-  margin-left: 8px;
-  border-color: #6FCACB; 
 }
 
 button.button-outline.button-calm.button-small.selected-btn2{
@@ -632,35 +633,36 @@ button.button-outline.button-calm.button-small.selected-btn2{
   padding: 0;
   z-index: 3; }
 
-  a:active {
-    background color:#579215;
-    border-color:#579215;
-  }
+a:active {
+  background color:#579215;
+  border-color:#579215;
+}
 
-  #button-circle{
-    width:75px;
-    height:75px;
-    background-color: #008485;
-    border-radius: 37.5px;
-    float:left;
-    margin-left:20px;
-  }
 
-  .button-circle{
-    width:75px;
-    height:75px;
-    background-color: #008485;
-    border-radius: 37.5px;
-    float:left;
-    margin-left:20px;
-  }
+#button-circle{
+  width:75px;
+  height:75px;
+  background-color: #008485;
+  border-radius: 37.5px;
+  float:left;
+  margin-left:20px;
+}
 
-  #button-circle2{
-    width:75px;
-    height:75px;
-    background-color: #008485;
-    border-radius: 37.5px;
-  }
+.button-circle{
+  width:75px;
+  height:75px;
+  background-color: #008485;
+  border-radius: 37.5px;
+  float:left;
+  margin-left:20px;
+}
+
+#button-circle2{
+  width:75px;
+  height:75px;
+  background-color: #008485;
+  border-radius: 37.5px;
+}
 
 #btn-styling {
   border-radius: 0;
@@ -745,6 +747,7 @@ button.button-outline.button-calm.button-small.selected-btn2{
   /*width:10px;*/
   height:15px;
   float:left;
+  margin-bottom: 5px;
 }
 
 .toggle.toggle-dark-green input + .track{
@@ -759,6 +762,22 @@ button.button-outline.button-calm.button-small.selected-btn2{
   margin-top:1px; 
   margin-left:2px; 
   margin-bottom:-20px;
+}
+
+.button.button-outline.button-calm.button-small{
+  border-color:#b2b2b2;
+}
+
+#selected-btn, #selected-btn a, #selected-btn i{
+  background-color: #6FCACB;
+  color:white;
+  border-radius: 0;
+  margin-left: 8px;
+  border-color: #6FCACB; 
+}
+
+.selected-btn2, .selected-btn2 a, .selected-btn2 i{
+  color:white;
 }
 
 .boardline {
