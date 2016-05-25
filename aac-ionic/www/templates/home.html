@@ -81,8 +81,7 @@
 
             <div class="col col-40" id="board-section" style="margin-top:-43px;">
               <div class="boards" ng-repeat="board in dummyBoards | slice:start:end" ng-click="chosenBoard($index)">
-
-                  <p style="position:fixed; z-index:3; margin-top:25px; margin-left:15px;" ng-model="titleLimit">{{board.name | limitTo: titleLimit}} </p>
+                  <p style="position:fixed; z-index:3; margin-top:25px; margin-left:15px;" ng-model="titleLimit">{{board.name | limitTo: titleLimit}} <span ng-show="board.name.length > titleLimit">...</span> </p>
 
                   <img ng-src="{{board.img_path}}" alt="image" ng-click="sayWord()" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-60px;"\>
 
