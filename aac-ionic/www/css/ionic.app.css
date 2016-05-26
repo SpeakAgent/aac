@@ -462,12 +462,24 @@ float:left;
   text-decoration: none;
 }
 
+#selected-btn, #selected-btn a, #selected-btn i{
+  background-color: #6FCACB;
+  color:white;
+  border-radius: 0;
+  margin-left: 8px;
+  border-color: #6FCACB; 
+}
+
 button.button-outline.button-calm.button-small.selected-btn2{
   background-color: #6FCACB;
   color:white;
   border-radius: 0;
   margin-left: 8px;
   border-color: #6FCACB;
+}
+
+.selected-btn2{
+  color:white;
 }
 
 /*.handle{
@@ -766,14 +778,6 @@ a:active {
 
 .button.button-outline.button-calm.button-small{
   border-color:#b2b2b2;
-}
-
-#selected-btn, #selected-btn a, #selected-btn i{
-  background-color: #6FCACB;
-  color:white;
-  border-radius: 0;
-  margin-left: 8px;
-  border-color: #6FCACB; 
 }
 
 .selected-btn2, .selected-btn2 a, .selected-btn2 i{
