@@ -848,12 +848,15 @@ $scope.panel = function(number){
   }
 
   $scope.class = "none";
+  $scope.selectedBtn2 = true;
+  // $scope.class.color = "white";
 
   $scope.activeHide = function(){
     console.log("So, it works ...");
     if($scope.class === "none"){
       $scope.class = "selected-btn2";
-       $scope.hide = true;
+      $scope.hide = true;
+      $scope.selectedBtn2 = false;
     }
   }
 
@@ -861,6 +864,7 @@ $scope.panel = function(number){
     if($scope.class === "selected-btn2"){
       $scope.class = "none";
       $scope.hide = false;
+      $scope.selectedBtn2 = true;
     }
   }
 });

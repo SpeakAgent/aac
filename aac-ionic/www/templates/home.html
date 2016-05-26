@@ -11,7 +11,9 @@
         </button>
 
         <button class="button button-outline button-calm button-small" id="btn-styling" style="margin-right:10px;" ng-click="activeHide()" ng-class="class">
-          <i class="icon ion-eye-disabled"></i> <span class="hide-label">Hide Tiles</span>
+          <i class="icon ion-eye-disabled" ng-show="selectedBtn2 == true"></i>
+          <i class="icon ion-eye-disabled" ng-show="selectedBtn2 == false" style="color:white;"></i>
+          <span class="hide-label" ng-show="selectedBtn2 == true">Hide Tiles</span><span ng-show="selectedBtn2 == false">Hide Tiles</span>
 
           <div class="toggle-content" style="float:right">
             <label class="toggle toggle-dark-green toggle-small" ng-if="hide">
