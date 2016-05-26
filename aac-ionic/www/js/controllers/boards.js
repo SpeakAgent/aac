@@ -50,8 +50,8 @@ app.directive('hiding',function($compile){
         // scope.hideIt = function(){
           scope.count++;
           // console.log("this?");
-          angular.element(document.getElementsByClassName('tile')).append(('<div ng-click="hideThis()"></div>')(scope));
-          // angular.element(document.getElementsByClassName('tile')).append($compile('<div class="greyEdit"></div>')(scope));
+          // angular.element(document.getElementsByClassName('tile')).append($compile('<div ng-click="hideThis(things)"></div>')(scope));
+          angular.element(document.getElementsByClassName('tile')).append($compile('<div class="greyEdit"></div>')(scope));
           // angular.element(document.getElementById('thisTile')).append($compile('<div class="greyEdit"></div>')(scope));
         // };
       // }
@@ -937,9 +937,10 @@ $scope.panel = function(number){
     $scope.editable = false;
   }
 
-  $scope.hideThis = function(){
-    console.log("Egg?");
-  }
+  // $scope.hideThis = function(things){
+  //   $scope.well = things
+  //   console.log(well);
+  // }
 });
 
 app.run(function($ionicPlatform) {
