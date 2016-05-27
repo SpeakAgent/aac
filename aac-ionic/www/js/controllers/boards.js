@@ -19,6 +19,18 @@ app.directive('hiding',function($compile){
   };
 });
 
+app.directive('hidingLarge',function($compile){
+  return function(scope, element, attrs){
+    element.bind('click', function(){
+      // if (scope.hide == true){
+        console.log("this");
+        element.append($compile('<div class="greyEdit2"></div>')(scope));
+        element.append($compile('<div class="hidden-symbol2"><p><i class="icon ion-eye"></i></p></div>')(scope));
+      // }
+    });
+  };
+});
+
 app.controller('BoardController', 
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element, $location, $ionicPopover) {
 
