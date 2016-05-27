@@ -13,6 +13,7 @@ app.directive('hiding',function($compile){
     element.bind('click', function(){
       if (scope.hide == true){
         element.append($compile('<div class="greyEdit"></div>')(scope));
+        element.append($compile('<div class="hidden-symbol"><p><i class="icon ion-eye"></i></p></div>')(scope));
       }
     });
   };
