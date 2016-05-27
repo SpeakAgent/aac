@@ -8,53 +8,12 @@ app.filter('slice', function(){
   };
 });
 
-// app.directive("copyingexample", function(){
-//   return {
-//     restrict: 'E',
-//     template: '<p class="something">I guess some content</p>'
-//   }
-// });
-
-// app.directive('addathing', function($compile){
-//   return function(scope, element, attrs){
-//     element.bind('click', function(){
-//       angular.element(document.getElementById('stuff')).append($compile('<p style="color:red;">It worked!!!</p>')(scope));
-//     });
-//   };
-// });
-
-// app.directive('addanotherthing', function($compile){
-//   return function(scope, element, attrs){
-//     element.bind('click', function(){
-//       angular.element(document.getElementsByClassName('class-needed')).append($compile('<h2 style="color:green">This worked two?!?!</h2>')(scope));
-//     });
-//   };
-// });
-
-// app.directive('hiding',function($compile){
-//   return function(scope, element, attrs){
-//     element.bind('click', function(){
-//       // if($scope.hide = true){
-//         scope.count++;
-//         angular.element(document.getElementsByClassName('tile')).append($compile('<div class="greyEdit"></div>')(scope));
-//         // angular.element(document.getElementById('thisTile')).append($compile('<div class="greyEdit"></div>')(scope));
-//       // };
-//     });
-//   };
-// });
-
 app.directive('hiding',function($compile){
   return function(scope, element, attrs){
     element.bind('click', function(){
-      // if($scope.hide = true){
-        // scope.hideIt = function(){
-          scope.count++;
-          // console.log("this?");
-          // angular.element(document.getElementsByClassName('tile')).append($compile('<div ng-click="hideThis(things)"></div>')(scope));
-          angular.element(document.getElementsByClassName('tile')).append($compile('<div class="greyEdit"></div>')(scope));
-          // angular.element(document.getElementById('thisTile')).append($compile('<div class="greyEdit"></div>')(scope));
-        // };
-      // }
+      if (scope.hide == true){
+        element.append($compile('<div class="greyEdit"></div>')(scope));
+      }
     });
   };
 });
@@ -936,11 +895,6 @@ $scope.panel = function(number){
     }
     $scope.editable = false;
   }
-
-  // $scope.hideThis = function(things){
-  //   $scope.well = things
-  //   console.log(well);
-  // }
 });
 
 app.run(function($ionicPlatform) {
