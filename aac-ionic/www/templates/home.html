@@ -103,7 +103,11 @@
             </div>
 
             <div class="col col-40" id="board-section" style="margin-top:-43px;">
-              <div class="boards" ng-repeat="board in dummyBoards | slice:start:end" ng-click="chosenBoard($index)">
+              <div class="boards" ng-repeat="board in dummyBoards | slice:start:end" ng-click="chosenBoard($index)" hiding-board>
+                  <div class="hide-symbol" ng-show="editable" style="position:fixed; margin-left:52px; margin-top:18px;">
+                      <p><i class="icon ion-eye-disabled"></i></p>
+                  </div>
+
                   <img ng-src="{{board.img_path}}" alt="image" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-60px;"\>
 
                   <img src="img/new_dev_assets/board_tile_notched_default.svg" style="position:relative; z-index:0;" alt="board tile">

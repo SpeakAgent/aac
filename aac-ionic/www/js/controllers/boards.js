@@ -31,6 +31,18 @@ app.directive('hidingLarge',function($compile){
   };
 });
 
+app.directive('hidingBoard', function($compile){
+  return function(scope, element, attrs){
+    element.bind('click', function(){
+      if(scope.hide2 == true){
+        console.log("Working?");
+        element.append($compile('<img src="img/new_dev_assets/board_tile_notched_default_hidden.svg" style="position:fixed; z-index:8; margin-top:-78px; margin-left:-33px" alt="board tile" />')(scope));
+        element.append($compile('<div class="hidden-symbol2" style="position:fixed; margin-left:53px; margin-top: -80px;"><p><i class="icon ion-eye"></i></p></div>')(scope));
+      }
+    });
+  };
+});
+
 app.controller('BoardController', 
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element, $location, $ionicPopover) {
 
@@ -907,6 +919,7 @@ $scope.panel = function(number){
     if($scope.class === "selected-btn2"){
       $scope.class = "none";
       $scope.hide = false;
+      $scope.hide2 = false;
     }
     $scope.editable = false;
   }
