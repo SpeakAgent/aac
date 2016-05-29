@@ -22,11 +22,11 @@ app.directive('hiding',function($compile){
 app.directive('hidingLarge',function($compile){
   return function(scope, element, attrs){
     element.bind('click', function(){
-      // if (scope.hide == true){
+      if (scope.hide2 == true){
         console.log("this");
         element.append($compile('<div class="greyEdit2"></div>')(scope));
         element.append($compile('<div class="hidden-symbol2"><p><i class="icon ion-eye"></i></p></div>')(scope));
-      // }
+      }
     });
   };
 });
@@ -50,6 +50,7 @@ app.controller('BoardController',
   $scope.selectedIndex = -2;
   $scope.selectedIndex2 = -3;
   $scope.count = 0;
+  $scope.hide2 = false;
   // $scope.hide = false;
 
   $scope.fakecontent = [
@@ -897,6 +898,7 @@ $scope.panel = function(number){
     if($scope.class === "none"){
       $scope.class = "selected-btn2";
        $scope.hide = true;
+       $scope.hide2 = true;
     }
     $scope.editable = true;
   }
