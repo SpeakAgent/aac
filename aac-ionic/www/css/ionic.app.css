@@ -25,6 +25,38 @@ $dark:                            #444 !default;
   border-color:white;
 }
 
+.greyEdit{
+  background:rgba(0, 0, 0, .4);
+  padding: .5%;
+  border: 2px solid #979797;
+  border-radius: 12px;
+  height: 70px;
+  width: 70px;
+  font-size: .75em;
+  float: left;
+  position: relative;
+  z-index: 7;
+  text-align: center;
+  margin-left: -5px;
+  margin-top: -71px;
+}
+
+.greyEdit2{
+  background:rgba(0, 0, 0, .4);
+  padding: .5%;
+  border: 2px solid #979797;
+  border-radius: 12px;
+  height: 90px;
+  width: 77px;
+  font-size: .75em;
+  float: left;
+  position: relative;
+  z-index: 7;
+  text-align: center;
+  margin-left: -10px;
+  margin-top: -31px;
+}
+
 .top-button{
   position:absolute; 
   margin:42% 30% 30% 39%;
@@ -60,6 +92,74 @@ $dark:                            #444 !default;
   color:#B70016;
   margin-top: -10px;
   margin-right: -10px;
+}
+
+.hide-symbol{
+  width:18px;
+  height:18px;
+  border-radius:10px;
+  background-color:white;
+  float:right;
+  color:#E6213F;
+  margin-top: -8px;
+  margin-right: -7px;
+  font-size:1.25em;
+  position: relative;
+  z-index: 5;
+}
+
+.hidden-symbol{
+  width:18px;
+  height:18px;
+  border-radius:10px;
+  background-color:white;
+  float:right;
+  color:#77CE20;
+  margin-top: -74px;
+  margin-right: -7px;
+  font-size:1.25em;
+  position: relative;
+  z-index: 9;
+}
+
+.hidden-symbol2{
+  width:18px;
+  height:18px;
+  border-radius:10px;
+  background-color:white;
+  float:right;
+  color:#77CE20;
+  margin-top: -97px;
+  margin-right: -15px;
+  font-size:1.25em;
+  position: relative;
+  z-index: 9;
+}
+
+.hide-symbol2{
+  width:18px;
+  height:18px;
+  border-radius:10px;
+  background-color:white;
+  float:right;
+  color:#E6213F;
+  position:relative; 
+  z-index:4;
+  margin-top: 20px;
+  margin-right: -7px;
+  font-size:1.25em;
+}
+
+.hide-symbol-common{
+  width:18px;
+  height:18px;
+  border-radius:10px;
+  background-color:white;
+  float:right;
+  color:#E6213F;
+  margin-top: -18px;
+  margin-right: -15px;
+  font-size:1.25em;
 }
 
 .yellow-dot{
@@ -129,7 +229,6 @@ $dark:                            #444 !default;
   color: black;
   margin:-30px -3px -8px 0px;
   font-weight: bold;
-  /*float:right;*/
 }
 
 .annotation{
@@ -322,7 +421,6 @@ input[type="text"]:focus, textarea:focus{
 
 #settings-modal{
   margin:-5px;
-  /*margin-right:-10px;*/
   background-color: #98E3E3;
 }
 
@@ -379,12 +477,9 @@ float:left;
 
 .done-button{
   background-color: white;
-  /*margin-right: 2%;*/
-  /*margin-left: 1%;*/
   float:right;
   border-radius: 20px;
   border-style: solid;
-  /*border-color: #50E2E3;*/
   border-color: #006E70;
 }
 
@@ -395,11 +490,6 @@ float:left;
   margin-left: 5px;
   margin-right: 6px;
 }
-
-
-/*#small-icon{
-  font-size: 4em;
-}*/
 
 .done-button a{
   color:#008485;
@@ -421,10 +511,6 @@ button.button-outline.button-calm.button-small.selected-btn2{
   margin-left: 8px;
   border-color: #6FCACB;
 }
-
-/*.handle{
-  background-color: #77CE20;
-}*/
 
 .icon.ion-unlocked{
   font-size:2.5em;
@@ -462,7 +548,6 @@ button.button-outline.button-calm.button-small.selected-btn2{
 #color-modal-style{
   width:80%; 
   margin-left:-10%; 
-  /*height:80%; */
   height: 80%;
   margin-top:-5%;
   opacity:.9;
@@ -485,16 +570,11 @@ button.button-outline.button-calm.button-small.selected-btn2{
   height:100px;
   width:100px;
   font-size: .75em;
-  /*margin:8px;*/
   margin-left: 60px;
   margin-bottom: 30px;
   float: left;
   text-align: center;
 }
-
-/*.color-choice.selectedColor{
-  background-color: blue;
-}*/
 
 .real-content {
   width: 40%;
@@ -540,14 +620,12 @@ button.button-outline.button-calm.button-small.selected-btn2{
   margin: 10px; }
 
 .boards {
-  /*background-color: #ffffff;*/
   padding: .5%;
   height: 70px;
   width: 70px;
   font-size: .75em;
   margin: 8px;
   float: left;
-  /*border: 2px solid #979797;*/
   text-align: center; 
 }
 
@@ -562,10 +640,10 @@ button.button-outline.button-calm.button-small.selected-btn2{
   margin-left: 5px;
   float: left;
   border: 2px solid #979797;
-  text-align: center; }
-
-.appBody {
-  /*background: #50E2E3;*/ }
+  text-align: center; 
+  position: relative;
+  z-index:3;
+}
 
 .word-builder-input {
   width: 800px;
@@ -578,42 +656,42 @@ button.button-outline.button-calm.button-small.selected-btn2{
   width: 0;
   height: 0;
   border-top: 30px solid #50E2E3;
-  /*border-color: #000000;*/
   border-left: 30px solid transparent;
   float: right;
   margin: -4px;
   padding: 0;
-  z-index: 3; }
+  z-index: 3; 
+}
 
-  a:active {
-    background color:#579215;
-    border-color:#579215;
-  }
+a:active {
+  background color:#579215;
+  border-color:#579215;
+}
 
-  #button-circle{
-    width:75px;
-    height:75px;
-    background-color: #008485;
-    border-radius: 37.5px;
-    float:left;
-    margin-left:20px;
-  }
+#button-circle{
+  width:75px;
+  height:75px;
+  background-color: #008485;
+  border-radius: 37.5px;
+  float:left;
+  margin-left:20px;
+}
 
-  .button-circle{
-    width:75px;
-    height:75px;
-    background-color: #008485;
-    border-radius: 37.5px;
-    float:left;
-    margin-left:20px;
-  }
+.button-circle{
+  width:75px;
+  height:75px;
+  background-color: #008485;
+  border-radius: 37.5px;
+  float:left;
+  margin-left:20px;
+}
 
-  #button-circle2{
-    width:75px;
-    height:75px;
-    background-color: #008485;
-    border-radius: 37.5px;
-  }
+#button-circle2{
+  width:75px;
+  height:75px;
+  background-color: #008485;
+  border-radius: 37.5px;
+}
 
 #btn-styling {
   border-radius: 0;
@@ -638,25 +716,30 @@ button.button-outline.button-calm.button-small.selected-btn2{
 
 #regularRow {
   margin: 0;
-  padding: 0; }
+  padding: 0; 
+}
 
 #regularRowBod {
-  height: 620px; }
+  height: 620px; 
+}
 
 #tile-section {
   margin-top: -33px;
   float: left;
-  /*border-right: 2px solid #ffffff;*/ }
+}
 
 .tile-section-border {
   margin-top: 12px;
   float: left;
-  border-right: 2px solid #ffffff; }
+  border-right: 2px solid #ffffff; 
+}
 
 #board-section {
   margin-top: -20px;
   float: left;
-  /*margin-right:-20px;*/ }
+  /*margin-left:-30px;*/
+  /*margin-right:-20px;*/
+}
 
 #btn-section {
   background: #50E2E3;

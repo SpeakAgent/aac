@@ -8,6 +8,41 @@ app.filter('slice', function(){
   };
 });
 
+app.directive('hiding',function($compile){
+  return function(scope, element, attrs){
+    element.bind('click', function(){
+      if (scope.hide == true){
+        element.append($compile('<div class="greyEdit"></div>')(scope));
+        element.append($compile('<div class="hidden-symbol"><p><i class="icon ion-eye"></i></p></div>')(scope));
+      }
+    });
+  };
+});
+
+app.directive('hidingLarge',function($compile){
+  return function(scope, element, attrs){
+    element.bind('click', function(){
+      if (scope.hide2 == true){
+        console.log("this");
+        element.append($compile('<div class="greyEdit2"></div>')(scope));
+        element.append($compile('<div class="hidden-symbol2"><p><i class="icon ion-eye"></i></p></div>')(scope));
+      }
+    });
+  };
+});
+
+app.directive('hidingBoard', function($compile){
+  return function(scope, element, attrs){
+    element.bind('click', function(){
+      if(scope.hide2 == true){
+        console.log("Working?");
+        element.append($compile('<img src="img/new_dev_assets/board_tile_notched_default_hidden.svg" style="position:fixed; z-index:8; margin-top:-78px; margin-left:-33px" alt="board tile" />')(scope));
+        element.append($compile('<div class="hidden-symbol2" style="position:fixed; margin-left:53px; margin-top: -80px;"><p><i class="icon ion-eye"></i></p></div>')(scope));
+      }
+    });
+  };
+});
+
 app.controller('BoardController', 
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element, $location, $ionicPopover) {
 
@@ -23,8 +58,19 @@ app.controller('BoardController',
     }
   $scope.columns = "abcdef"
   $scope.rows = "123456"
-  $scope.selectedTiles = []
-  $scope.selectedIndex = -2
+  $scope.selectedTiles = [];
+  $scope.selectedIndex = -2;
+  $scope.selectedIndex2 = -3;
+  $scope.count = 0;
+  $scope.hide2 = false;
+  // $scope.hide = false;
+
+  $scope.fakecontent = [
+  {word : "it"},
+  {word : "this"},
+  {word : "that"},
+  {word : "Uh..."}
+  ]
 
 var req = {
   url: 'https://lexemes-dev.herokuapp.com/board/single/',
@@ -252,10 +298,8 @@ $scope.chosenBoard = function(sampleBoard){
       }
     }
 
-
-
     $scope.aboutcircle = true;
-  } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
+    } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
     console.log("what about this??");
     console.log($scope.board.pk);
      var req2 = {
@@ -382,7 +426,7 @@ $scope.chosenBoard = function(sampleBoard){
 
   $scope.openModal = function(){
     $scope.modal.show()
-  }
+  };
 
   $scope.closeModal = function(){
     $scope.modal.hide();
@@ -394,7 +438,7 @@ $scope.chosenBoard = function(sampleBoard){
 
   $scope.doneCancel = function(){
     this.style.border = "blue";
-  }
+  };
 
   $scope.colorSelect = function(colorIndex){
     $scope.selectedIndex = colorIndex;
@@ -457,15 +501,27 @@ $scope.chosenBoard = function(sampleBoard){
     }
   }
 
-  $scope.clickTile = function(tile) {
+  $scope.clickTile = function(specificTile) {
+    if ($scope.hide == true){
+      $scope.selectedIndex2 = specificTile;
 
-    $scope.selectedTiles.push(tile);
+      var tile = document.getElementsByClassName("tile");
+      angular.element($scope.selectedIndex2).append('<div id="thisTile"></div>');
 
-    console.log($scope.selectedTiles);
-    $scope.selectedIndex = tile;
+      // angular.element(document.getElementById('thisTile')).append($compile('<div class="greyEdit"></div>')(scope));
 
-    if($scope.selectedTiles[$scope.selectedIndex] == undefined){
-      console.log("no index!!");
+      // tile.bind('click', function(event){
+      //   var elem = event.currentTarget;
+      //   angular.element(elem).append('<div class= tile greyEdit></div>')
+    }else{
+       $scope.selectedTiles.push(specificTile);
+       $scope.selectedIndex = specificTile;
+    // console.log($scope.selectedTiles);
+    // $scope.selectedIndex = tile;
+
+    // if($scope.selectedTiles[$scope.selectedIndex] == undefined){
+    //   console.log("no index!!");
+    // }
     }
   }
 
@@ -854,14 +910,18 @@ $scope.panel = function(number){
     if($scope.class === "none"){
       $scope.class = "selected-btn2";
        $scope.hide = true;
+       $scope.hide2 = true;
     }
+    $scope.editable = true;
   }
 
   $scope.hideDone = function(){
     if($scope.class === "selected-btn2"){
       $scope.class = "none";
       $scope.hide = false;
+      $scope.hide2 = false;
     }
+    $scope.editable = false;
   }
 });
 
