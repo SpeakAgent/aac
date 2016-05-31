@@ -866,12 +866,12 @@ $scope.panel = function(number){
 
   $scope.asideState = {
     open: false
-  }
+  };
 
-  $scope.openAside = function(position, backdrop){
+  $scope.openAside = function(backdrop){
     $scope.asideState = {
       open: true,
-      position: position
+      position: 'right'
     };
 
     function postClose(){
@@ -880,8 +880,8 @@ $scope.panel = function(number){
 
     $aside.open({
       templateUrl:'templates/search.html',
-      placement: position,
-      size: 'lg',
+      placement: 'right',
+      size: 'sm',
       backdrop: backdrop,
       controller: function($scope, $uibModalInstance){
         $scope.ok = function(e){
@@ -894,7 +894,7 @@ $scope.panel = function(number){
           e.stopPropagation();
         };
       }
-    }).result.then(postClose, postClose)
+    })
   }
 });
 

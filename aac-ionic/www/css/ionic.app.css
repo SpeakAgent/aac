@@ -16,6 +16,50 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+.modal.fade.ng-aside.horizontal.right.in{
+  transform:translate(200%, 0);
+  width:350px;
+}
+
+.modal-content{
+  margin-left: -50px;
+}
+
+.search-rule{
+  width:100%;
+  background:#C7C7C7;
+  margin-left: -13px;
+  margin-top: 5px;
+  float:left;
+}
+
+#search-box{
+  outline: none;
+  width:250px;
+  float:left;
+}
+
+#search-box:focus{
+  background:white;
+  box-shadow: none;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: none;
+  outline:none;
+}
+
+.icon.ion-close-round.search-close{
+  margin:0;
+  padding:0;
+  color:#999999;
+  font-size:1.25em;
+}
+
+.close-box{
+  float:left;
+  margin-left: 35px;
+}
+
 .tile.white{
   background-color:white;
 }
