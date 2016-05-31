@@ -543,7 +543,8 @@ button.button-outline.button-calm.button-small.selected-btn2{
 .real-content {
   width: 40%;
   float: right;
-  background: yellow; }
+  background: yellow; 
+}
 
 .tile {
   background-color: #ffffff;
@@ -576,7 +577,7 @@ button.button-outline.button-calm.button-small.selected-btn2{
 }*/
 
 .tile.selectedColor {
-    background-color: #000;
+  background-color: #000;
 }
 
 .word-builder {
@@ -606,7 +607,8 @@ button.button-outline.button-calm.button-small.selected-btn2{
   margin-left: 5px;
   float: left;
   border: 2px solid #979797;
-  text-align: center; }
+  text-align: center; 
+}
 
 .appBody {
   /*background: #50E2E3;*/ }
@@ -616,7 +618,8 @@ button.button-outline.button-calm.button-small.selected-btn2{
   height: 80px;
   border-radius: 10px;
   background-color: white;
-  border: 1px solid #979797; }
+  border: 1px solid #979797; 
+}
 
 .triangle-topright {
   width: 0;
@@ -627,37 +630,38 @@ button.button-outline.button-calm.button-small.selected-btn2{
   float: right;
   margin: -4px;
   padding: 0;
-  z-index: 3; }
+  z-index: 3; 
+}
 
-  a:active {
-    background color:#579215;
-    border-color:#579215;
-  }
+a:active {
+  background color:#579215;
+  border-color:#579215;
+}
 
-  #button-circle{
-    width:75px;
-    height:75px;
-    background-color: #008485;
-    border-radius: 37.5px;
-    float:left;
-    margin-left:20px;
-  }
+#button-circle{
+  width:75px;
+  height:75px;
+  background-color: #008485;
+  border-radius: 37.5px;
+  float:left;
+  margin-left:20px;
+}
 
-  .button-circle{
-    width:75px;
-    height:75px;
-    background-color: #008485;
-    border-radius: 37.5px;
-    float:left;
-    margin-left:20px;
-  }
+.button-circle{
+  width:75px;
+  height:75px;
+  background-color: #008485;
+  border-radius: 37.5px;
+  float:left;
+  margin-left:20px;
+}
 
-  #button-circle2{
-    width:75px;
-    height:75px;
-    background-color: #008485;
-    border-radius: 37.5px;
-  }
+#button-circle2{
+  width:75px;
+  height:75px;
+  background-color: #008485;
+  border-radius: 37.5px;
+}
 
 #btn-styling {
   border-radius: 0;
