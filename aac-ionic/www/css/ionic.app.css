@@ -726,13 +726,11 @@ a:active {
   background: #50E2E3; 
 }
 
-/*.buttonsdiv{
-  width:80%;
-  height:140%;
-  float:left;
-}*/
-
 .buttonsdiv{
+  /*width:80%;*/
+  /*height:140%;*/
+  /*float:left;*/
+  /*padding-top:0px;*/
   margin-left: 200px;
 }
 
