@@ -476,6 +476,10 @@ button.button-outline.button-calm.button-small.selected-btn2{
   margin-right:30px;
 }
 
+/*.lock-container{
+  margin-top:-20px;
+}*/
+
 .round-button{
   width:120px;
   height:40px;
@@ -727,10 +731,10 @@ a:active {
 }
 
 .buttonsdiv{
-  /*width:80%;*/
-  /*height:140%;*/
-  /*float:left;*/
-  /*padding-top:0px;*/
+  width:80%;
+  height:170%;
+  float:left;
+  padding-top:0px;
   margin-left: 200px;
 }
 
