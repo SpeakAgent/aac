@@ -9,7 +9,7 @@ app.filter('slice', function(){
 });
 
 app.controller('BoardController', 
-  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element, $location, $ionicPopover) {
+  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element, $location, $ionicPopover, $aside) {
 
   $scope.title = "This is a title";
   $scope.board = {};
@@ -862,6 +862,39 @@ $scope.panel = function(number){
       $scope.class = "none";
       $scope.hide = false;
     }
+  }
+
+  $scope.asideState = {
+    open: false
+  };
+
+  $scope.openAside = function(backdrop){
+    $scope.asideState = {
+      open: true,
+      position: 'right'
+    };
+
+    function postClose(){
+      $scope.asideState.open = false;
+    }
+
+    $aside.open({
+      templateUrl:'templates/search.html',
+      placement: 'right',
+      size: 'sm',
+      backdrop: backdrop,
+      controller: function($scope, $uibModalInstance){
+        $scope.ok = function(e){
+          $uibModalInstance.close();
+          e.stopPropagation();
+        };
+
+        $scope.cancel = function(e){
+          $uibModalInstance.dismiss();
+          e.stopPropagation();
+        };
+      }
+    })
   }
 });
 
