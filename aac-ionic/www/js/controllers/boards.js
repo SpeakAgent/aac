@@ -424,17 +424,14 @@ $scope.chosenBoard = function(sampleBoard){
 
     var placeholder = document.createElement("img");
     placeholder.src = "img/color_change/colorBlob_white.svg";
-    // placeholder.style.marginTop = "-50px";
     placeholder.style.width = "70%";
     placeholder.style.height = "70%"; 
     placeholder.id = "placeholder";
-    // placeholder.style.paddingTop = "-20px";
 
 
       for(var i = 0; i < buttonCircle.length; i++){
         buttonCircle[i].style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
         colorChoice[$scope.selectedIndex].style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
-        // colorChoice[$scope.selectedIndex].appendChild(placeholder);
         if(originalImg[$scope.selectedIndex].style.display = "none"){
           colorChoice[$scope.selectedIndex].appendChild(placeholder);
         }
@@ -482,6 +479,20 @@ $scope.chosenBoard = function(sampleBoard){
     var req = {
       url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
       data: {pks: "[" + pks.toString() + "]"},
+      method: 'POST'
+    }
+    console.log(req);
+    $http(req).success(function(data) {
+      console.log(data);
+      $scope.speakText(data.sentence);
+    })
+  }
+
+  $scope.sayWord = function() {
+    console.log($scope.selectedIndex.pk);
+    var req = {
+      url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
+      data: {pks: "[" + $scope.selectedIndex.pk + "]"},
       method: 'POST'
     }
     console.log(req);
