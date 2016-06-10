@@ -7,7 +7,6 @@ app.controller('BoardController',
 
   // To be on the safe side, put most of the top stuff in reused controller
   $scope.board = {};
-  // $scope.board.title = "Home";
   $scope.settings = true;
   $scope.step = 1;
   sample_symbol = {
@@ -328,11 +327,6 @@ $scope.chosenBoard = function(sampleBoard){
      secondaryColor:'#A7E8C5',
      url:'img/color_change/colorBlob_seafoamGreen.svg'},
   ]
-//
-  
-// Put in reused (needed for filter)
-  // $scope.start = 0;
-  // $scope.end = 24;
 //
 
 //Put in settingsCtrl
@@ -1002,6 +996,7 @@ $scope.panel = function(number){
       {'placeholder':'ENTER WORD'}
     );
   }
+
 
 });
 
