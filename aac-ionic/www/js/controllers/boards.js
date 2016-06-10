@@ -40,7 +40,6 @@ $http(req).success(function(data) {
 
 $scope.chosenBoard = function(sampleBoard){
   $scope.selectedIndex = sampleBoard;
-  // console.log($scope.selectedIndex);
   if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
     console.log("is this working?");
     console.log($scope.board.pk);
@@ -55,14 +54,6 @@ $scope.chosenBoard = function(sampleBoard){
       $scope.filled_tiles = Object.keys($scope.board.symbols)
     })
   } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
-    // console.log("Stuff");
-    // // $scope.board = 1;
-    // console.log($scope.board.pk);
-    // JsonScv.read('data.json', $scope).then(function(){
-    //   $scope.nestedObj = $scope.data.title; 
-    // })
-
-    // $scope.aboutMe = true;
 
     $scope.board = {
       "title" :"About Me",
@@ -424,17 +415,14 @@ $scope.chosenBoard = function(sampleBoard){
 
     var placeholder = document.createElement("img");
     placeholder.src = "img/color_change/colorBlob_white.svg";
-    // placeholder.style.marginTop = "-50px";
     placeholder.style.width = "70%";
     placeholder.style.height = "70%"; 
     placeholder.id = "placeholder";
-    // placeholder.style.paddingTop = "-20px";
 
 
       for(var i = 0; i < buttonCircle.length; i++){
         buttonCircle[i].style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
         colorChoice[$scope.selectedIndex].style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
-        // colorChoice[$scope.selectedIndex].appendChild(placeholder);
         if(originalImg[$scope.selectedIndex].style.display = "none"){
           colorChoice[$scope.selectedIndex].appendChild(placeholder);
         }
