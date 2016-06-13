@@ -5,13 +5,15 @@
           <a href="#/settings"><i class="icon ion-gear-b"></i> Settings</a>
         </button>
         <button class="button button-outline button-calm button-small" id="btn-styling">
-          <i class="icon ion-grid" id="small-icon"></i><a href="#/board_factory">Board Factory</a>
+          <i class="icon ion-grid"></i><a href="#/board_factory"> Board Factory</a>
           <br>
           <p class="show-hide-label">*Requires Wifi</p>
         </button>
 
         <button class="button button-outline button-calm button-small" id="btn-styling" style="margin-right:10px;" ng-click="activeHide()" ng-class="class">
-          <i class="icon ion-eye-disabled"></i>Hide Tiles
+          <i class="icon ion-eye-disabled" ng-show="selectedBtn2 == true"></i>
+          <i class="icon ion-eye-disabled" ng-show="selectedBtn2 == false" style="color:white;"></i>
+          <span class="hide-label" ng-show="selectedBtn2 == true">Hide Tiles</span><span ng-show="selectedBtn2 == false">Hide Tiles</span>
 
           <div class="toggle-content" style="float:right">
             <label class="toggle toggle-dark-green toggle-small" ng-if="hide">
@@ -71,8 +73,8 @@
                 <span ng-repeat="row in rows">
                   <div class="tile" ng-repeat="col in columns" ng-click="clickTile(board.symbols[col+row]); sayWord()"  ng-class="{lightBlue:board.symbols[col+row]==selectedIndex}";>
                     <span ng-show="filled_tiles.indexOf(col+row)!=-1">
-                      {{board.symbols[col+row].word}}<br>
-                      <img src="{{board.symbols[col+row].symbol.thumb}}" style="width:40px;height:40px">
+                      {{board.symbols[col+row].word | limitTo: titleLimit}}<span ng-show="board.symbols[col+row].word.length > titleLimit">...</span><br>
+                      <img src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px">
                     </span>
                   </div>
                 </span>
@@ -81,11 +83,11 @@
 
             <div class="col col-40" id="board-section" style="margin-top:-43px;">
               <div class="boards" ng-repeat="board in dummyBoards | slice:start:end" ng-click="chosenBoard($index)">
-                  <img ng-src="{{board.img_path}}" alt="image" ng-click="sayWord()" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-60px;"\>
+                  <p style="position:fixed; z-index:3; margin-top:25px; margin-left:15px;" ng-model="titleLimit">{{board.name | limitTo: titleLimit}} <span ng-show="board.name.length > titleLimit">...</span></p>
 
-                  <img src="img/new_dev_assets/board_tile_notched_default.svg" style="positon:relative; z-index:0;" alt="board tile">
-          
-                  <p style="position:relative; z-index:3; margin-top:-30px">{{board.name}} </p>
+                  <img ng-src="{{board.img_path}}" alt="image" ng-click="sayWord()" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-70px;"\>
+
+                  <img src="img/new_dev_assets/board_tile_notched_default_1.svg" style="positon:relative; z-index:0;" alt="board tile">
                 <!-- </div> -->
               </div>
             </div>
