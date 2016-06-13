@@ -1,6 +1,6 @@
 // (function() {
 
-	var app = angular.module('starter', ['ionic', 'starter.reusedCtrl']);
+	var app = angular.module('starter', ['ionic']);
 
 	// app.filter('slice', function(){
 	//     return function(arr, start, end){
@@ -9,7 +9,7 @@
 	// });
 
 	app.controller('mainCtrl',
-	  function($http, $scope, $ionicModal, $location, reusedCtrl) {
+	  function($http, $scope, $ionicModal, $location) {
 
 	  	$scope.colorName =[
 	    {colorTitle: 'Sky Blue',

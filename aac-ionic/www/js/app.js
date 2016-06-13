@@ -14,7 +14,7 @@
     $stateProvider.state('main',{
       templateUrl: 'templates/main.html',
       url: '/main',
-      // controller:'mainCtrl'
+      controller:'mainCtrl'
     });
 
     $stateProvider.state('settings',{

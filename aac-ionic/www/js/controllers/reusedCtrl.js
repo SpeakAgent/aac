@@ -1,6 +1,6 @@
 // (function() {
 
-angular.module('starter', []);
+angular.module('starter', ['ionic']);
 
 // app.filter('slice', function(){
 //   return function(arr, start, end){
@@ -8,7 +8,7 @@ angular.module('starter', []);
 //   };
 // });
 
-.controller('reusedCtrl', 
+.controller('reusedCtrl'
   function($http, $scope, $ionicModal, $rootScope){
     $scope.board = {};
     // $scope.board.title = "Home";
