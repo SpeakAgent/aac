@@ -1,6 +1,6 @@
 // (function() {
 
-angular.module('starter', ['ionic']);
+angular.module('starter.boards', ['ionic']);
 
 // app.filter('slice', function(){
 //   return function(arr, start, end){

@@ -6,7 +6,7 @@
 // (function(){
 
 (function(){
-  var app = angular.module('starter', ['ionic']);
+  var app = angular.module('starter', ['ionic', 'starter.boards']);
 
   app.config(function($stateProvider, $urlRouterProvider) {
     // $urlRouterProvider.otherwise('/main');
