@@ -1,19 +1,12 @@
 (function() {
-
 var app = angular.module('starter.boards', ['ionic']);
-
-app.filter('slice', function(){
-  return function(arr, start, end){
-    return arr.slice(start, end);
-  };
 });
 
 app.controller('BoardController', 
-  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element, $location, $ionicPopover) {
+  function($http, $scope, $ionicModal, $location, $ionicPopover) {
 
-  $scope.title = "This is a title";
+  // To be on the safe side, put most of the top stuff in reused controller
   $scope.board = {};
-  $scope.board.title = "Home";
   $scope.settings = true;
   $scope.step = 1;
   sample_symbol = {
@@ -26,6 +19,8 @@ app.controller('BoardController',
   $scope.selectedTiles = []
   $scope.selectedIndex = -2
   $scope.titleLimit = 6
+  $scope.class = "white";
+  $scope.class = "none";
 
 var req = {
   url: 'https://lexemes-dev.herokuapp.com/board/single/',
@@ -37,7 +32,7 @@ $http(req).success(function(data) {
   $scope.board = data;
   $scope.filled_tiles = Object.keys($scope.board.symbols)
 })
-  
+
 
 $scope.chosenBoard = function(sampleBoard){
   $scope.selectedIndex = sampleBoard;
@@ -266,10 +261,13 @@ $scope.chosenBoard = function(sampleBoard){
   }
 }
   
-  $scope.toggleLeft = function(){
-    $ionicSideMenuDelegate.toggleLeft();
-  };
 
+  // $scope.toggleLeft = function(){
+  //   $ionicSideMenuDelegate.toggleLeft();
+  // };
+
+
+// main ctrl only
   $scope.colorName =[
     {colorTitle: 'Sky Blue',
      primaryColor:'#50E2E3',
@@ -331,10 +329,9 @@ $scope.chosenBoard = function(sampleBoard){
      secondaryColor:'#A7E8C5',
      url:'img/color_change/colorBlob_seafoamGreen.svg'},
   ]
-  
-  $scope.start = 0;
-  $scope.end = 24;
+//
 
+//Put in settingsCtrl
   var template = '<ion-popover-view class="popover-stuff2"><ion-content><p class="closing-x" ng-click="closePopover()">X</p><p class="popover-stuff">To edit the content of tiles with a yellow dot, go to Settings <a href="#/settings"><button class="custom-button"><i class="icon ion-gear-a"></i> Open Settings</button></a></p></ion-popover-view>';
 
   $scope.popover = $ionicPopover.fromTemplate(template, {
@@ -449,16 +446,17 @@ $scope.chosenBoard = function(sampleBoard){
     placeholder.style.height = "70%"; 
     placeholder.id = "placeholder";
 
+// put in reused
+  // $ionicModal.fromTemplateUrl('templates/aac-partials/_color-modal.html',{
+  //   scope: $scope,
+  //   animation: 'slide-in-up'
+  // }).then(function(modal){
+  //   $scope.modal = modal
+  // })
 
-      for(var i = 0; i < buttonCircle.length; i++){
-        buttonCircle[i].style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
-        colorChoice[$scope.selectedIndex].style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
-        if(originalImg[$scope.selectedIndex].style.display = "none"){
-          colorChoice[$scope.selectedIndex].appendChild(placeholder);
-        }
-      }
-      originalImg[$scope.selectedIndex].style.display = "none";
-  }
+  // $scope.openModal = function(){
+  //   $scope.modal.show()
+  // }
 
   $scope.changeBackground = function(){
     var buttonCircle = document.getElementsByClassName('button-circle');
@@ -475,18 +473,92 @@ $scope.chosenBoard = function(sampleBoard){
     }
   }
 
-  $scope.clickTile = function(tile) {
+  // $scope.$on('$destroy', function(){
+  //   $scope.modal.remove();
+  // });
+//
 
-    $scope.selectedTiles.push(tile);
 
-    console.log($scope.selectedTiles);
-    $scope.selectedIndex = tile;
+  // $scope.doneCancel = function(){
+  //   this.style.border = "blue";
+  // }
 
-    if($scope.selectedTiles[$scope.selectedIndex] == undefined){
-      console.log("no index!!");
-    }
-  }
+// put in reusedCtrl
+  // $scope.colorSelect = function(colorIndex){
+  //   $scope.selectedIndex = colorIndex;
+    
+  //   console.log($scope.selectedIndex);
+  //   var container = document.getElementById('container');
 
+  //   var bodyBack = document.getElementById('bodyBack');
+  //   bodyBack.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
+
+  //   var fullBody = document.getElementById('full-body');
+  //   fullBody.style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
+
+  //   var btnSection = document.getElementById('btn-section');
+  //   btnSection.style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
+
+  //   var buttonCircle2 = document.getElementById('button-circle2');
+  //   buttonCircle2.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
+
+  //   var buttonCircle = document.getElementsByClassName('button-circle');
+  //   console.log(buttonCircle[1].style.backgroundColor);
+
+  //   var colorChoice = document.getElementsByClassName('color-choice');
+
+  //   var scribble = document.getElementById('scribble');
+  //   var originalImg = document.getElementsByClassName('originalImg');
+
+  //   var placeholder = document.createElement("img");
+  //   placeholder.src = "img/color_change/colorBlob_white.svg";
+  //   placeholder.style.width = "70%";
+  //   placeholder.style.height = "70%"; 
+  //   placeholder.id = "placeholder";
+
+
+  //     for(var i = 0; i < buttonCircle.length; i++){
+  //       buttonCircle[i].style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
+  //       colorChoice[$scope.selectedIndex].style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
+  //       if(originalImg[$scope.selectedIndex].style.display = "none"){
+  //         colorChoice[$scope.selectedIndex].appendChild(placeholder);
+  //       }
+  //     }
+  //     originalImg[$scope.selectedIndex].style.display = "none";
+  // }
+
+
+  // $scope.changeBackground = function(){
+  //   var buttonCircle = document.getElementsByClassName('button-circle');
+  //   var originalImg = document.getElementsByClassName('originalImg');
+  //   for(var i = 0; i < buttonCircle.length; i++){
+  //     var colorChoice = document.getElementsByClassName('color-choice');
+  //     var placeholder = document.getElementById("placeholder");
+  //     originalImg[$scope.selectedIndex].style.display = "inline";
+  //     colorChoice[$scope.selectedIndex].removeChild(placeholder);
+  //     for(var n = 0; i < buttonCircle.length; n++){
+  //       colorChoice[n].style.backgroundColor = "white";
+  //       $scope.modal.hide();
+  //     }
+  //   }
+  // }
+//
+
+//reusedCtrl
+  // $scope.clickTile = function(tile) {
+
+  //   $scope.selectedTiles.push(tile);
+
+  //   console.log($scope.selectedTiles);
+  //   $scope.selectedIndex = tile;
+
+  //   if($scope.selectedTiles[$scope.selectedIndex] == undefined){
+  //     console.log("no index!!");
+  //   }
+  // }
+// 
+
+//mainCtrl
   $scope.deleteLastTile = function () {
     $scope.selectedTiles.pop();
   }
@@ -532,43 +604,43 @@ $scope.chosenBoard = function(sampleBoard){
            // Handle the error case
        });
   };
+//
 
-  $scope.class = "white";
+// reusedCtrl
+  // $scope.chosenTile = function(tileIndex){
+  //   $scope.selectedIndex = tileIndex;
+  //   console.log(tileIndex);
+  // };
 
-  $scope.chosenTile = function(tileIndex){
-    $scope.selectedIndex = tileIndex;
-    console.log(tileIndex);
-  };
+  // $scope.dummyBoards =[
 
-  $scope.dummyBoards =[
+  // { name:"About Me",
+  //   img_path:"img/aac_board_imgs/crayon.png",
+  //   pk: '5' },
 
-  { name:"About Me",
-    img_path:"img/aac_board_imgs/crayon.png",
-    pk: '5' },
+  // { name:"Lunch",
+  //   img_path:"img/aac_board_imgs/alpaca.png",
+  //   pk: '3' },
 
-  { name:"Lunch",
-    img_path:"img/aac_board_imgs/alpaca.png",
-    pk: '3' },
+  // { name:"Feelings",
+  //   img_path:"img/aac_board_imgs/art.png",
+  //   pk: '4' },
 
-  { name:"Feelings",
-    img_path:"img/aac_board_imgs/art.png",
-    pk: '4' },
-
-  { name:"Body",
-    img_path:"img/aac_board_imgs/balloon.png" },
+  // { name:"Body",
+  //   img_path:"img/aac_board_imgs/balloon.png" },
 
   { name:"Clothes",
     img_path:"img/aac_board_imgs/bird.png" },
 
-  { name:"Cars",
-    img_path:"img/aac_board_imgs/clock.png" },
+  // { name:"Cars",
+  //   img_path:"img/aac_board_imgs/clock.png" },
 
   { name:"Feelings",
     img_path:"img/aac_board_imgs/crayon.png" },
 
 
-  { name:"Food",
-    img_path:"img/aac_board_imgs/alpaca.png" },
+  // { name:"Food",
+  //   img_path:"img/aac_board_imgs/alpaca.png" },
 
   { name:"Kind Things",
     img_path:"img/aac_board_imgs/art.png" },
@@ -595,37 +667,18 @@ $scope.chosenBoard = function(sampleBoard){
   { name:"Things",
     img_path:"img/aac_board_imgs/balloon.png" },
 
-  { name:"Time",
-    img_path:"img/aac_board_imgs/bird.png" },
+  // { name:"Time",
+  //   img_path:"img/aac_board_imgs/bird.png" },
 
-  { name:"Verbs",
-    img_path:"img/aac_board_imgs/clock.png" },
+  // { name:"Verbs",
+  //   img_path:"img/aac_board_imgs/clock.png" },
 
   { name:"Weather",
     img_path:"img/aac_board_imgs/crayon.png" },
 
+  // { name:"Nouns",
+  //   img_path:"img/aac_board_imgs/alpaca.png" },
 
-  { name:"Nouns",
-    img_path:"img/aac_board_imgs/alpaca.png" },
-
-  { name:"Outdoor",
-    img_path:"img/aac_board_imgs/art.png" },
-
-  { name:"Animals",
-    img_path:"img/aac_board_imgs/balloon.png" },
-
-  { name:"Plants",
-    img_path:"img/aac_board_imgs/bird.png" },
-
-  { name:"Stuff",
-    img_path:"img/aac_board_imgs/clock.png" },
-
-  { name:"Things",
-    img_path:"img/aac_board_imgs/crayon.png"},
-
-  // added for sliding option
-  { name:"Nouns",
-    img_path:"img/aac_board_imgs/alpaca.png" },
 
   { name:"Outdoor",
     img_path:"img/aac_board_imgs/art.png" },
@@ -642,9 +695,9 @@ $scope.chosenBoard = function(sampleBoard){
   { name:"Things",
     img_path:"img/aac_board_imgs/crayon.png"},
 
-    // also added for testing purposes
-  { name:"Nouns",
-    img_path:"img/aac_board_imgs/alpaca.png" },
+  // // added for sliding option
+  // { name:"Nouns",
+  //   img_path:"img/aac_board_imgs/alpaca.png" },
 
   { name:"Outdoor",
     img_path:"img/aac_board_imgs/art.png" },
@@ -661,8 +714,9 @@ $scope.chosenBoard = function(sampleBoard){
   { name:"Things",
     img_path:"img/aac_board_imgs/crayon.png"},
 
-  { name:"Nouns",
-    img_path:"img/aac_board_imgs/alpaca.png" },
+  //   // also added for testing purposes
+  // { name:"Nouns",
+  //   img_path:"img/aac_board_imgs/alpaca.png" },
 
   { name:"Outdoor",
     img_path:"img/aac_board_imgs/art.png" },
@@ -679,8 +733,26 @@ $scope.chosenBoard = function(sampleBoard){
   { name:"Things",
     img_path:"img/aac_board_imgs/crayon.png"},
 
-  { name:"Nouns",
-    img_path:"img/aac_board_imgs/alpaca.png" },
+  // { name:"Nouns",
+  //   img_path:"img/aac_board_imgs/alpaca.png" },
+
+  { name:"Outdoor",
+    img_path:"img/aac_board_imgs/art.png" },
+
+  { name:"Animals",
+    img_path:"img/aac_board_imgs/balloon.png" },
+
+  { name:"Plants",
+    img_path:"img/aac_board_imgs/bird.png" },
+
+  { name:"Stuff",
+    img_path:"img/aac_board_imgs/clock.png" },
+
+  { name:"Things",
+    img_path:"img/aac_board_imgs/crayon.png"},
+
+  // { name:"Nouns",
+  //   img_path:"img/aac_board_imgs/alpaca.png" },
 
   { name:"Outdoor",
     img_path:"img/aac_board_imgs/art.png" },
@@ -698,6 +770,7 @@ $scope.chosenBoard = function(sampleBoard){
     img_path:"img/aac_board_imgs/crayon.png"},
   ]
 
+// settingsCtrl
 $scope.panel = function(number){
   if(number == "1"){
     var self = document.getElementById("settings");
@@ -925,6 +998,8 @@ $scope.panel = function(number){
       {'placeholder':'ENTER WORD'}
     );
   }
+
+
 });
 
 app.run(function($ionicPlatform) {
