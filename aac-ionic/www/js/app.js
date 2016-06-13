@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // (function(){
 
-(function(){
+// (function(){
   var app = angular.module('starter', ['ionic', 'starter.mainCtrl']);
 
   app.config(function($stateProvider, $urlRouterProvider) {
@@ -51,4 +51,4 @@
       }
     });
   })
-})
+// })
