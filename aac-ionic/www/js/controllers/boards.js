@@ -33,6 +33,7 @@ $http(req).success(function(data) {
   $scope.filled_tiles = Object.keys($scope.board.symbols)
 })
 
+
 $scope.chosenBoard = function(sampleBoard){
   $scope.selectedIndex = sampleBoard;
   if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
@@ -264,6 +265,7 @@ $scope.chosenBoard = function(sampleBoard){
   // $scope.toggleLeft = function(){
   //   $ionicSideMenuDelegate.toggleLeft();
   // };
+
 
 // main ctrl only
   $scope.colorName =[
