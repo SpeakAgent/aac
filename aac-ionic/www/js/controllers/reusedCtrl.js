@@ -1,33 +1,33 @@
 // (function() {
 
-var app = angular.module('starter.boards', ['ionic']);
+angular.module('starter', []);
 
-  app.filter('slice', function(){
-    return function(arr, start, end){
-      return arr.slice(start, end);
-    };
-  });
-  
-  app.controller('reusedCtrl', 
-    function($http, $scope, $ionicModal){
-      $scope.board = {};
-      // $scope.board.title = "Home";
-      $scope.settings = true;
-      $scope.step = 1;
-      sample_symbol = {
-          word: "Sample",
-          icon: "img/symbols/a_lot.png",
-          pk: 15,
-        }
-      $scope.columns = "abcdef"
-      $scope.rows = "123456"
-      $scope.selectedTiles = []
-      $scope.selectedIndex = -2
-      $scope.class = "white";
-      $scope.class = "none";
+// app.filter('slice', function(){
+//   return function(arr, start, end){
+//     return arr.slice(start, end);
+//   };
+// });
 
-      $scope.start = 0;
-      $scope.end = 24;
+.controller('reusedCtrl', 
+  function($http, $scope, $ionicModal, $rootScope){
+    $scope.board = {};
+    // $scope.board.title = "Home";
+    $scope.settings = true;
+    $scope.step = 1;
+    sample_symbol = {
+        word: "Sample",
+        icon: "img/symbols/a_lot.png",
+        pk: 15,
+      }
+    $scope.columns = "abcdef"
+    $scope.rows = "123456"
+    $scope.selectedTiles = []
+    $scope.selectedIndex = -2
+    $scope.class = "white";
+    $scope.class = "none";
+
+    $scope.start = 0;
+    $scope.end = 24;
 
     var req = {
       url: 'https://lexemes-dev.herokuapp.com/board/single/',

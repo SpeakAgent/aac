@@ -5,9 +5,42 @@
 // the 2nd parameter is an array of 'requires'
 // (function(){
 
-angular.module('starter', ['ionic', 'starter.boards'])
+(function(){
+  var app = angular.module('starter', ['ionic']);
 
-  .run(function($ionicPlatform) {
+  app.config(function($stateProvider, $urlRouterProvider) {
+    // $urlRouterProvider.otherwise('/main');
+
+    $stateProvider.state('main',{
+      templateUrl: 'templates/main.html',
+      url: '/main',
+      // controller:'mainCtrl'
+    });
+
+    $stateProvider.state('settings',{
+      templateUrl: 'templates/settings.html',
+      url:'/settings'
+    });
+
+    $stateProvider.state('board_factory',{
+      templateUrl: 'templates/board_factory.html',
+      url:'/board_factory'
+    });
+
+    $stateProvider.state('board_factory/:id',{
+      templateUrl: 'templates/sample_edit.html',
+      url:'/board_factory/sample_edit/:id'
+    });
+
+    $stateProvider.state('board_factory/new',{
+      templateUrl: 'templates/board_factory_new.html',
+      url:'/board_factory/new'
+    });
+
+    $urlRouterProvider.otherwise('/main');
+  })
+
+  app.run(function($rootScope, $state, $ionicPlatform) {
     $ionicPlatform.ready(function() {
       if(window.cordova && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -18,33 +51,4 @@ angular.module('starter', ['ionic', 'starter.boards'])
       }
     });
   })
-
-  .config(function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/main');
-
-    $stateProvider.state('main',{
-        controller:'reusedCtrl',
-        url: '/main',
-        templateUrl: 'templates/main.html',
-      });
-
-    $stateProvider.state('settings',{
-        url:'/settings',
-        templateUrl: 'templates/settings.html',
-      });
-
-    $stateProvider.state('board_factory',{
-      url:'/board_factory',
-      templateUrl: 'templates/board_factory.html',
-    })
-
-    $stateProvider.state('board_factory/:id',{
-      url:'/board_factory/sample_edit/:id',
-      templateUrl: 'templates/sample_edit.html'
-    })
-
-    $stateProvider.state('board_factory/new',{
-      url:'/board_factory/new',
-      templateUrl: 'templates/board_factory_new.html'
-    })
-  })
+})
