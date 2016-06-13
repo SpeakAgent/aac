@@ -509,6 +509,20 @@ $scope.chosenBoard = function(sampleBoard){
     })
   }
 
+  $scope.sayWord = function() {
+    console.log($scope.selectedIndex.pk);
+    var req = {
+      url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
+      data: {pks: "[" + $scope.selectedIndex.pk + "]"},
+      method: 'POST'
+    }
+    console.log(req);
+    $http(req).success(function(data) {
+      console.log(data);
+      $scope.speakText(data.sentence);
+    })
+  }
+
   $scope.speakText = function(text) {
     TTS.speak({
            text: text,
