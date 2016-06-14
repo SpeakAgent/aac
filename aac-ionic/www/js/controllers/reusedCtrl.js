@@ -1,6 +1,6 @@
 // (function() {
 
-var app = angular.module('starter.mainCtrl', ['ionic']);
+var app = angular.module('starter', ['ionic']);
 
 // app.filter('slice', function(){
 //   return function(arr, start, end){
@@ -258,8 +258,7 @@ app.controller('reusedCtrl'
           $scope.board = data;
           $scope.filled_tiles = Object.keys($scope.board.symbols)
         })
-
-      }else{
+      } else{
         console.log("This icon doesn't have an associated board");
       }
     }
@@ -517,7 +516,7 @@ app.controller('reusedCtrl'
       img_path:"img/aac_board_imgs/crayon.png"},
     ]
 
-     $scope.lastSet = function(index){
+    $scope.lastSet = function(index){
       console.log("Last Set button is working");
       if ($scope.start > 0){
         $scope.start = $scope.start - 24;

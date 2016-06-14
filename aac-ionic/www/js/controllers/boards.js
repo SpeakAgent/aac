@@ -1,5 +1,5 @@
 (function() {
-var app = angular.module('starter', ['ionic']);
+var app = angular.module('BoardController', ['ionic']);
 // });
 
 app.controller('BoardController', 
