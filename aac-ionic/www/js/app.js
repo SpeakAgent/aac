@@ -38,7 +38,7 @@
     });
 
     $urlRouterProvider.otherwise('/main');
-  })
+  });
 
   app.run(function($rootScope, $state, $ionicPlatform) {
     $ionicPlatform.ready(function() {

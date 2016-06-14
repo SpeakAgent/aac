@@ -1,6 +1,6 @@
 // (function() {
 
-angular.module('starter.mainCtrl', ['ionic']);
+var app = angular.module('starter.mainCtrl', ['ionic']);
 
 // app.filter('slice', function(){
 //   return function(arr, start, end){
@@ -8,7 +8,7 @@ angular.module('starter.mainCtrl', ['ionic']);
 //   };
 // });
 
-.controller('reusedCtrl'
+app.controller('reusedCtrl'
   function($http, $scope, $ionicModal, $rootScope){
     $scope.board = {};
     // $scope.board.title = "Home";
@@ -549,5 +549,5 @@ angular.module('starter.mainCtrl', ['ionic']);
         $scope.hide = false;
       }
     }
-  })
+  });
 // });
