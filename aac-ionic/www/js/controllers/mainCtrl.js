@@ -1,7 +1,7 @@
 // (function() {
 
-(function() {
-var app = angular.module('mainCtrl', ['ionic']);
+// (function() {
+var app = angular.module('starter', ['ionic']);
 // })
 	// app.filter('slice', function(){
 	//     return function(arr, start, end){
@@ -11,7 +11,7 @@ var app = angular.module('mainCtrl', ['ionic']);
 
 	app.controller('mainCtrl',
 	  function($http, $scope, $ionicModal, $location) {
-
+	  	
 	  	$scope.colorName =[
 	    {colorTitle: 'Sky Blue',
 	     primaryColor:'#50E2E3',
@@ -105,5 +105,5 @@ var app = angular.module('mainCtrl', ['ionic']);
 	           // Handle the error case
 	       });
 	  	};
-	})
-});
+	});
+// });

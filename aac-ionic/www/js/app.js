@@ -5,8 +5,8 @@
 // the 2nd parameter is an array of 'requires'
 // (function(){
 
-// (function(){
-  var app = angular.module('starter', ['ionic', 'mainCtrl']);
+(function(){
+  var app = angular.module('starter', ['ionic']);
 
   app.config(function($stateProvider, $urlRouterProvider) {
     // $urlRouterProvider.otherwise('/main');
@@ -19,7 +19,8 @@
 
     $stateProvider.state('settings',{
       templateUrl: 'templates/settings.html',
-      url:'/settings'
+      url:'/settings',
+      controller:'mainCtrl'
     });
 
     $stateProvider.state('board_factory',{
@@ -51,4 +52,4 @@
       }
     });
   })
-// })
+})
