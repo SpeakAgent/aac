@@ -21,6 +21,10 @@ $dark:                            #000000 !default;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
+.tested-button{
+  background-color: blue;
+}
+
 .testing-sass{
   background-color: #32CE23;
   border-radius: 5px;
@@ -212,14 +216,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   transform: rotate(46deg);
 }
 
-.toggle-small 
-	  .handle {
-	  top: 5px;
-	  left: 4px;
-	  width: 20px;
-	  height: 15px;
-	  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25); 
-	}
+.toggle-small{
+	.handle {
+  	top: 5px;
+  	left: 4px;
+  	width: 20px;
+  	height: 15px;
+  	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25); 
+  }
 }
 
 
