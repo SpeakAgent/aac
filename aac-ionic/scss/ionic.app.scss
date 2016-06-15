@@ -21,6 +21,12 @@ $dark:                            #000000 !default;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
+.testing-sass{
+  background-color: #32CE23;
+  border-radius: 5px;
+  color:#979797; 
+}
+
 .color-choice{
   background-color: #ffffff;
   padding:.5%;
