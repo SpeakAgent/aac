@@ -8,7 +8,7 @@ var app = angular.module('starter', ['ionic']);
 //   };
 // });
 
-app.controller('reusedCtrl',
+app.factory('reusedCtrl',
   function($http, $scope, $ionicModal, $rootScope){
     $scope.board = {};
     // $scope.board.title = "Home";
