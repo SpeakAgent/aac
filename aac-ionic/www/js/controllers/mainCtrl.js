@@ -1,15 +1,15 @@
 (function() {
 
 // (function() {
-var app = angular.module('starter.mainCtrl', ['ionic']);
+var app = angular.module('MainCtrl', ['ionic']);
 // })
-	// app.filter('slice', function(){
-	//     return function(arr, start, end){
-	//       return arr.slice(start, end);
-	//     };
-	// });
+	app.filter('slice', function(){
+	    return function(arr, start, end){
+	      return arr.slice(start, end);
+	    };
+	});
 
-	app.controller('mainCtrl',
+	app.controller('MainCtrl',
 	  function($http, $scope, $ionicModal, $location) {
 	  	
 	  	$scope.colorName =[

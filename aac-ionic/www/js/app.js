@@ -6,7 +6,7 @@
 // (function(){
 
 // (function(){
-  var app = angular.module('starter', ['ionic', 'starter.mainCtrl']);
+  var app = angular.module('starter', ['ionic', 'starter.MainCtrl']);
 
   app.config(function($stateProvider, $urlRouterProvider) {
     // $urlRouterProvider.otherwise('/main');
@@ -14,7 +14,7 @@
     $stateProvider.state('main',{
       templateUrl: 'templates/main.html',
       url: '/main',
-      controller:'mainCtrl'
+      controller:'MainCtrl'
     });
 
     $stateProvider.state('settings',{
