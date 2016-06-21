@@ -7,22 +7,6 @@
 
 angular.module('starter', ['ionic', 'starter.home'])
 
-// .run(function($ionicPlatform) {
-//   $ionicPlatform.ready(function() {
-//     if(window.cordova && window.cordova.plugins.Keyboard) {
-//       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-//       cordova.plugins.Keyboard.disableScroll(true);
-//     }
-//     if(window.StatusBar) {
-//       StatusBar.styleDefault();
-//     }
-//   });
-// })
-
-// (function(){
-
-  // var app = angular.module('starter.home', ['ionic']);
-
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/main');
 
@@ -52,4 +36,3 @@ angular.module('starter', ['ionic', 'starter.home'])
       templateUrl: 'templates/board_factory_new.html'
     })
   })
-// })

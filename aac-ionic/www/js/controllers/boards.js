@@ -1,4 +1,3 @@
-// (function() {
 
 var app = angular.module('starter.home', ['ionic']);
 
@@ -937,5 +936,3 @@ app.run(function($ionicPlatform) {
     }
   });
 });
-
-// }());
