@@ -1,16 +1,18 @@
     <ion-header-bar class="bar-dark">
       <div class="buttonsdiv">
         <i class="icon ion-unlocked"></i>
+
         <button class="button button-outline button-calm button-small" id="btn-styling">
           <a href="#/settings"><i class="icon ion-gear-b"></i> Settings</a>
         </button>
+
         <button class="button button-outline button-calm button-small" id="btn-styling">
           <i class="icon ion-grid"></i><a href="#/board_factory"> Board Factory</a>
           <br>
           <p class="show-hide-label">*Requires Wifi</p>
         </button>
 
-        <button class="button button-outline button-calm button-small" id="btn-styling" style="margin-right:10px;" ng-click="activeHide()" ng-class="class">
+        <button class="button button-outline button-calm button-small" id="btn-styling" ng-click="activeHide()" ng-class="class">
           <i class="icon ion-eye-disabled" ng-show="selectedBtn2 == true"></i>
           <i class="icon ion-eye-disabled" ng-show="selectedBtn2 == false" style="color:white;"></i>
           <span class="hide-label" ng-show="selectedBtn2 == true">Hide Tiles</span><span ng-show="selectedBtn2 == false">Hide Tiles</span>
@@ -124,8 +126,6 @@
             <img ng-click="lastSet($index)" src="img/AAC_assets/left.png" style="margin-left:50px;"/>
             <img ng-click="nextSet($index)" src="img/AAC_assets/right.png" style="margin-left:30px;"/>
           </div>
-
-          <button class="tested-button">This</button>
         </div>
       </ion-content>
     </ion-view>
