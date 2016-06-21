@@ -1,6 +1,6 @@
-(function() {
+// (function() {
 
-var app = angular.module('starter.boards', ['ionic']);
+var app = angular.module('starter.home', ['ionic']);
 
 app.filter('slice', function(){
   return function(arr, start, end){
@@ -9,7 +9,7 @@ app.filter('slice', function(){
 });
 
 app.controller('BoardController', 
-  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $element, $location, $ionicPopover) {
+  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover) {
 
   $scope.title = "This is a title";
   $scope.board = {};
@@ -938,4 +938,4 @@ app.run(function($ionicPlatform) {
   });
 });
 
-}());
+// }());
