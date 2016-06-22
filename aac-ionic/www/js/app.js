@@ -11,7 +11,7 @@ angular.module('starter', ['ionic', 'starter.main'])
     $urlRouterProvider.otherwise('/main');
 
     $stateProvider.state('main',{
-        controller:'BoardController',
+        controller:'mainController',
         url: '/main',
         templateUrl: 'templates/main.html'
       });

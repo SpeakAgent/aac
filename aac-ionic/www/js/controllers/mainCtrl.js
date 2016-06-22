@@ -7,7 +7,7 @@ app.filter('slice', function(){
   };
 });
 
-app.controller('BoardController', 
+app.controller('mainController', 
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover) {
 
   $scope.title = "This is a title";
