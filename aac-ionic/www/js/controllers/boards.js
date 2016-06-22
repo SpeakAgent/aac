@@ -1,5 +1,5 @@
 
-var app = angular.module('starter.home', ['ionic']);
+var app = angular.module('starter.main', ['ionic']);
 
 app.filter('slice', function(){
   return function(arr, start, end){
