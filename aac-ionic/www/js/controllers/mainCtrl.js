@@ -1,5 +1,5 @@
 
-var app = angular.module('starter.main', ['ionic']);
+var app = angular.module('main.Ctrl', ['ionic']);
 
 app.filter('slice', function(){
   return function(arr, start, end){
@@ -8,7 +8,7 @@ app.filter('slice', function(){
 });
 
 app.controller('mainController', 
-  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover) {
+  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, aacService) {
 
   $scope.title = "This is a title";
   $scope.board = {};
@@ -37,6 +37,9 @@ $http(req).success(function(data) {
   $scope.filled_tiles = Object.keys($scope.board.symbols)
 })
   
+$scope.testingService = function(){
+  aacService.showNames();
+}
 
 $scope.chosenBoard = function(sampleBoard){
   $scope.selectedIndex = sampleBoard;
