@@ -10,36 +10,46 @@ app.filter('slice', function(){
 app.controller('mainController', 
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, aacService) {
 
-  $scope.title = "This is a title";
-  $scope.board = {};
-  $scope.board.title = "Home";
-  $scope.settings = true;
+  // $scope.title = "This is a title";
+  // $scope.board = {};
+  // $scope.board.title = "Home";
+
+  $scope.settings = true; //for settingsCtrl
   $scope.step = 1;
-  sample_symbol = {
-      word: "Sample",
-      icon: "img/symbols/a_lot.png",
-      pk: 15,
-    }
-  $scope.columns = "abcdef"
-  $scope.rows = "123456"
+
+  // sample_symbol = {
+  //     word: "Sample",
+  //     icon: "img/symbols/a_lot.png",
+  //     pk: 15,
+  //   }
+  // $scope.columns = "abcdef"
+  // $scope.rows = "123456"
+  // $scope.selectedTiles = []
+
+  // $scope.selectedIndex = -2
+  // $scope.titleLimit = 6
+
+  $scope.columns = aacService.columns;
+  $scope.rows = aacService.rows;
   $scope.selectedTiles = []
-  $scope.selectedIndex = -2
-  $scope.titleLimit = 6
+  $scope.selectedIndex = aacService.selectedIndex;
+  $scope.titleLimit = aacService.titleLimit; 
+  $scope.board = aacService.getBoards();
 
-var req = {
-  url: 'https://lexemes-dev.herokuapp.com/board/single/',
-  data: {pk: 3},
-  method: 'POST'
-}
+// var req = {
+//   url: 'https://lexemes-dev.herokuapp.com/board/single/',
+//   data: {pk: 3},
+//   method: 'POST'
+// }
 
-$http(req).success(function(data) {
-  $scope.board = data;
-  $scope.filled_tiles = Object.keys($scope.board.symbols)
-})
+// $http(req).success(function(data) {
+//   $scope.board = data;
+//   $scope.filled_tiles = Object.keys($scope.board.symbols)
+// })
   
-$scope.testingService = function(){
-  aacService.showNames();
-}
+// $scope.testingService = function(){
+//   aacService.showNames();
+// }
 
 $scope.chosenBoard = function(sampleBoard){
   $scope.selectedIndex = sampleBoard;
