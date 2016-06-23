@@ -34,7 +34,18 @@ app.controller('mainController',
   $scope.selectedTiles = []
   $scope.selectedIndex = aacService.selectedIndex;
   $scope.titleLimit = aacService.titleLimit; 
-  $scope.board = aacService.getBoards();
+  $scope.start = 0;
+  $scope.end = 24;
+  $scope.board = function(){
+    aacService.content();
+  }
+
+  // $scope.openModal = aacService.openModal(index);
+  // $scope.closeModal = aacService.closeModal(index);
+
+  // $scope.board = aacService.board;
+
+// can't figure out how to pull this from the service
 
 // var req = {
 //   url: 'https://lexemes-dev.herokuapp.com/board/single/',
@@ -278,9 +289,9 @@ $scope.chosenBoard = function(sampleBoard){
   }
 }
   
-  $scope.toggleLeft = function(){
-    $ionicSideMenuDelegate.toggleLeft();
-  };
+  // $scope.toggleLeft = function(){
+  //   $ionicSideMenuDelegate.toggleLeft();
+  // };
 
   $scope.colorName =[
     {colorTitle: 'Sky Blue',
@@ -343,10 +354,8 @@ $scope.chosenBoard = function(sampleBoard){
      secondaryColor:'#A7E8C5',
      url:'img/color_change/colorBlob_seafoamGreen.svg'},
   ]
-  
-  $scope.start = 0;
-  $scope.end = 24;
 
+// for boardFactoryCtrl
   var template = '<ion-popover-view class="popover-stuff2"><ion-content><p class="closing-x" ng-click="closePopover()">X</p><p class="popover-stuff">To edit the content of tiles with a yellow dot, go to Settings <a href="#/settings"><button class="custom-button"><i class="icon ion-gear-a"></i> Open Settings</button></a></p></ion-popover-view>';
 
   $scope.popover = $ionicPopover.fromTemplate(template, {
@@ -377,53 +386,54 @@ $scope.chosenBoard = function(sampleBoard){
   $scope.$on('popover.removed', function(){
   });
 
-  $ionicModal.fromTemplateUrl('templates/aac-partials/_color-modal.html',{
-    id: '1',
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal){
-    $scope.oModal1 = modal;
-  });
 
-  $ionicModal.fromTemplateUrl('templates/aac-partials/_word-change.html',{
-    id: '2',
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal){
-    $scope.oModal2 = modal;
-  });
+  // $ionicModal.fromTemplateUrl('templates/aac-partials/_color-modal.html',{
+  //   id: '1',
+  //   scope: $scope,
+  //   animation: 'slide-in-up'
+  // }).then(function(modal){
+  //   $scope.oModal1 = modal;
+  // });
 
-  $ionicModal.fromTemplateUrl('templates/aac-partials/_add-multiple-words.html',{
-    id: '3',
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal){
-    $scope.oModal3 = modal;
-  });
+  // $ionicModal.fromTemplateUrl('templates/aac-partials/_word-change.html',{
+  //   id: '2',
+  //   scope: $scope,
+  //   animation: 'slide-in-up'
+  // }).then(function(modal){
+  //   $scope.oModal2 = modal;
+  // });
 
-  $scope.openModal = function(index){
-    if(index == 1){
-      $scope.oModal1.show();
-    }else if(index == 2){
-      $scope.oModal2.show();
-    }else{
-      $scope.oModal3.show();
-    }
-  }
+  // $ionicModal.fromTemplateUrl('templates/aac-partials/_add-multiple-words.html',{
+  //   id: '3',
+  //   scope: $scope,
+  //   animation: 'slide-in-up'
+  // }).then(function(modal){
+  //   $scope.oModal3 = modal;
+  // });
 
-  $scope.closeModal = function(index){
-    if(index == 1){
-      $scope.oModal1.hide();
-    }else if(index == 2){
-      $scope.oModal2.hide();
-    }else{
-      $scope.oModal3.hide();
-    }
-  };
+  // $scope.openModal = function(index){
+  //   if(index == 1){
+  //     $scope.oModal1.show();
+  //   }else if(index == 2){
+  //     $scope.oModal2.show();
+  //   }else{
+  //     $scope.oModal3.show();
+  //   }
+  // }
 
-  $scope.$on('$destroy', function(){
-    $scope.modal.remove();
-  });
+  // $scope.closeModal = function(index){
+  //   if(index == 1){
+  //     $scope.oModal1.hide();
+  //   }else if(index == 2){
+  //     $scope.oModal2.hide();
+  //   }else{
+  //     $scope.oModal3.hide();
+  //   }
+  // };
+
+  // $scope.$on('$destroy', function(){
+  //   $scope.modal.remove();
+  // });
 
   $scope.doneCancel = function(){
     this.style.border = "blue";
