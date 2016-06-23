@@ -32,7 +32,8 @@ app.service('aacService', function($http, $ionicModal){
 
     $http(req)
       .success(function(data){
-        board = data; 
+        this.board = data; 
+        this.filled_tiles = Object.keys(this.board.symbols);
       }).error(function(){
         console.log("Not Working");
       })
