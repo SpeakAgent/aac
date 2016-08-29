@@ -21,31 +21,51 @@ app.service('aacService', function($http, $ionicModal){
     content: content
    }
 
-	 this.content = function(){
-    var board;
-
-	 	var req = {
-		  url: 'https://lexemes-dev.herokuapp.com/board/single/',
-		  data: {pk: 3},
-		  method: 'POST'
-		}
-
-    $http(req)
+	 this.content = {
+    async: function(){
+      var req = {
+        url: 'https://lexemes-dev.herokuapp.com/board/single/',
+        data: {pk: 3},
+        method: 'POST'
+      }
+      var promise = $http(req)
       .success(function(data){
-        this.board = data; 
-        this.filled_tiles = Object.keys(this.board.symbols);
+        console.log(data);
+        // this.board = data; 
+        // this.filled_tiles = Object.keys(this.board.symbols);
+        return data.data;
       }).error(function(){
         console.log("Not Working");
       })
+      return promise; 
+    }
+  //  } function(){
+  //   var board;
 
-    return board;
+	 // 	var req = {
+		//   url: 'https://lexemes-dev.herokuapp.com/board/single/',
+		//   data: {pk: 3},
+		//   method: 'POST'
+		// }
+
+  //   $http(req)
+  //     .success(function(data){
+  //       this.board = data; 
+  //       this.filled_tiles = Object.keys(this.board.symbols);
+  //     }).error(function(){
+  //       console.log("Not Working");
+  //     })
+
+  //   return board;
+  }
+  return content; 
+
     // return $http.post(req)
 		// $http(req).success(function(data) {
 		//   this.board = data;
 		//   // console.log(this.board);
 		//   this.filled_tiles = Object.keys(this.board.symbols)
 		// })
-	}
 
   // $ionicModal.fromTemplateUrl('templates/aac-partials/_color-modal.html',{
   //   id: '1',
