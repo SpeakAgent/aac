@@ -30,7 +30,7 @@ $dark:                            #444 !default;
 .real-content {
   width: 40%;
   float: right;
-  background: yellow; }
+  background: #FFDB3B; }
 
 .tile {
   background-color: #ffffff;
@@ -45,9 +45,9 @@ $dark:                            #444 !default;
   text-align: center; }
   .tile.lightBlue {
     background-color: #83EFF0;
-    border-color: white; }
+    border-color: #ffffff; }
   .tile.white {
-    background-color: white; }
+    background-color: #ffffff; }
 
 .icon .ion-close-round {
   color: #979797;
@@ -74,7 +74,7 @@ $dark:                            #444 !default;
   font-size: 2.5em;
   margin-right: 30px; }
   .icon.ion-locked {
-    color: red; }
+    color: #B70016; }
   .icon.ion-unlocked {
     color: #77ce20; }
 
@@ -208,7 +208,7 @@ $dark:                            #444 !default;
   border: 2px solid #979797;
   text-align: center; }
   .boards a {
-    color: black;
+    color: #000000;
     text-decoration: none; }
 
 .regulars {
@@ -305,13 +305,13 @@ $dark:                            #444 !default;
   margin-top: 12px; }
 
 #home-button-section {
-  background: white;
+  background: #ffffff;
   padding-left: 15px;
   margin: 0; }
 
 #btn-styling-buddy .toggle p {
   float: left;
-  color: white;
+  color: #ffffff;
   padding: 1px;
   font-size: 55%;
   padding-left: 4px; }
@@ -333,7 +333,7 @@ $dark:                            #444 !default;
 
 .toggle-note {
   font-size: 8px;
-  color: black;
+  color: #000000;
   margin: 30px -3px -8px 0px;
   font-weight: bold; }
 
@@ -349,14 +349,14 @@ input[type="text"] {
   font-size: 18px;
   box-shadow: none;
   border-radius: none;
-  outline: 1px solid #979797; }
+  outline: 1px solid #969696; }
 
 input[type="text"]:focus, textarea:focus {
   background: #FFF8D9;
-  box-shadow: 0 0 5px #6EE8E9;
+  box-shadow: 0 0 5px #73e7e8;
   padding: 3px 0px 3px 3px;
   margin: 5px 1px 3px 0px;
-  border: 1px solid #6EE8E9;
+  border: 1px solid #73e7e8;
   outline: none; }
 
 .edit-subheading {
@@ -445,33 +445,33 @@ input[type="text"]:focus, textarea:focus {
 
 .centered-title {
   font-size: 1em;
-  color: black;
+  color: #000000;
   text-align: center; }
 
 .greyed-out {
-  color: #F9F8F8; }
+  color: #ffffff; }
 
 .checkbox-text {
   padding-right: 8px; }
 
 .settings-box.ion-checkbox {
-  border-color: black; }
+  border-color: #000000; }
 
 .centered-note {
   margin-left: 18%;
   font-style: italic;
   font-weight: 600;
-  color: #738383; }
+  color: #6A7777; }
 
 .warning-text {
   margin-left: 70px;
-  color: red; }
+  color: #B70016; }
 
 #settings-menu {
   margin: -10px; }
 
 .settings-box {
-  background-color: white;
+  background-color: #ffffff;
   margin-left: 15%;
   margin-top: 5%;
   padding-top: 10px;
@@ -493,12 +493,12 @@ input[type="text"]:focus, textarea:focus {
 #settings-modal {
   margin: -5px;
   /*margin-right:-10px;*/
-  background-color: #98E3E3; }
+  background-color: #98e3e3; }
 
 .avatar-box {
   width: 10%;
   height: 250px;
-  background-color: white;
+  background-color: #ffffff;
   float: left; }
 
 .list-container {
@@ -506,7 +506,7 @@ input[type="text"]:focus, textarea:focus {
   width: 90%; }
 
 .item.item-divider {
-  background-color: #98E3E3; }
+  background-color: #98e3e3; }
 
 .avatar-icon-placeholder {
   width: 30px;
@@ -519,7 +519,7 @@ input[type="text"]:focus, textarea:focus {
   margin-right: 10px; }
 
 #blue-list-item {
-  background-color: #98E3E3;
+  background-color: #98e3e3;
   font-weight: bold; }
 
 .show-hide-label {
@@ -540,7 +540,7 @@ input[type="text"]:focus, textarea:focus {
   float: right;
   border-radius: 20px;
   border-style: solid;
-  border-color: #006E70; }
+  border-color: #006364; }
   .done-button p {
     color: #008485;
     font-weight: bold;
