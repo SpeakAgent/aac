@@ -41,6 +41,17 @@ a:active {
   margin-left: 15%;
   margin-top: 2%; }
 
+a.button-outline.button-calm.button-small.selected-btn2 {
+  background-color: #6FCACB;
+  color: #ffffff;
+  border-radius: 0;
+  margin-left: 8px;
+  border-color: #6FCACB; }
+
+a#btn-styling.button.button-outline.button-calm.button-small {
+  border-color: #b2b2b2;
+  color: #b2b2b2; }
+
 .annotation {
   color: #6A7777;
   padding-left: 4px; }
@@ -174,7 +185,7 @@ button.button-outline.button-calm.button-small.selected-btn2 {
   margin-left: 8px;
   border-color: #6FCACB; }
 
-.button.button-outline.button-calm.button-small {
+button#btn-styling.button.button-outline.button-calm.button-small {
   border-color: #b2b2b2; }
 
 #button-circle {
@@ -347,29 +358,25 @@ button.button-outline.button-calm.button-small.selected-btn2 {
   padding-left: 15px;
   margin: 0; }
 
-.icon .ion-close-round {
-  color: #979797;
-  float: right;
-  font-size: 1.5em; }
-
-.icon .ion-help {
-  position: fixed;
-  font-size: .8em;
-  color: white;
-  padding: 0px 8px 0px 8px;
-  border-radius: 10px;
-  background-color: #008485;
-  margin-top: -10px; }
-
-.icon .ion-gear, .icon .ion-grid, .icon .ion-eye-disabled {
+.icon {
   color: #b2b2b2; }
-
-.icon .ion-ios-arrow-left {
-  font-size: 2em;
-  color: #7c7c7c; }
-
-.icon .ion-help-circled {
-  color: #008485; }
+  .icon .ion-close-round {
+    color: #979797;
+    float: right;
+    font-size: 1.5em; }
+  .icon .ion-help {
+    position: fixed;
+    font-size: .8em;
+    color: #ffffff;
+    padding: 0px 8px 0px 8px;
+    border-radius: 10px;
+    background-color: #008485;
+    margin-top: -10px; }
+  .icon .ion-ios-arrow-left {
+    font-size: 2em;
+    color: #7c7c7c; }
+  .icon .ion-help-circled {
+    color: #008485; }
 
 .icon {
   font-size: 2.5em;

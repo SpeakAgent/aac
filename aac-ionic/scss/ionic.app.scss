@@ -77,6 +77,19 @@ a:active {
   margin-top:2%;
 }
 
+a.button-outline.button-calm.button-small.selected-btn2{
+  background-color: $speak-agent-light-blue5;
+  color: $white;
+  border-radius: 0;
+  margin-left: 8px;
+  border-color: $speak-agent-light-blue5;
+}
+
+a#btn-styling.button.button-outline.button-calm.button-small{
+  border-color:$light-grey;
+  color: $light-grey;
+}
+
 .annotation{
   color: $dark-grey3;
   padding-left: 4px;
@@ -235,8 +248,8 @@ button.button-outline.button-calm.button-small.selected-btn2{
   border-color: $speak-agent-light-blue5;
 }
 
-.button.button-outline.button-calm.button-small{
-  border-color:#b2b2b2;
+button#btn-styling.button.button-outline.button-calm.button-small{
+  border-color:$light-grey;
 }
 
 #button-circle{
@@ -446,6 +459,8 @@ button.button-outline.button-calm.button-small.selected-btn2{
 }
 
 .icon{
+  color:$light-grey;
+
   .ion-close-round{
     color: $dark-grey;
     float: right;
@@ -455,15 +470,11 @@ button.button-outline.button-calm.button-small.selected-btn2{
   .ion-help{
     position: fixed;
     font-size: .8em;
-    color:white;
+    color: $white;
     padding: 0px 8px 0px 8px;
     border-radius: 10px;
     background-color: #008485;
     margin-top: -10px;
-  }
-
-  .ion-gear, .ion-grid, .ion-eye-disabled{
-    color:$light-grey;
   }
 
   .ion-ios-arrow-left{
