@@ -175,11 +175,11 @@ a:active {
 
 #bodyBack{
   background:$speak-agent-dark-blue;
-  text-align: center;
-  font-size: 1.5em;
-  margin-left: 10%;
-  padding-top: 1%;
-  color:#979797;
+  // text-align: center;
+  // font-size: 1.5em;
+  // margin-left: 10%;
+  // padding-top: 1%;
+  // color:#979797;
 }
 
 #btn-section{
@@ -708,10 +708,8 @@ input[type="text"]:focus, textarea:focus{
   color:$light-grey;
 }
 
-.tile{
-  background-color: #ffffff;
-  padding:.5%;
-  border: 2px solid #979797;
+.tile, .tile2{
+  padding:.5%; 
   border-radius: 12px;
   height:74px;
   width:74px;
@@ -721,16 +719,13 @@ input[type="text"]:focus, textarea:focus{
   text-align: center;
 }
 
+.tile{
+  background-color: #ffffff;
+  border: 2px solid #979797;
+}
+
 .tile2 {
   background-color: #73E7E8;
-  padding: .5%;
-  border-radius: 12px;
-  height: 74px;
-  width: 74px;
-  font-size: .75em;
-  margin: 3px;
-  float: left;
-  text-align: center; 
 }
 
 .tile.white{

@@ -127,12 +127,7 @@ a:active {
   float: left; }
 
 #bodyBack {
-  background: #008485;
-  text-align: center;
-  font-size: 1.5em;
-  margin-left: 10%;
-  padding-top: 1%;
-  color: #979797; }
+  background: #008485; }
 
 #btn-section {
   background: #50E2E3;
@@ -567,10 +562,8 @@ input[type="text"]:focus, textarea:focus {
   margin-bottom: -10px;
   color: #b2b2b2; }
 
-.tile {
-  background-color: #ffffff;
+.tile, .tile2 {
   padding: .5%;
-  border: 2px solid #979797;
   border-radius: 12px;
   height: 74px;
   width: 74px;
@@ -579,16 +572,12 @@ input[type="text"]:focus, textarea:focus {
   float: left;
   text-align: center; }
 
+.tile {
+  background-color: #ffffff;
+  border: 2px solid #979797; }
+
 .tile2 {
-  background-color: #73E7E8;
-  padding: .5%;
-  border-radius: 12px;
-  height: 74px;
-  width: 74px;
-  font-size: .75em;
-  margin: 3px;
-  float: left;
-  text-align: center; }
+  background-color: #73E7E8; }
 
 .tile.white {
   background-color: white; }
