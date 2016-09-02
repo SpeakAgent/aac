@@ -41,16 +41,17 @@ a:active {
   margin-left: 15%;
   margin-top: 2%; }
 
-a.button-outline.button-calm.button-small.selected-btn2 {
+a.button-outline.button-small.selected-btn2 {
   background-color: #6FCACB;
   color: #ffffff;
   border-radius: 0;
   margin-left: 8px;
   border-color: #6FCACB; }
 
-a#btn-styling.button.button-outline.button-calm.button-small {
+a#btn-styling.button.button-outline.button-small {
   border-color: #b2b2b2;
-  color: #b2b2b2; }
+  color: #b2b2b2;
+  background-color: transparent; }
 
 .annotation {
   color: #6A7777;
@@ -179,11 +180,9 @@ a#btn-styling.button.button-outline.button-calm.button-small {
   color: #b2b2b2; }
 
 button.button-outline.button-calm.button-small.selected-btn2 {
-  background-color: #6FCACB;
-  color: #ffffff;
-  border-radius: 0;
-  margin-left: 8px;
-  border-color: #6FCACB; }
+  background-color: #6FCACB; }
+  button.button-outline.button-calm.button-small.selected-btn2 .hide-label2 {
+    color: #ffffff; }
 
 button#btn-styling.button.button-outline.button-calm.button-small {
   border-color: #b2b2b2; }
@@ -309,11 +308,12 @@ button#btn-styling.button.button-outline.button-calm.button-small {
     color: #008485;
     font-weight: bold;
     margin-bottom: -1px;
-    margin-left: 5px;
-    margin-right: 6px; }
+    margin-right: 6px;
+    margin-top: -5px; }
   .done-button a {
     color: #008485;
-    text-decoration: none; }
+    text-decoration: none;
+    margin-left: -15px; }
 
 #edit-input-section {
   padding: 35px; }
@@ -641,7 +641,7 @@ input[type="text"]:focus, textarea:focus {
 .toggle-note {
   font-size: 8px;
   color: #000000;
-  margin: 30px -3px -8px 0px;
+  margin: 10px -3px -8px 0px;
   font-weight: bold; }
 
 .top-button {

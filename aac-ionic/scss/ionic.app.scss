@@ -77,7 +77,7 @@ a:active {
   margin-top:2%;
 }
 
-a.button-outline.button-calm.button-small.selected-btn2{
+a.button-outline.button-small.selected-btn2{
   background-color: $speak-agent-light-blue5;
   color: $white;
   border-radius: 0;
@@ -85,9 +85,10 @@ a.button-outline.button-calm.button-small.selected-btn2{
   border-color: $speak-agent-light-blue5;
 }
 
-a#btn-styling.button.button-outline.button-calm.button-small{
+a#btn-styling.button.button-outline.button-small{
   border-color:$light-grey;
   color: $light-grey;
+  background-color:transparent;
 }
 
 .annotation{
@@ -242,10 +243,13 @@ a#btn-styling.button.button-outline.button-calm.button-small{
 
 button.button-outline.button-calm.button-small.selected-btn2{
   background-color: $speak-agent-light-blue5;
-  color: $white;
-  border-radius: 0;
-  margin-left: 8px;
-  border-color: $speak-agent-light-blue5;
+  .hide-label2{
+    color:$white;
+  }
+  // color: $white;
+  // border-radius: 0;
+  // margin-left: 8px;
+  // border-color: $speak-agent-light-blue5;
 }
 
 button#btn-styling.button.button-outline.button-calm.button-small{
@@ -395,12 +399,14 @@ button#btn-styling.button.button-outline.button-calm.button-small{
     color:$speak-agent-dark-blue;
     font-weight:bold;
     margin-bottom: -1px;
-    margin-left: 5px;
+    // margin-left: 5px;
     margin-right: 6px;
+    margin-top: -5px;
   }
   a{
     color:$speak-agent-dark-blue;
     text-decoration: none;
+    margin-left: -15px;
   }
 }
 
@@ -807,7 +813,7 @@ input[type="text"]:focus, textarea:focus{
 .toggle-note{
   font-size: 8px;
   color: $black;
-  margin: 30px -3px -8px 0px;
+  margin: 10px -3px -8px 0px;
   font-weight: bold;
 }
 
