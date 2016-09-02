@@ -381,7 +381,7 @@ button#btn-styling.button.button-outline.button-calm.button-small {
     font-size: 1.4em; }
   .icon.ion-ios-search {
     font-size: 1.75em; }
-  .icon.ion-play {
+  .icon.ion-play, .icon.ion-search {
     font-size: 1.5em; }
 
 .icon {
