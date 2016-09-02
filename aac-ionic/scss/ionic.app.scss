@@ -282,7 +282,7 @@ button#btn-styling.button.button-outline.button-calm.button-small{
 }
 
 .buttonsdiv{
-  margin-left: 200px;
+  margin-left: 20px;
 }
 
 #centered-custom-button{
@@ -399,14 +399,14 @@ button#btn-styling.button.button-outline.button-calm.button-small{
     color:$speak-agent-dark-blue;
     font-weight:bold;
     margin-bottom: -1px;
-    // margin-left: 5px;
+    // margin-left: 20px;
     margin-right: 6px;
     margin-top: -5px;
   }
   a{
     color:$speak-agent-dark-blue;
     text-decoration: none;
-    margin-left: -15px;
+    margin-left: 5px;
   }
 }
 
@@ -491,18 +491,25 @@ button#btn-styling.button.button-outline.button-calm.button-small{
   .ion-help-circled{
     color: $speak-agent-dark-blue;
   }
+
+  &.ion-chevron-right{
+    font-size: 1.4em;
+  }
 }
 
 .icon{
   font-size: 2.5em;
-  margin-right:30px;
 
   &.ion-locked{
     color:$red;
+    margin-left:200px;
+    // margin-right:30px;
   }
 
   &.ion-unlocked{
-    color:$lime-green
+    color:$lime-green;
+    margin-left:200px;
+    // margin-right:30px;
   }
 }
 
@@ -676,12 +683,17 @@ input[type="text"]:focus, textarea:focus{
   color:$dark-grey;
 }
 
-#selected-btn, #selected-btn a, #selected-btn i{
-  background-color: #6FCACB;
-  color:white;
-  border-radius: 0;
+#selected-btn{
   margin-left: 8px;
-  border-color: #6FCACB; 
+  background-color:#6FCACB;
+  border-radius: 0;
+  border-color: #6FCACB;
+  &#selected-btn a, &#selected-btn i{
+    color: $white;
+    &.icon.ion-gear-b{
+      font-size: 1em;
+    }
+  }
 }
 
 .selected-btn2{
