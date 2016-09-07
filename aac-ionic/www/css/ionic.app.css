@@ -126,6 +126,9 @@ a#btn-styling.button.button-outline.button-small {
   font-weight: 500;
   margin-bottom: 80px;
   width: 90%; }
+  .board-instructions .icon.ion-help-circled {
+    font-size: 1.5em;
+    color: #008485; }
 
 .board-instructions2 {
   color: #008485;
@@ -187,6 +190,9 @@ button.button-outline.button-calm.button-small.selected-btn2 {
 button#btn-styling.button.button-outline.button-calm.button-small {
   border-color: #b2b2b2; }
 
+button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2 {
+  border-color: #6FCACB; }
+
 #button-circle {
   width: 75px;
   height: 75px;
@@ -229,12 +235,16 @@ button#btn-styling.button.button-outline.button-calm.button-small {
 .centered-title {
   font-size: 1em;
   color: #000000;
-  text-align: center; }
+  margin-left: 30%; }
   .centered-title.lightBlue {
     background-color: #83EFF0;
-    border-color: #ffffff; }
+    border-color: #ffffff;
+    text-align: center;
+    margin-left: 0; }
   .centered-title.white {
-    background-color: #ffffff; }
+    background-color: #ffffff;
+    text-align: center;
+    margin-left: 0; }
 
 .color-choice {
   background-color: #ffffff;
@@ -375,8 +385,6 @@ button#btn-styling.button.button-outline.button-calm.button-small {
   .icon .ion-ios-arrow-left {
     font-size: 2em;
     color: #7c7c7c; }
-  .icon .ion-help-circled {
-    color: #008485; }
   .icon.ion-chevron-right {
     font-size: 1.4em; }
   .icon.ion-ios-search {

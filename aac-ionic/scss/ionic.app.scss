@@ -172,6 +172,10 @@ a#btn-styling.button.button-outline.button-small{
   font-weight: 500;
   margin-bottom: 80px;
   width:90%;
+  & .icon.ion-help-circled{
+    font-size: 1.5em;
+    color: $speak-agent-dark-blue;
+  }
 }
 
 .board-instructions2{
@@ -256,6 +260,10 @@ button#btn-styling.button.button-outline.button-calm.button-small{
   border-color:$light-grey;
 }
 
+button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2{
+  border-color: $speak-agent-light-blue5;
+}
+
 #button-circle{
   width:75px;
   height:75px;
@@ -305,15 +313,19 @@ button#btn-styling.button.button-outline.button-calm.button-small{
 .centered-title{
   font-size:1em;
   color: $black;
-  text-align: center;
+  margin-left: 30%;
 
   &.lightBlue{
     background-color:$speak-agent-light-blue;
     border-color:$white;
+    text-align: center;
+    margin-left: 0;
   }
 
   &.white{
     background-color:$white;
+    text-align: center;
+    margin-left: 0;
   }
 }
 
@@ -486,10 +498,6 @@ button#btn-styling.button.button-outline.button-calm.button-small{
   .ion-ios-arrow-left{
     font-size: 2em;
     color: $dark-grey2;
-  }
-
-  .ion-help-circled{
-    color: $speak-agent-dark-blue;
   }
 
   &.ion-chevron-right{
