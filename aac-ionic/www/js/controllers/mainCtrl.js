@@ -40,6 +40,7 @@ $http(req).success(function(data) {
 
 $scope.chosenBoard = function(sampleBoard){
   $scope.selectedIndex = sampleBoard;
+  console.log($scope.dummyBoards[$scope.selectedIndex].pk);
   if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
     console.log("is this working?");
     console.log($scope.board.pk);
@@ -53,7 +54,7 @@ $scope.chosenBoard = function(sampleBoard){
       $scope.board = data;
       $scope.filled_tiles = Object.keys($scope.board.symbols)
     })
-  } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
+  } else if ($scope.dummyBoards[$scope.selectedIndex].pk === '5'){
 
     $scope.board = {
       "title" :"About Me",
