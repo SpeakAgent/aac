@@ -1,23 +1,23 @@
 <ion-header-bar class="bar-dark">
-      <div class="buttonsdiv">
-        <i class="icon ion-unlocked"></i>
-        <!-- <i class="icon ion-locked"></i> -->
-        <button class="button button-outline button-calm button-small" id="selected-btn">
-          <a href="/#/settings"><i class="icon ion-gear-b"></i> Settings</a>
-        </button>
-        <button class="button button-outline button-calm button-small" id="btn-styling">
-          <i class="icon ion-grid"></i><a href="#/board_factory">Board Factory</a>
-          <br>
-          <p class="show-hide-label">*Requires Wifi</p>
-        </button>
-        <button class="button button-outline button-calm button-small" id="btn-styling" style="margin-right:10px;">
-          <!-- <i class="icon ion-eye-disabled"></i>  -->
-          <i class="icon ion-eye-disabled"></i><span class="hide-label">Hide Tiles</span>
-        </button>
+  <div class="buttonsdiv">
+    <i class="icon ion-unlocked"></i>
+    <!-- <i class="icon ion-locked"></i> -->
+    <button class="button button-outline button-calm button-small" id="selected-btn">
+      <a href="/#/settings"><i class="icon ion-gear-b"></i> Settings</a>
+    </button>
+    <button class="button button-outline button-calm button-small" id="btn-styling">
+      <i class="icon ion-grid"></i><a href="#/board_factory">Board Factory</a>
+      <br>
+      <p class="show-hide-label">*Requires Wifi</p>
+    </button>
+    <button class="button button-outline button-calm button-small" id="btn-styling" style="margin-right:10px;">
+      <!-- <i class="icon ion-eye-disabled"></i>  -->
+      <i class="icon ion-eye-disabled"></i><span class="hide-label">Hide Tiles</span>
+    </button>
 
-        <button class="done-button"><p><i class="icon ion-checkmark-round"></i><a href="#/home">DONE</a></p></div>
-      </div>
- </ion-header-bar>
+    <button class="done-button"><p><i class="icon ion-checkmark-round"></i><a href="#/home">DONE</a></p></div>
+  </div>
+</ion-header-bar>
 
 <ion-view view-title="AAC" class="pane">
 	<ion-content class= "appBody" id="bodyBack" style="background-color:#98E3E3;">
@@ -114,6 +114,8 @@
 
 <!-- Settings Access Panel -->
 			<div class="col col-67" id="settings-modal" ng-hide="step != 1">
+				<!-- ng-hide="step != 1" -->
+
 				<!-- <div class="bar bar-subheader">
 					<h1 class="title"><strong>Settings</strong></h1>
 				</div> -->
