@@ -515,6 +515,20 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2{
   &.ion-search{
     font-size: 1.25em;
   }
+
+  &.ion-plus{
+    font-size: 1em;
+    color: $white;
+  }
+
+  &.ion-plus.visible{
+    color: $black;
+  }
+
+  &.ion-close-round{
+    font-size: 1.75em;
+    float:right;
+  }
 }
 
 .icon{
@@ -544,6 +558,10 @@ input[type="text"]{
   outline: 1px solid $light-grey2;
 }
 
+input[type="text"]#invisible{
+  outline: none;
+}
+
 input[type="text"]:focus, textarea:focus{
   background: $cream;
   box-shadow: 0 0 5px $speak-agent-light-blue4;
@@ -556,13 +574,14 @@ input[type="text"]:focus, textarea:focus{
 .item{
   .green-blue{
     border-color:$speak-agent-light-blue2;
+    }
   }
 
-  .item-input{
+  &.item-input{
     padding: 0px;
     margin-top: -2px;
 
-    .none{
+    &.none{
       outline:none;
       border-style: none;
       margin: -16px;
@@ -608,6 +627,7 @@ input[type="text"]:focus, textarea:focus{
 .modal-note{
   font-style: italic;
   padding-left: 30px;
+  font-size: .75em;
 }
 
 #newboard{

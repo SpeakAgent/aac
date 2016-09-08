@@ -392,6 +392,14 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2 
     font-size: 1.5em; }
   .icon.ion-search {
     font-size: 1.25em; }
+  .icon.ion-plus {
+    font-size: 1em;
+    color: #ffffff; }
+  .icon.ion-plus.visible {
+    color: #000000; }
+  .icon.ion-close-round {
+    font-size: 1.75em;
+    float: right; }
 
 .icon {
   font-size: 2.5em; }
@@ -411,6 +419,9 @@ input[type="text"] {
   box-shadow: none;
   border-radius: none;
   outline: 1px solid #969696; }
+
+input[type="text"]#invisible {
+  outline: none; }
 
 input[type="text"]:focus, textarea:focus {
   background: #FFF8D9;
@@ -462,7 +473,8 @@ input[type="text"]:focus, textarea:focus {
 
 .modal-note {
   font-style: italic;
-  padding-left: 30px; }
+  padding-left: 30px;
+  font-size: .75em; }
 
 #newboard {
   padding: 0px; }
