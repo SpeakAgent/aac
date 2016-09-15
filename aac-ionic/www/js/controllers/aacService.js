@@ -17,25 +17,25 @@ app.service('aacService', function($http, $ionicModal){
   this.aacService.data = {};
 
 
-  this.aacService.getBoard = function(){
-    var ureq = {
-      url: "http://iamready.herokuapp.com/users/user/all/",
-      data: {
-        pk: localStorage.getItem('pk'),
-        mode: "simple"
-      },
-      method: "POST",
-      headers: {
-        Authorization: 'JWT ' + localStorage.getItem('authToken')
-      },
-    }
+  // this.aacService.getBoard = function(){
+  //   var ureq = {
+  //     url: "http://iamready.herokuapp.com/users/user/all/",
+  //     data: {
+  //       pk: localStorage.getItem('pk'),
+  //       mode: "simple"
+  //     },
+  //     method: "POST",
+  //     headers: {
+  //       Authorization: 'JWT ' + localStorage.getItem('authToken')
+  //     },
+  //   }
 
-    $http.get(ureq)
-      .success(function(data){
-        aacService.data.nukes = data;
-        console.log(aacService.data.nukes);
-      });
+  //   $http.get(ureq)
+  //     .success(function(data){
+  //       aacService.data.nukes = data;
+  //       console.log(aacService.data.nukes);
+  //     });
 
-    return aacService;
-  } 
+  //   return aacService;
+  // } 
 })

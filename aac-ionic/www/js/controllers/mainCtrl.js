@@ -10,20 +10,6 @@ app.filter('slice', function(){
 app.controller('mainController', 
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, aacService) {
 
-  // $scope.title = "This is a title";
-  // $scope.board = {};
-  // $scope.board.title = "Home";
-
-  $scope.settings = true; //for settingsCtrl
-  $scope.step = 1;
-
-  // $scope.columns = "abcdef"
-  // $scope.rows = "123456"
-  // $scope.selectedTiles = []
-
-  // $scope.selectedIndex = -2
-  // $scope.titleLimit = 6
-
   $scope.columns = aacService.columns;
   $scope.rows = aacService.rows;
   $scope.selectedTiles = []
@@ -31,27 +17,38 @@ app.controller('mainController',
   $scope.titleLimit = aacService.titleLimit; 
   $scope.start = 0;
   $scope.end = 24;
-  $scope.board = this.aacService.getBoard();
-  console.log($scope.board);
-
-  // $scope.openModal = aacService.openModal(index);
-  // $scope.closeModal = aacService.closeModal(index);
-
+  $scope.board = {};
+  // can't figure out how to pull this from the service
   // $scope.board = aacService.board;
 
-// can't figure out how to pull this from the service
+$scope.getData = function(){
+  var req = {
+    url: 'https://lexemes-dev.herokuapp.com/board/single/',
+    data: {pk: 3},
+    method: 'POST'
+  }
 
-// var req = {
-//   url: 'https://lexemes-dev.herokuapp.com/board/single/',
-//   data: {pk: 3},
-//   method: 'POST'
-// }
+  $http(req).success(function(data) {
+    $scope.board = data;
+    $scope.filled_tiles = Object.keys($scope.board.symbols)
+  })
+}
 
-// $http(req).success(function(data) {
-//   $scope.board = data;
-//   $scope.filled_tiles = Object.keys($scope.board.symbols)
-// })
-  
+$scope.getAboutMe = function(){
+  var req2 = {
+    url: 'https://lexemes-dev.herokuapp.com/board/single/',
+    data: {pk: 4},
+    method: 'POST'
+  }
+
+  $http(req2).success(function(data) {
+    $scope.board = data;
+    $scope.filled_tiles = Object.keys($scope.board.symbols)
+  })
+}
+
+$scope.getData();
+
 // $scope.testingService = function(){
 //   aacService.showNames();
 // }
@@ -61,17 +58,8 @@ $scope.chosenBoard = function(sampleBoard){
   if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
     console.log($scope.board.pk);
     console.log($scope.dummyBoards[$scope.selectedIndex].pk);
-    $scope.board = aacService.getBoard();
-    // var req = {
-    //   url: 'https://lexemes-dev.herokuapp.com/board/single/',
-    //   data: {pk: 3},
-    //   method: 'POST'
-    // }
-
-    // $http(req).success(function(data) {
-    //   $scope.board = data;
-    //   $scope.filled_tiles = Object.keys($scope.board.symbols)
-    // })
+    // $scope.board = aacService.getBoard();
+    $scope.getData();
   } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
 
     $scope.board = {
@@ -261,24 +249,10 @@ $scope.chosenBoard = function(sampleBoard){
         }
       }
     }
-
-
-
     $scope.aboutcircle = true;
   } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
-    console.log("what about this??");
     console.log($scope.board.pk);
-     var req2 = {
-      url: 'https://lexemes-dev.herokuapp.com/board/single/',
-      data: {pk: 4},
-      method: 'POST'
-    }
-
-    $http(req2).success(function(data) {
-      $scope.board = data;
-      $scope.filled_tiles = Object.keys($scope.board.symbols)
-    })
-
+     $scope.getAboutMe();
   }else{
     console.log("This icon doesn't have an associated board");
   }
@@ -715,169 +689,6 @@ $scope.chosenBoard = function(sampleBoard){
   { name:"Things",
     img_path:"img/aac_board_imgs/crayon.png"},
   ]
-
-$scope.panel = function(number){
-  if(number == "1"){
-    var self = document.getElementById("settings");
-    self.style.backgroundColor = "#008485";
-    self.style.color = "white";
-    $scope.step = 1;
-      // if (number == "2" || number == "3" || number == "4" || number == "5"){
-      var synthetic = document.getElementById("synthetic");
-      synthetic.style.backgroundColor = "white";
-      synthetic.style.color = "black";
-
-      var sound = document.getElementById("sound");
-      sound.style.backgroundColor = "white";
-      sound.style.color = "black";
-
-      var phrase = document.getElementById("phrase");
-      phrase.style.backgroundColor = "white";
-      phrase.style.color = "black";
-
-      var alternate = document.getElementById("alternate");
-      alternate.style.backgroundColor = "white";
-      alternate.style.color = "black";
-
-      var aboutMe = document.getElementById("aboutMe");
-      aboutMe.style.backgroundColor = "white";
-      aboutMe.style.color = "black";
-      // }
-
-  } else if(number == "2"){
-      var self = document.getElementById("synthetic");
-      self.style.backgroundColor = "#008485";
-      self.style.color = "white";
-      $scope.step = 2;
-
-      var settings = document.getElementById("settings");
-      settings.style.backgroundColor = "white";
-      settings.style.color = "black";
-
-      var sound = document.getElementById("sound");
-      sound.style.backgroundColor = "white";
-      sound.style.color = "black";
-
-      var phrase = document.getElementById("phrase");
-      phrase.style.backgroundColor = "white";
-      phrase.style.color = "black";
-
-      var alternate = document.getElementById("alternate");
-      alternate.style.backgroundColor = "white";
-      alternate.style.color = "black";
-
-      var aboutMe = document.getElementById("aboutMe");
-      aboutMe.style.backgroundColor = "white";
-      aboutMe.style.color = "black";
-
-  } else if(number == "3"){
-      var self = document.getElementById("sound");
-      self.style.backgroundColor = "#008485";
-      self.style.color = "white";
-      $scope.step = 3;
-
-      var synthetic = document.getElementById("synthetic");
-      synthetic.style.backgroundColor = "white";
-      synthetic.style.color = "black";
-
-      var settings = document.getElementById("settings");
-      settings.style.backgroundColor = "white";
-      settings.style.color = "black";
-
-      var phrase = document.getElementById("phrase");
-      phrase.style.backgroundColor = "white";
-      phrase.style.color = "black";
-
-      var alternate = document.getElementById("alternate");
-      alternate.style.backgroundColor = "white";
-      alternate.style.color = "black";
-
-      var aboutMe = document.getElementById("aboutMe");
-      aboutMe.style.backgroundColor = "white";
-      aboutMe.style.color = "black";
-
-  } else if(number == "4"){
-      var self = document.getElementById("phrase");
-      self.style.backgroundColor = "#008485";
-      self.style.color = "white";
-      $scope.step = 4;
-
-      var synthetic = document.getElementById("synthetic");
-      synthetic.style.backgroundColor = "white";
-      synthetic.style.color = "black";
-
-      var sound = document.getElementById("sound");
-      sound.style.backgroundColor = "white";
-      sound.style.color = "black";
-
-      var settings = document.getElementById("settings");
-      settings.style.backgroundColor = "white";
-      settings.style.color = "black";
-
-      var alternate = document.getElementById("alternate");
-      alternate.style.backgroundColor = "white";
-      alternate.style.color = "black";
-
-      var aboutMe = document.getElementById("aboutMe");
-      aboutMe.style.backgroundColor = "white";
-      aboutMe.style.color = "black";
-
-  } else if(number == "5"){
-      var self = document.getElementById("alternate");
-      self.style.backgroundColor = "#008485";
-      self.style.color = "white";
-      $scope.step = 5;
-
-      var synthetic = document.getElementById("synthetic");
-      synthetic.style.backgroundColor = "white";
-      synthetic.style.color = "black";
-
-      var sound = document.getElementById("sound");
-      sound.style.backgroundColor = "white";
-      sound.style.color = "black";
-
-      var phrase = document.getElementById("phrase");
-      phrase.style.backgroundColor = "white";
-      phrase.style.color = "black";
-
-      var settings = document.getElementById("settings");
-      settings.style.backgroundColor = "white";
-      settings.style.color = "black";
-
-      var aboutMe = document.getElementById("aboutMe");
-      aboutMe.style.backgroundColor = "white";
-      aboutMe.style.color = "black";
-
-  }else if(number == "6"){
-      var self = document.getElementById("aboutMe");
-      self.style.backgroundColor = "#008485";
-      self.style.color = "white";
-      $scope.step = 6;
-
-      var synthetic = document.getElementById("synthetic");
-      synthetic.style.backgroundColor = "white";
-      synthetic.style.color = "black";
-
-      var sound = document.getElementById("sound");
-      sound.style.backgroundColor = "white";
-      sound.style.color = "black";
-
-      var phrase = document.getElementById("phrase");
-      phrase.style.backgroundColor = "white";
-      phrase.style.color = "black";
-
-      var settings = document.getElementById("settings");
-      settings.style.backgroundColor = "white";
-      settings.style.color = "black";
-
-      var alternate = document.getElementById("alternate");
-      alternate.style.backgroundColor = "white";
-      alternate.style.color = "black";
-
-  } else {
-    console.log("This isn't working either?!? God!?!?");
-  }
-}
 
   $scope.lastSet = function(index){
     console.log("Last Set button is working");

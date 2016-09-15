@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 
 
-angular.module('main', ['ionic', 'main.Ctrl', 'main.aacService'])
+angular.module('main', ['ionic', 'main.Ctrl', 'main.aacService', 'settings.Ctrl'])
 
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/main');
@@ -17,6 +17,7 @@ angular.module('main', ['ionic', 'main.Ctrl', 'main.aacService'])
       });
 
     $stateProvider.state('settings',{
+        controller: 'settingsController',
         url:'/settings',
         templateUrl: 'templates/settings.html',
       });
