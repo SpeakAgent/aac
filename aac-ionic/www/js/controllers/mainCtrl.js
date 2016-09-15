@@ -36,9 +36,8 @@ app.controller('mainController',
   $scope.titleLimit = aacService.titleLimit; 
   $scope.start = 0;
   $scope.end = 24;
-  $scope.board = function(){
-    aacService.content();
-  }
+  $scope.board = aacService.getBoard;
+  console.log($scope.board);
 
   // $scope.openModal = aacService.openModal(index);
   // $scope.closeModal = aacService.closeModal(index);
