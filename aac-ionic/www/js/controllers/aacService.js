@@ -10,21 +10,32 @@ app.service('aacService', function($http, $ionicModal){
 	this.selectedIndex = -2;
 	this.titleLimit = 6;
 
-  this.board = {};
+  // this.board = {};
+  // this.board.data = {};
 
-  this.getBoard = function(){
-    var req = {
-      url: 'https://lexemes-dev.herokuapp.com/board/single/',
-      data: {pk: 3},
-      method: 'POST'
+  this.aacService = {};
+  this.aacService.data = {};
+
+
+  this.aacService.getBoard = function(){
+    var ureq = {
+      url: "http://iamready.herokuapp.com/users/user/all/",
+      data: {
+        pk: localStorage.getItem('pk'),
+        mode: "simple"
+      },
+      method: "POST",
+      headers: {
+        Authorization: 'JWT ' + localStorage.getItem('authToken')
+      },
     }
 
-    $http.get(req)
+    $http.get(ureq)
       .success(function(data){
-        this.board = data;
-        console.log(this.board);
+        aacService.data.nukes = data;
+        console.log(aacService.data.nukes);
       });
 
-    return this.board;
+    return aacService;
   } 
 })

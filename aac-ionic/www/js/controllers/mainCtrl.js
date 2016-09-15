@@ -17,11 +17,6 @@ app.controller('mainController',
   $scope.settings = true; //for settingsCtrl
   $scope.step = 1;
 
-  // sample_symbol = {
-  //     word: "Sample",
-  //     icon: "img/symbols/a_lot.png",
-  //     pk: 15,
-  //   }
   // $scope.columns = "abcdef"
   // $scope.rows = "123456"
   // $scope.selectedTiles = []
@@ -36,7 +31,7 @@ app.controller('mainController',
   $scope.titleLimit = aacService.titleLimit; 
   $scope.start = 0;
   $scope.end = 24;
-  $scope.board = aacService.getBoard;
+  $scope.board = this.aacService.getBoard();
   console.log($scope.board);
 
   // $scope.openModal = aacService.openModal(index);
@@ -64,18 +59,19 @@ app.controller('mainController',
 $scope.chosenBoard = function(sampleBoard){
   $scope.selectedIndex = sampleBoard;
   if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
-    console.log("is this working?");
     console.log($scope.board.pk);
-    var req = {
-      url: 'https://lexemes-dev.herokuapp.com/board/single/',
-      data: {pk: 3},
-      method: 'POST'
-    }
+    console.log($scope.dummyBoards[$scope.selectedIndex].pk);
+    $scope.board = aacService.getBoard();
+    // var req = {
+    //   url: 'https://lexemes-dev.herokuapp.com/board/single/',
+    //   data: {pk: 3},
+    //   method: 'POST'
+    // }
 
-    $http(req).success(function(data) {
-      $scope.board = data;
-      $scope.filled_tiles = Object.keys($scope.board.symbols)
-    })
+    // $http(req).success(function(data) {
+    //   $scope.board = data;
+    //   $scope.filled_tiles = Object.keys($scope.board.symbols)
+    // })
   } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
 
     $scope.board = {
