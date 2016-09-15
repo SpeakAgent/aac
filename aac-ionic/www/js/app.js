@@ -17,21 +17,25 @@ angular.module('starter', ['ionic', 'starter.main'])
       });
 
     $stateProvider.state('settings',{
+      controller: 'mainController',
         url:'/settings',
         templateUrl: 'templates/settings.html',
       });
 
     $stateProvider.state('board_factory',{
+      controller: 'mainController',
       url:'/board_factory',
       templateUrl: 'templates/board_factory.html',
     })
 
     $stateProvider.state('board_factory/:id',{
+      controller: 'mainController',
       url:'/board_factory/sample_edit/:id',
       templateUrl: 'templates/sample_edit.html'
     })
 
     $stateProvider.state('board_factory/new',{
+      controller: 'mainController',
       url:'/board_factory/new',
       templateUrl: 'templates/board_factory_new.html'
     })
