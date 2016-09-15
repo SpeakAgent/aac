@@ -1,4 +1,3 @@
-
 var app = angular.module('main.Ctrl', ['ionic']);
 
 app.filter('slice', function(){
@@ -12,7 +11,7 @@ app.controller('mainController',
 
   $scope.columns = aacService.columns;
   $scope.rows = aacService.rows;
-  $scope.selectedTiles = []
+  $scope.selectedTiles = [];
   $scope.selectedIndex = aacService.selectedIndex;
   $scope.titleLimit = aacService.titleLimit; 
   $scope.start = 0;
@@ -325,35 +324,35 @@ $scope.chosenBoard = function(sampleBoard){
   ]
 
 // for boardFactoryCtrl
-  var template = '<ion-popover-view class="popover-stuff2"><ion-content><p class="closing-x" ng-click="closePopover()">X</p><p class="popover-stuff">To edit the content of tiles with a yellow dot, go to Settings <a href="#/settings"><button class="custom-button"><i class="icon ion-gear-a"></i> Open Settings</button></a></p></ion-popover-view>';
+  // var template = '<ion-popover-view class="popover-stuff2"><ion-content><p class="closing-x" ng-click="closePopover()">X</p><p class="popover-stuff">To edit the content of tiles with a yellow dot, go to Settings <a href="#/settings"><button class="custom-button"><i class="icon ion-gear-a"></i> Open Settings</button></a></p></ion-popover-view>';
 
-  $scope.popover = $ionicPopover.fromTemplate(template, {
-    scope: $scope
-  });
+  // $scope.popover = $ionicPopover.fromTemplate(template, {
+  //   scope: $scope
+  // });
 
-  $ionicPopover.fromTemplateUrl('settings-popover.html', {
-    scope: $scope
-  }).then(function(popover){
-    $scope.popover = popover;
-  });
+  // $ionicPopover.fromTemplateUrl('settings-popover.html', {
+  //   scope: $scope
+  // }).then(function(popover){
+  //   $scope.popover = popover;
+  // });
 
-  $scope.openPopover = function($event){
-    $scope.popover.show($event);
-  };
+  // $scope.openPopover = function($event){
+  //   $scope.popover.show($event);
+  // };
 
-  $scope.closePopover = function(){
-    $scope.popover.hide();
-  };
+  // $scope.closePopover = function(){
+  //   $scope.popover.hide();
+  // };
 
-  $scope.$on('$destroy', function(){
-    $scope.popover.remove();
-  });
+  // $scope.$on('$destroy', function(){
+  //   $scope.popover.remove();
+  // });
 
-  $scope.$on('popover.hidden', function(){
-  });
+  // $scope.$on('popover.hidden', function(){
+  // });
 
-  $scope.$on('popover.removed', function(){
-  });
+  // $scope.$on('popover.removed', function(){
+  // });
 
 
   // $ionicModal.fromTemplateUrl('templates/aac-partials/_color-modal.html',{

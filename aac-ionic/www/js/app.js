@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 
 
-angular.module('main', ['ionic', 'main.Ctrl', 'main.aacService', 'settings.Ctrl'])
+angular.module('main', ['ionic', 'main.Ctrl', 'main.aacService', 'settings.Ctrl', 'boardFactory.Ctrl'])
 
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/main');
@@ -23,6 +23,7 @@ angular.module('main', ['ionic', 'main.Ctrl', 'main.aacService', 'settings.Ctrl'
       });
 
     $stateProvider.state('board_factory',{
+      controller: 'boardFactoryController',
       url:'/board_factory',
       templateUrl: 'templates/board_factory.html',
     })
