@@ -1,19 +1,24 @@
     <ion-header-bar class="bar-dark">
+    <i class="icon ion-unlocked"></i>
       <div class="buttonsdiv">
-        <i class="icon ion-unlocked"></i>
-        <button class="button button-outline button-calm button-small" id="btn-styling">
-          <a href="#/settings"><i class="icon ion-gear-b"></i> Settings</a>
-        </button>
-        <button class="button button-outline button-calm button-small" id="btn-styling">
-          <i class="icon ion-grid"></i><a href="#/board_factory"> Board Factory</a>
+        <!-- <i class="icon ion-unlocked"></i> -->
+
+        <a href="#/settings" class="button button-outline button-small" id="btn-styling">
+            <i class="icon ion-gear-b"></i> Settings
+        </a>
+
+        <a href="#/board_factory" class="button button-outline button-small" id="btn-styling">
+          <i class="icon ion-grid"></i>
+          Board Factory
           <br>
           <p class="show-hide-label">*Requires Wifi</p>
-        </button>
+        </a>
 
-        <button class="button button-outline button-calm button-small" id="btn-styling" style="margin-right:10px;" ng-click="activeHide()" ng-class="class">
+        <button class="button button-outline button-calm button-small" id="btn-styling" ng-click="activeHide()" ng-class="class">
           <i class="icon ion-eye-disabled" ng-show="selectedBtn2 == true"></i>
           <i class="icon ion-eye-disabled" ng-show="selectedBtn2 == false" style="color:white;"></i>
-          <span class="hide-label" ng-show="selectedBtn2 == true">Hide Tiles</span><span ng-show="selectedBtn2 == false">Hide Tiles</span>
+          <span class="hide-label" ng-show="selectedBtn2 == true">Hide Tiles</span>
+          <span class="hide-label2" ng-show="selectedBtn2 == false">Hide Tiles</span>
 
           <div class="toggle-content" style="float:right">
             <label class="toggle toggle-dark-green toggle-small" ng-if="hide">

@@ -17,7 +17,7 @@ angular.module('starter', ['ionic', 'starter.main'])
       });
 
     $stateProvider.state('settings',{
-      controller: 'mainController',
+        controller: 'mainController',
         url:'/settings',
         templateUrl: 'templates/settings.html',
       });

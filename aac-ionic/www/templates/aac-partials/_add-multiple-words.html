@@ -6,19 +6,19 @@
         <!-- <div class="list"> -->
             <div class="replace-search2">
             	<label class="item item-input green-blue">
-                    <input type="text" name="tags" placeholder=" ENTER WORD">
+                    <input type="text" name="tags" id="invisible" placeholder=" ENTER WORD">
                 </label>
             </div>
 
             <ul class="list">
                 <li class="item green-blue" ng-repeat="blank in blankInputs">
-                    <label class="item item-input none">
-                        <input type="text" name="tags" placeholder="{{blank.placeholder}}">
-                    </label>
+                    <!-- <label class="item item-input none"> -->
+                        <input type="text" name="tags" id="invisible" placeholder="{{blank.placeholder}}">
+                    <!-- </label> -->
                 </li>
 
                 <li class="item none green-blue">
-                    <p class="more-inputs" ng-click="moreInputs()"><i class="icon ion-plus"></i> FIVE ROWS</p>
+                    <p class="more-inputs" ng-click="moreInputs()"><i class="icon ion-plus visible"></i> FIVE ROWS</p>
                 </li>
             </ul>
 
