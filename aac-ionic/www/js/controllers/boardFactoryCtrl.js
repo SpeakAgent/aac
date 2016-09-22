@@ -10,83 +10,238 @@ app.controller('boardFactoryController',
 	function($http, $scope, $location, $ionicPopover, $location, aacService){
 		// $scope.selectedTiles = [];
 		// $scope.selectedIndex = aacService.selectedIndex;
+
 		$scope.start = 0;
 		$scope.end = 24;
 		$scope.board = {};
 
-		$scope.colorName =[
-		    {colorTitle: 'Sky Blue',
-		     primaryColor:'#50E2E3',
-		     secondaryColor:'#008484',
-		     url:'img/color_change/colorBlob-skyBlue.svg'
-		 	},
+	$scope.dummyBoards =[
 
-		    {colorTitle: 'Electric Green',
-		     primaryColor:'#BCE72B', 
-		     secondaryColor:'#18745C', 
-		     url:'img/color_change/colorBlob_electricGreen.svg'
-		 	},
+		{ name:"About Me",
+		  img_path:"img/aac_board_imgs/crayon.png",
+		  pk: '5'},
 
-		    {colorTitle: 'Hot Pink',
-		     primaryColor:'#D5388A',
-		     secondaryColor:'#F787C6', 
-		     url:'img/color_change/colorBlob_hotPink.svg'
-		 	},
+	  { name:"Lunch",
+	    img_path:"img/aac_board_imgs/alpaca.png",
+	    pk: '3'},
 
-		    {colorTitle: 'Tangerine',
-		     primaryColor:'#E07600',
-		     secondaryColor:'#982900', 
-		     url:'img/color_change/colorBlob_tangerine.svg'
-		 	},
+	  { name:"Feelings",
+	    img_path:"img/aac_board_imgs/art.png",
+	    pk: '4'},
 
-		    {colorTitle: 'Butter Yellow',
-		     primaryColor:'#FFDB3B',
-		     secondaryColor:'#DEC75F',
-		     url:'img/color_change/colorBlob_butterYellow.svg'
-		 	},
+	  { name:"Body",
+	    img_path:"img/aac_board_imgs/balloon.png"},
 
-		    {colorTitle: 'Tomato Red',
-		     primaryColor:'#E6213F',
-		     secondaryColor:'#E899A6',
-		     url:'img/color_change/colorBlob_tomatoRed.svg'
-		 	},
+	  { name:"Clothes",
+	   	img_path:"img/aac_board_imgs/bird.png"},
 
-		    {colorTitle: 'Denim Blue',
-		     primaryColor:'#325DC1',
-		     secondaryColor:'#ADB1E8',
-		     url:'img/color_change/colorBlob_denimBlue.svg'
-		 	},
+		{ name:"Cars",
+		  img_path:"img/aac_board_imgs/clock.png"},
 
-		    {colorTitle: 'Steel Gray',
-		     primaryColor:'#7D989A',
-		     secondaryColor:'#A9CED1',
-		     url:'img/color_change/colorBlob_steelGray.svg'
-		 	},
+	  { name:"Feelings",
+	 		img_path:"img/aac_board_imgs/crayon.png"},
 
-		    {colorTitle: 'Periwinkle Blue',
-		     primaryColor:'#8AB6E1',
-		     secondaryColor:'#3496C7', 
-		     url:'img/color_change/colorBlob_periwinkleBlue.svg'
-		 	},
+		{ name:"Food",
+	    img_path:"img/aac_board_imgs/alpaca.png"},
 
-		    {colorTitle: 'Forest Green',
-		     primaryColor:'#18745C',
-		     secondaryColor:'#7BB59F',
-		     url:'img/color_change/colorBlob_forestGreen.svg'
-		 	},
+	  { name:"Kind Things",
+	    img_path:"img/aac_board_imgs/art.png"},
 
-		    {colorTitle: 'Intense Purple',
-		     primaryColor:'#6B28C6',
-		     secondaryColor:'#C6A4EB',
-		     url:'img/color_change/colorBlob_intensePurple.svg'
-		 	},
+	  { name:"Morning",
+	    img_path:"img/aac_board_imgs/balloon.png"},
 
-		    {colorTitle: 'Seafoam Green',
-		     primaryColor:'#2FCB95',
-		     secondaryColor:'#A7E8C5',
-		     url:'img/color_change/colorBlob_seafoamGreen.svg'
-		 	},
-		]
+	  { name:"Number",
+	    img_path:"img/aac_board_imgs/bird.png"},
+
+		{ name:"People",
+	    img_path:"img/aac_board_imgs/clock.png"},
+
+	  { name:"Places",
+	    img_path:"img/aac_board_imgs/crayon.png"},
+
+	  { name:"Reading",
+	    img_path:"img/aac_board_imgs/alpaca.png"},
+
+	  { name:"Sports",
+	    img_path:"img/aac_board_imgs/art.png"},
+
+		{ name:"Things",
+	    img_path:"img/aac_board_imgs/balloon.png"},
+
+	  { name:"Time",
+	    img_path:"img/aac_board_imgs/bird.png"},
+
+	  { name:"Verbs",
+	    img_path:"img/aac_board_imgs/clock.png"},
+
+	  { name:"Weather",
+	    img_path:"img/aac_board_imgs/crayon.png"},
+
+		{ name:"Nouns",
+	    img_path:"img/aac_board_imgs/alpaca.png"},
+
+	  { name:"Outdoor",
+	    img_path:"img/aac_board_imgs/art.png"},
+
+	  { name:"Animals",
+	    img_path:"img/aac_board_imgs/balloon.png"},
+
+	  { name:"Plants",
+	    img_path:"img/aac_board_imgs/bird.png"},
+
+	  { name:"Stuff",
+	    img_path:"img/aac_board_imgs/clock.png"},
+
+	  { name:"Things",
+	    img_path:"img/aac_board_imgs/crayon.png"},
+
+	  // added for sliding option
+	  { name:"Nouns",
+	    img_path:"img/aac_board_imgs/alpaca.png"},
+
+	  { name:"Outdoor",
+	    img_path:"img/aac_board_imgs/art.png"},
+
+	  { name:"Animals",
+	    img_path:"img/aac_board_imgs/balloon.png"},
+
+	  { name:"Plants",
+	    	img_path:"img/aac_board_imgs/bird.png"},
+
+	  { name:"Stuff",
+	    img_path:"img/aac_board_imgs/clock.png" },
+
+	  { name:"Things",
+	    img_path:"img/aac_board_imgs/crayon.png"},
+
+	    // also added for testing purposes
+	  { name:"Nouns",
+	    img_path:"img/aac_board_imgs/alpaca.png" },
+
+	  { name:"Outdoor",
+	    img_path:"img/aac_board_imgs/art.png" },
+
+	  { name:"Animals",
+	    img_path:"img/aac_board_imgs/balloon.png" },
+
+	  { name:"Plants",
+	    img_path:"img/aac_board_imgs/bird.png" },
+
+	  { name:"Stuff",
+	    img_path:"img/aac_board_imgs/clock.png" },
+
+	  { name:"Things",
+	    img_path:"img/aac_board_imgs/crayon.png"},
+
+	  { name:"Nouns",
+	    img_path:"img/aac_board_imgs/alpaca.png" },
+
+	  { name:"Outdoor",
+	    img_path:"img/aac_board_imgs/art.png" },
+
+	  { name:"Animals",
+	    img_path:"img/aac_board_imgs/balloon.png" },
+
+	  { name:"Plants",
+	    img_path:"img/aac_board_imgs/bird.png" },
+
+	  { name:"Stuff",
+	    img_path:"img/aac_board_imgs/clock.png" },
+
+	  { name:"Things",
+	    img_path:"img/aac_board_imgs/crayon.png"},
+
+	  { name:"Nouns",
+	    img_path:"img/aac_board_imgs/alpaca.png" },
+
+	  { name:"Outdoor",
+	    img_path:"img/aac_board_imgs/art.png" },
+
+	  { name:"Animals",
+	    img_path:"img/aac_board_imgs/balloon.png" },
+
+	  { name:"Plants",
+	    img_path:"img/aac_board_imgs/bird.png" },
+
+	  { name:"Stuff",
+	    img_path:"img/aac_board_imgs/clock.png" },
+
+	  { name:"Things",
+	    img_path:"img/aac_board_imgs/crayon.png"},
+	]
+		// $scope.colorName =[
+		//     {colorTitle: 'Sky Blue',
+		//      primaryColor:'#50E2E3',
+		//      secondaryColor:'#008484',
+		//      url:'img/color_change/colorBlob-skyBlue.svg'
+		//  	},
+
+		//     {colorTitle: 'Electric Green',
+		//      primaryColor:'#BCE72B', 
+		//      secondaryColor:'#18745C', 
+		//      url:'img/color_change/colorBlob_electricGreen.svg'
+		//  	},
+
+		//     {colorTitle: 'Hot Pink',
+		//      primaryColor:'#D5388A',
+		//      secondaryColor:'#F787C6', 
+		//      url:'img/color_change/colorBlob_hotPink.svg'
+		//  	},
+
+		//     {colorTitle: 'Tangerine',
+		//      primaryColor:'#E07600',
+		//      secondaryColor:'#982900', 
+		//      url:'img/color_change/colorBlob_tangerine.svg'
+		//  	},
+
+		//     {colorTitle: 'Butter Yellow',
+		//      primaryColor:'#FFDB3B',
+		//      secondaryColor:'#DEC75F',
+		//      url:'img/color_change/colorBlob_butterYellow.svg'
+		//  	},
+
+		//     {colorTitle: 'Tomato Red',
+		//      primaryColor:'#E6213F',
+		//      secondaryColor:'#E899A6',
+		//      url:'img/color_change/colorBlob_tomatoRed.svg'
+		//  	},
+
+		//     {colorTitle: 'Denim Blue',
+		//      primaryColor:'#325DC1',
+		//      secondaryColor:'#ADB1E8',
+		//      url:'img/color_change/colorBlob_denimBlue.svg'
+		//  	},
+
+		//     {colorTitle: 'Steel Gray',
+		//      primaryColor:'#7D989A',
+		//      secondaryColor:'#A9CED1',
+		//      url:'img/color_change/colorBlob_steelGray.svg'
+		//  	},
+
+		//     {colorTitle: 'Periwinkle Blue',
+		//      primaryColor:'#8AB6E1',
+		//      secondaryColor:'#3496C7', 
+		//      url:'img/color_change/colorBlob_periwinkleBlue.svg'
+		//  	},
+
+		//     {colorTitle: 'Forest Green',
+		//      primaryColor:'#18745C',
+		//      secondaryColor:'#7BB59F',
+		//      url:'img/color_change/colorBlob_forestGreen.svg'
+		//  	},
+
+		//     {colorTitle: 'Intense Purple',
+		//      primaryColor:'#6B28C6',
+		//      secondaryColor:'#C6A4EB',
+		//      url:'img/color_change/colorBlob_intensePurple.svg'
+		//  	},
+
+		//     {colorTitle: 'Seafoam Green',
+		//      primaryColor:'#2FCB95',
+		//      secondaryColor:'#A7E8C5',
+		//      url:'img/color_change/colorBlob_seafoamGreen.svg'
+		//  	},
+		// ]
 
 		var template = '<ion-popover-view class="popover-stuff2"><ion-content><p class="closing-x" ng-click="closePopover()">X</p><p class="popover-stuff">To edit the content of tiles with a yellow dot, go to Settings <a href="#/settings"><button class="custom-button"><i class="icon ion-gear-a"></i> Open Settings</button></a></p></ion-popover-view>';
 
@@ -124,7 +279,7 @@ app.controller('boardFactoryController',
 		      $scope.start = $scope.start - 24;
 		      $scope.end = $scope.end - 24;
 		    }
-		  }
+		 }
 
 		$scope.nextSet = function(index){
 		    console.log("Next Set button is working");
@@ -136,3 +291,4 @@ app.controller('boardFactoryController',
 		    }
 		}
 })
+
