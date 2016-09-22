@@ -15,233 +15,392 @@ app.controller('boardFactoryController',
 		$scope.end = 24;
 		$scope.board = {};
 
-	$scope.dummyBoards =[
+		$scope.dummyBoards =[
 
-		{ name:"About Me",
-		  img_path:"img/aac_board_imgs/crayon.png",
-		  pk: '5'},
+			{ name:"About Me",
+			  img_path:"img/aac_board_imgs/crayon.png",
+			  pk: '5'},
 
-	  { name:"Lunch",
-	    img_path:"img/aac_board_imgs/alpaca.png",
-	    pk: '3'},
+		  { name:"Lunch",
+		    img_path:"img/aac_board_imgs/alpaca.png",
+		    pk: '3'},
 
-	  { name:"Feelings",
-	    img_path:"img/aac_board_imgs/art.png",
-	    pk: '4'},
+		  { name:"Feelings",
+		    img_path:"img/aac_board_imgs/art.png",
+		    pk: '4'},
 
-	  { name:"Body",
-	    img_path:"img/aac_board_imgs/balloon.png"},
+		  { name:"Body",
+		    img_path:"img/aac_board_imgs/balloon.png"},
 
-	  { name:"Clothes",
-	   	img_path:"img/aac_board_imgs/bird.png"},
+		  { name:"Clothes",
+		   	img_path:"img/aac_board_imgs/bird.png"},
 
-		{ name:"Cars",
-		  img_path:"img/aac_board_imgs/clock.png"},
+			{ name:"Cars",
+			  img_path:"img/aac_board_imgs/clock.png"},
 
-	  { name:"Feelings",
-	 		img_path:"img/aac_board_imgs/crayon.png"},
+		  { name:"Feelings",
+		 		img_path:"img/aac_board_imgs/crayon.png"},
 
-		{ name:"Food",
-	    img_path:"img/aac_board_imgs/alpaca.png"},
+			{ name:"Food",
+		    img_path:"img/aac_board_imgs/alpaca.png"},
 
-	  { name:"Kind Things",
-	    img_path:"img/aac_board_imgs/art.png"},
+		  { name:"Kind Things",
+		    img_path:"img/aac_board_imgs/art.png"},
 
-	  { name:"Morning",
-	    img_path:"img/aac_board_imgs/balloon.png"},
+		  { name:"Morning",
+		    img_path:"img/aac_board_imgs/balloon.png"},
 
-	  { name:"Number",
-	    img_path:"img/aac_board_imgs/bird.png"},
+		  { name:"Number",
+		    img_path:"img/aac_board_imgs/bird.png"},
 
-		{ name:"People",
-	    img_path:"img/aac_board_imgs/clock.png"},
+			{ name:"People",
+		    img_path:"img/aac_board_imgs/clock.png"},
 
-	  { name:"Places",
-	    img_path:"img/aac_board_imgs/crayon.png"},
+		  { name:"Places",
+		    img_path:"img/aac_board_imgs/crayon.png"},
 
-	  { name:"Reading",
-	    img_path:"img/aac_board_imgs/alpaca.png"},
+		  { name:"Reading",
+		    img_path:"img/aac_board_imgs/alpaca.png"},
 
-	  { name:"Sports",
-	    img_path:"img/aac_board_imgs/art.png"},
+		  { name:"Sports",
+		    img_path:"img/aac_board_imgs/art.png"},
 
-		{ name:"Things",
-	    img_path:"img/aac_board_imgs/balloon.png"},
+			{ name:"Things",
+		    img_path:"img/aac_board_imgs/balloon.png"},
 
-	  { name:"Time",
-	    img_path:"img/aac_board_imgs/bird.png"},
+		  { name:"Time",
+		    img_path:"img/aac_board_imgs/bird.png"},
 
-	  { name:"Verbs",
-	    img_path:"img/aac_board_imgs/clock.png"},
+		  { name:"Verbs",
+		    img_path:"img/aac_board_imgs/clock.png"},
 
-	  { name:"Weather",
-	    img_path:"img/aac_board_imgs/crayon.png"},
+		  { name:"Weather",
+		    img_path:"img/aac_board_imgs/crayon.png"},
 
-		{ name:"Nouns",
-	    img_path:"img/aac_board_imgs/alpaca.png"},
+			{ name:"Nouns",
+		    img_path:"img/aac_board_imgs/alpaca.png"},
 
-	  { name:"Outdoor",
-	    img_path:"img/aac_board_imgs/art.png"},
+		  { name:"Outdoor",
+		    img_path:"img/aac_board_imgs/art.png"},
 
-	  { name:"Animals",
-	    img_path:"img/aac_board_imgs/balloon.png"},
+		  { name:"Animals",
+		    img_path:"img/aac_board_imgs/balloon.png"},
 
-	  { name:"Plants",
-	    img_path:"img/aac_board_imgs/bird.png"},
+		  { name:"Plants",
+		    img_path:"img/aac_board_imgs/bird.png"},
 
-	  { name:"Stuff",
-	    img_path:"img/aac_board_imgs/clock.png"},
+		  { name:"Stuff",
+		    img_path:"img/aac_board_imgs/clock.png"},
 
-	  { name:"Things",
-	    img_path:"img/aac_board_imgs/crayon.png"},
+		  { name:"Things",
+		    img_path:"img/aac_board_imgs/crayon.png"},
 
-	  // added for sliding option
-	  { name:"Nouns",
-	    img_path:"img/aac_board_imgs/alpaca.png"},
+		  // added for sliding option
+		  { name:"Nouns",
+		    img_path:"img/aac_board_imgs/alpaca.png"},
 
-	  { name:"Outdoor",
-	    img_path:"img/aac_board_imgs/art.png"},
+		  { name:"Outdoor",
+		    img_path:"img/aac_board_imgs/art.png"},
 
-	  { name:"Animals",
-	    img_path:"img/aac_board_imgs/balloon.png"},
+		  { name:"Animals",
+		    img_path:"img/aac_board_imgs/balloon.png"},
 
-	  { name:"Plants",
-	    	img_path:"img/aac_board_imgs/bird.png"},
+		  { name:"Plants",
+		    	img_path:"img/aac_board_imgs/bird.png"},
 
-	  { name:"Stuff",
-	    img_path:"img/aac_board_imgs/clock.png" },
+		  { name:"Stuff",
+		    img_path:"img/aac_board_imgs/clock.png" },
 
-	  { name:"Things",
-	    img_path:"img/aac_board_imgs/crayon.png"},
+		  { name:"Things",
+		    img_path:"img/aac_board_imgs/crayon.png"},
 
-	    // also added for testing purposes
-	  { name:"Nouns",
-	    img_path:"img/aac_board_imgs/alpaca.png" },
+		    // also added for testing purposes
+		  { name:"Nouns",
+		    img_path:"img/aac_board_imgs/alpaca.png" },
 
-	  { name:"Outdoor",
-	    img_path:"img/aac_board_imgs/art.png" },
+		  { name:"Outdoor",
+		    img_path:"img/aac_board_imgs/art.png" },
 
-	  { name:"Animals",
-	    img_path:"img/aac_board_imgs/balloon.png" },
+		  { name:"Animals",
+		    img_path:"img/aac_board_imgs/balloon.png" },
 
-	  { name:"Plants",
-	    img_path:"img/aac_board_imgs/bird.png" },
+		  { name:"Plants",
+		    img_path:"img/aac_board_imgs/bird.png" },
 
-	  { name:"Stuff",
-	    img_path:"img/aac_board_imgs/clock.png" },
+		  { name:"Stuff",
+		    img_path:"img/aac_board_imgs/clock.png" },
 
-	  { name:"Things",
-	    img_path:"img/aac_board_imgs/crayon.png"},
+		  { name:"Things",
+		    img_path:"img/aac_board_imgs/crayon.png"},
 
-	  { name:"Nouns",
-	    img_path:"img/aac_board_imgs/alpaca.png" },
+		  { name:"Nouns",
+		    img_path:"img/aac_board_imgs/alpaca.png" },
 
-	  { name:"Outdoor",
-	    img_path:"img/aac_board_imgs/art.png" },
+		  { name:"Outdoor",
+		    img_path:"img/aac_board_imgs/art.png" },
 
-	  { name:"Animals",
-	    img_path:"img/aac_board_imgs/balloon.png" },
+		  { name:"Animals",
+		    img_path:"img/aac_board_imgs/balloon.png" },
 
-	  { name:"Plants",
-	    img_path:"img/aac_board_imgs/bird.png" },
+		  { name:"Plants",
+		    img_path:"img/aac_board_imgs/bird.png" },
 
-	  { name:"Stuff",
-	    img_path:"img/aac_board_imgs/clock.png" },
+		  { name:"Stuff",
+		    img_path:"img/aac_board_imgs/clock.png" },
 
-	  { name:"Things",
-	    img_path:"img/aac_board_imgs/crayon.png"},
+		  { name:"Things",
+		    img_path:"img/aac_board_imgs/crayon.png"},
 
-	  { name:"Nouns",
-	    img_path:"img/aac_board_imgs/alpaca.png" },
+		  { name:"Nouns",
+		    img_path:"img/aac_board_imgs/alpaca.png" },
 
-	  { name:"Outdoor",
-	    img_path:"img/aac_board_imgs/art.png" },
+		  { name:"Outdoor",
+		    img_path:"img/aac_board_imgs/art.png" },
 
-	  { name:"Animals",
-	    img_path:"img/aac_board_imgs/balloon.png" },
+		  { name:"Animals",
+		    img_path:"img/aac_board_imgs/balloon.png" },
 
-	  { name:"Plants",
-	    img_path:"img/aac_board_imgs/bird.png" },
+		  { name:"Plants",
+		    img_path:"img/aac_board_imgs/bird.png" },
 
-	  { name:"Stuff",
-	    img_path:"img/aac_board_imgs/clock.png" },
+		  { name:"Stuff",
+		    img_path:"img/aac_board_imgs/clock.png" },
 
-	  { name:"Things",
-	    img_path:"img/aac_board_imgs/crayon.png"},
-	]
-		// $scope.colorName =[
-		//     {colorTitle: 'Sky Blue',
-		//      primaryColor:'#50E2E3',
-		//      secondaryColor:'#008484',
-		//      url:'img/color_change/colorBlob-skyBlue.svg'
-		//  	},
+		  { name:"Things",
+		    img_path:"img/aac_board_imgs/crayon.png"},
+		]
 
-		//     {colorTitle: 'Electric Green',
-		//      primaryColor:'#BCE72B', 
-		//      secondaryColor:'#18745C', 
-		//      url:'img/color_change/colorBlob_electricGreen.svg'
-		//  	},
+		$scope.getData = function(){
+		  var req = {
+		    url: 'https://lexemes-dev.herokuapp.com/board/single/',
+		    data: {pk: 3},
+		    method: 'POST'
+			}
 
-		//     {colorTitle: 'Hot Pink',
-		//      primaryColor:'#D5388A',
-		//      secondaryColor:'#F787C6', 
-		//      url:'img/color_change/colorBlob_hotPink.svg'
-		//  	},
 
-		//     {colorTitle: 'Tangerine',
-		//      primaryColor:'#E07600',
-		//      secondaryColor:'#982900', 
-		//      url:'img/color_change/colorBlob_tangerine.svg'
-		//  	},
+		  $http(req).success(function(data) {
+		    $scope.board = data;
+		    $scope.filled_tiles = Object.keys($scope.board.symbols)
+		  })
+		}
 
-		//     {colorTitle: 'Butter Yellow',
-		//      primaryColor:'#FFDB3B',
-		//      secondaryColor:'#DEC75F',
-		//      url:'img/color_change/colorBlob_butterYellow.svg'
-		//  	},
+		$scope.getAboutMe = function(){
+		  var req2 = {
+		    url: 'https://lexemes-dev.herokuapp.com/board/single/',
+		    data: {pk: 4},
+		    method: 'POST'
+		  }
 
-		//     {colorTitle: 'Tomato Red',
-		//      primaryColor:'#E6213F',
-		//      secondaryColor:'#E899A6',
-		//      url:'img/color_change/colorBlob_tomatoRed.svg'
-		//  	},
+		  $http(req2).success(function(data) {
+		    $scope.board = data;
+		    $scope.filled_tiles = Object.keys($scope.board.symbols)
+		  })
+		}
 
-		//     {colorTitle: 'Denim Blue',
-		//      primaryColor:'#325DC1',
-		//      secondaryColor:'#ADB1E8',
-		//      url:'img/color_change/colorBlob_denimBlue.svg'
-		//  	},
+		$scope.chosenBoard = function(sampleBoard){
+		  $scope.selectedIndex = sampleBoard;
+		  if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
+		    console.log($scope.board.pk);
+		    console.log($scope.dummyBoards[$scope.selectedIndex].pk);
+		    // $scope.board = aacService.getBoard();
+		    $scope.getData();
+		  } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
 
-		//     {colorTitle: 'Steel Gray',
-		//      primaryColor:'#7D989A',
-		//      secondaryColor:'#A9CED1',
-		//      url:'img/color_change/colorBlob_steelGray.svg'
-		//  	},
-
-		//     {colorTitle: 'Periwinkle Blue',
-		//      primaryColor:'#8AB6E1',
-		//      secondaryColor:'#3496C7', 
-		//      url:'img/color_change/colorBlob_periwinkleBlue.svg'
-		//  	},
-
-		//     {colorTitle: 'Forest Green',
-		//      primaryColor:'#18745C',
-		//      secondaryColor:'#7BB59F',
-		//      url:'img/color_change/colorBlob_forestGreen.svg'
-		//  	},
-
-		//     {colorTitle: 'Intense Purple',
-		//      primaryColor:'#6B28C6',
-		//      secondaryColor:'#C6A4EB',
-		//      url:'img/color_change/colorBlob_intensePurple.svg'
-		//  	},
-
-		//     {colorTitle: 'Seafoam Green',
-		//      primaryColor:'#2FCB95',
-		//      secondaryColor:'#A7E8C5',
-		//      url:'img/color_change/colorBlob_seafoamGreen.svg'
-		//  	},
-		// ]
+		    $scope.board = {
+		      "title" :"About Me",
+		      "symbols" : {
+		        "a1" : {
+		          "lexeme" : "Nickname",
+		          "symbol" : {
+		            "pk" : "0000",
+		            "title" : "",
+		            "alt_text" : "",
+		            "image" : "img/aac_board_imgs/fakejsonimg/I.png",
+		            "thumb" : "img/aac_board_imgs/fakejsonimg/I.png",
+		          },
+		          "word": "nickname",
+		          "pk" : "",
+		          "hidden": "false",
+		        },
+		        "b1" : {
+		          "lexeme" : "Birthday",
+		          "symbol" : {
+		            "pk" : "0001",
+		            "title" : "",
+		            "alt_text" : "",
+		            "image" : "img/aac_board_imgs/fakejsonimg/bunny.png",
+		            "thumb" : "img/aac_board_imgs/fakejsonimg/bunny.png",
+		          },
+		          "word": "birthday",
+		          "pk" : "",
+		          "hidden": "false",
+		        },
+		        "c1" : {
+		          "lexeme" : "Hometown",
+		          "symbol" : {
+		            "pk" : "0002",
+		            "title" : "",
+		            "alt_text" : "",
+		            "image" : "img/aac_board_imgs/fakejsonimg/painting.png",
+		            "thumb" : "img/aac_board_imgs/fakejsonimg/painting.png",
+		          },
+		          "word": "hometown",
+		          "pk" : "",
+		          "hidden": "false",
+		        },
+		        "d1" : {
+		          "lexeme" : "Name of best friend",
+		          "symbol" : {
+		            "pk" : "0003",
+		            "title" : "",
+		            "alt_text" : "",
+		            "image" : "img/aac_board_imgs/fakejsonimg/I.png",
+		            "thumb" : "img/aac_board_imgs/fakejsonimg/I.png",
+		          },
+		          "word": "best friend",
+		          "pk" : "",
+		          "hidden": "false",
+		        },
+		        "e1" : {
+		          "lexeme" : "Siblings",
+		          "symbol" : {
+		            "pk" : "0004",
+		            "title" : "",
+		            "alt_text" : "",
+		            "image" : "img/aac_board_imgs/fakejsonimg/fun.png",
+		            "thumb" : "img/aac_board_imgs/fakejsonimg/fun.png",
+		          },
+		          "word": "siblings",
+		          "pk" : "",
+		          "hidden": "false",
+		        },
+		        "f1" : {
+		          "lexeme" : "Pets",
+		          "symbol" : {
+		            "pk" : "0005",
+		            "title" : "",
+		            "alt_text" : "",
+		            "image" : "img/aac_board_imgs/fakejsonimg/bunny.png",
+		            "thumb" : "img/aac_board_imgs/fakejsonimg/bunny.png",
+		          },
+		          "word": "pets",
+		          "pk" : "",
+		          "hidden": "false",
+		        },
+		        "a2" : {
+		          "lexeme" : "Gender",
+		          "symbol" : {
+		            "pk" : "0006",
+		            "title" : "",
+		            "alt_text" : "",
+		            "image" : "img/aac_board_imgs/fakejsonimg/I.png",
+		            "thumb" : "img/aac_board_imgs/fakejsonimg/I.png",
+		          },
+		          "word": "gender",
+		          "pk" : "",
+		          "hidden": "false",
+		        },
+		        "b2" : {
+		          "lexeme" : "Age",
+		          "symbol" : {
+		            "pk" : "0007",
+		            "title" : "",
+		            "alt_text" : "",
+		            "image" : "img/aac_board_imgs/fakejsonimg/painting.png",
+		            "thumb" : "img/aac_board_imgs/fakejsonimg/painting.png",
+		          },
+		          "word": "age",
+		          "pk" : "",
+		          "hidden": "false",
+		        },
+		        "c2" : {
+		          "lexeme" : "Favorite Toy",
+		          "symbol" : {
+		            "pk" : "0008",
+		            "title" : "",
+		            "alt_text" : "",
+		            "image" : "img/aac_board_imgs/fakejsonimg/sports.png",
+		            "thumb" : "img/aac_board_imgs/fakejsonimg/sports.png",
+		          },
+		          "word": "toy",
+		          "pk" : "",
+		          "hidden": "false",
+		        },
+		        "d2" : {
+		          "lexeme" : "Hobby",
+		          "symbol" : {
+		            "pk" : "0009",
+		            "title" : "",
+		            "alt_text" : "",
+		            "image" : "img/aac_board_imgs/fakejsonimg/book_reading.png",
+		            "thumb" : "img/aac_board_imgs/fakejsonimg/book_reading.png",
+		          },
+		          "word": "hobby",
+		          "pk" : "",
+		          "hidden": "false",
+		        },
+		        "e2" : {
+		          "lexeme" : "Favorite sports team",
+		          "symbol" : {
+		            "pk" : "0010",
+		            "title" : "",
+		            "alt_text" : "",
+		            "image" : "img/aac_board_imgs/fakejsonimg/sports.png",
+		            "thumb" : "img/aac_board_imgs/fakejsonimg/sports.png",
+		          },
+		          "word": "sports",
+		          "pk" : "",
+		          "hidden": "false",
+		        },
+		        "f2" : {
+		          "lexeme" : "Favorite food",
+		          "symbol" : {
+		            "pk" : "0011",
+		            "title" : "",
+		            "alt_text" : "",
+		            "image" : "img/aac_board_imgs/fakejsonimg/food.png",
+		            "thumb" : "img/aac_board_imgs/fakejsonimg/food.png",
+		          },
+		          "word": "food",
+		          "pk" : "",
+		          "hidden": "false",
+		        },
+		        "a3" : {
+		          "lexeme" : "Favorite ice cream",
+		          "symbol" : {
+		            "pk" : "0012",
+		            "title" : "",
+		            "alt_text" : "",
+		            "image" : "img/aac_board_imgs/fakejsonimg/food.png",
+		            "thumb" : "img/aac_board_imgs/fakejsonimg/food.png",
+		          },
+		          "word": "ice cream",
+		          "pk" : "",
+		          "hidden": "false",
+		        },
+		        "b3" : {
+		          "lexeme" : "Favorite color",
+		          "symbol" : {
+		            "pk" : "0013",
+		            "title" : "",
+		            "alt_text" : "",
+		            "image" : "img/aac_board_imgs/fakejsonimg/painting.png",
+		            "thumb" : "img/aac_board_imgs/fakejsonimg/painting.png",
+		          },
+		          "word": "color",
+		          "pk" : "",
+		          "hidden": "false",
+		        }
+		      }
+		    }
+		    $scope.aboutcircle = true;
+		  } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
+		    console.log($scope.board.pk);
+		     $scope.getAboutMe();
+		  }else{
+		    console.log("This icon doesn't have an associated board");
+		  }
+		}
 
 		var template = '<ion-popover-view class="popover-stuff2"><ion-content><p class="closing-x" ng-click="closePopover()">X</p><p class="popover-stuff">To edit the content of tiles with a yellow dot, go to Settings <a href="#/settings"><button class="custom-button"><i class="icon ion-gear-a"></i> Open Settings</button></a></p></ion-popover-view>';
 
