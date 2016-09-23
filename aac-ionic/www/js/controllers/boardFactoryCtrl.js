@@ -10,10 +10,12 @@ app.controller('boardFactoryController',
 	function($http, $scope, $location, $ionicPopover, $location, aacService){
 		// $scope.selectedTiles = [];
 		// $scope.selectedIndex = aacService.selectedIndex;
+		$scope.columns = aacService.columns;
 
 		$scope.start = 0;
 		$scope.end = 24;
 		$scope.board = {};
+		$scope.dummyBoards = aacService.dummyBoards;
 
 		$scope.getData = function(){
 		  var req = {
@@ -247,192 +249,6 @@ app.controller('boardFactoryController',
 		  }
 		}
 
-
-		$scope.dummyBoards =[
-
-		  { name:"About Me",
-			img_path:"img/aac_board_imgs/crayon.png",
-			pk: '5'},
-
-		  { name:"Lunch",
-		    img_path:"img/aac_board_imgs/alpaca.png",
-		    pk: '3'},
-
-		  { name:"Feelings",
-		    img_path:"img/aac_board_imgs/art.png",
-		    pk: '4'},
-
-		  { name:"Body",
-		    img_path:"img/aac_board_imgs/balloon.png"},
-
-		  { name:"Clothes",
-		   	img_path:"img/aac_board_imgs/bird.png"},
-
-			{ name:"Cars",
-			  img_path:"img/aac_board_imgs/clock.png"},
-
-		  { name:"Feelings",
-		 		img_path:"img/aac_board_imgs/crayon.png"},
-
-			{ name:"Food",
-		    img_path:"img/aac_board_imgs/alpaca.png"},
-
-		  { name:"Kind Things",
-		    img_path:"img/aac_board_imgs/art.png"},
-
-		  { name:"Morning",
-		    img_path:"img/aac_board_imgs/balloon.png"},
-
-		  { name:"Number",
-		    img_path:"img/aac_board_imgs/bird.png"},
-
-		  { name:"People",
-		    img_path:"img/aac_board_imgs/clock.png"},
-
-		  { name:"Places",
-		    img_path:"img/aac_board_imgs/crayon.png"},
-
-		  { name:"Reading",
-		    img_path:"img/aac_board_imgs/alpaca.png"},
-
-		  { name:"Sports",
-		    img_path:"img/aac_board_imgs/art.png"},
-
-		  { name:"Things",
-		    img_path:"img/aac_board_imgs/balloon.png"},
-
-		  { name:"Time",
-		    img_path:"img/aac_board_imgs/bird.png"},
-
-		  { name:"Verbs",
-		    img_path:"img/aac_board_imgs/clock.png"},
-
-		  { name:"Weather",
-		    img_path:"img/aac_board_imgs/crayon.png"},
-
-		  { name:"Nouns",
-		    img_path:"img/aac_board_imgs/alpaca.png"},
-
-		  { name:"Outdoor",
-		    img_path:"img/aac_board_imgs/art.png"},
-
-		  { name:"Animals",
-		    img_path:"img/aac_board_imgs/balloon.png"},
-
-		  { name:"Plants",
-		    img_path:"img/aac_board_imgs/bird.png"},
-
-		  { name:"Stuff",
-		    img_path:"img/aac_board_imgs/clock.png"},
-
-		  { name:"Things",
-		    img_path:"img/aac_board_imgs/crayon.png"},
-
-		  // added for sliding option
-		  { name:"Nouns",
-		    img_path:"img/aac_board_imgs/alpaca.png"},
-
-		  { name:"Outdoor",
-		    img_path:"img/aac_board_imgs/art.png"},
-
-		  { name:"Animals",
-		    img_path:"img/aac_board_imgs/balloon.png"},
-
-		  { name:"Plants",
-		    	img_path:"img/aac_board_imgs/bird.png"},
-
-		  { name:"Stuff",
-		    img_path:"img/aac_board_imgs/clock.png" },
-
-		  { name:"Things",
-		    img_path:"img/aac_board_imgs/crayon.png"},
-
-		    // also added for testing purposes
-		  { name:"Nouns",
-		    img_path:"img/aac_board_imgs/alpaca.png" },
-
-		  { name:"Outdoor",
-		    img_path:"img/aac_board_imgs/art.png" },
-
-		  { name:"Animals",
-		    img_path:"img/aac_board_imgs/balloon.png" },
-
-		  { name:"Plants",
-		    img_path:"img/aac_board_imgs/bird.png" },
-
-		  { name:"Stuff",
-		    img_path:"img/aac_board_imgs/clock.png" },
-
-		  { name:"Things",
-		    img_path:"img/aac_board_imgs/crayon.png"},
-
-		  { name:"Nouns",
-		    img_path:"img/aac_board_imgs/alpaca.png" },
-
-		  { name:"Outdoor",
-		    img_path:"img/aac_board_imgs/art.png" },
-
-		  { name:"Animals",
-		    img_path:"img/aac_board_imgs/balloon.png" },
-
-		  { name:"Plants",
-		    img_path:"img/aac_board_imgs/bird.png" },
-
-		  { name:"Stuff",
-		    img_path:"img/aac_board_imgs/clock.png" },
-
-		  { name:"Things",
-		    img_path:"img/aac_board_imgs/crayon.png"},
-
-		  { name:"Nouns",
-		    img_path:"img/aac_board_imgs/alpaca.png" },
-
-		  { name:"Outdoor",
-		    img_path:"img/aac_board_imgs/art.png" },
-
-		  { name:"Animals",
-		    img_path:"img/aac_board_imgs/balloon.png" },
-
-		  { name:"Plants",
-		    img_path:"img/aac_board_imgs/bird.png" },
-
-		  { name:"Stuff",
-		    img_path:"img/aac_board_imgs/clock.png" },
-
-		  { name:"Things",
-		    img_path:"img/aac_board_imgs/crayon.png"},
-		]
-
-		var template = '<ion-popover-view class="popover-stuff2"><ion-content><p class="closing-x" ng-click="closePopover()">X</p><p class="popover-stuff">To edit the content of tiles with a yellow dot, go to Settings <a href="#/settings"><button class="custom-button"><i class="icon ion-gear-a"></i> Open Settings</button></a></p></ion-popover-view>';
-
-		$scope.popover = $ionicPopover.fromTemplate(template, {
-		   scope: $scope
-		});
-
-		$ionicPopover.fromTemplateUrl('settings-popover.html', {
-		   scope: $scope
-		}).then(function(popover){
-		   $scope.popover = popover;
-		});
-
-		$scope.openPopover = function($event){
-		   $scope.popover.show($event);
-		};
-
-		$scope.closePopover = function(){
-		   $scope.popover.hide();
-		};
-
-		$scope.$on('$destroy', function(){
-		   $scope.popover.remove();
-		});
-
-		$scope.$on('popover.hidden', function(){
-		});
-
-		$scope.$on('popover.removed', function(){
-		});
-
 		$scope.lastSet = function(index){
 		    console.log("Last Set button is working");
 		    if ($scope.start > 0){
@@ -453,7 +269,8 @@ app.controller('boardFactoryController',
 })
 
 app.controller('newBoardController',
-	function($http, $scope, $location, $location, aacService, $ionicModal){
+	function($http, $scope, $location, aacService, $ionicModal){
+
 
 		$ionicModal.fromTemplateUrl('templates/aac-partials/_word-change.html',{
 		    scope: $scope,
@@ -469,6 +286,104 @@ app.controller('newBoardController',
 		  $scope.closeModal = function(index){
 		    $scope.Modal.hide()
 		  };
+
+})
+
+app.controller('editBoardController',
+	function($http, $scope, $location, aacService, $ionicModal, $ionicPopover){
+
+		$scope.columns = aacService.columns;
+		$scope.rows = aacService.rows;
+		$scope.selectedTiles = [];
+		$scope.selectedIndex = aacService.selectedIndex;
+		$scope.titleLimit = aacService.titleLimit; 
+		// $scope.start = 0;
+		// $scope.end = 24;
+		$scope.board = {};
+
+		$scope.clickTile = function(tile) {
+
+		    $scope.board();
+		    $scope.selectedTiles.push(tile);
+
+		    console.log($scope.selectedTiles);
+		    $scope.selectedIndex = tile;
+
+		    if($scope.selectedTiles[$scope.selectedIndex] == undefined){
+		      console.log("no index!!");
+		    }
+		}
+
+		$ionicModal.fromTemplateUrl('templates/aac-partials/_add-multiple-words.html',{
+		    scope: $scope,
+		    animation: 'slide-in-up'
+		  }).then(function(modal){
+		    $scope.Modal = modal;
+		  });
+
+		  $scope.openModal = function(index){
+		    $scope.Modal.show()
+		  }
+
+		  $scope.closeModal = function(index){
+		    $scope.Modal.hide()
+		  };
+
+		  		var template = '<ion-popover-view class="popover-stuff2"><ion-content><p class="closing-x" ng-click="closePopover()">X</p><p class="popover-stuff">To edit the content of tiles with a yellow dot, go to Settings <a href="#/settings"><button class="custom-button"><i class="icon ion-gear-a"></i> Open Settings</button></a></p></ion-popover-view>';
+
+		$scope.popover = $ionicPopover.fromTemplate(template, {
+		   scope: $scope
+		});
+
+		$ionicPopover.fromTemplateUrl('settings-popover.html', {
+		   scope: $scope
+		}).then(function(popover){
+		   $scope.popover = popover;
+		});
+
+		$scope.blankInputs =[
+		    { 
+		      placeholder:"ENTER WORD"
+		    },
+		    {
+		      placeholder:"ENTER WORD"
+		    },
+		    {
+		      placeholder:"ENTER WORD"
+		    },
+		    {
+		      placeholder:"ENTER WORD"
+		    }
+		 ]
+
+		$scope.moreInputs = function(){
+		    console.log("More Inputs!!!");
+		    $scope.blankInputs.push(
+		      {'placeholder':'ENTER WORD'}, 
+		      {'placeholder':'ENTER WORD'},
+		      {'placeholder':'ENTER WORD'},
+		      {'placeholder':'ENTER WORD'},
+		      {'placeholder':'ENTER WORD'}
+		    );
+		}
+
+		$scope.openPopover = function($event){
+		   $scope.popover.show($event);
+		};
+
+		$scope.closePopover = function(){
+		   $scope.popover.hide();
+		};
+
+		$scope.$on('$destroy', function(){
+		   $scope.popover.remove();
+		});
+
+		$scope.$on('popover.hidden', function(){
+		});
+
+		$scope.$on('popover.removed', function(){
+		});
 
 })
 
