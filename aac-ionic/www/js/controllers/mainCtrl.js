@@ -52,8 +52,8 @@ $scope.getData();
 
 $scope.chosenBoard = function(sampleBoard){
   $scope.selectedIndex = sampleBoard;
+  console.log($scope.dummyBoards[$scope.selectedIndex].pk);
   if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
-    console.log($scope.board.pk);
     console.log($scope.dummyBoards[$scope.selectedIndex].pk);
     // $scope.board = aacService.getBoard();
     $scope.getData();
