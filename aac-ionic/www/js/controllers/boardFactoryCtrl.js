@@ -250,9 +250,9 @@ app.controller('boardFactoryController',
 
 		$scope.dummyBoards =[
 
-			{ name:"About Me",
-			  img_path:"img/aac_board_imgs/crayon.png",
-			  pk: '5'},
+		  { name:"About Me",
+			img_path:"img/aac_board_imgs/crayon.png",
+			pk: '5'},
 
 		  { name:"Lunch",
 		    img_path:"img/aac_board_imgs/alpaca.png",
@@ -286,7 +286,7 @@ app.controller('boardFactoryController',
 		  { name:"Number",
 		    img_path:"img/aac_board_imgs/bird.png"},
 
-			{ name:"People",
+		  { name:"People",
 		    img_path:"img/aac_board_imgs/clock.png"},
 
 		  { name:"Places",
@@ -298,7 +298,7 @@ app.controller('boardFactoryController',
 		  { name:"Sports",
 		    img_path:"img/aac_board_imgs/art.png"},
 
-			{ name:"Things",
+		  { name:"Things",
 		    img_path:"img/aac_board_imgs/balloon.png"},
 
 		  { name:"Time",
@@ -310,7 +310,7 @@ app.controller('boardFactoryController',
 		  { name:"Weather",
 		    img_path:"img/aac_board_imgs/crayon.png"},
 
-			{ name:"Nouns",
+		  { name:"Nouns",
 		    img_path:"img/aac_board_imgs/alpaca.png"},
 
 		  { name:"Outdoor",
@@ -450,5 +450,25 @@ app.controller('boardFactoryController',
 		      console.log("No more left");
 		    }
 		}
+})
+
+app.controller('newBoardController',
+	function($http, $scope, $location, $location, aacService, $ionicModal){
+
+		$ionicModal.fromTemplateUrl('templates/aac-partials/_word-change.html',{
+		    scope: $scope,
+		    animation: 'slide-in-up'
+		  }).then(function(modal){
+		    $scope.Modal = modal;
+		  });
+
+		  $scope.openModal = function(index){
+		    $scope.Modal.show()
+		  }
+
+		  $scope.closeModal = function(index){
+		    $scope.Modal.hide()
+		  };
+
 })
 

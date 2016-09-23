@@ -35,7 +35,7 @@ angular.module('main', ['ionic', 'main.Ctrl', 'main.aacService', 'settings.Ctrl'
     })
 
     $stateProvider.state('board_factory/new',{
-      controller: 'boardFactoryController',
+      controller: 'newBoardController',
       url:'/board_factory/new',
       templateUrl: 'templates/board_factory_new.html'
     })
