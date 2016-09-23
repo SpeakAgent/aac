@@ -50,10 +50,6 @@ $scope.getAboutMe = function(){
 
 $scope.getData();
 
-// $scope.testingService = function(){
-//   aacService.showNames();
-// }
-
 $scope.chosenBoard = function(sampleBoard){
   $scope.selectedIndex = sampleBoard;
   if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
@@ -72,9 +68,6 @@ $scope.chosenBoard = function(sampleBoard){
   }
 }
   
-  // $scope.toggleLeft = function(){
-  //   $ionicSideMenuDelegate.toggleLeft();
-  // };
 
   $scope.colorName =[
     {colorTitle: 'Sky Blue',
@@ -138,38 +131,6 @@ $scope.chosenBoard = function(sampleBoard){
      url:'img/color_change/colorBlob_seafoamGreen.svg'},
   ]
 
-// for boardFactoryCtrl
-  // var template = '<ion-popover-view class="popover-stuff2"><ion-content><p class="closing-x" ng-click="closePopover()">X</p><p class="popover-stuff">To edit the content of tiles with a yellow dot, go to Settings <a href="#/settings"><button class="custom-button"><i class="icon ion-gear-a"></i> Open Settings</button></a></p></ion-popover-view>';
-
-  // $scope.popover = $ionicPopover.fromTemplate(template, {
-  //   scope: $scope
-  // });
-
-  // $ionicPopover.fromTemplateUrl('settings-popover.html', {
-  //   scope: $scope
-  // }).then(function(popover){
-  //   $scope.popover = popover;
-  // });
-
-  // $scope.openPopover = function($event){
-  //   $scope.popover.show($event);
-  // };
-
-  // $scope.closePopover = function(){
-  //   $scope.popover.hide();
-  // };
-
-  // $scope.$on('$destroy', function(){
-  //   $scope.popover.remove();
-  // });
-
-  // $scope.$on('popover.hidden', function(){
-  // });
-
-  // $scope.$on('popover.removed', function(){
-  // });
-
-
   $ionicModal.fromTemplateUrl('templates/aac-partials/_color-modal.html',{
     // id: '1',
     scope: $scope,
@@ -178,47 +139,13 @@ $scope.chosenBoard = function(sampleBoard){
     $scope.Modal = modal;
   });
 
-  // $ionicModal.fromTemplateUrl('templates/aac-partials/_word-change.html',{
-  //   id: '2',
-  //   scope: $scope,
-  //   animation: 'slide-in-up'
-  // }).then(function(modal){
-  //   $scope.oModal2 = modal;
-  // });
-
-  // $ionicModal.fromTemplateUrl('templates/aac-partials/_add-multiple-words.html',{
-  //   id: '3',
-  //   scope: $scope,
-  //   animation: 'slide-in-up'
-  // }).then(function(modal){
-  //   $scope.oModal3 = modal;
-  // });
-
   $scope.openModal = function(index){
     $scope.Modal.show()
-    // if(index == 1){
-    //   $scope.oModal1.show();
-    // }else if(index == 2){
-    //   $scope.oModal2.show();
-    // }else{
-    //   $scope.oModal3.show();
-    // }
   }
 
   $scope.closeModal = function(index){
     $scope.Modal.hide()
-    // if(index == 1){
-    //   $scope.oModal1.hide();
-    // }else if(index == 2){
-    //   $scope.oModal2.hide();
-    // }else{
-    //   $scope.oModal3.hide();
-    // }
   };
-
-  // $scope.$on('$destroy', function(){
-  //   $scope.modal.remove();
-  // });
 
   $scope.doneCancel = function(){
     this.style.border = "blue";

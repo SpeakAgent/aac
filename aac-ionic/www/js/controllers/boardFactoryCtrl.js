@@ -12,6 +12,7 @@ app.controller('boardFactoryController',
 		$scope.end = 24;
 		$scope.board = {};
 		$scope.dummyBoards = aacService.dummyBoards;
+		$scope.titleLimit = aacService.titleLimit; 
 
 		$scope.getData = function(){
 		  var req = {
@@ -104,8 +105,6 @@ app.controller('editBoardController',
 		$scope.selectedTiles = [];
 		$scope.selectedIndex = aacService.selectedIndex;
 		$scope.titleLimit = aacService.titleLimit; 
-		// $scope.start = 0;
-		// $scope.end = 24;
 		$scope.board = {};
 
 		$scope.clickTile = function(tile) {
