@@ -32,7 +32,7 @@
       <div class="col">
           <div class="boards" ng-repeat="board in dummyBoards | slice:start:end">
             <!-- ng-click="chosenBoard2($index)" -->
-            <a href="#/board_factory/sample_edit/{{board.pk}}" ng-click="chosenBoard($index)">
+            <a href="#/board_factory/edit/{{board.pk}}" ng-click="chosenBoard($index)">
               <!-- <div class="about-circle" ng-if="aboutcircle == true"></div> -->
               <p style="position:fixed; z-index:3; margin-top:25px; margin-left:15px;" ng-model="titleLimit">{{board.name | limitTo: titleLimit}} <span ng-show="board.name.length > titleLimit">...</span></p>
 

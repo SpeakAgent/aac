@@ -30,8 +30,8 @@ angular.module('main', ['ionic', 'main.Ctrl', 'main.aacService', 'settings.Ctrl'
 
     $stateProvider.state('board_factory/:id',{
       controller: 'editBoardController',
-      url:'/board_factory/sample_edit/:id',
-      templateUrl: 'templates/sample_edit.html'
+      url:'/board_factory/edit/:id',
+      templateUrl: 'templates/board_edit.html'
     })
 
     $stateProvider.state('board_factory/new',{
