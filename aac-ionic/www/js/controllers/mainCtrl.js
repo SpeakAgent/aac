@@ -22,6 +22,9 @@ app.controller('mainController',
   // can't figure out how to pull this from the service
   // $scope.board = aacService.board;
 
+
+
+// BOARD MENU FUNCTIONS
 $scope.getData = function(){
   var req = {
     url: 'https://lexemes-dev.herokuapp.com/board/single/',
@@ -35,6 +38,8 @@ $scope.getData = function(){
   })
 }
 
+$scope.getData();
+
 $scope.getAboutMe = function(){
   var req2 = {
     url: 'https://lexemes-dev.herokuapp.com/board/single/',
@@ -47,8 +52,6 @@ $scope.getAboutMe = function(){
     $scope.filled_tiles = Object.keys($scope.board.symbols)
   })
 }
-
-$scope.getData();
 
 $scope.chosenBoard = function(sampleBoard){
   $scope.selectedIndex = sampleBoard;
@@ -67,8 +70,27 @@ $scope.chosenBoard = function(sampleBoard){
     console.log("This icon doesn't have an associated board");
   }
 }
+
+$scope.lastSet = function(index){
+    console.log("Last Set button is working");
+    if ($scope.start > 0){
+      $scope.start = $scope.start - 24;
+      $scope.end = $scope.end - 24;
+    }
+  }
+
+  $scope.nextSet = function(index){
+    console.log("Next Set button is working");
+    if ($scope.end < $scope.dummyBoards.length){
+      $scope.start = $scope.start + 24;
+      $scope.end = $scope.end + 24;
+    }else{
+      console.log("No more left");
+    }
+  }
   
 
+// COLOR MODAL FUNCTIONS AND OBJECTS
   $scope.colorName =[
     {colorTitle: 'Sky Blue',
      primaryColor:'#50E2E3',
@@ -209,6 +231,7 @@ $scope.chosenBoard = function(sampleBoard){
     }
   }
 
+// BOARD TILE FUNCTIONS
   $scope.clickTile = function(tile) {
 
     $scope.board();
@@ -222,6 +245,20 @@ $scope.chosenBoard = function(sampleBoard){
     }
   }
 
+  $scope.class = "white";
+
+  $scope.chosenTile = function(tileIndex){
+    $scope.selectedIndex = tileIndex;
+    console.log(tileIndex);
+  };
+
+  $scope.class = "none";
+  $scope.selectedBtn2 = true;
+  // $scope.class.color = "white";
+
+  
+
+// PHRASE BAR FUNCTIONS
   $scope.deleteLastTile = function () {
     $scope.selectedTiles.pop();
   }
@@ -268,35 +305,7 @@ $scope.chosenBoard = function(sampleBoard){
        });
   };
 
-  $scope.class = "white";
-
-  $scope.chosenTile = function(tileIndex){
-    $scope.selectedIndex = tileIndex;
-    console.log(tileIndex);
-  };
-
-  $scope.lastSet = function(index){
-    console.log("Last Set button is working");
-    if ($scope.start > 0){
-      $scope.start = $scope.start - 24;
-      $scope.end = $scope.end - 24;
-    }
-  }
-
-  $scope.nextSet = function(index){
-    console.log("Next Set button is working");
-    if ($scope.end < $scope.dummyBoards.length){
-      $scope.start = $scope.start + 24;
-      $scope.end = $scope.end + 24;
-    }else{
-      console.log("No more left");
-    }
-  }
-
-  $scope.class = "none";
-  $scope.selectedBtn2 = true;
-  // $scope.class.color = "white";
-
+// SHOW HIDE FUNCTIONS
   $scope.activeHide = function(){
     console.log("So, it works ...");
     if($scope.class === "none"){
@@ -313,6 +322,7 @@ $scope.chosenBoard = function(sampleBoard){
       $scope.selectedBtn2 = true;
     }
   }
+
 });
 
 app.run(function($ionicPlatform) {
