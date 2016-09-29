@@ -76,7 +76,7 @@
             <div class="col col-60" id="tile-section">
               <div class="tile-section-border">
                 <span ng-repeat="row in rows">
-                  <div class="tile" ng-repeat="col in columns" ng-click="clickTile(board.symbols[col+row]); sayWord(); chosenTile($index);"  ng-class="{lightBlue:board.symbols[col+row]==selectedIndex3}";>
+                  <div class="tile" ng-repeat="col in columns" ng-click="clickTile(board.symbols[col+row]); sayWord();"  ng-class="{lightBlue:board.symbols[col+row]==selectedIndex3}";>
                     <span ng-show="filled_tiles.indexOf(col+row)!=-1">
                       {{board.symbols[col+row].word | limitTo: titleLimit}}<span ng-show="board.symbols[col+row].word.length > titleLimit">...</span><br>
                       <img src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px">

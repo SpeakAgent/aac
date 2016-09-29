@@ -250,7 +250,6 @@ app.controller('mainController',
 // BOARD TILE FUNCTIONS
   $scope.clickTile = function(tile) {
 
-    $scope.board;
     $scope.selectedTiles.push(tile);
 
     console.log($scope.selectedTiles);
@@ -261,15 +260,11 @@ app.controller('mainController',
     }
   }
 
-  // $scope.class = "white";
+  $scope.class = "white";
 
   $scope.chosenTile = function(tileIndex){
-    // $scope.selectedIndex = tileIndex;
-    // console.log(tileIndex);
-    // console.log(this);
-    // this.class = "tile lightBlue";
-    // console.log($scope.selectedIndex);
-    $scope.selectedIndex3 = tileIndex;
+    $scope.selectedIndex = tileIndex;
+    console.log(tileIndex);
   };
 
   // $scope.class = "none";
