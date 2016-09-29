@@ -234,7 +234,7 @@ $scope.lastSet = function(index){
 // BOARD TILE FUNCTIONS
   $scope.clickTile = function(tile) {
 
-    $scope.board();
+    $scope.board;
     $scope.selectedTiles.push(tile);
 
     console.log($scope.selectedTiles);
