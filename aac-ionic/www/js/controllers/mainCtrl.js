@@ -264,10 +264,12 @@ app.controller('mainController',
   // $scope.class = "white";
 
   $scope.chosenTile = function(tileIndex){
-    $scope.selectedIndex = tileIndex;
-    console.log(tileIndex);
-    console.log(this);
-    this.class = "tile lightBlue";
+    // $scope.selectedIndex = tileIndex;
+    // console.log(tileIndex);
+    // console.log(this);
+    // this.class = "tile lightBlue";
+    // console.log($scope.selectedIndex);
+    $scope.selectedIndex3 = tileIndex;
   };
 
   // $scope.class = "none";
