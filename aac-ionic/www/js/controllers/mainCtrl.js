@@ -211,7 +211,7 @@ $scope.chosenBoard = function(sampleBoard){
 
   $scope.clickTile = function(tile) {
 
-    $scope.board();
+    $scope.board;
     $scope.selectedTiles.push(tile);
 
     console.log($scope.selectedTiles);
