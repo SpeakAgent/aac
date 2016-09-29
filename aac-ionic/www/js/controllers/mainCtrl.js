@@ -25,53 +25,69 @@ app.controller('mainController',
 
 
 // BOARD MENU FUNCTIONS
-$scope.getData = function(){
-  var req = {
-    url: 'https://lexemes-dev.herokuapp.com/board/single/',
-    data: {pk: 3},
-    method: 'POST'
+  $scope.getData = function(){
+    var req = {
+      url: 'https://lexemes-dev.herokuapp.com/board/single/',
+      data: {pk: 3},
+      method: 'POST'
+    }
+
+    $http(req).success(function(data) {
+      $scope.board = data;
+      $scope.filled_tiles = Object.keys($scope.board.symbols)
+    })
   }
 
-  $http(req).success(function(data) {
-    $scope.board = data;
-    $scope.filled_tiles = Object.keys($scope.board.symbols)
-  })
-}
+  $scope.getData();
 
-$scope.getData();
+  $scope.getAboutMe = function(){
+    var req2 = {
+      url: 'https://lexemes-dev.herokuapp.com/board/single/',
+      data: {pk: 4},
+      method: 'POST'
+    }
 
-$scope.getAboutMe = function(){
-  var req2 = {
-    url: 'https://lexemes-dev.herokuapp.com/board/single/',
-    data: {pk: 4},
-    method: 'POST'
+    $http(req2).success(function(data) {
+      $scope.board = data;
+      $scope.filled_tiles = Object.keys($scope.board.symbols)
+    })
   }
 
-  $http(req2).success(function(data) {
-    $scope.board = data;
-    $scope.filled_tiles = Object.keys($scope.board.symbols)
-  })
-}
-
-$scope.chosenBoard = function(sampleBoard){
-  $scope.selectedIndex = sampleBoard;
-  console.log($scope.dummyBoards[$scope.selectedIndex].pk);
-  if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
+  $scope.chosenBoard = function(sampleBoard){
+    $scope.selectedIndex = sampleBoard;
+    // console.log($scope.selectedIndex);
     console.log($scope.dummyBoards[$scope.selectedIndex].pk);
-    // $scope.board = aacService.getBoard();
-    $scope.getData();
-  } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
-    $scope.board = aacService.aboutMeBoard;
-    $scope.aboutcircle = true;
-  } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
-    console.log($scope.board.pk);
-     $scope.getAboutMe();
-  }else{
-    console.log("This icon doesn't have an associated board");
+    if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
+      console.log($scope.dummyBoards[$scope.selectedIndex].pk);
+      // $scope.board = aacService.getBoard();
+      $scope.getData();
+    } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
+      $scope.board = aacService.aboutMeBoard;
+      $scope.aboutcircle = true;
+    } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
+      console.log($scope.board.pk);
+       $scope.getAboutMe();
+    }else{
+      console.log("This icon doesn't have an associated board");
+    }
   }
-}
 
-$scope.lastSet = function(index){
+  $scope.selectedBoardTile = function(thisBoard){
+    //Figure out how to select individual menu tile
+    $scope.selectedIndex = thisBoard;
+    console.log($scope.selectedIndex);
+
+    //Figure out how to remove the white svg
+    console.log($scope.dummyBoards[$scope.selectedIndex]);
+    var queryValue = $scope.dummyBoards[$scope.selectedIndex].name;
+    console.log(queryValue);
+    var tileSvg = document.querySelector(queryValue);
+    console.log(tileSvg);
+
+    //Figure out how to append the yellow svg
+  }
+
+  $scope.lastSet = function(index){
     console.log("Last Set button is working");
     if ($scope.start > 0){
       $scope.start = $scope.start - 24;
