@@ -261,14 +261,16 @@ app.controller('mainController',
     }
   }
 
-  $scope.class = "white";
+  // $scope.class = "white";
 
   $scope.chosenTile = function(tileIndex){
     $scope.selectedIndex = tileIndex;
     console.log(tileIndex);
+    console.log(this);
+    this.class = "tile lightBlue";
   };
 
-  $scope.class = "none";
+  // $scope.class = "none";
   $scope.selectedBtn2 = true;
   // $scope.class.color = "white";
 
