@@ -434,16 +434,21 @@ input[type="text"]:focus, textarea:focus {
 .item .green-blue {
   border-color: #65e5e6; }
 
-.item .item-input {
+.item.item-input {
   padding: 0px;
   margin-top: -2px; }
-  .item .item-input .none {
+  .item.item-input.none {
     outline: none;
     border-style: none;
     margin: -16px; }
 
 .item .item-divider {
   background-color: #98e3e3; }
+
+.tile-words {
+  line-height: 100%;
+  margin-bottom: -16px;
+  margin-top: 2px; }
 
 .list-container {
   float: right;
@@ -632,7 +637,7 @@ input[type="text"]:focus, textarea:focus {
 .tile.selectedColor {
   background-color: #000; }
 
-.title.lightBlue {
+.tile.lightBlue {
   background-color: #83EFF0;
   border-color: white; }
 

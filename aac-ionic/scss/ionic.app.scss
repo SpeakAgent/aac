@@ -574,7 +574,6 @@ input[type="text"]:focus, textarea:focus{
 .item{
   .green-blue{
     border-color:$speak-agent-light-blue2;
-    }
   }
 
   &.item-input{
@@ -590,6 +589,12 @@ input[type="text"]:focus, textarea:focus{
   .item-divider{
     background-color: $speak-agent-light-blue3;
   }
+}
+
+.tile-words{
+  line-height: 100%;
+  margin-bottom: -16px;
+  margin-top:2px;
 }
 
 .list-container{
