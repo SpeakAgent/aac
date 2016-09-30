@@ -211,6 +211,11 @@ $scope.chosenBoard = function(sampleBoard){
     }
   }
 
+  $scope.defaultBoard = function(){
+    console.log("Working?");
+    $scope.getData();
+  }
+
   $scope.clickTile = function(tile) {
 
     $scope.board;
