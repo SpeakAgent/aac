@@ -19,7 +19,8 @@ app.controller('mainController',
   $scope.end = 24;
   $scope.board = {};
   $scope.dummyBoards = aacService.dummyBoards;
-  $scope.longWords = aacService.longWords;
+  // $scope.longWords = aacService.longWords;
+  
   // can't figure out how to pull this from the service
   // $scope.board = aacService.board;
 
