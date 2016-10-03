@@ -19,10 +19,25 @@ app.controller('mainController',
   $scope.end = 24;
   $scope.board = {};
   $scope.dummyBoards = aacService.dummyBoards;
+  // $scope.dummyBoards[$scope.selectedIndex].pk = "3";
   // $scope.longWords = aacService.longWords;
   
   // can't figure out how to pull this from the service
   // $scope.board = aacService.board;
+
+  $scope.defaultBoard = function(){
+    console.log("Working?");
+    console.log($scope.board);
+
+    if($scope.board.pk === 3){
+      $scope.class = "button-circle2";
+    }
+
+    if ($scope.class === "button-circle2"){
+      $scope.class = "button-circle2 yellow";
+      console.log("The class is right.")
+    }
+  }
 
 $scope.getData = function(){
   var req = {
@@ -35,6 +50,8 @@ $scope.getData = function(){
     $scope.board = data;
     $scope.filled_tiles = Object.keys($scope.board.symbols)
   })
+
+  $scope.defaultBoard();
 }
 
 $scope.getAboutMe = function(){
@@ -211,16 +228,6 @@ $scope.chosenBoard = function(sampleBoard){
     }
   }
 
-  $scope.defaultBoard = function(){
-    console.log("Working?");
-    $scope.class = "button-circle2";
-    $scope.getData();
-    if ($scope.class === "button-circle2"){
-      $scope.class = "button-circle2 yellow";
-      console.log("The class is right.")
-    }
-  }
-
   $scope.clickTile = function(tile) {
 
     $scope.board;
@@ -305,7 +312,7 @@ $scope.chosenBoard = function(sampleBoard){
     }
   }
 
-  $scope.class = "none";
+  // $scope.class = "none";
   $scope.selectedBtn2 = true;
   // $scope.class.color = "white";
 
