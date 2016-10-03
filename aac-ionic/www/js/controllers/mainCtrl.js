@@ -213,7 +213,12 @@ $scope.chosenBoard = function(sampleBoard){
 
   $scope.defaultBoard = function(){
     console.log("Working?");
+    $scope.class = "button-circle2";
     $scope.getData();
+    if ($scope.class === "button-circle2"){
+      $scope.class = "button-circle2 yellow";
+      console.log("The class is right.")
+    }
   }
 
   $scope.clickTile = function(tile) {
