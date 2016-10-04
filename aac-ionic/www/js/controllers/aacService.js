@@ -8,9 +8,60 @@ app.service('aacService', function($http, $ionicModal){
 	this.columns = "abcdef";
 	this.rows = "123456";
 	this.selectedIndex = -2;
-	this.titleLimit = 6;
+	this.titleLimit = 20;
   this.aacService = {};
   this.aacService.data = {};
+
+  this.longWords = [
+    {
+      word:"puzzlement",
+      image:"img/aac_board_imgs/crayon.png"
+    },
+    {
+      word:"abdominohysterectomy",
+      image:"img/aac_board_imgs/alpaca.png"
+    },
+    {
+      word:"razzmatazz",
+      image:"img/aac_board_imgs/art.png"
+    },
+    {
+      word:"antienvironmentalist",
+      image:"img/aac_board_imgs/balloon.png"
+    },
+    {
+      word: "bumfuzzles",
+      image:"img/aac_board_imgs/bird.png"
+    },
+    {
+      word: "antiinsurrectionists",
+      image:"img/aac_board_imgs/clock.png"
+    },
+    {
+      word:"bemuzzling",
+      image:"img/aac_board_imgs/crayon.png",
+    },
+    {
+      word:"compartmentalization",
+      image:"img/aac_board_imgs/alpaca.png",
+    },
+    {
+      word:"skyjacking",
+      image:"img/aac_board_imgs/art.png",
+    },
+    {
+      word:"counterintuitiveness",
+      image:"img/aac_board_imgs/balloon.png",
+    },
+    {
+      word:"zigzagging",
+      image:"img/aac_board_imgs/bird.png",
+    },
+    {
+      word:"electrophysiologists",
+      image:"img/aac_board_imgs/clock.png",
+    },
+  ]
 
   this.dummyBoards =[
 

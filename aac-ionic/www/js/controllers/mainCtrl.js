@@ -7,6 +7,19 @@ app.filter('slice', function(){
   };
 });
 
+app.filter('breaking', function(){
+  return function(word){
+    if(word.length > 10){
+      firstHalf = word.substr(0,9);
+      return firstHalf;
+    } else {
+      return word;
+    }
+    // return word.slice(start, end);
+    // console.log(arr);
+  }
+});
+
 app.controller('mainController', 
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, aacService) {
 
@@ -19,8 +32,16 @@ app.controller('mainController',
   $scope.end = 24;
   $scope.board = {};
   $scope.dummyBoards = aacService.dummyBoards;
+  $scope.longWords = aacService.longWords;
   // can't figure out how to pull this from the service
   // $scope.board = aacService.board;
+
+  $scope.boardMenuTitle = function(word){
+    if (word.length > 10){
+        word[10].append
+        word.innerHTML
+    }
+  }
 
 $scope.getData = function(){
   var req = {
