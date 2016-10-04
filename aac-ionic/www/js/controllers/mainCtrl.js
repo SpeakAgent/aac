@@ -317,6 +317,7 @@ app.controller('mainController',
 
   $scope.activeHide = function(){
     console.log("So, it works ...");
+    $scope.class = "none";
     if($scope.class === "none"){
       $scope.class = "selected-btn2";
       $scope.hide = true;
