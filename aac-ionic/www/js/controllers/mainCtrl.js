@@ -329,6 +329,22 @@ $scope.chosenBoard = function(sampleBoard){
       $scope.selectedBtn2 = true;
     }
   }
+
+  $scope.chatBuddy =[
+    {url:'img/chat_buddies/chloe-chameleon_think.gif'},
+
+    {url:'img/chat_buddies/emma_think.gif'},
+
+    {url:'img/chat_buddies/harry-hedgehog_think.gif'},
+
+    {url:'img/chat_buddies/jose_think.gif'},
+   ]
+
+  $scope.myvalue = false;
+
+  $scope.activateChat = function(){
+    $scope.myvalue = $scope.myvalue ? false : true;
+  };
 });
 
 app.run(function($ionicPlatform) {
