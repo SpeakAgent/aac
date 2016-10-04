@@ -10431,3 +10431,67 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+/* Chat Buddy */
+
+#chat-buddy-style {
+  width: 80%;
+  margin-left: -10%;
+  height: 80%;
+  margin-top: -5%;
+  opacity: .9;
+}
+
+#chat-buddy-style h1, h4 {
+  text-align: center;
+  font-weight: bold;
+}
+
+.chat-choice {
+  padding: .5%;
+  border: 2px solid #50e2e3;
+  border-radius: 12px;
+  width: 30%;
+  margin: 2% 0 3% 13%;
+  float: left;
+  text-align: center;
+}
+
+.chat-choice p {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.chat-choice img {
+  width: 100px;
+}
+
+.choice-button {
+  width: 120px;
+  height: 40px;
+  border: 2px solid #979797;
+  border-radius: 20px;
+  float: left;
+  text-align: center;
+  font-size: 1.5em;
+  margin-left: 40%;
+  padding-top: 1%;
+  color: #979797;
+}
+
+.actived1 {
+  background: #50e2e3;
+}
+
+.actived2 {
+  background: #50e2e3;
+}
+
+.actived3 {
+  background: #50e2e3;
+}
+
+.actived4 {
+  background: #50e2e3;
+}

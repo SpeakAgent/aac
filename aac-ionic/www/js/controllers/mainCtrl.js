@@ -7,14 +7,14 @@ app.filter('slice', function(){
   };
 });
 
-app.controller('mainController', 
+app.controller('mainController',
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, aacService) {
 
   $scope.columns = aacService.columns;
   $scope.rows = aacService.rows;
   $scope.selectedTiles = [];
   $scope.selectedIndex = aacService.selectedIndex;
-  $scope.titleLimit = aacService.titleLimit; 
+  $scope.titleLimit = aacService.titleLimit;
   $scope.start = 0;
   $scope.end = 24;
   $scope.board = {};
@@ -67,7 +67,7 @@ $scope.chosenBoard = function(sampleBoard){
     console.log("This icon doesn't have an associated board");
   }
 }
-  
+
 
   $scope.colorName =[
     {colorTitle: 'Sky Blue',
@@ -76,18 +76,18 @@ $scope.chosenBoard = function(sampleBoard){
      url:'img/color_change/colorBlob-skyBlue.svg'},
 
     {colorTitle: 'Electric Green',
-     primaryColor:'#BCE72B', 
-     secondaryColor:'#18745C', 
+     primaryColor:'#BCE72B',
+     secondaryColor:'#18745C',
      url:'img/color_change/colorBlob_electricGreen.svg'},
 
     {colorTitle: 'Hot Pink',
      primaryColor:'#D5388A',
-     secondaryColor:'#F787C6', 
+     secondaryColor:'#F787C6',
      url:'img/color_change/colorBlob_hotPink.svg'},
 
     {colorTitle: 'Tangerine',
      primaryColor:'#E07600',
-     secondaryColor:'#982900', 
+     secondaryColor:'#982900',
      url:'img/color_change/colorBlob_tangerine.svg'},
 
     {colorTitle: 'Butter Yellow',
@@ -112,7 +112,7 @@ $scope.chosenBoard = function(sampleBoard){
 
     {colorTitle: 'Periwinkle Blue',
      primaryColor:'#8AB6E1',
-     secondaryColor:'#3496C7', 
+     secondaryColor:'#3496C7',
      url:'img/color_change/colorBlob_periwinkleBlue.svg'},
 
     {colorTitle: 'Forest Green',
@@ -147,13 +147,29 @@ $scope.chosenBoard = function(sampleBoard){
     $scope.Modal.hide()
   };
 
+  $ionicModal.fromTemplateUrl('templates/aac-partials/_chat-buddy.html',{
+    // id: '1',
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal){
+    $scope.buddyModal = modal;
+  });
+
+  $scope.openBuddyModal = function(index){
+    $scope.buddyModal.show()
+  }
+
+  $scope.closeBuddyModal = function(index){
+    $scope.buddyModal.hide()
+  };
+
   $scope.doneCancel = function(){
     this.style.border = "blue";
   }
 
   $scope.colorSelect = function(colorIndex){
     $scope.selectedIndex = colorIndex;
-    
+
     console.log($scope.selectedIndex);
     var container = document.getElementById('container');
 
@@ -180,7 +196,7 @@ $scope.chosenBoard = function(sampleBoard){
     var placeholder = document.createElement("img");
     placeholder.src = "img/color_change/colorBlob_white.svg";
     placeholder.style.width = "70%";
-    placeholder.style.height = "70%"; 
+    placeholder.style.height = "70%";
     placeholder.id = "placeholder";
 
 
