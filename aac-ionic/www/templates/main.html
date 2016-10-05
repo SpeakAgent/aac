@@ -100,9 +100,18 @@
 
             <div class="col col-40" id="board-section" style="margin-top:-43px;">
               <div class="boards" ng-repeat="board in longWords | slice:start:end">
-                <p style="position:fixed; z-index:3; margin-top:25px; margin-left:5px;" ng-model="titleLimit">
-                  <!-- ng-if="boardMenuTitle({{board.word}})" -->
-                  {{board.word | limitTo:titleLimit | breaking}}</p>
+
+                <p style="position:fixed; z-index:3; margin-top:25px; margin-left:5px;" ng-model="titleLimit" ng-if="board.word.length <= 10">
+                  {{board.word | limitTo:titleLimit}}
+                </p>
+
+                <p style="position:fixed; z-index:3; margin-top:20px; margin-left:5px;" ng-model="titleLimit" ng-if="board.word.length > 10">
+                  {{board.word | breaking}}
+                </p>
+
+                <p style="position:fixed; z-index:3; margin-top:30px; margin-left:5px;" ng-model="titleLimit" ng-if="board.word.length > 10">
+                  {{board.word | breaking2}}
+                </p>
 
                 <img src="{{board.image}}" alt="image" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-70px;">
 

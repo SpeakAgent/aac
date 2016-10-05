@@ -11,15 +11,17 @@ app.filter('breaking', function(){
   return function(word){
     if(word.length > 10){
       firstHalf = word.substr(0,9);
-      secondHalf = word.substr(10,word.length);
-      breakTag = angular.element('<br>');
-      console.log(breakTag);
-      // firstHalf.element(append(breakTag));
-      return firstHalf + secondHalf;
+      return firstHalf;
     } 
-    // else {
-    //   return word;
-    // }
+  }
+});
+
+app.filter('breaking2', function(){
+  return function(word){
+    if(word.length > 10){
+      secondHalf = word.substr(10,word.length);
+      return secondHalf;
+    } 
   }
 });
 
