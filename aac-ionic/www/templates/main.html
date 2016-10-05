@@ -113,7 +113,9 @@
                   {{board.word | breaking2}}
                 </p>
 
-                <img src="{{board.image}}" alt="image" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-70px;">
+                <img src="{{board.image}}" ng-if="board.word.length <= 10" alt="image" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-70px;">
+
+                <img src="{{board.image}}" ng-if="board.word.length > 10"alt="image" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-75px;">
 
                 <img src="img/new_dev_assets/board_tile_notched_default_1.svg" style="positon:relative; z-index:0;" alt="board tile">
               </div>
