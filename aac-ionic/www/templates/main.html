@@ -88,39 +88,27 @@
               </div>
             </div>
 
-            <!-- <div class="col col-40" id="board-section" style="margin-top:-43px;">
+            <div class="col col-40" id="board-section" style="margin-top:-43px;">
               <div class="boards" ng-repeat="board in dummyBoards | slice:start:end" ng-click="chosenBoard($index)">
-                  <p style="position:fixed; z-index:3; margin-top:25px; margin-left:15px;" ng-model="titleLimit">{{board.name | limitTo: titleLimit}} <span ng-show="board.name.length > titleLimit">...</span></p>
+                  <p style="position:fixed; z-index:3; margin-top:25px; margin-left:5px; letter-spacing:.5px;" ng-model="titleLimit" ng-if="board.name.length <= 10">
+                    {{board.name | limitTo: titleLimit}}
+                  </p>
+          
+                  <p style="position:fixed; z-index:3; margin-top:22px; margin-left:5px; letter-spacing: .5px;"  ng-model="titleLimit" ng-if="board.name.length > 10">
+                    {{board.name | limitTo:titleLimit | breaking}}
+                  </p>
 
-                  <img ng-src="{{board.img_path}}" alt="image" ng-click="sayWord()" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-70px;"\>
+                  <p style="position:fixed; z-index:3; margin-top:30px; margin-left:5px; letter-spacing: .5px;" ng-model="titleLimit" ng-if="board.name.length > 10">
+                    {{board.name | limitTo:titleLimit | breaking2}}
+                  </p>
 
+                  <img ng-src="{{board.img_path}}" ng-if="board.name.length <= 10" alt="image" ng-click="sayWord()" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-70px;"\>
+
+                  <img src="{{board.img_path}}" ng-if="board.name.length > 10"alt="image" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-75px;">
+                
                   <img src="img/new_dev_assets/board_tile_notched_default_1.svg" style="positon:relative; z-index:0;" alt="board tile">
               </div>
-            </div> -->
-
-            <div class="col col-40" id="board-section" style="margin-top:-43px;">
-              <div class="boards" ng-repeat="board in longWords | slice:start:end">
-
-                <p style="position:fixed; z-index:3; margin-top:25px; margin-left:5px; letter-spacing: .5px;" ng-model="titleLimit" ng-if="board.word.length <= 10">
-                  {{board.word | limitTo:titleLimit}}
-                </p>
-
-                <p style="position:fixed; z-index:3; margin-top:22px; margin-left:5px; letter-spacing: .5px;"  ng-model="titleLimit" ng-if="board.word.length > 10">
-                  {{board.word | breaking}}
-                </p>
-
-                <p style="position:fixed; z-index:3; margin-top:30px; margin-left:5px; letter-spacing: .5px;" ng-model="titleLimit" ng-if="board.word.length > 10">
-                  {{board.word | breaking2}}
-                </p>
-
-                <img src="{{board.image}}" ng-if="board.word.length <= 10" alt="image" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-70px;">
-
-                <img src="{{board.image}}" ng-if="board.word.length > 10"alt="image" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-75px;">
-
-                <img src="img/new_dev_assets/board_tile_notched_default_1.svg" style="positon:relative; z-index:0;" alt="board tile">
-              </div>
             </div>
-
           </div>
         </div>
 
