@@ -1,9 +1,9 @@
 var app = angular.module('main.Ctrl', ['ionic']);
 
-app.filter('slice', function(){
+app.filter('sliceArr', function(){
   return function(arr, start, end){
+    if (!arr || !arr.length >= 25) { return; }
     return arr.slice(start, end);
-    console.log(arr);
   };
 });
 
@@ -27,7 +27,7 @@ app.filter('breaking2', function(){
 
 app.controller('mainController', 
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
-    $location, $ionicPopover, $ionicHistory,
+    $location, $ionicPopover, $ionicHistory, appConfig,
     aacService) {
     
     $ionicHistory.nextViewOptions({
@@ -127,8 +127,7 @@ app.controller('mainController',
 
   $scope.getData = function(){
     var req = {
-      //url: 'https://lexemes-dev.herokuapp.com/board/first/user/',
-      url: 'http://127.0.0.1:8000/board/first/user/',
+      url: appConfig.backendURL + '/board/user/',
       data: {user_username: localStorage.getItem('username')},
       method: 'POST',
       headers: {
@@ -137,15 +136,15 @@ app.controller('mainController',
     }
 
     $http(req).success(function(data) {
-      $scope.board = data;
+      $scope.board = data[0];
+      $scope.userBoards = data;
       $scope.filled_tiles = Object.keys($scope.board.symbols)
     })
   }
 
   $scope.getAboutMe = function(){
     var req2 = {
-      //url: 'https://lexemes-dev.herokuapp.com/board/first/user/',
-      url: 'http://127.0.0.1:8000/board/first/user/',
+      url: appConfig.backendURL + '/board/first/user/',
       data: {user_username: localStorage.getItem('username')},
       method: 'POST',
       headers: {
@@ -161,21 +160,9 @@ app.controller('mainController',
 
   $scope.getData();
 
-  $scope.chosenBoard = function(sampleBoard){
-  $scope.selectedIndex = sampleBoard;
-  console.log($scope.dummyBoards[$scope.selectedIndex].pk);
-  if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
-    console.log($scope.dummyBoards[$scope.selectedIndex].pk);
-    // $scope.board = aacService.getBoard();
-    $scope.getData();
-  } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
-    $scope.board = aacService.aboutMeBoard;
-    $scope.aboutcircle = true;
-  } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
-    console.log($scope.board.pk);
-     $scope.getAboutMe();
-  }else{
-    console.log("This icon doesn't have an associated board");
+  $scope.chosenBoard = function(index){
+    $scope.board = $scope.userBoards[index];
+    $scope.filled_tiles = Object.keys($scope.board.symbols)
   }
 
   $scope.nextSet = function(index){
@@ -438,7 +425,7 @@ app.controller('mainController',
 
   $scope.nextSet = function(index){
     console.log("Next Set button is working");
-    if ($scope.end < $scope.dummyBoards.length){
+    if ($scope.end < $scope.userBoards.length){
       $scope.start = $scope.start + 24;
       $scope.end = $scope.end + 24;
     }else{
