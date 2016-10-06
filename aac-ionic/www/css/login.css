@@ -1,0 +1,32 @@
+.login-background{
+    background-color: #008485;
+    padding-top: 190px;
+}
+
+.login-section{
+    background-color: white;
+    border-radius: 14px;
+    box-shadow: 4px 4px 2px light-gray;
+}
+
+.login-box h1{
+    color: white;
+}
+
+input[type="text"], textarea {
+    background: none!important;
+    box-shadow: none!important;
+    border: none!important;
+    outline: none;
+    padding: 3px 0px 3px 3px!important;
+    margin: 5px 1px 3px 0px!important;
+}
+
+input[type="text"]:focus, textarea:focus {
+    background: none!important;
+    box-shadow: none!important;
+    border: none!important;
+    outline: none;
+    padding: 3px 0px 3px 3px!important;
+    margin: 5px 1px 3px 0px!important;
+}

@@ -8,7 +8,25 @@ app.filter('slice', function(){
 });
 
 app.controller('mainController', 
-  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, aacService) {
+  function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
+    $location, $ionicPopover, $ionicHistory,
+    aacService) {
+    
+    $ionicHistory.nextViewOptions({
+      disableBack: true
+    });
+
+    $scope.doLogout = function() {
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('username');
+      localStorage.removeItem('first_name');
+      localStorage.removeItem('last_name');
+      $location.path('/login');
+    };
+
+    if (localStorage.getItem("username") === null) {
+      $scope.doLogout();
+    };
 
   $scope.columns = aacService.columns;
   $scope.rows = aacService.rows;
@@ -22,35 +40,44 @@ app.controller('mainController',
   // can't figure out how to pull this from the service
   // $scope.board = aacService.board;
 
-$scope.getData = function(){
-  var req = {
-    url: 'https://lexemes-dev.herokuapp.com/board/single/',
-    data: {pk: 3},
-    method: 'POST'
+
+  $scope.getData = function(){
+    var req = {
+      //url: 'https://lexemes-dev.herokuapp.com/board/first/user/',
+      url: 'http://127.0.0.1:8000/board/first/user/',
+      data: {user_username: localStorage.getItem('username')},
+      method: 'POST',
+      headers: {
+          Authorization: 'JWT ' + localStorage.getItem('authToken')
+      }
+    }
+
+    $http(req).success(function(data) {
+      $scope.board = data;
+      $scope.filled_tiles = Object.keys($scope.board.symbols)
+    })
   }
 
-  $http(req).success(function(data) {
-    $scope.board = data;
-    $scope.filled_tiles = Object.keys($scope.board.symbols)
-  })
-}
+  $scope.getAboutMe = function(){
+    var req2 = {
+      //url: 'https://lexemes-dev.herokuapp.com/board/first/user/',
+      url: 'http://127.0.0.1:8000/board/first/user/',
+      data: {user_username: localStorage.getItem('username')},
+      method: 'POST',
+      headers: {
+          Authorization: 'JWT ' + localStorage.getItem('authToken')
+      }
+    }
 
-$scope.getAboutMe = function(){
-  var req2 = {
-    url: 'https://lexemes-dev.herokuapp.com/board/single/',
-    data: {pk: 4},
-    method: 'POST'
+    $http(req2).success(function(data) {
+      $scope.board = data;
+      $scope.filled_tiles = Object.keys($scope.board.symbols)
+    })
   }
 
-  $http(req2).success(function(data) {
-    $scope.board = data;
-    $scope.filled_tiles = Object.keys($scope.board.symbols)
-  })
-}
+  $scope.getData();
 
-$scope.getData();
-
-$scope.chosenBoard = function(sampleBoard){
+  $scope.chosenBoard = function(sampleBoard){
   $scope.selectedIndex = sampleBoard;
   console.log($scope.dummyBoards[$scope.selectedIndex].pk);
   if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
@@ -211,7 +238,6 @@ $scope.chosenBoard = function(sampleBoard){
 
   $scope.clickTile = function(tile) {
 
-    $scope.board();
     $scope.selectedTiles.push(tile);
 
     console.log($scope.selectedTiles);
