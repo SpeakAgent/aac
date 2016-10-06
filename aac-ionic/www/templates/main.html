@@ -86,14 +86,13 @@
               </div>
             </div>
 
-            <div class="col col-40" id="board-section" style="margin-top:-43px;">
-              <div class="boards" ng-repeat="board in dummyBoards | slice:start:end" ng-click="chosenBoard($index)">
-                  <p style="position:fixed; z-index:3; margin-top:25px; margin-left:15px;" ng-model="titleLimit">{{board.name | limitTo: titleLimit}} <span ng-show="board.name.length > titleLimit">...</span></p>
+            <div class="col col-40" id="board-section" style="margin-top:-43px;">              
+                <div class="boards" ng-repeat="userBoard in userBoards | sliceArr:start:end" ng-click="chosenBoard($index)">
+                  <p style="position:fixed; z-index:3; margin-top:25px; margin-left:15px;" ng-model="titleLimit">{{userBoard.board.title | limitTo: titleLimit}} <span ng-show="boardObj.board.name.length > titleLimit">...</span></p>
 
-                  <img ng-src="{{board.img_path}}" alt="image" ng-click="sayWord()" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-70px;"\>
+                  <img ng-if="userBoard.board.image" ng-src="{{userBoard.board.image}}" alt="{{userBoard.board.title}}" ng-click="sayWord()" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-70px;"\>
 
                   <img src="img/new_dev_assets/board_tile_notched_default_1.svg" style="positon:relative; z-index:0;" alt="board tile">
-                <!-- </div> -->
               </div>
             </div>
           </div>
@@ -125,7 +124,7 @@
             </div>
           </div>
 
-          <div class="col col-30">
+          <div class="col col-30" ng-if="userBoards.length >= 25">
             <img ng-click="lastSet($index)" src="img/AAC_assets/left.png" style="margin-left:50px;"/>
             <img ng-click="nextSet($index)" src="img/AAC_assets/right.png" style="margin-left:30px;"/>
           </div>
