@@ -74,16 +74,26 @@ app.controller('mainController',
 
   $scope.selectedBoardTile = function(thisBoard){
     //Figure out how to select individual menu tile
-    $scope.selectedIndex = thisBoard;
-    console.log($scope.selectedIndex);
+    $scope.index = thisBoard;
+    console.log($scope.index);
+    $scope.newTile = false;
+
+    tileFill = angular.element(document.querySelector("#Board-Tile-Notched-Style-Copy-128"));
+    // alert(tileFill.attr('fill'));
+
+    tileBackground = document.getElementById('selection' + $scope.index);
+    removeThis = angular.element($scope.dummyBoards.remove(tileBackground));
+    // tileFill.setAttribute("fill", "#FFE98E");
+    // tileFill.setAttribute("stroke", "#F8D338");
+
 
     //Figure out how to remove the white svg
-    console.log($scope.dummyBoards[$scope.selectedIndex]);
-    var queryValue = $scope.dummyBoards[$scope.selectedIndex].name;
-    console.log(queryValue);
-    var tileSvg = document.querySelector(queryValue);
-    console.log(tileSvg);
-
+    // console.log($scope.dummyBoards[$scope.selectedIndex]);
+    // console.log(queryValue);
+    // console.log(tileSvg);
+    // if($scope.dummyBoards[$scope.selectedIndex]){
+    //   $scope.newTile = false;
+    // }
     //Figure out how to append the yellow svg
   }
 
