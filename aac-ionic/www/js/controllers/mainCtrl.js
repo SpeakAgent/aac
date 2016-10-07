@@ -9,7 +9,7 @@ app.filter('slice', function(){
 
 app.controller('mainController', 
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
-    $location, $ionicPopover, $ionicHistory,
+    $location, $ionicPopover, $ionicHistory, appConfig,
     aacService) {
     
     $ionicHistory.nextViewOptions({
@@ -43,8 +43,7 @@ app.controller('mainController',
 
   $scope.getData = function(){
     var req = {
-      //url: 'https://lexemes-dev.herokuapp.com/board/first/user/',
-      url: 'http://127.0.0.1:8000/board/first/user/',
+      url: appConfig.backendURL + '/board/first/user/',
       data: {user_username: localStorage.getItem('username')},
       method: 'POST',
       headers: {
@@ -60,8 +59,7 @@ app.controller('mainController',
 
   $scope.getAboutMe = function(){
     var req2 = {
-      //url: 'https://lexemes-dev.herokuapp.com/board/first/user/',
-      url: 'http://127.0.0.1:8000/board/first/user/',
+      url: appConfig.backendURL + '/board/first/user/',
       data: {user_username: localStorage.getItem('username')},
       method: 'POST',
       headers: {
