@@ -64,7 +64,9 @@
             <div class="word-builder">
               <div class="word-builder-input" style="margin-left:-15px">
                 <div class="tile" ng-repeat="symbol in selectedTiles">
-                  {{ symbol.word }}<br>
+                  <span ng-bind="symbol.label? (symbol.label | limitTo: titleLimit) : (symbol.word | limitTo: titleLimit)"></span>
+                  <span ng-show="symbols.word.length > titleLimit || symbol.label.length > titleLimit">...</span>
+                  <br />
                   <img src = "{{symbol.symbol.image}}"
                     style="width:40px;height:40px">
                 </div>
@@ -78,7 +80,9 @@
                 <span ng-repeat="row in rows">
                   <div class="tile" ng-repeat="col in columns" ng-click="clickTile(board.symbols[col+row]); sayWord()"  ng-class="{lightBlue:board.symbols[col+row]==selectedIndex}";>
                     <span ng-show="filled_tiles.indexOf(col+row)!=-1">
-                      {{board.symbols[col+row].word | limitTo: titleLimit}}<span ng-show="board.symbols[col+row].word.length > titleLimit">...</span><br>
+                      <span ng-bind="board.symbols[col+row].label? (board.symbols[col+row].label | limitTo: titleLimit) : (board.symbols[col+row].word | limitTo: titleLimit)"></span>
+                      <span ng-show="board.symbols[col+row].word.length > titleLimit || board.symbols[col+row].label.length > titleLimit">...</span>
+                      <br />
                       <img src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px">
                     </span>
                   </div>
