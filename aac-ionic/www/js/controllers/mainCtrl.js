@@ -78,23 +78,10 @@ app.controller('mainController',
     console.log($scope.index);
     $scope.newTile = false;
 
-    tileFill = angular.element(document.querySelector("#Board-Tile-Notched-Style-Copy-128"));
-    // alert(tileFill.attr('fill'));
+    tileBackground = document.getElementById($scope.index);
+    console.log(tileBackground);
 
-    tileBackground = document.getElementById('selection' + $scope.index);
-    removeThis = angular.element($scope.dummyBoards.remove(tileBackground));
-    // tileFill.setAttribute("fill", "#FFE98E");
-    // tileFill.setAttribute("stroke", "#F8D338");
-
-
-    //Figure out how to remove the white svg
-    // console.log($scope.dummyBoards[$scope.selectedIndex]);
-    // console.log(queryValue);
-    // console.log(tileSvg);
-    // if($scope.dummyBoards[$scope.selectedIndex]){
-    //   $scope.newTile = false;
-    // }
-    //Figure out how to append the yellow svg
+    tileBackground.src = "img/new_dev_assets/board_tile_notched_default_yellow.svg";
   }
 
   $scope.lastSet = function(index){
