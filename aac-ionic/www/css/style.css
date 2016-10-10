@@ -4,6 +4,30 @@
 	background-color: green;
 }
 
+#avatar-bg-image{
+	background: url('../img/AAC_assets/avatar_default.png') no-repeat;
+	margin-top: 4px;
+	margin-bottom: 5px;
+	width: 98px;
+	background-size: 83px 83px;
+	height: 85px;
+}
+
+#avatar-bg-image #left-caret{
+	background: url('../img/AAC_assets/left-caret.png') no-repeat;
+	width: 11px;
+	height: 19px;
+	float: right;
+	position: relative;
+	top: 35px;
+}
+
+#avatar-bg-image img{
+	margin: 17px 0px 0px 20px;
+	height: 44px;
+	width: 44px;
+}
+
 .alert-message{
     text-align: center;
     width: 107%;

@@ -40,6 +40,19 @@ app.controller('mainController',
   // can't figure out how to pull this from the service
   // $scope.board = aacService.board;
 
+  var req = {
+    url: appConfig.backendURL + '/user/get/info/',
+    data: {username: localStorage.getItem('username')},
+    method: 'POST',
+    headers: {
+        Authorization: 'JWT ' + localStorage.getItem('authToken')
+    }
+  }
+
+  $http(req).success(function(data) {
+    $scope.userProfileInfo = data;
+  })
+
 
   $scope.getData = function(){
     var req = {
