@@ -55,11 +55,8 @@ app.controller('mainController',
 
   $scope.chosenBoard = function(sampleBoard){
     $scope.selectedIndex = sampleBoard;
-    // console.log($scope.selectedIndex);
     console.log($scope.dummyBoards[$scope.selectedIndex].pk);
     if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
-      console.log($scope.dummyBoards[$scope.selectedIndex].pk);
-      // $scope.board = aacService.getBoard();
       $scope.getData();
     } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
       $scope.board = aacService.aboutMeBoard;
@@ -73,15 +70,16 @@ app.controller('mainController',
   }
 
   $scope.selectedBoardTile = function(thisBoard){
-    //Figure out how to select individual menu tile
     $scope.index = thisBoard;
-    console.log($scope.index);
-    $scope.newTile = false;
-
-    tileBackground = document.getElementById($scope.index);
-    console.log(tileBackground);
-
-    tileBackground.src = "img/new_dev_assets/board_tile_notched_default_yellow.svg";
+    $scope.allTileBacks = document.getElementsByClassName("board-tile");
+    console.log($scope.allTileBacks[$scope.index]);
+    for(i=0; i<$scope.allTileBacks.length; i++){
+      if($scope.allTileBacks[i] != $scope.allTileBacks[$scope.index]){
+        $scope.allTileBacks[i].src = "img/new_dev_assets/board_tile_notched_default_1.svg";
+      } else{
+        $scope.allTileBacks[i].src = "img/new_dev_assets/board_tile_notched_default_yellow.svg";
+      }
+    }
   }
 
   $scope.lastSet = function(index){
