@@ -142,6 +142,11 @@ app.controller('mainController',
     })
   }
 
+  $scope.homeButton = function(){
+    $scope.board = $scope.userBoards[0];
+    $scope.filled_tiles = Object.keys($scope.board.symbols)
+  }
+
   $scope.getAboutMe = function(){
     var req2 = {
       url: appConfig.backendURL + '/board/first/user/',
