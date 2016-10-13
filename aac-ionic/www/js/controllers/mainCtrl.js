@@ -78,6 +78,7 @@ app.controller('mainController',
   }
   
 
+// COLOR MODAL FUNCTIONS AND OBJECTS
   $scope.colorName =[
     {colorTitle: 'Sky Blue',
      primaryColor:'#50E2E3',
@@ -218,6 +219,7 @@ app.controller('mainController',
     }
   }
 
+// BOARD TILE FUNCTIONS
   $scope.clickTile = function(tile) {
     if(tile.target_board){
       var req = {
@@ -246,6 +248,20 @@ app.controller('mainController',
     }
   }
 
+  $scope.class = "white";
+
+  $scope.chosenTile = function(tileIndex){
+    $scope.selectedIndex = tileIndex;
+    console.log(tileIndex);
+  };
+
+  // $scope.class = "none";
+  $scope.selectedBtn2 = true;
+  // $scope.class.color = "white";
+
+  
+
+// PHRASE BAR FUNCTIONS
   $scope.deleteLastTile = function () {
     $scope.selectedTiles.pop();
   }
@@ -317,12 +333,13 @@ app.controller('mainController',
     }
   }
 
-  $scope.class = "none";
+  // $scope.class = "none";
   $scope.selectedBtn2 = true;
   // $scope.class.color = "white";
 
   $scope.activeHide = function(){
     console.log("So, it works ...");
+    $scope.class = "none";
     if($scope.class === "none"){
       $scope.class = "selected-btn2";
       $scope.hide = true;
@@ -337,6 +354,7 @@ app.controller('mainController',
       $scope.selectedBtn2 = true;
     }
   }
+
 });
 
 app.run(function($ionicPlatform) {
