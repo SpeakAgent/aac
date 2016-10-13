@@ -574,7 +574,6 @@ input[type="text"]:focus, textarea:focus{
 .item{
   .green-blue{
     border-color:$speak-agent-light-blue2;
-    }
   }
 
   &.item-input{
@@ -817,6 +816,16 @@ input[type="text"]:focus, textarea:focus{
 }
 
 .title.lightBlue{
+  background-color:#83EFF0;
+  border-color:white;
+}
+
+.tile.lightBlue{
+  background-color:#83EFF0;
+  border-color:white;
+}
+
+.lightBlue{
   background-color:#83EFF0;
   border-color:white;
 }
