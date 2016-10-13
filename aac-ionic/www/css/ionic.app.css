@@ -648,6 +648,14 @@ input[type="text"]:focus, textarea:focus {
   background-color: #83EFF0;
   border-color: white; }
 
+.tile.lightBlue {
+  background-color: #83EFF0;
+  border-color: white; }
+
+.lightBlue {
+  background-color: #83EFF0;
+  border-color: white; }
+
 .title-section, .symbol-section, .tag-section {
   padding-bottom: 20px; }
 
