@@ -25,67 +25,43 @@ app.controller('mainController',
   // can't figure out how to pull this from the service
   // $scope.board = aacService.board;
 
-
-  $scope.defaultBoard = function(){
+  $scope.homeButton = function(){
     console.log("Working?");
+
     $scope.class = "button-circle2";
 
-    if ($scope.class === "button-circle2"){
+    if($scope.thisPk == "3"){
       $scope.class = "button-circle2 yellow";
-      console.log("The class is right.")
+    } else{
+      $scope.class = "button-circle2";
     }
   }
 
-  $scope.getData = function(){
-    var req = {
-      url: 'https://lexemes-dev.herokuapp.com/board/single/',
-      data: {pk: 3},
-      method: 'POST'
-    }
-
-    $http(req).success(function(data) {
-      $scope.board = data;
-      $scope.filled_tiles = Object.keys($scope.board.symbols)
-    })
-
-    $scope.defaultBoard();
-  }
-
-  $scope.getAboutMe = function(){
-    var req2 = {
-      url: 'https://lexemes-dev.herokuapp.com/board/single/',
-      data: {pk: 4},
-      method: 'POST'
-    }
-
-    $http(req2).success(function(data) {
-      $scope.board = data;
-      $scope.filled_tiles = Object.keys($scope.board.symbols)
-    })
-
-    $scope.class = "button-circle2";
-  }
-
-  $scope.getData();
-
-  $scope.chosenBoard = function(sampleBoard){
+  $scope.mainBoardLoader = function(sampleBoard, selectedPk){
     $scope.selectedIndex = sampleBoard;
-    console.log($scope.dummyBoards[$scope.selectedIndex].pk);
-    if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
-      console.log($scope.dummyBoards[$scope.selectedIndex].pk);
-      // $scope.board = aacService.getBoard();
-      $scope.getData();
-    } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
+    $scope.thisPk = selectedPk;
+    console.log("selectedIndex:" + $scope.selectedIndex + ", selectedPk " + $scope.thisPk);
+
+    if($scope.thisPk == 5){
       $scope.board = aacService.aboutMeBoard;
       $scope.aboutcircle = true;
       $scope.class = "button-circle2";
-    } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
-      console.log($scope.board.pk);
-       $scope.getAboutMe();
     }else{
-      console.log("This icon doesn't have an associated board");
+      $scope.homeButton();
+      var req2 = {
+        url: 'https://lexemes-dev.herokuapp.com/board/single/',
+        data: {pk: $scope.thisPk},
+        method: 'POST'
+      }
+
+      $http(req2).success(function(data) {
+        $scope.board = data;
+        $scope.filled_tiles = Object.keys($scope.board.symbols)
+      })
     }
   }
+
+  $scope.mainBoardLoader(0, 3);
 
   $scope.selectedBoardTile = function(thisBoard){
     $scope.index = thisBoard;
