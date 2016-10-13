@@ -219,14 +219,30 @@ app.controller('mainController',
   }
 
   $scope.clickTile = function(tile) {
+    if(tile.target_board){
+      var req = {
+        url: appConfig.backendURL + '/board/single/',
+        data: {pk: tile.target_board.pk},
+        method: 'POST',
+        headers: {
+            Authorization: 'JWT ' + localStorage.getItem('authToken')
+        }
+      }
 
-    $scope.selectedTiles.push(tile);
+      $http(req).success(function(data) {
+        console.log('loadingData');
+        $scope.board = data;
+        $scope.filled_tiles = Object.keys($scope.board.symbols)
+      })
+    }else{
+      $scope.selectedTiles.push(tile);
 
-    console.log($scope.selectedTiles);
-    $scope.selectedIndex = tile;
+      console.log($scope.selectedTiles);
+      $scope.selectedIndex = tile;
 
-    if($scope.selectedTiles[$scope.selectedIndex] == undefined){
-      console.log("no index!!");
+      if($scope.selectedTiles[$scope.selectedIndex] == undefined){
+        console.log("no index!!");
+      }
     }
   }
 
@@ -241,7 +257,7 @@ app.controller('mainController',
       pks.push($scope.selectedTiles[i].pk);
     }
     var req = {
-      url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
+      url: appConfig.backendURL + '/compaction/symbols/',
       data: {pks: "[" + pks.toString() + "]"},
       method: 'POST'
     }
@@ -255,7 +271,7 @@ app.controller('mainController',
   $scope.sayWord = function() {
     console.log($scope.selectedIndex.pk);
     var req = {
-      url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
+      url: appConfig.backendURL + '/compaction/symbols/',
       data: {pks: "[" + $scope.selectedIndex.pk + "]"},
       method: 'POST'
     }
