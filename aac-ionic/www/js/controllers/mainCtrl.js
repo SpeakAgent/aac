@@ -193,8 +193,8 @@ app.controller('mainController',
     var btnSection = document.getElementById('btn-section');
     btnSection.style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
 
-    var buttonCircle2 = document.getElementById('button-circle2');
-    buttonCircle2.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
+    // var buttonCircle2 = document.getElementById('button-circle2');
+    // buttonCircle2.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
 
     var buttonCircle = document.getElementsByClassName('button-circle');
     console.log(buttonCircle[1].style.backgroundColor);
@@ -228,7 +228,7 @@ app.controller('mainController',
       var colorChoice = document.getElementsByClassName('color-choice');
       var placeholder = document.getElementById("placeholder");
       originalImg[$scope.selectedIndex].style.display = "inline";
-      colorChoice[$scope.selectedIndex].removeChild(placeholder);
+      // colorChoice[$scope.selectedIndex].removeChild(placeholder);
       for(var n = 0; i < buttonCircle.length; n++){
         colorChoice[n].style.backgroundColor = "white";
         $scope.Modal.hide();
