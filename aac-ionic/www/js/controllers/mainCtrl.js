@@ -35,22 +35,6 @@ app.controller('mainController',
     }
   }
 
-  // $scope.defaultBoard = function(){
-  //   var req = {
-  //     url: 'https://lexemes-dev.herokuapp.com/board/single/',
-  //     data: {pk: 3},
-  //     method: 'POST'
-  //   }
-
-  //   $http(req).success(function(data) {
-  //     $scope.board = data;
-  //     $scope.filled_tiles = Object.keys($scope.board.symbols)
-  //   })
-  //   $scope.homeButton();
-  // }
-
-  // $scope.defaultBoard();
-
   $scope.mainBoardLoader = function(sampleBoard, selectedPk){
     $scope.selectedIndex = sampleBoard;
     $scope.thisPk = selectedPk;
@@ -63,6 +47,9 @@ app.controller('mainController',
     }else{
       if($scope.thisPk == 3){
         $scope.homeButton();
+      }else{
+        yellowClass = document.getElementsByClassName("button-circle2 yellow");
+        yellowClass.className = "button-circle2";
       }
       var req2 = {
         url: 'https://lexemes-dev.herokuapp.com/board/single/',
@@ -78,84 +65,6 @@ app.controller('mainController',
   }
 
   $scope.mainBoardLoader(0, 3);
-  // $scope.homeButton();
-
-  // $scope.getData = function(){
-  //   var req = {
-  //     url: 'https://lexemes-dev.herokuapp.com/board/single/',
-  //     data: {pk: 3},
-  //     method: 'POST'
-  //   }
-
-  //   $http(req).success(function(data) {
-  //     $scope.board = data;
-  //     $scope.filled_tiles = Object.keys($scope.board.symbols)
-  //   })
-
-  //   $scope.homeButton();
-  // }
-
-  // $scope.getAboutMe = function(){
-  //   var req2 = {
-  //     url: 'https://lexemes-dev.herokuapp.com/board/single/',
-  //     data: {pk: 4},
-  //     method: 'POST'
-  //   }
-
-  //   $http(req2).success(function(data) {
-  //     $scope.board = data;
-  //     $scope.filled_tiles = Object.keys($scope.board.symbols)
-  //   })
-
-  //   $scope.class = "button-circle2";
-  // }
-
-  // $scope.getData();
-
-  // $scope.chosenBoard = function(sampleBoard){
-  //   $scope.selectedIndex = sampleBoard;
-
-  //   switch($scope.dummyBoards[$scope.selectedIndex].pk){
-  //     case "4":
-  //       $scope.mainBoardLoader();
-  //       break
-  //     case "2":
-  //       $scope.mainBoardLoader();
-  //       break
-  //     case "1":
-  //       $scope.mainBoardLoader();
-  //       break
-  //     case "5":
-  //       $scope.mainBoardLoader();
-  //       break
-  //     default:
-  //       console.log("This icon doesn't have an associated board");
-  //   }
-
-    // $scope.getData(); - mainBoard(3) - not in Board menu
-    // $scope.board = aacService.aboutMeBoard(5)- About Me
-        // Also in about me:
-        //$scope.aboutcircle = true;
-        //$scope.class = "button-circle2";
-    // $scope.getAboutMe(); - the extra board created (4)
-
-
-    // console.log($scope.dummyBoards[$scope.selectedIndex].pk);
-    // if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
-    //   console.log($scope.dummyBoards[$scope.selectedIndex].pk);
-    //   // $scope.board = aacService.getBoard();
-    //   $scope.getData();
-    // } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
-    //   $scope.board = aacService.aboutMeBoard;
-    //   $scope.aboutcircle = true;
-    //   $scope.class = "button-circle2";
-    // } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
-    //   console.log($scope.board.pk);
-    //    $scope.getAboutMe();
-    // }else{
-    //   console.log("This icon doesn't have an associated board");
-    // }
-  // }
 
   $scope.selectedBoardTile = function(thisBoard){
     $scope.index = thisBoard;
