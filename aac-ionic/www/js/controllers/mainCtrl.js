@@ -27,12 +27,19 @@ app.controller('mainController',
 
   $scope.homeButton = function(){
     console.log("Working?");
+
     $scope.class = "button-circle2";
 
-    if ($scope.class === "button-circle2"){
+    if($scope.thisPk == "3"){
       $scope.class = "button-circle2 yellow";
-      console.log("The class is right.")
+    } else{
+      $scope.class = "button-circle2";
     }
+
+    // if ($scope.class === "button-circle2"){
+    //   $scope.class = "button-circle2 yellow";
+    //   console.log("The class is right.")
+    // }
   }
 
   $scope.mainBoardLoader = function(sampleBoard, selectedPk){
@@ -45,12 +52,15 @@ app.controller('mainController',
       $scope.aboutcircle = true;
       $scope.class = "button-circle2";
     }else{
-      if($scope.thisPk == 3){
-        $scope.homeButton();
-      }else{
-        yellowClass = document.getElementsByClassName("button-circle2 yellow");
-        yellowClass.className = "button-circle2";
-      }
+      $scope.homeButton();
+      // if($scope.thisPk == 3){
+      //   $scope.homeButton();
+      // }else{
+        // yellowClass = document.getElementsByClassName("button-circle2 yellow");
+        // yellowClass.className = "button-circle2";
+        // console.log(yellowClass)
+        // document.getElementsByClassName("button-circle2 yellow").className = "button-circle2";
+      // }
       var req2 = {
         url: 'https://lexemes-dev.herokuapp.com/board/single/',
         data: {pk: $scope.thisPk},
