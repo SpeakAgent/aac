@@ -65,20 +65,21 @@ app.service('aacService', function($http, $ionicModal){
 
   this.dummyBoards =[
 
-      { name:"About Me",
+      { name:"Verbs",
         img_path:"img/aac_board_imgs/crayon.png",
-        pk: '5'},
+        pk: '4'},
 
       { name:"Lunch",
         img_path:"img/aac_board_imgs/alpaca.png",
-        pk: '3'},
+        pk: '2'},
 
       { name:"Feelings",
         img_path:"img/aac_board_imgs/art.png",
-        pk: '4'},
+        pk: '1'},
 
-      { name:"Body",
-        img_path:"img/aac_board_imgs/balloon.png"},
+      { name:"About Me",
+        img_path:"img/aac_board_imgs/balloon.png",
+        pk: '5'},
 
       { name:"Clothes",
          img_path:"img/aac_board_imgs/bird.png"},

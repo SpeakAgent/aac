@@ -26,7 +26,7 @@ app.controller('mainController',
   // $scope.board = aacService.board;
 
 
-  $scope.defaultBoard = function(){
+  $scope.homeButton = function(){
     console.log("Working?");
     $scope.class = "button-circle2";
 
@@ -48,7 +48,7 @@ app.controller('mainController',
       $scope.filled_tiles = Object.keys($scope.board.symbols)
     })
 
-    $scope.defaultBoard();
+    $scope.homeButton();
   }
 
   $scope.getAboutMe = function(){
@@ -70,21 +70,47 @@ app.controller('mainController',
 
   $scope.chosenBoard = function(sampleBoard){
     $scope.selectedIndex = sampleBoard;
-    console.log($scope.dummyBoards[$scope.selectedIndex].pk);
-    if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
-      console.log($scope.dummyBoards[$scope.selectedIndex].pk);
-      // $scope.board = aacService.getBoard();
-      $scope.getData();
-    } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
-      $scope.board = aacService.aboutMeBoard;
-      $scope.aboutcircle = true;
-      $scope.class = "button-circle2";
-    } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
-      console.log($scope.board.pk);
-       $scope.getAboutMe();
-    }else{
-      console.log("This icon doesn't have an associated board");
+
+    switch($scope.dummyBoards[$scope.selectedIndex].pk){
+      case "4":
+        $scope.getAboutMe();
+        break
+      case "2":
+        break
+      case "1":
+        break
+      case "5":
+        $scope.board = aacService.aboutMeBoard;
+        $scope.aboutcircle = true;
+        $scope.class = "button-circle2";
+        break
+      default:
+        console.log("This icon doesn't have an associated board");
     }
+
+    // $scope.getData(); - mainBoard(3) - not in Board menu
+    // $scope.board = aacService.aboutMeBoard(5)- About Me
+        // Also in about me:
+        //$scope.aboutcircle = true;
+        //$scope.class = "button-circle2";
+    // $scope.getAboutMe(); - the extra board created (4)
+
+
+    // console.log($scope.dummyBoards[$scope.selectedIndex].pk);
+    // if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
+    //   console.log($scope.dummyBoards[$scope.selectedIndex].pk);
+    //   // $scope.board = aacService.getBoard();
+    //   $scope.getData();
+    // } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
+    //   $scope.board = aacService.aboutMeBoard;
+    //   $scope.aboutcircle = true;
+    //   $scope.class = "button-circle2";
+    // } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
+    //   console.log($scope.board.pk);
+    //    $scope.getAboutMe();
+    // }else{
+    //   console.log("This icon doesn't have an associated board");
+    // }
   }
 
   $scope.selectedBoardTile = function(thisBoard){
