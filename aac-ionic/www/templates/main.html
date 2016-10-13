@@ -99,7 +99,8 @@
             </div>
 
             <div class="col col-40" id="board-section" style="margin-top:-43px;">
-              <div class="boards" ng-repeat="board in dummyBoards | slice:start:end" ng-click="chosenBoard($index); selectedBoardTile($index)">
+              <div class="boards" ng-repeat="board in dummyBoards | slice:start:end" ng-click="mainBoardLoader($index, board.pk); selectedBoardTile($index)">
+                <!-- chosenBoard($index) -->
                <!-- ng-class="{lightBlue:board.symbols[col+row]==selectedIndex}" -->
                   <p style="position:fixed; z-index:3; margin-top:25px; margin-left:15px;" ng-model="titleLimit">{{board.name | limitTo: titleLimit}} <span ng-show="board.name.length > titleLimit">...</span></p>
 

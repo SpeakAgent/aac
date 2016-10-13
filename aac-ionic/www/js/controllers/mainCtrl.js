@@ -25,6 +25,22 @@ app.controller('mainController',
   // can't figure out how to pull this from the service
   // $scope.board = aacService.board;
 
+  $scope.mainBoardLoader = function(sampleBoard, selectedPk){
+    $scope.selectedIndex = sampleBoard;
+    $scope.thisPk = selectedPk;
+    console.log("selectedIndex:" + $scope.selectedIndex + ", selectedPk " + $scope.thisPk);
+
+    var req2 = {
+      url: 'https://lexemes-dev.herokuapp.com/board/single/',
+      data: {pk: $scope.thisPk},
+      method: 'POST'
+    }
+
+    $http(req2).success(function(data) {
+      $scope.board = data;
+      $scope.filled_tiles = Object.keys($scope.board.symbols)
+    })
+  }
 
   $scope.homeButton = function(){
     console.log("Working?");
