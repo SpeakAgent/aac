@@ -19,12 +19,23 @@ app.controller('mainController',
   $scope.end = 24;
   $scope.board = {};
   $scope.dummyBoards = aacService.dummyBoards;
+  // $scope.dummyBoards[$scope.selectedIndex].pk = "3";
+  // $scope.longWords = aacService.longWords;
+  
   // can't figure out how to pull this from the service
   // $scope.board = aacService.board;
 
 
+  $scope.defaultBoard = function(){
+    console.log("Working?");
+    $scope.class = "button-circle2";
 
-// BOARD MENU FUNCTIONS
+    if ($scope.class === "button-circle2"){
+      $scope.class = "button-circle2 yellow";
+      console.log("The class is right.")
+    }
+  }
+
   $scope.getData = function(){
     var req = {
       url: 'https://lexemes-dev.herokuapp.com/board/single/',
@@ -36,9 +47,9 @@ app.controller('mainController',
       $scope.board = data;
       $scope.filled_tiles = Object.keys($scope.board.symbols)
     })
-  }
 
-  $scope.getData();
+    $scope.defaultBoard();
+  }
 
   $scope.getAboutMe = function(){
     var req2 = {
@@ -51,16 +62,23 @@ app.controller('mainController',
       $scope.board = data;
       $scope.filled_tiles = Object.keys($scope.board.symbols)
     })
+
+    $scope.class = "button-circle2";
   }
+
+  $scope.getData();
 
   $scope.chosenBoard = function(sampleBoard){
     $scope.selectedIndex = sampleBoard;
     console.log($scope.dummyBoards[$scope.selectedIndex].pk);
     if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
+      console.log($scope.dummyBoards[$scope.selectedIndex].pk);
+      // $scope.board = aacService.getBoard();
       $scope.getData();
     } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
       $scope.board = aacService.aboutMeBoard;
       $scope.aboutcircle = true;
+      $scope.class = "button-circle2";
     } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
       console.log($scope.board.pk);
        $scope.getAboutMe();
@@ -314,9 +332,38 @@ app.controller('mainController',
        });
   };
 
-// SHOW HIDE FUNCTIONS
+  $scope.class = "white";
+
+  $scope.chosenTile = function(tileIndex){
+    $scope.selectedIndex = tileIndex;
+    console.log(tileIndex);
+  };
+
+  $scope.lastSet = function(index){
+    console.log("Last Set button is working");
+    if ($scope.start > 0){
+      $scope.start = $scope.start - 24;
+      $scope.end = $scope.end - 24;
+    }
+  }
+
+  $scope.nextSet = function(index){
+    console.log("Next Set button is working");
+    if ($scope.end < $scope.dummyBoards.length){
+      $scope.start = $scope.start + 24;
+      $scope.end = $scope.end + 24;
+    }else{
+      console.log("No more left");
+    }
+  }
+
+  // $scope.class = "none";
+  $scope.selectedBtn2 = true;
+  // $scope.class.color = "white";
+
   $scope.activeHide = function(){
     console.log("So, it works ...");
+    $scope.class = "none";
     if($scope.class === "none"){
       $scope.class = "selected-btn2";
       $scope.hide = true;
