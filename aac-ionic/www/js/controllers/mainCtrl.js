@@ -356,10 +356,10 @@ app.controller('mainController',
   }
 
   $("div.regulars").on("mousedown", function() {
-      $(this).toggleClass('yellow');
+      $(this).toggleClass('actYellow');
   })
   .on("mouseup", function(e) {
-      $(this).toggleClass('yellow');
+      $(this).toggleClass('actYellow');
   });
 
 });

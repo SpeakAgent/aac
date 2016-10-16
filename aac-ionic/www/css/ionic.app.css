@@ -531,7 +531,7 @@ input[type="text"]:focus, textarea:focus {
   border: 2px solid #979797;
   text-align: center; }
 
-  .yellow {
+.actYellow {
     background-color: #FFE98E;
     border: 2px solid #F8D338; }
 
