@@ -43,22 +43,14 @@
           <img src="img/AAC_assets/avatar_default.png"
             ng-click="sayPhrase()"/>
 
-          <div class="regulars" ng-click="sayQuickPhrase('yes')"
-            ng-style="isQuickPhrasePressed('yes') && {'background-color': '#FFE98E', 'border': '2px solid #F8D338'}">
-            Yes
+          
+          <div class="regulars" 
+            ng-repeat="phrase in quickPhrases"
+            ng-click="sayQuickPhrase(phrase)"
+            ng-style="isQuickPhrasePressed(phrase) && {'background-color': '#FFE98E', 'border': '2px solid #F8D338'}">
+            {{ phrase }}
           </div>
 
-          <div class="regulars">
-            No
-          </div>
-
-          <div class="regulars">
-            Hold On
-          </div>
-
-          <div class="regulars">
-            Help
-          </div>
         </div>
 
         <div class="col col-90" id="full-body">

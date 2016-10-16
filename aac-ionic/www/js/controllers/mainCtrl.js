@@ -26,7 +26,7 @@ app.filter('breaking2', function(){
 });
 
 app.controller('mainController', 
-  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, aacService) {
+  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, aacService, $timeout) {
 
   $scope.columns = aacService.columns;
   $scope.rows = aacService.rows;
@@ -38,6 +38,7 @@ app.controller('mainController',
   $scope.board = {};
   $scope.dummyBoards = aacService.dummyBoards;
   $scope.quickPhrasePressed = [];
+  $scope.quickPhrases = ['Yes', 'No', 'Hold on', 'Help']
 
   // $scope.dummyBoards[$scope.selectedIndex].pk = "3";
   // $scope.longWords = aacService.longWords;
@@ -288,15 +289,16 @@ app.controller('mainController',
 
   $scope.sayQuickPhrase = function (phrase) {
     $scope.quickPhrasePressed.push(phrase);
-    $scope.speakText(phrase);
+    // Do this before TTS so that it works when not in emulator
     $timeout(function() {
+      console.log("in timeout")
       $scope.quickPhrasePressed.splice(
         $scope.quickPhrasePressed.indexOf(phrase), 1)
-    }, 10000)
+    }, 750)
+    $scope.speakText(phrase);
   }
 
   $scope.isQuickPhrasePressed = function (phrase) {
-    console.log("Checking", phrase)
     if ($scope.quickPhrasePressed.indexOf(phrase) > -1) {
       return true
     } else {
