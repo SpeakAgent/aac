@@ -644,17 +644,9 @@ input[type="text"]:focus, textarea:focus {
 .tile.selectedColor {
   background-color: #000; }
 
-.tile.lightBlue {
-  background-color: #83EFF0;
-  border-color: white; }
-
-.tile.lightBlue {
-  background-color: #83EFF0;
-  border-color: white; }
-
-.lightBlue {
-  background-color: #83EFF0;
-  border-color: white; }
+.tile.selectedTile {
+  background-color: #FFE98E;
+  border-color: #F8D338; }
 
 .title-section, .symbol-section, .tag-section {
   padding-bottom: 20px; }
