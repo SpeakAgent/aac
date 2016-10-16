@@ -7,21 +7,21 @@ app.filter('slice', function(){
   };
 });
 
-app.controller('mainController', 
-  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, aacService) {
+app.controller('mainController',
+  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, aacService, $timeout) {
 
   $scope.columns = aacService.columns;
   $scope.rows = aacService.rows;
   $scope.selectedTiles = [];
   $scope.selectedIndex = aacService.selectedIndex;
-  $scope.titleLimit = aacService.titleLimit; 
+  $scope.titleLimit = aacService.titleLimit;
   $scope.start = 0;
   $scope.end = 24;
   $scope.board = {};
   $scope.dummyBoards = aacService.dummyBoards;
   // $scope.dummyBoards[$scope.selectedIndex].pk = "3";
   // $scope.longWords = aacService.longWords;
-  
+
   // can't figure out how to pull this from the service
   // $scope.board = aacService.board;
 
@@ -93,7 +93,7 @@ app.controller('mainController',
       console.log("No more left");
     }
   }
-  
+
 
 // COLOR MODAL FUNCTIONS AND OBJECTS
   $scope.colorName =[
@@ -103,18 +103,18 @@ app.controller('mainController',
      url:'img/color_change/colorBlob-skyBlue.svg'},
 
     {colorTitle: 'Electric Green',
-     primaryColor:'#BCE72B', 
-     secondaryColor:'#18745C', 
+     primaryColor:'#BCE72B',
+     secondaryColor:'#18745C',
      url:'img/color_change/colorBlob_electricGreen.svg'},
 
     {colorTitle: 'Hot Pink',
      primaryColor:'#D5388A',
-     secondaryColor:'#F787C6', 
+     secondaryColor:'#F787C6',
      url:'img/color_change/colorBlob_hotPink.svg'},
 
     {colorTitle: 'Tangerine',
      primaryColor:'#E07600',
-     secondaryColor:'#982900', 
+     secondaryColor:'#982900',
      url:'img/color_change/colorBlob_tangerine.svg'},
 
     {colorTitle: 'Butter Yellow',
@@ -139,7 +139,7 @@ app.controller('mainController',
 
     {colorTitle: 'Periwinkle Blue',
      primaryColor:'#8AB6E1',
-     secondaryColor:'#3496C7', 
+     secondaryColor:'#3496C7',
      url:'img/color_change/colorBlob_periwinkleBlue.svg'},
 
     {colorTitle: 'Forest Green',
@@ -180,7 +180,7 @@ app.controller('mainController',
 
   $scope.colorSelect = function(colorIndex){
     $scope.selectedIndex = colorIndex;
-    
+
     console.log($scope.selectedIndex);
     var container = document.getElementById('container');
 
@@ -207,7 +207,7 @@ app.controller('mainController',
     var placeholder = document.createElement("img");
     placeholder.src = "img/color_change/colorBlob_white.svg";
     placeholder.style.width = "70%";
-    placeholder.style.height = "70%"; 
+    placeholder.style.height = "70%";
     placeholder.id = "placeholder";
 
 
@@ -259,7 +259,7 @@ app.controller('mainController',
   $scope.selectedBtn2 = true;
   // $scope.class.color = "white";
 
-  
+
 
 // PHRASE BAR FUNCTIONS
   $scope.deleteLastTile = function () {
@@ -354,6 +354,16 @@ app.controller('mainController',
       $scope.selectedBtn2 = true;
     }
   }
+
+  $scope.imageUrl = 'img/AAC_assets/delete_button.png';
+
+  $scope.onTap = function() {
+      console.log("yes?");
+      $scope.imageUrl = 'img/AAC_assets/delete_button_tapped.png';
+      $timeout(function () {
+        $scope.imageUrl = 'img/AAC_assets/delete_button.png';
+      }, 250);
+  };
 
 });
 
