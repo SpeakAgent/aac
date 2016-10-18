@@ -65,20 +65,21 @@ app.service('aacService', function($http, $ionicModal){
 
   this.dummyBoards =[
 
-      { name:"About Me",
-        img_path:"img/aac_board_imgs/crayon.png",
-        pk: '5'},
-
-      { name:"Lunch",
-        img_path:"img/aac_board_imgs/alpaca.png",
-        pk: '3'},
-
-      { name:"Feelings",
-        img_path:"img/aac_board_imgs/art.png",
+      { name:"Verbs",
+        img_path:"img/dummyImages/verbs.png",
         pk: '4'},
 
-      { name:"Body",
-        img_path:"img/aac_board_imgs/balloon.png"},
+      { name:"Lunch",
+        img_path:"img/dummyImages/lunch.png",
+        pk: '2'},
+
+      { name:"Feelings",
+        img_path:"img/dummyImages/feelings.png",
+        pk: '1'},
+
+      { name:"About Me",
+        img_path:"img/dummyImages/about_me.png",
+        pk: '5'},
 
       { name:"Clothes",
          img_path:"img/aac_board_imgs/bird.png"},
@@ -86,7 +87,7 @@ app.service('aacService', function($http, $ionicModal){
      { name:"Cars",
        img_path:"img/aac_board_imgs/clock.png"},
 
-      { name:"Feelings",
+      { name:"Art",
          img_path:"img/aac_board_imgs/crayon.png"},
 
      { name:"Food",
