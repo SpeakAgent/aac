@@ -266,6 +266,28 @@ app.controller('mainController',
     $scope.selectedTiles.pop();
   }
 
+  $scope.callBuddy = function () {
+    console.log("Buddy called.")
+    var app_id = "1409613061631";
+    var user_key = "22979a79e76310f4250128edd868e5fa";
+    var botname = "uglybuddy";
+    var text = "Hello";
+
+    // That's right! No data or auth for this 
+    var req = {
+      url: "https://aiaas.pandorabots.com/talk/1409613061631/uglybuddy?input=Hello&user_key=22979a79e76310f4250128edd868e5fa",
+      method: "POST"
+    }
+
+    $http(req).success(function(data) {
+      var resp = data.responses[0];
+      $scope.speakText(resp)
+    })
+    .error(function(data){
+      console.log(data)
+    })
+  }
+
   $scope.sayPhrase = function () {
     console.log($scope.selectedTiles);
     var pks = [];
