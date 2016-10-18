@@ -8,7 +8,25 @@ app.filter('slice', function(){
 });
 
 app.controller('mainController', 
-  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, aacService) {
+  function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
+    $location, $ionicPopover, $ionicHistory, appConfig,
+    aacService) {
+    
+    $ionicHistory.nextViewOptions({
+      disableBack: true
+    });
+
+    $scope.doLogout = function() {
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('username');
+      localStorage.removeItem('first_name');
+      localStorage.removeItem('last_name');
+      $location.path('/login');
+    };
+
+    if (localStorage.getItem("username") === null) {
+      $scope.doLogout();
+    };
 
   $scope.columns = aacService.columns;
   $scope.rows = aacService.rows;
@@ -25,63 +43,57 @@ app.controller('mainController',
   // can't figure out how to pull this from the service
   // $scope.board = aacService.board;
 
-  $scope.homeButton = function(){
-    console.log("Working?");
 
-    $scope.class = "button-circle2";
-
-    if($scope.thisPk == "3"){
-      $scope.class = "button-circle2 yellow";
-    } else{
-      $scope.class = "button-circle2";
-    }
-  }
-
-  $scope.mainBoardLoader = function(sampleBoard, selectedPk){
-    $scope.selectedIndex = sampleBoard;
-    $scope.thisPk = selectedPk;
-    console.log("selectedIndex:" + $scope.selectedIndex + ", selectedPk " + $scope.thisPk);
-
-    if($scope.thisPk == 5){
-      $scope.board = aacService.aboutMeBoard;
-      $scope.aboutcircle = true;
-      $scope.class = "button-circle2";
-    }else{
-      $scope.homeButton();
-      var req2 = {
-        url: 'https://lexemes-dev.herokuapp.com/board/single/',
-        data: {pk: $scope.thisPk},
-        method: 'POST'
+  $scope.getData = function(){
+    var req = {
+      url: appConfig.backendURL + '/board/first/user/',
+      data: {user_username: localStorage.getItem('username')},
+      method: 'POST',
+      headers: {
+          Authorization: 'JWT ' + localStorage.getItem('authToken')
       }
-
-      $http(req2).success(function(data) {
-        $scope.board = data;
-        $scope.filled_tiles = Object.keys($scope.board.symbols)
-      })
     }
+
+    $http(req).success(function(data) {
+      $scope.board = data;
+      $scope.filled_tiles = Object.keys($scope.board.symbols)
+    })
   }
 
-  $scope.mainBoardLoader(0, 3);
+  $scope.getAboutMe = function(){
+    var req2 = {
+      url: appConfig.backendURL + '/board/first/user/',
+      data: {user_username: localStorage.getItem('username')},
+      method: 'POST',
+      headers: {
+          Authorization: 'JWT ' + localStorage.getItem('authToken')
+      }
+    }
 
-  $scope.selectedBoardTile = function(thisBoard){
+    $http(req2).success(function(data) {
+      $scope.board = data;
+      $scope.filled_tiles = Object.keys($scope.board.symbols)
+    })
+  }
+
+  $scope.getData();
+
+  $scope.chosenBoard = function(sampleBoard){
+  $scope.selectedIndex = sampleBoard;
+  console.log($scope.dummyBoards[$scope.selectedIndex].pk);
+  if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
+    console.log($scope.dummyBoards[$scope.selectedIndex].pk);
+    // $scope.board = aacService.getBoard();
+    $scope.getData();
+  } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
+    $scope.board = aacService.aboutMeBoard;
+    $scope.aboutcircle = true;
+  } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
+    console.log($scope.board.pk);
+     $scope.getAboutMe();
+  }else{
+    console.log("This icon doesn't have an associated board");
     $scope.index = thisBoard;
-    $scope.allTileBacks = document.getElementsByClassName("board-tile");
-    console.log($scope.allTileBacks[$scope.index]);
-    for(i=0; i<$scope.allTileBacks.length; i++){
-      if($scope.allTileBacks[i] != $scope.allTileBacks[$scope.index]){
-        $scope.allTileBacks[i].src = "img/new_dev_assets/board_tile_notched_default_1.svg";
-      } else{
-        $scope.allTileBacks[i].src = "img/new_dev_assets/board_tile_notched_default_yellow.svg";
-      }
-    }
-  }
-
-  $scope.lastSet = function(index){
-    console.log("Last Set button is working");
-    if ($scope.start > 0){
-      $scope.start = $scope.start - 24;
-      $scope.end = $scope.end - 24;
-    }
   }
 
   $scope.nextSet = function(index){
@@ -238,6 +250,7 @@ app.controller('mainController',
 
 // BOARD TILE FUNCTIONS
   $scope.clickTile = function(tile) {
+
     $scope.selectedTiles.push(tile);
 
     console.log($scope.selectedTiles);
