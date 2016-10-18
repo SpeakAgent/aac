@@ -60,6 +60,18 @@ app.controller('mainController',
     })
   }
 
+  $scope.homeButton = function(){
+    console.log("Working?");
+
+    $scope.class = "button-circle2";
+
+    if($scope.thisPk == "3"){
+      $scope.class = "button-circle2 yellow";
+    } else{
+      $scope.class = "button-circle2";
+    }
+  }
+
   $scope.getAboutMe = function(){
     var req2 = {
       url: appConfig.backendURL + '/board/first/user/',
@@ -79,20 +91,24 @@ app.controller('mainController',
   $scope.getData();
 
   $scope.chosenBoard = function(sampleBoard){
-  $scope.selectedIndex = sampleBoard;
-  console.log($scope.dummyBoards[$scope.selectedIndex].pk);
-  if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
+    $scope.selectedIndex = sampleBoard;
     console.log($scope.dummyBoards[$scope.selectedIndex].pk);
-    // $scope.board = aacService.getBoard();
-    $scope.getData();
-  } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
-    $scope.board = aacService.aboutMeBoard;
-    $scope.aboutcircle = true;
-  } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
-    console.log($scope.board.pk);
-     $scope.getAboutMe();
-  }else{
-    console.log("This icon doesn't have an associated board");
+    if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
+      console.log($scope.dummyBoards[$scope.selectedIndex].pk);
+      // $scope.board = aacService.getBoard();
+      $scope.getData();
+    } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
+      $scope.board = aacService.aboutMeBoard;
+      $scope.aboutcircle = true;
+    } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
+      console.log($scope.board.pk);
+      $scope.getAboutMe();
+    }else{
+      console.log("This icon doesn't have an associated board");
+    }
+  }
+  
+  $scope.selectedBoardTile = function(thisBoard){
     $scope.index = thisBoard;
   }
 
@@ -250,7 +266,6 @@ app.controller('mainController',
 
 // BOARD TILE FUNCTIONS
   $scope.clickTile = function(tile) {
-
     $scope.selectedTiles.push(tile);
 
     console.log($scope.selectedTiles);
