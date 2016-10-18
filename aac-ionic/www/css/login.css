@@ -13,20 +13,23 @@
     color: white;
 }
 
-input[type="text"], textarea {
-    background: none!important;
-    box-shadow: none!important;
-    border: none!important;
-    outline: none;
-    padding: 3px 0px 3px 3px!important;
-    margin: 5px 1px 3px 0px!important;
+.login-label{
+    margin: 0px!important;
 }
 
-input[type="text"]:focus, textarea:focus {
+.login-input {
     background: none!important;
     box-shadow: none!important;
     border: none!important;
     outline: none;
     padding: 3px 0px 3px 3px!important;
-    margin: 5px 1px 3px 0px!important;
+    margin: 0px !important;
+}
+
+login-input:focus {
+    background: none!important;
+    box-shadow: none!important;
+    border: none!important;
+    outline: none;
+    padding: 3px 0px 3px 3px!important;
 }
