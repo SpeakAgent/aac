@@ -434,10 +434,10 @@ input[type="text"]:focus, textarea:focus {
 .item .green-blue {
   border-color: #65e5e6; }
 
-.item .item-input {
+.item.item-input {
   padding: 0px;
   margin-top: -2px; }
-  .item .item-input .none {
+  .item.item-input.none {
     outline: none;
     border-style: none;
     margin: -16px; }
