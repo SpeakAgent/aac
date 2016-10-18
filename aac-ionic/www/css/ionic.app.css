@@ -209,11 +209,17 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2 
   float: left;
   margin-left: 20px; }
 
-#button-circle2 {
+.button-circle2 {
   width: 75px;
   height: 75px;
   background-color: #008485;
   border-radius: 37.5px; }
+
+.yellow {
+  border: 5px solid #F8D338;
+  width: 80px;
+  height: 80px;
+  border-radius: 40px; }
 
 .buttonsdiv {
   margin-left: 20px; }
@@ -445,6 +451,12 @@ input[type="text"]:focus, textarea:focus {
 .item .item-divider {
   background-color: #98e3e3; }
 
+.tile-words {
+  line-height: 100%;
+  letter-spacing: .5px;
+  margin-bottom: -16px;
+  margin-top: 2px; }
+
 .list-container {
   float: right;
   width: 90%; }
@@ -632,7 +644,15 @@ input[type="text"]:focus, textarea:focus {
 .tile.selectedColor {
   background-color: #000; }
 
-.title.lightBlue {
+.tile.lightBlue {
+  background-color: #83EFF0;
+  border-color: white; }
+
+.tile.lightBlue {
+  background-color: #83EFF0;
+  border-color: white; }
+
+.lightBlue {
   background-color: #83EFF0;
   border-color: white; }
 
