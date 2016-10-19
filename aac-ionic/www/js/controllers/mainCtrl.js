@@ -20,8 +20,15 @@ app.controller('mainController',
   $scope.board = {};
   $scope.dummyBoards = aacService.dummyBoards;
   // TODO: Make more robust
-  $scope.appPrefs = {}
-  $scope.appPrefs['showPK'] = window.localStorage.getItem("showPK")
+
+  $scope.$on( "$ionicView.enter", function( scopes, states ) {
+        if( states.fromCache && states.stateName == "main" ) {
+          console.log("Entered main")
+            $scope.appPrefs = {}
+            $scope.appPrefs['showPK'] = window.localStorage.getItem("showPK")
+        }
+    });
+  
   // $scope.dummyBoards[$scope.selectedIndex].pk = "3";
   // $scope.longWords = aacService.longWords;
   
