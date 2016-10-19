@@ -4,6 +4,23 @@ app.controller('settingsController',
 	function($http, $scope, $location){
 		$scope.settings = true;
 		$scope.step = 1;
+		$scope.appPrefs = {}
+		// Only the ones we've implemented
+		prefs = ['showPK']
+		for (var i in prefs) {
+			sval = window.localStorage.getItem(prefs[i])
+			if (sval == null) {
+				$scope.appPrefs[prefs[i]] = false
+			} else {
+				$scope.appPrefs[prefs[i]] = sval
+			}
+		}
+		
+
+		$scope.setPreference = function(pref) {
+			console.log($scope.appPrefs)
+			window.localStorage.setItem(pref, $scope.appPrefs[pref])
+		}
 
 		$scope.panel = function(number){
 		  if(number == "1"){

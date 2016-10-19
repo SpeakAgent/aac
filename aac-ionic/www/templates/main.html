@@ -64,14 +64,14 @@
             <div class="word-builder">
               <div class="word-builder-input" style="margin-left:-15px">
                 <div class="tile" ng-repeat="symbol in selectedTiles">
-                  {{ symbol.word }}<br>
+                  {{ symbol.word }} {{symbol.pk }}<br>
                   <img src = "{{symbol.symbol.image}}"
                     style="width:40px;height:40px">
                 </div>
                 <img src="img/AAC_assets/delete_button.png" id="home-section"
                   ng-click="deleteLastTile()" />
-                  <!-- <img src="img/AAC_assets/avatar_button.png" id="home-section"
-                  ng-click="callBuddy()" /> -->
+                  <img src="img/AAC_assets/avatar_button.png" id="home-section"
+                  ng-click="callBuddy()" />
               </div>
               
             </div>
@@ -90,7 +90,9 @@
                 <span ng-repeat="row in rows">
                   <div class="tile" ng-repeat="col in columns" ng-click="clickTile(board.symbols[col+row]); sayWord();"  ng-class="{lightBlue:board.symbols[col+row]==selectedIndex}";>
                     <span ng-show="filled_tiles.indexOf(col+row)!=-1">
-                      <p class="tile-words">{{board.symbols[col+row].word | limitTo: titleLimit}}</p>
+                      <p class="tile-words">{{board.symbols[col+row].word
+                       | limitTo: titleLimit}}
+                       <span ng-show="appPrefs.showPK=='true'">-{{board.symbols[col+row].pk}}</span></p>
                         <!-- <span ng-show="board.symbols[col+row].word.length > titleLimit">...</span> -->
                         <br>
                       <img src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px">

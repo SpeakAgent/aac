@@ -19,6 +19,9 @@ app.controller('mainController',
   $scope.end = 24;
   $scope.board = {};
   $scope.dummyBoards = aacService.dummyBoards;
+  // TODO: Make more robust
+  $scope.appPrefs = {}
+  $scope.appPrefs['showPK'] = window.localStorage.getItem("showPK")
   // $scope.dummyBoards[$scope.selectedIndex].pk = "3";
   // $scope.longWords = aacService.longWords;
   
@@ -273,19 +276,39 @@ app.controller('mainController',
     var botname = "uglybuddy";
     var text = "Hello";
 
-    // That's right! No data or auth for this 
-    var req = {
-      url: "https://aiaas.pandorabots.com/talk/1409613061631/uglybuddy?input=Hello&user_key=22979a79e76310f4250128edd868e5fa",
-      method: "POST"
+    // Get a sentence
+    var pks = [];
+    for (i in $scope.selectedTiles) {
+      pks.push($scope.selectedTiles[i].pk);
+    }
+    var sreq = {
+      url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
+      data: {pks: "[" + pks.toString() + "]"},
+      method: 'POST'
     }
 
-    $http(req).success(function(data) {
-      var resp = data.responses[0];
-      $scope.speakText(resp)
-    })
-    .error(function(data){
+    $http(sreq).success(function(data) {
       console.log(data)
+      // That's right! No data or auth for this 
+      var req = {
+        url: "https://aiaas.pandorabots.com/talk/1409613061631/uglybuddy?input=" + data.sentence + "&user_key=22979a79e76310f4250128edd868e5fa",
+        method: "POST"
+      }
+      $http(req).success(function(data){
+        $scope.speakText(data.responses[0])
+      })
     })
+
+    
+    
+
+    // $http(req).success(function(data) {
+    //   var resp = data.responses[0];
+    //   $scope.speakText(resp)
+    // })
+    // .error(function(data){
+    //   console.log(data)
+    // })
   }
 
   $scope.sayPhrase = function () {
