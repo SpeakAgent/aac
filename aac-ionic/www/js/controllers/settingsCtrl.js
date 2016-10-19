@@ -47,17 +47,38 @@ app.controller('settingsController',
 			})
 		};
 
-		$scope.checkBoxActivate = function(value){
-			$scope.voice = "";
-
-			if(value = 'jane'){
-				$scope.voice.jane = value;
-			}else if(value = 'malik'){
-				$scope.voice.malik = value;
-			}else if(value = 'malik'){
-				$scope.voice.name = value;
+		$scope.synthVoiceSubmit = function(){
+			user_req = {
+				url: appConfig.backendURL + '/user/info/',
+				method: 'POST',
+				headers: {
+					Authorization: 'JWT ' + localStorage.getItem('authToken'),
+				},
+				data: {username: localStorage.getItem("username"),
+					   synthetic_voices: $scope.voice.name,
+					   voice_volume: $scope.voice.volume}
 			}
-		};
+			return $http(user_req)
+			.success(function(data) {
+				$scope.getUserInformation();
+				var message = {
+					text: data.message,
+					type: 'success',
+					animation: 'slideDown'
+				};
+
+				$scope.alertAnimation(message);
+			})
+			.error(function (data) {
+				$window.scrollTo(0, 0);
+				var message = {
+					text: 'An error ocurred updating user information!',
+					type: 'danger',
+					animation: 'slideDown'
+				};
+				$scope.alertAnimation(message);
+			});
+		}
 
 		$scope.getUserInformation();
 
