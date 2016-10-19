@@ -45,7 +45,19 @@ app.controller('settingsController',
 			$http(req).success(function (data) {
 				$scope.user = data;
 			})
-		}
+		};
+
+		$scope.checkBoxActivate = function(value){
+			$scope.voice = "";
+
+			if(value = 'jane'){
+				$scope.voice.jane = value;
+			}else if(value = 'malik'){
+				$scope.voice.malik = value;
+			}else if(value = 'malik'){
+				$scope.voice.name = value;
+			}
+		};
 
 		$scope.getUserInformation();
 

@@ -145,7 +145,7 @@
 
 <!-- Synthetic Voice Panel -->
 			<div class="col col-67" id="settings-modal" ng-show="step == 2">
-				<form ng-submit="synthVoice()">
+				<form ng-submit="synthVoiceSubmit()">
 					<ion-list> 
 						<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
 							<h1 class="centered-title"><strong>Synthetic Voice</strong></h1>
@@ -155,9 +155,9 @@
 					<div class="settings-box">
 						<p>Synthetic Voices</p>	
 						<ion-list>
-							<ion-checkbox style="border-color:white;" ng-model="voice.jane" ng-change="uncheckCheckbox(1)"><span class="checkbox-text">Jane</span><i class="icon ion-play"></i></ion-checkbox>
-							<ion-checkbox style="border-color:white;" ng-model="voice.malik" ng-checked="uncheckCheckbox(2)"><span class="checkbox-text">Malik</span><i class="icon ion-play"></i></ion-checkbox>
-							<ion-checkbox style="border-color:white;" ng-model="voice.name" ng-checked="uncheckCheckbox(3)"><span class="checkbox-text">Name</span><i class="icon ion-play"></i></ion-checkbox>
+							<ion-radio type="radio" style="border-color:white;" ng-model="voice.name" value="jane"><span class="checkbox-text">Jane</span><i class="icon ion-play"></i></ion-radio>
+							<ion-radio type="radio" style="border-color:white;" ng-model="voice.name" value="malik"><span class="checkbox-text">Malik</span><i class="icon ion-play"></i></ion-radio>
+							<ion-radio type="radio" style="border-color:white;" ng-model="voice.name" value="name"><span class="checkbox-text">Name</span><i class="icon ion-play"></i></ion-radio>
 						</ion-list>
 					</div>
 
