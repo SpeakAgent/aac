@@ -55,7 +55,7 @@ app.controller('mainController',
   $scope.end = 24;
   $scope.board = {};
 
-  $scope.getData = function(){
+  $scope.mainBoardLoader = function(){
     var req = {
       url: appConfig.backendURL + '/board/user/',
       data: {user_username: localStorage.getItem('username')},
@@ -72,35 +72,7 @@ app.controller('mainController',
     })
   };
 
-  $scope.homeButton = function(){
-    console.log("Working?");
-
-    $scope.class = "button-circle2";
-
-    if($scope.thisPk == "3"){
-      $scope.class = "button-circle2 yellow";
-    } else{
-      $scope.class = "button-circle2";
-    }
-  };
-
-  $scope.getAboutMe = function(){
-    var req2 = {
-      url: appConfig.backendURL + '/board/first/user/',
-      data: {user_username: localStorage.getItem('username')},
-      method: 'POST',
-      headers: {
-          Authorization: 'JWT ' + localStorage.getItem('authToken')
-      }
-    }
-
-    $http(req2).success(function(data) {
-      $scope.board = data;
-      $scope.filled_tiles = Object.keys($scope.board.symbols)
-    })
-  };
-
-  $scope.getData();
+  $scope.mainBoardLoader();
 
   $scope.chosenBoard = function(index){
     $scope.board = $scope.userBoards[index];
