@@ -125,7 +125,7 @@ app.controller('mainController',
       $scope.end = $scope.end - 24;
     }
 
-  $scope.getData = function(){
+  $scope.mainBoardLoader = function(){
     var req = {
       url: appConfig.backendURL + '/board/user/',
       data: {user_username: localStorage.getItem('username')},
