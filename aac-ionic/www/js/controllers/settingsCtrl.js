@@ -4,17 +4,32 @@ app.controller('settingsController',
 	function($http, $scope, $location){
 		$scope.settings = true;
 		$scope.step = 1;
-		$scope.appPrefs = {}
-		// Only the ones we've implemented
-		prefs = ['showPK']
-		for (var i in prefs) {
+		$scope.$on( "$ionicView.enter", function( scopes, states ) {
+			
+			console.log("Entered settings")
+			$scope.appPrefs = {}
+			// Only the ones we've implemented
+			prefs = ['showPK']
+			for (var i in prefs) {
 			sval = window.localStorage.getItem(prefs[i])
+			console.log("Found", prefs[i], sval)
 			if (sval == null) {
+				console.log("Is null")
 				$scope.appPrefs[prefs[i]] = false
 			} else {
-				$scope.appPrefs[prefs[i]] = sval
+				if (sval == "true") {
+					$scope.appPrefs[prefs[i]] = true
+				} else {
+					$scope.appPrefs[prefs[i]] = false
+				}
 			}
+
+			console.log($scope.appPrefs)
+			
 		}
+		})
+
+		
 		
 
 		$scope.setPreference = function(pref) {

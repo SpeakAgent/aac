@@ -19,14 +19,18 @@ app.controller('mainController',
   $scope.end = 24;
   $scope.board = {};
   $scope.dummyBoards = aacService.dummyBoards;
+  $scope.appPrefs = {}
   // TODO: Make more robust
 
   $scope.$on( "$ionicView.enter", function( scopes, states ) {
-        if( states.fromCache && states.stateName == "main" ) {
           console.log("Entered main")
-            $scope.appPrefs = {}
-            $scope.appPrefs['showPK'] = window.localStorage.getItem("showPK")
-        }
+            if (window.localStorage.getItem("showPK") == "true") {
+              $scope.appPrefs['showPK'] = true
+            } else {
+              $scope.appPrefs['showPK'] = false
+            }
+
+            console.log($scope.appPrefs)
     });
   
   // $scope.dummyBoards[$scope.selectedIndex].pk = "3";

@@ -92,7 +92,7 @@
                     <span ng-show="filled_tiles.indexOf(col+row)!=-1">
                       <p class="tile-words">{{board.symbols[col+row].word
                        | limitTo: titleLimit}}
-                       <span ng-show="appPrefs.showPK=='true'">-{{board.symbols[col+row].pk}}</span></p>
+                       <span ng-show="appPrefs.showPK">-{{board.symbols[col+row].pk}}</span></p>
                         <!-- <span ng-show="board.symbols[col+row].word.length > titleLimit">...</span> -->
                         <br>
                       <img src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px">
