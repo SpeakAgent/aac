@@ -7,6 +7,24 @@ app.filter('slice', function(){
   };
 });
 
+app.filter('breaking', function(){
+  return function(word){
+    if(word.length > 10){
+      firstHalf = word.substr(0,9);
+      return firstHalf;
+    } 
+  }
+});
+
+app.filter('breaking2', function(){
+  return function(word){
+    if(word.length > 10){
+      secondHalf = word.substr(10,word.length);
+      return secondHalf;
+    } 
+  }
+});
+
 app.controller('mainController', 
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $location, $ionicPopover, $ionicHistory, appConfig,
@@ -37,6 +55,7 @@ app.controller('mainController',
   $scope.end = 24;
   $scope.board = {};
   $scope.dummyBoards = aacService.dummyBoards;
+
   // $scope.dummyBoards[$scope.selectedIndex].pk = "3";
   // $scope.longWords = aacService.longWords;
   
