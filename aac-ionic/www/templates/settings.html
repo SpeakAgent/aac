@@ -145,27 +145,35 @@
 
 <!-- Synthetic Voice Panel -->
 			<div class="col col-67" id="settings-modal" ng-show="step == 2">
-				<ion-list> 
-					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
-						<h1 class="centered-title"><strong>Synthetic Voice</strong></h1>
-					</ion-item>
-				</ion-list>
+				<form ng-submit="synthVoice()">
+					<ion-list> 
+						<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
+							<h1 class="centered-title"><strong>Synthetic Voice</strong></h1>
+						</ion-item>
+					</ion-list>
 
-				<div class="settings-box">
-					<p>Synthetic Voices</p>	
-					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Jane</span><i class="icon ion-play"></i></ion-checkbox>
-					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Malik</span><i class="icon ion-play"></i></ion-checkbox>
-					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Name</span><i class="icon ion-play"></i></ion-checkbox>
-				</div>
-
-				<div class="settings-box">
-					<div class="item range" style="border-color:white;">
-						<div class="avatar-icon-placeholder"></div>
-							<input type="range" name="voice">
-						<div class="avatar-icon-placeholder"></div>
+					<div class="settings-box">
+						<p>Synthetic Voices</p>	
+						<ion-list>
+							<ion-checkbox style="border-color:white;" ng-model="voice.jane" ng-change="uncheckCheckbox(1)"><span class="checkbox-text">Jane</span><i class="icon ion-play"></i></ion-checkbox>
+							<ion-checkbox style="border-color:white;" ng-model="voice.malik" ng-checked="uncheckCheckbox(2)"><span class="checkbox-text">Malik</span><i class="icon ion-play"></i></ion-checkbox>
+							<ion-checkbox style="border-color:white;" ng-model="voice.name" ng-checked="uncheckCheckbox(3)"><span class="checkbox-text">Name</span><i class="icon ion-play"></i></ion-checkbox>
+						</ion-list>
 					</div>
-					<p>Voice Speed</p>
-				</div>
+
+					<div class="settings-box">
+						<p>Voice Speed</p>
+						<div class="item range" style="border-color:white;">
+							<div class="avatar-icon-placeholder"></div>
+							<input type="range" name="synth-volume" min="0" max="100" value="33" ng-model="voice.volume">
+							<div class="avatar-icon-placeholder"></div>
+						</div>
+					</div>
+
+					<div class="settings-box">
+						<button type="submit" class="custom-button button-block">Save</button>
+					</div>
+				</form>
 			</div>
 
 <!-- Sound Effects Panel -->
