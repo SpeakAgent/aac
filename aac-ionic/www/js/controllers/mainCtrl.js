@@ -7,6 +7,24 @@ app.filter('sliceArr', function(){
   };
 });
 
+app.filter('breaking', function(){
+  return function(word){
+    if(word.length > 10){
+      firstHalf = word.substr(0,9);
+      return firstHalf;
+    } 
+  }
+});
+
+app.filter('breaking2', function(){
+  return function(word){
+    if(word.length > 10){
+      secondHalf = word.substr(10,word.length);
+      return secondHalf;
+    } 
+  }
+});
+
 app.controller('mainController', 
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $location, $ionicPopover, $ionicHistory, appConfig,
@@ -52,7 +70,19 @@ app.controller('mainController',
       $scope.userBoards = data;
       $scope.filled_tiles = Object.keys($scope.board.symbols)
     })
-  }
+  };
+
+  $scope.homeButton = function(){
+    console.log("Working?");
+
+    $scope.class = "button-circle2";
+
+    if($scope.thisPk == "3"){
+      $scope.class = "button-circle2 yellow";
+    } else{
+      $scope.class = "button-circle2";
+    }
+  };
 
   $scope.getAboutMe = function(){
     var req2 = {
@@ -68,16 +98,17 @@ app.controller('mainController',
       $scope.board = data;
       $scope.filled_tiles = Object.keys($scope.board.symbols)
     })
-  }
+  };
 
   $scope.getData();
 
   $scope.chosenBoard = function(index){
     $scope.board = $scope.userBoards[index];
     $scope.filled_tiles = Object.keys($scope.board.symbols)
-  }
+  };
   
 
+// COLOR MODAL FUNCTIONS AND OBJECTS
   $scope.colorName =[
     {colorTitle: 'Sky Blue',
      primaryColor:'#50E2E3',
@@ -175,8 +206,8 @@ app.controller('mainController',
     var btnSection = document.getElementById('btn-section');
     btnSection.style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
 
-    var buttonCircle2 = document.getElementById('button-circle2');
-    buttonCircle2.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
+    // var buttonCircle2 = document.getElementById('button-circle2');
+    // buttonCircle2.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
 
     var buttonCircle = document.getElementsByClassName('button-circle');
     console.log(buttonCircle[1].style.backgroundColor);
@@ -210,7 +241,7 @@ app.controller('mainController',
       var colorChoice = document.getElementsByClassName('color-choice');
       var placeholder = document.getElementById("placeholder");
       originalImg[$scope.selectedIndex].style.display = "inline";
-      colorChoice[$scope.selectedIndex].removeChild(placeholder);
+      // colorChoice[$scope.selectedIndex].removeChild(placeholder);
       for(var n = 0; i < buttonCircle.length; n++){
         colorChoice[n].style.backgroundColor = "white";
         $scope.Modal.hide();
@@ -218,6 +249,7 @@ app.controller('mainController',
     }
   }
 
+// BOARD TILE FUNCTIONS
   $scope.clickTile = function(tile) {
 
     $scope.selectedTiles.push(tile);
@@ -230,6 +262,20 @@ app.controller('mainController',
     }
   }
 
+  $scope.class = "white";
+
+  $scope.chosenTile = function(tileIndex){
+    $scope.selectedIndex = tileIndex;
+    console.log(tileIndex);
+  };
+
+  // $scope.class = "none";
+  $scope.selectedBtn2 = true;
+  // $scope.class.color = "white";
+
+  
+
+// PHRASE BAR FUNCTIONS
   $scope.deleteLastTile = function () {
     $scope.selectedTiles.pop();
   }
@@ -301,12 +347,13 @@ app.controller('mainController',
     }
   }
 
-  $scope.class = "none";
+  // $scope.class = "none";
   $scope.selectedBtn2 = true;
   // $scope.class.color = "white";
 
   $scope.activeHide = function(){
     console.log("So, it works ...");
+    $scope.class = "none";
     if($scope.class === "none"){
       $scope.class = "selected-btn2";
       $scope.hide = true;
@@ -321,6 +368,7 @@ app.controller('mainController',
       $scope.selectedBtn2 = true;
     }
   }
+
 });
 
 app.run(function($ionicPlatform) {
