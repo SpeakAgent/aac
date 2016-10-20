@@ -26,7 +26,25 @@ app.filter('breaking2', function(){
 });
 
 app.controller('mainController', 
-  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, aacService) {
+  function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
+    $location, $ionicPopover, $ionicHistory, appConfig,
+    aacService) {
+    
+    $ionicHistory.nextViewOptions({
+      disableBack: true
+    });
+
+    $scope.doLogout = function() {
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('username');
+      localStorage.removeItem('first_name');
+      localStorage.removeItem('last_name');
+      $location.path('/login');
+    };
+
+    if (localStorage.getItem("username") === null) {
+      $scope.doLogout();
+    };
 
   $scope.columns = aacService.columns;
   $scope.rows = aacService.rows;
@@ -44,6 +62,23 @@ app.controller('mainController',
   // can't figure out how to pull this from the service
   // $scope.board = aacService.board;
 
+
+  $scope.getData = function(){
+    var req = {
+      url: appConfig.backendURL + '/board/first/user/',
+      data: {user_username: localStorage.getItem('username')},
+      method: 'POST',
+      headers: {
+          Authorization: 'JWT ' + localStorage.getItem('authToken')
+      }
+    }
+
+    $http(req).success(function(data) {
+      $scope.board = data;
+      $scope.filled_tiles = Object.keys($scope.board.symbols)
+    })
+  }
+
   $scope.homeButton = function(){
     console.log("Working?");
 
@@ -56,32 +91,42 @@ app.controller('mainController',
     }
   }
 
-  $scope.mainBoardLoader = function(sampleBoard, selectedPk){
-    $scope.selectedIndex = sampleBoard;
-    $scope.thisPk = selectedPk;
-    console.log("selectedIndex:" + $scope.selectedIndex + ", selectedPk " + $scope.thisPk);
-
-    if($scope.thisPk == 5){
-      $scope.board = aacService.aboutMeBoard;
-      $scope.aboutcircle = true;
-      $scope.class = "button-circle2";
-    }else{
-      $scope.homeButton();
-      var req2 = {
-        url: 'https://lexemes-dev.herokuapp.com/board/single/',
-        data: {pk: $scope.thisPk},
-        method: 'POST'
+  $scope.getAboutMe = function(){
+    var req2 = {
+      url: appConfig.backendURL + '/board/first/user/',
+      data: {user_username: localStorage.getItem('username')},
+      method: 'POST',
+      headers: {
+          Authorization: 'JWT ' + localStorage.getItem('authToken')
       }
-
-      $http(req2).success(function(data) {
-        $scope.board = data;
-        $scope.filled_tiles = Object.keys($scope.board.symbols)
-      })
     }
+
+    $http(req2).success(function(data) {
+      $scope.board = data;
+      $scope.filled_tiles = Object.keys($scope.board.symbols)
+    })
   }
 
-  $scope.mainBoardLoader(0, 3);
+  $scope.getData();
 
+  $scope.chosenBoard = function(sampleBoard){
+    $scope.selectedIndex = sampleBoard;
+    console.log($scope.dummyBoards[$scope.selectedIndex].pk);
+    if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
+      console.log($scope.dummyBoards[$scope.selectedIndex].pk);
+      // $scope.board = aacService.getBoard();
+      $scope.getData();
+    } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
+      $scope.board = aacService.aboutMeBoard;
+      $scope.aboutcircle = true;
+    } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
+      console.log($scope.board.pk);
+      $scope.getAboutMe();
+    }else{
+      console.log("This icon doesn't have an associated board");
+    }
+  }
+  
   $scope.selectedBoardTile = function(thisBoard){
     $scope.index = thisBoard;
     $scope.allTileBacks = document.getElementsByClassName("board-tile");

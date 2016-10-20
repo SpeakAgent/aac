@@ -3,3 +3,127 @@
 	width:300px;
 	background-color: green;
 }
+
+.alert-message{
+    text-align: center;
+    width: 107%;
+    color: white;
+    font-weight: bold;
+}
+
+.alert-message-success{
+    background-color: #5cb85c;
+}
+
+.alert-message-danger{
+    background-color: #d9534f;
+}
+
+.alert-message-primary{
+    background-color: #337ab7;
+}
+
+.alert-message-info{
+    background-color: #5cb85c;
+}
+
+.alert-message-warning{
+    background-color: #f0ad4e;
+}
+
+.alert-animation-slideDown{
+    animation: slideDown 5s forwards;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+}
+
+
+@keyframes slideDown {
+	0% {
+		transform: translateY(-100%);
+	}
+	10%{
+		transform: translateY(0%);
+	}
+    90%{
+        transform: translateY(0%);
+    }
+	100% {
+		transform: translateY(-100%);
+	}
+}
+
+@-webkit-keyframes slideDown {
+	0% {
+		transform: translateY(-100%);
+	}
+	10%{
+		transform: translateY(0%);
+	}
+    90%{
+        transform: translateY(0%);
+    }
+	100% {
+		transform: translateY(-100%);
+	}
+}
+
+@-moz-keyframes slideDown {
+	0% {
+		transform: translateY(-100%);
+	}
+	10%{
+		transform: translateY(0%);
+	}
+    90%{
+        transform: translateY(0%);
+    }
+	100% {
+		transform: translateY(-100%);
+	}
+}
+
+@keyframes slideUp {
+	0% {
+		transform: translateY(100%);
+	}
+	10%{
+		transform: translateY(0%);
+	}
+    90%{
+        transform: translateY(0%);
+    }
+	100% {
+		transform: translateY(100%);
+	}
+}
+
+@-webkit-keyframes slideUp {
+	0% {
+		transform: translateY(100%);
+	}
+	10%{
+		transform: translateY(0%);
+	}
+    90%{
+        transform: translateY(0%);
+    }
+	100% {
+		transform: translateY(100%);
+	}
+}
+
+@-moz-keyframes slideUp {
+	0% {
+		transform: translateY(100%);
+	}
+	10%{
+		transform: translateY(0%);
+	}
+    90%{
+        transform: translateY(0%);
+    }
+	100% {
+		transform: translateY(100%);
+	}
+}
