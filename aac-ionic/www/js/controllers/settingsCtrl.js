@@ -35,7 +35,7 @@ app.controller('settingsController',
 
 		$scope.getUserInformation = function(){
 			req = {
-				url: appConfig.backendURL + '/user/username/',
+				url: appConfig.backendURL + 'user/aac/settings/',
 				method: 'POST',
 				headers: {
 				Authorization: 'JWT ' + localStorage.getItem('authToken')
@@ -55,8 +55,8 @@ app.controller('settingsController',
 					Authorization: 'JWT ' + localStorage.getItem('authToken'),
 				},
 				data: {username: localStorage.getItem("username"),
-					   synthetic_voices: $scope.voice.name,
-					   voice_volume: $scope.voice.volume}
+					   synthetic_voice: $scope.voice.name,
+					   voice_speed: $scope.voice.speed}
 			}
 			return $http(user_req)
 			.success(function(data) {
