@@ -54,88 +54,36 @@ app.controller('mainController',
   $scope.start = 0;
   $scope.end = 24;
   $scope.board = {};
-  $scope.dummyBoards = aacService.dummyBoards;
 
-  // $scope.dummyBoards[$scope.selectedIndex].pk = "3";
-  // $scope.longWords = aacService.longWords;
-  
-  // can't figure out how to pull this from the service
-  // $scope.board = aacService.board;
-
-  $scope.homeButton = function(){
-    console.log("Working?");
-
-    $scope.class = "button-circle2";
-
-    if($scope.thisPk == "3"){
-      $scope.class = "button-circle2 yellow";
-    } else{
-      $scope.class = "button-circle2";
+  $scope.mainBoardLoader = function(){
+    var req = {
+      url: appConfig.backendURL + '/board/user/',
+      data: {user_username: localStorage.getItem('username')},
+      method: 'POST',
+      headers: {
+          Authorization: 'JWT ' + localStorage.getItem('authToken')
+      }
     }
-  }
+
+    $http(req).success(function(data) {
+      $scope.board = data[0];
+      $scope.userBoards = data;
+      $scope.filled_tiles = Object.keys($scope.board.symbols)
+    })
+  };
+
+  $scope.mainBoardLoader();
+
+  $scope.chosenBoard = function(index){
+    $scope.board = $scope.userBoards[index];
+    $scope.filled_tiles = Object.keys($scope.board.symbols)
+  };
+  
 
   $scope.homeButton = function(){
     $scope.board = $scope.userBoards[0];
     $scope.filled_tiles = Object.keys($scope.board.symbols)
   }
-  $scope.mainBoardLoader = function(sampleBoard, selectedPk){
-    $scope.selectedIndex = sampleBoard;
-    $scope.thisPk = selectedPk;
-    console.log("selectedIndex:" + $scope.selectedIndex + ", selectedPk " + $scope.thisPk);
-
-    if($scope.thisPk == 5){
-      $scope.board = aacService.aboutMeBoard;
-      $scope.aboutcircle = true;
-      $scope.class = "button-circle2";
-    }else{
-      $scope.homeButton();
-      var req2 = {
-        url: 'https://lexemes-dev.herokuapp.com/board/single/',
-        data: {pk: $scope.thisPk},
-        method: 'POST'
-      }
-
-      $http(req2).success(function(data) {
-        $scope.board = data;
-        $scope.filled_tiles = Object.keys($scope.board.symbols)
-      })
-    }
-  }
-
-  $scope.mainBoardLoader(0, 3);
-
-  $scope.selectedBoardTile = function(thisBoard){
-    $scope.index = thisBoard;
-    $scope.allTileBacks = document.getElementsByClassName("board-tile");
-    console.log($scope.allTileBacks[$scope.index]);
-    for(i=0; i<$scope.allTileBacks.length; i++){
-      if($scope.allTileBacks[i] != $scope.allTileBacks[$scope.index]){
-        $scope.allTileBacks[i].src = "img/new_dev_assets/board_tile_notched_default_1.svg";
-      } else{
-        $scope.allTileBacks[i].src = "img/new_dev_assets/board_tile_notched_default_yellow.svg";
-      }
-    }
-  }
-
-  $scope.lastSet = function(index){
-    console.log("Last Set button is working");
-    if ($scope.start > 0){
-      $scope.start = $scope.start - 24;
-      $scope.end = $scope.end - 24;
-    }
-  }
-
-  $scope.nextSet = function(index){
-    console.log("Next Set button is working");
-    if ($scope.end < $scope.dummyBoards.length){
-      $scope.start = $scope.start + 24;
-      $scope.end = $scope.end + 24;
-    }else{
-      console.log("No more left");
-    }
-  }
-  
-
 // COLOR MODAL FUNCTIONS AND OBJECTS
   $scope.colorName =[
     {colorTitle: 'Sky Blue',
@@ -279,6 +227,7 @@ app.controller('mainController',
 
 // BOARD TILE FUNCTIONS
   $scope.clickTile = function(tile) {
+
     $scope.selectedTiles.push(tile);
 
     console.log($scope.selectedTiles);
