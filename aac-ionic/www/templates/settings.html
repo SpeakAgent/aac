@@ -151,13 +151,14 @@
 							<h1 class="centered-title"><strong>Synthetic Voice</strong></h1>
 						</ion-item>
 					</ion-list>
+					<div ng-include src="'templates/message.html'"></div>
 
 					<div class="settings-box">
 						<p>Synthetic Voices</p>	
 						<ion-list>
-							<ion-radio type="radio" style="border-color:white;" ng-model="voice.name" value="Vicki"><span class="checkbox-text">Vicki</span><i class="icon ion-play"></i></ion-radio>
-							<ion-radio type="radio" style="border-color:white;" ng-model="voice.name" value="Alex"><span class="checkbox-text">Alex</span><i class="icon ion-play"></i></ion-radio>
-							<ion-radio type="radio" style="border-color:white;" ng-model="voice.name" value="Victoria"><span class="checkbox-text">Victoria</span><i class="icon ion-play"></i></ion-radio>
+							<ion-radio type="radio" style="border-color:white;" ng-model="user.userinfo.synthetic_voice" value="VICKI"><span class="checkbox-text">Vicki</span><i class="icon ion-play"></i></ion-radio>
+							<ion-radio type="radio" style="border-color:white;" ng-model="user.userinfo.synthetic_voice" value="ALEX"><span class="checkbox-text">Alex</span><i class="icon ion-play"></i></ion-radio>
+							<ion-radio type="radio" style="border-color:white;" ng-model="user.userinfo.synthetic_voice" value="VICTORIA"><span class="checkbox-text">Victoria</span><i class="icon ion-play"></i></ion-radio>
 						</ion-list>
 					</div>
 
@@ -165,7 +166,7 @@
 						<p>Voice Speed</p>
 						<div class="item range" style="border-color:white;">
 							<div class="avatar-icon-placeholder"></div>
-							<input type="range" name="synth-volume" min="0" max="100" value="33" ng-model="voice.speed">
+							<input type="range" name="synth-speed" min="0" max="100" value="{{ user.userinfo.voice_speed }}" ng-model="user.userinfo.voice_speed">
 							<div class="avatar-icon-placeholder"></div>
 						</div>
 					</div>
