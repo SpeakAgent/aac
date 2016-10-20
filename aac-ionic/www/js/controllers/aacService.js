@@ -8,26 +8,78 @@ app.service('aacService', function($http, $ionicModal){
 	this.columns = "abcdef";
 	this.rows = "123456";
 	this.selectedIndex = -2;
-	this.titleLimit = 6;
+	this.titleLimit = 20;
   this.aacService = {};
   this.aacService.data = {};
 
+  // this.longWords = [
+  //   {
+  //     word:"puzzlement",
+  //     image:"img/aac_board_imgs/crayon.png"
+  //   },
+  //   {
+  //     word:"abdominohysterectomy",
+  //     image:"img/aac_board_imgs/alpaca.png"
+  //   },
+  //   {
+  //     word:"razzmatazz",
+  //     image:"img/aac_board_imgs/art.png"
+  //   },
+  //   {
+  //     word:"antienvironmentalist",
+  //     image:"img/aac_board_imgs/balloon.png"
+  //   },
+  //   {
+  //     word: "bumfuzzles",
+  //     image:"img/aac_board_imgs/bird.png"
+  //   },
+  //   {
+  //     word: "antiinsurrectionists",
+  //     image:"img/aac_board_imgs/clock.png"
+  //   },
+  //   {
+  //     word:"bemuzzling",
+  //     image:"img/aac_board_imgs/crayon.png",
+  //   },
+  //   {
+  //     word:"compartmentalization",
+  //     image:"img/aac_board_imgs/alpaca.png",
+  //   },
+  //   {
+  //     word:"skyjacking",
+  //     image:"img/aac_board_imgs/art.png",
+  //   },
+  //   {
+  //     word:"counterintuitiveness",
+  //     image:"img/aac_board_imgs/balloon.png",
+  //   },
+  //   {
+  //     word:"zigzagging",
+  //     image:"img/aac_board_imgs/bird.png",
+  //   },
+  //   {
+  //     word:"electrophysiologists",
+  //     image:"img/aac_board_imgs/clock.png",
+  //   },
+  // ]
+
   this.dummyBoards =[
 
-      { name:"About Me",
-        img_path:"img/aac_board_imgs/crayon.png",
-        pk: '5'},
-
-      { name:"Lunch",
-        img_path:"img/aac_board_imgs/alpaca.png",
-        pk: '3'},
-
-      { name:"Feelings",
-        img_path:"img/aac_board_imgs/art.png",
+      { name:"Verbs",
+        img_path:"img/dummyImages/verbs.png",
         pk: '4'},
 
-      { name:"Body",
-        img_path:"img/aac_board_imgs/balloon.png"},
+      { name:"Lunch",
+        img_path:"img/dummyImages/lunch.png",
+        pk: '2'},
+
+      { name:"Feelings",
+        img_path:"img/dummyImages/feelings.png",
+        pk: '1'},
+
+      { name:"About Me",
+        img_path:"img/dummyImages/about_me.png",
+        pk: '5'},
 
       { name:"Clothes",
          img_path:"img/aac_board_imgs/bird.png"},
@@ -35,7 +87,7 @@ app.service('aacService', function($http, $ionicModal){
      { name:"Cars",
        img_path:"img/aac_board_imgs/clock.png"},
 
-      { name:"Feelings",
+      { name:"Art",
          img_path:"img/aac_board_imgs/crayon.png"},
 
      { name:"Food",

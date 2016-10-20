@@ -282,11 +282,21 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2{
   margin-left:20px;
 }
 
-#button-circle2{
+.button-circle2{
   width:75px;
   height:75px;
   background-color: #008485;
   border-radius: 37.5px;
+}
+
+// .button-circle2.yellow{
+//   border: 5px solid #F8D338;
+// }
+.yellow{
+  border: 5px solid #F8D338;
+  width: 80px;
+  height:80px;
+  border-radius:40px;
 }
 
 .buttonsdiv{
@@ -574,7 +584,6 @@ input[type="text"]:focus, textarea:focus{
 .item{
   .green-blue{
     border-color:$speak-agent-light-blue2;
-    }
   }
 
   &.item-input{
@@ -590,6 +599,13 @@ input[type="text"]:focus, textarea:focus{
   .item-divider{
     background-color: $speak-agent-light-blue3;
   }
+}
+
+.tile-words{
+  line-height: 100%;
+  letter-spacing: .5px;
+  margin-bottom: -16px;
+  margin-top:2px;
 }
 
 .list-container{
@@ -816,7 +832,17 @@ input[type="text"]:focus, textarea:focus{
     background-color: #000;
 }
 
-.title.lightBlue{
+.tile.lightBlue{
+  background-color:#83EFF0;
+  border-color:white;
+}
+
+.tile.lightBlue{
+  background-color:#83EFF0;
+  border-color:white;
+}
+
+.lightBlue{
   background-color:#83EFF0;
   border-color:white;
 }
