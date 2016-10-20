@@ -35,7 +35,7 @@ app.controller('settingsController',
 
 		$scope.getUserInformation = function(){
 			req = {
-				url: appConfig.backendURL + 'user/aac/settings/',
+				url: appConfig.backendURL + '/user/aac/settings/',
 				method: 'POST',
 				headers: {
 				Authorization: 'JWT ' + localStorage.getItem('authToken')
@@ -44,6 +44,7 @@ app.controller('settingsController',
 			};
 			$http(req).success(function (data) {
 				$scope.user = data;
+				console.log(data);
 			})
 		};
 
@@ -55,14 +56,14 @@ app.controller('settingsController',
 					Authorization: 'JWT ' + localStorage.getItem('authToken'),
 				},
 				data: {username: localStorage.getItem("username"),
-					   synthetic_voice: $scope.voice.name,
-					   voice_speed: $scope.voice.speed}
+					   synthetic_voice: this.user.userinfo.synthetic_voice,
+					   voice_speed: this.user.userinfo.voice_speed}
 			}
 			return $http(user_req)
 			.success(function(data) {
 				$scope.getUserInformation();
 				var message = {
-					text: data.message,
+					text: 'Synthetic Voice options was saved successfully.',
 					type: 'success',
 					animation: 'slideDown'
 				};
