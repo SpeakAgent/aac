@@ -1,158 +1,155 @@
-  <ion-header-bar class="bar-dark">
-    <i class="icon ion-unlocked"></i>
-      <div class="buttonsdiv">
-        <!-- <i class="icon ion-unlocked"></i> -->
+<ion-header-bar class="bar-dark">
+  <i class="icon ion-unlocked"></i>
+    <div class="buttonsdiv">
+      <!-- <i class="icon ion-unlocked"></i> -->
 
-        <a href="#/settings" class="button button-outline button-small" id="btn-styling">
-          <i class="icon ion-gear-b"></i> Settings
-        </a>
+      <a href="#/settings" class="button button-outline button-small" id="btn-styling">
+        <i class="icon ion-gear-b"></i> Settings
+      </a>
 
-        <a href="#/board_factory" class="button button-outline button-small" id="btn-styling">
-          <i class="icon ion-grid"></i>
-          Board Factory
-          <br>
-          <p class="show-hide-label">*Requires Wifi</p>
-        </a>
+      <a href="#/board_factory" class="button button-outline button-small" id="btn-styling">
+        <i class="icon ion-grid"></i>
+        Board Factory
+        <br>
+        <p class="show-hide-label">*Requires Wifi</p>
+      </a>
 
-        <button class="button button-outline button-calm button-small" id="btn-styling" ng-click="activeHide()" ng-class="class1">
-          <i class="icon ion-eye-disabled" ng-show="selectedBtn2 == true"></i>
-          <i class="icon ion-eye-disabled" ng-show="selectedBtn2 == false" style="color:white;"></i>
-          <span class="hide-label" ng-show="selectedBtn2 == true">Hide Tiles</span>
-          <span class="hide-label2" ng-show="selectedBtn2 == false">Hide Tiles</span>
+      <button class="button button-outline button-calm button-small" id="btn-styling" ng-click="activeHide()" ng-class="class1">
+        <i class="icon ion-eye-disabled" ng-show="selectedBtn2 == true"></i>
+        <i class="icon ion-eye-disabled" ng-show="selectedBtn2 == false" style="color:white;"></i>
+        <span class="hide-label" ng-show="selectedBtn2 == true">Hide Tiles</span>
+        <span class="hide-label2" ng-show="selectedBtn2 == false">Hide Tiles</span>
 
-          <div class="toggle-content" style="float:right">
-            <label class="toggle toggle-dark-green toggle-small" ng-if="hide">
-              <input type="checkbox">
-              <div class="track" id="track-color">
-                <div class="handle" id="handle-color"></div>
-              </div>
-            </label>
-            <p class="toggle-note" ng-if="hide">Show All Tiles</p>
-          </div>
-        </button>
-
-        <button class="done-button" ng-click="hideDone()" ng-if="hide"><p><i class="icon ion-checkmark-round"></i><a href="#/home">DONE</a></p>
-        </button>
-      </div>
-    </ion-header-bar>
-
-    <ion-view view-title="AAC" class="pane">
-      <ion-content class= "appBody" id="bodyBack">
-        <div class="row" id="regularRow">
-          <div class="col col-10" id="regularRowBod">
-            <img src="img/AAC_assets/avatar_default.png"
-              ng-click="sayPhrase()"/>
-
-            <div class="regulars">
-              Yes
+        <div class="toggle-content" style="float:right">
+          <label class="toggle toggle-dark-green toggle-small" ng-if="hide">
+            <input type="checkbox">
+            <div class="track" id="track-color">
+              <div class="handle" id="handle-color"></div>
             </div>
+          </label>
+          <p class="toggle-note" ng-if="hide">Show All Tiles</p>
+        </div>
+      </button>
 
-            <div class="regulars">
-              No
-            </div>
+      <button class="done-button" ng-click="hideDone()" ng-if="hide"><p><i class="icon ion-checkmark-round"></i><a href="#/home">DONE</a></p>
+      </button>
+    </div>
+  </ion-header-bar>
 
-            <div class="regulars">
-              Hold On
-            </div>
+  <ion-view view-title="AAC" class="pane">
+    <ion-content class= "appBody" id="bodyBack">
+      <div class="row" id="regularRow">
+        <div class="col col-10" id="regularRowBod">
+          <img src="img/AAC_assets/avatar_default.png"
+            ng-click="sayPhrase()"/>
 
-            <div class="regulars">
-              Help
-            </div>
+          <div class="regulars">
+            Yes
           </div>
 
-          <div class="col col-90" id="full-body">
-            <div class="word-builder">
-              <div class="word-builder-input" style="margin-left:-15px">
-                <div class="tile" ng-repeat="symbol in selectedTiles">
-                  {{ symbol.word }}<br>
-                  <img src = "{{symbol.symbol.image}}"
-                    style="width:40px;height:40px">
-                </div>
-                <img src="img/AAC_assets/delete_button.png" id="home-section"
-                  ng-click="deleteLastTile()" />
+          <div class="regulars">
+            No
+          </div>
+
+          <div class="regulars">
+            Hold On
+          </div>
+
+          <div class="regulars">
+            Help
+          </div>
+        </div>
+
+        <div class="col col-90" id="full-body">
+          <div class="word-builder">
+            <div class="word-builder-input" style="margin-left:-15px">
+              <div class="tile" ng-repeat="symbol in selectedTiles">
+                {{ symbol.word }}<br>
+                <img src = "{{symbol.symbol.image}}"
+                  style="width:40px;height:40px">
               </div>
+              <img ng-src="{{ imageUrl }}" id="home-section"
+                ng-click="deleteLastTile()" on-tap="onTap()"/>
             </div>
+          </div>
 
-            <div class="col col-60" id="tile-section">
-              <div class="tile-section-border">
+          <div class="col col-60" id="tile-section">
+            <div class="tile-section-border">
 
-                <!-- <div class="tile" ng-repeat="item in longWords">
-                  <span>
-                    <p class="tile-words">{{item.word}}</p>
-                    <br>
-                    <img src="{{item.image}}" alt="testing image" style="width:40px;height:40px">
-                  </span>
-                </div>  -->
-
-                <span ng-repeat="row in rows">
-                  <div class="tile" ng-repeat="col in columns" ng-click="clickTile(board.symbols[col+row]); sayWord();"  ng-class="{lightBlue:board.symbols[col+row]==selectedIndex}";>
-                    <span ng-show="filled_tiles.indexOf(col+row)!=-1">
-                      <p class="tile-words">{{board.symbols[col+row].word | limitTo: titleLimit}}</p>
-                        <!-- <span ng-show="board.symbols[col+row].word.length > titleLimit">...</span> -->
-                        <br>
-                      <img src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px">
-                    </span>
-                  </div>
+              <!-- <div class="tile" ng-repeat="item in longWords">
+                <span>
+                  <p class="tile-words">{{item.word}}</p>
+                  <br>
+                  <img src="{{item.image}}" alt="testing image" style="width:40px;height:40px">
                 </span>
+              </div>  -->
 
-              </div>
+              <span ng-repeat="row in rows">
+                <div class="tile" ng-repeat="col in columns" ng-click="clickTile(board.symbols[col+row]); sayWord();"  ng-class="{lightBlue:board.symbols[col+row]==selectedIndex}";>
+                  <span ng-show="filled_tiles.indexOf(col+row)!=-1">
+                    <p class="tile-words">{{board.symbols[col+row].word | limitTo: titleLimit}}</p>
+                      <!-- <span ng-show="board.symbols[col+row].word.length > titleLimit">...</span> -->
+                      <br>
+                    <img src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px">
+                  </span>
+                </div>
+              </span>
+
             </div>
+          </div>
 
-            <div class="col col-40" id="board-section" style="margin-top:-43px;">
-              <div class="boards" ng-repeat="board in dummyBoards | slice:start:end" ng-click="mainBoardLoader($index, board.pk); selectedBoardTile($index)">
-                  <p style="position:fixed; z-index:3; margin-top:25px; margin-left:5px; letter-spacing:.5px;" ng-model="titleLimit" ng-if="board.name.length <= 10">
-                    {{board.name | limitTo: titleLimit}}
-                  </p>
-          
-                  <p style="position:fixed; z-index:3; margin-top:22px; margin-left:5px; letter-spacing: .5px;"  ng-model="titleLimit" ng-if="board.name.length > 10">
-                    {{board.name | limitTo:titleLimit | breaking}}
-                  </p>
+          <div class="col col-40" id="board-section" style="margin-top:-43px;">
+            <div class="boards" ng-repeat="board in dummyBoards | slice:start:end" ng-click="mainBoardLoader($index, board.pk); selectedBoardTile($index)">
+              <!-- chosenBoard($index) -->
+             <!-- ng-class="{lightBlue:board.symbols[col+row]==selectedIndex}" -->
+                <p style="position:fixed; z-index:3; margin-top:25px; margin-left:15px;" ng-model="titleLimit">{{board.name | limitTo: titleLimit}} <span ng-show="board.name.length > titleLimit">...</span></p>
 
-                  <p style="position:fixed; z-index:3; margin-top:30px; margin-left:5px; letter-spacing: .5px;" ng-model="titleLimit" ng-if="board.name.length > 10">
-                    {{board.name | limitTo:titleLimit | breaking2}}
-                  </p>
+                <img ng-src="{{board.img_path}}" alt="image" ng-click="sayWord()" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-70px;"\>
 
-                  <img ng-src="{{board.img_path}}" ng-if="board.name.length <= 10" alt="image" ng-click="sayWord()" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-70px;"\>
+                <img id="{{$index}}" style="position:relative; z-index:0;" class="board-tile" alt="board tile" name="{{$scope.queryValue}}" src="img/new_dev_assets/board_tile_notched_default_1.svg">
+                <!-- src="img/new_dev_assets/board_tile_notched_default_1.svg" -->
+                <!-- id="{{$index}}" -->
 
-                  <img src="{{board.img_path}}" ng-if="board.name.length > 10"alt="image" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-75px;">
-                
-                  <img id="{{$index}}" style="position:relative; z-index:0;" class="board-tile" alt="board tile" name="{{$scope.queryValue}}" src="img/new_dev_assets/board_tile_notched_default_1.svg">
-              </div>
+                <!-- <img src="img/new_dev_assets/board_tile_notched_default_yellow.svg" style="positon:relative; z-index:-1;" alt="board tile" name="{{$scope.queryValue}}" ng-show="!$index"> -->
+
+
+              <!-- </div> -->
+
+
             </div>
           </div>
         </div>
+      </div>
 
 <!-- Bottom function buttons -->
-        <div class="row" id="btn-section">
-          <div class="col col-10" id="home-button-section">
-            <div class="button-circle2" ng-click="mainBoardLoader($index=0, board.pk=3)" ng-class="class">
-              <img src="img/new_dev_assets/home.png" style="margin-left:15px; margin-top:12px;" />
-            </div>
-          </div>
-
-          <div class="col col-60">
-            <div class="button-circle">
-              <img src="img/new_dev_assets/bell.png" style="margin-left:17px; margin-top:14px;" />
-            </div>
-
-            <div class="button-circle">
-              <img src="img/new_dev_assets/colors.png" style="margin-left:15px; margin-top:14px;" ng-click="openModal()" />
-            </div>
-
-            <div class="button-circle">
-              <img src="img/new_dev_assets/avatar.png" style="margin-left:15px; margin-top:14px;" />
-            </div>
-
-            <div class="button-circle">
-              <img src="img/new_dev_assets/chat.png" style="margin-left:15px; margin-top:14px;" />
-            </div>
-          </div>
-
-          <div class="col col-30">
-            <img ng-click="lastSet($index)" src="img/AAC_assets/left.png" style="margin-left:50px;"/>
-            <img ng-click="nextSet($index)" src="img/AAC_assets/right.png" style="margin-left:30px;"/>
+      <div class="row" id="btn-section">
+        <div class="col col-10" id="home-button-section">
+          <div class="button-circle2" ng-click="mainBoardLoader($index=0, board.pk=3)" ng-class="class">
+            <img src="img/new_dev_assets/home.png" style="margin-left:15px; margin-top:12px;" />
           </div>
         </div>
-      </ion-content>
-    </ion-view>
-  
+
+        <div class="col col-60">
+          <div class="button-circle">
+            <img src="img/new_dev_assets/bell.png" style="margin-left:17px; margin-top:14px;" />
+          </div>
+
+          <div class="button-circle">
+            <img src="img/new_dev_assets/colors.png" style="margin-left:15px; margin-top:14px;" ng-click="openModal()" />
+          </div>
+
+          <div class="button-circle">
+            <img src="img/new_dev_assets/avatar.png" style="margin-left:15px; margin-top:14px;" />
+          </div>
+
+          <div class="button-circle">
+            <img src="img/new_dev_assets/chat.png" style="margin-left:15px; margin-top:14px;" />
+          </div>
+        </div>
+        <div class="col col-30">
+          <img ng-click="lastSet($index)" src="img/AAC_assets/left.png" style="margin-left:50px;"/>
+          <img ng-click="nextSet($index)" src="img/AAC_assets/right.png" style="margin-left:30px;"/>
+        </div>
+      </div>
+    </ion-content>
+  </ion-view>
