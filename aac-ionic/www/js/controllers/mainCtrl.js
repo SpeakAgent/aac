@@ -63,22 +63,58 @@ app.controller('mainController',
   // $scope.board = aacService.board;
 
 
-  $scope.getData = function(){
-    var req = {
-      url: appConfig.backendURL + '/board/first/user/',
-      data: {user_username: localStorage.getItem('username')},
-      method: 'POST',
-      headers: {
-          Authorization: 'JWT ' + localStorage.getItem('authToken')
-      }
-    }
 
-    $http(req).success(function(data) {
-      $scope.board = data;
-      $scope.filled_tiles = Object.keys($scope.board.symbols)
-    })
-  }
+  // $scope.getData = function(){
+  //   var req = {
+  //     url: appConfig.backendURL + '/board/first/user/',
+  //     data: {user_username: localStorage.getItem('username')},
+  //     method: 'POST',
+  //     headers: {
+  //         Authorization: 'JWT ' + localStorage.getItem('authToken')
+  //     }
+  //   }
 
+  //   $http(req).success(function(data) {
+  //     $scope.board = data;
+  //     $scope.filled_tiles = Object.keys($scope.board.symbols)
+  //   })
+  // }
+
+  // $scope.getAboutMe = function(){
+  //   var req2 = {
+  //     url: appConfig.backendURL + '/board/first/user/',
+  //     data: {user_username: localStorage.getItem('username')},
+  //     method: 'POST',
+  //     headers: {
+  //         Authorization: 'JWT ' + localStorage.getItem('authToken')
+  //     }
+  //   }
+
+  //   $http(req2).success(function(data) {
+  //     $scope.board = data;
+  //     $scope.filled_tiles = Object.keys($scope.board.symbols)
+  //   })
+  // }
+
+  // $scope.getData();
+
+  // $scope.chosenBoard = function(sampleBoard){
+  //   $scope.selectedIndex = sampleBoard;
+  //   console.log($scope.dummyBoards[$scope.selectedIndex].pk);
+  //   if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
+  //     console.log($scope.dummyBoards[$scope.selectedIndex].pk);
+  //     $scope.getData();
+  //   } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
+  //     $scope.board = aacService.aboutMeBoard;
+  //     $scope.aboutcircle = true;
+  //   } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
+  //     console.log($scope.board.pk);
+  //     $scope.getAboutMe();
+  //   }else{
+  //     console.log("This icon doesn't have an associated board");
+  //   }
+  // }
+  
   $scope.homeButton = function(){
     console.log("Working?");
 
@@ -86,47 +122,37 @@ app.controller('mainController',
 
     if($scope.thisPk == "3"){
       $scope.class = "button-circle2 yellow";
-    } else{
+    }else{
       $scope.class = "button-circle2";
     }
   }
 
-  $scope.getAboutMe = function(){
-    var req2 = {
-      url: appConfig.backendURL + '/board/first/user/',
-      data: {user_username: localStorage.getItem('username')},
-      method: 'POST',
-      headers: {
-          Authorization: 'JWT ' + localStorage.getItem('authToken')
-      }
-    }
-
-    $http(req2).success(function(data) {
-      $scope.board = data;
-      $scope.filled_tiles = Object.keys($scope.board.symbols)
-    })
-  }
-
-  $scope.getData();
-
-  $scope.chosenBoard = function(sampleBoard){
+  $scope.mainBoardLoader = function(sampleBoard, selectedPk){
     $scope.selectedIndex = sampleBoard;
-    console.log($scope.dummyBoards[$scope.selectedIndex].pk);
-    if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
-      console.log($scope.dummyBoards[$scope.selectedIndex].pk);
-      // $scope.board = aacService.getBoard();
-      $scope.getData();
-    } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
+    $scope.thisPk = selectedPk;
+    console.log("selectedIndex:" + $scope.selectedIndex + ", selectedPk " + $scope.thisPk);
+
+    if($scope.thisPk == 5){
       $scope.board = aacService.aboutMeBoard;
       $scope.aboutcircle = true;
-    } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
-      console.log($scope.board.pk);
-      $scope.getAboutMe();
+      $scope.class = "button-circle2";
     }else{
-      console.log("This icon doesn't have an associated board");
+      $scope.homeButton();
+      var req2 = {
+        url: 'https://lexemes-dev.herokuapp.com/board/single/',
+        data: {pk: $scope.thisPk},
+        method: 'POST'
+      }
+
+      $http(req2).success(function(data) {
+        $scope.board = data;
+        $scope.filled_tiles = Object.keys($scope.board.symbols)
+      })
     }
   }
-  
+
+  $scope.mainBoardLoader(0, 3);
+
   $scope.selectedBoardTile = function(thisBoard){
     $scope.index = thisBoard;
     $scope.allTileBacks = document.getElementsByClassName("board-tile");
@@ -364,12 +390,12 @@ app.controller('mainController',
 
   $scope.speakText = function(text) {
     TTS.speak({
-           text: text,
-       }, function () {
-           // Do Something after success
-       }, function (reason) {
-           // Handle the error case
-       });
+      text: text,
+    }, function () {
+      // Do Something after success
+    }, function (reason) {
+      // Handle the error case
+    });
   };
 
   $scope.class = "white";
@@ -418,6 +444,16 @@ app.controller('mainController',
       $scope.selectedBtn2 = true;
     }
   }
+
+  $scope.imageUrl = 'img/AAC_assets/delete_button.png';
+
+  $scope.onTap = function() {
+    console.log("yes?");
+    $scope.imageUrl = 'img/AAC_assets/delete_button_tapped.png';
+    $timeout(function () {
+      $scope.imageUrl = 'img/AAC_assets/delete_button.png';
+    }, 250);
+  };
 
 });
 
