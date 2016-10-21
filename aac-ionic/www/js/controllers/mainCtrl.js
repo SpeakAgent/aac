@@ -139,15 +139,30 @@ app.controller('mainController',
     }else{
       $scope.homeButton();
       var req2 = {
-        url: 'https://lexemes-dev.herokuapp.com/board/single/',
-        data: {pk: $scope.thisPk},
-        method: 'POST'
+        url: appConfig.backendURL + '/board/first/user/',
+        data: {user_username: localStorage.getItem('username')},
+        method: 'POST',
+        headers: {
+            Authorization: 'JWT ' + localStorage.getItem('authToken')
+        }
       }
 
       $http(req2).success(function(data) {
         $scope.board = data;
         $scope.filled_tiles = Object.keys($scope.board.symbols)
       })
+      
+      // var req2 = {
+      //   url: 'https://lexemes-dev.herokuapp.com/board/single/',
+      //   data: {pk: $scope.thisPk},
+      //   method: 'POST'
+      // }
+
+      // $http(req2).success(function(data) {
+      //   $scope.board = data;
+      //   $scope.filled_tiles = Object.keys($scope.board.symbols)
+      // })
+      
     }
   }
 
