@@ -72,26 +72,37 @@ app.controller('mainController',
     $scope.thisPk = selectedPk;
     console.log("selectedIndex:" + $scope.selectedIndex + ", selectedPk " + $scope.thisPk);
 
-    if($scope.thisPk == 5){
-      $scope.board = aacService.aboutMeBoard;
-      $scope.aboutcircle = true;
-      $scope.class = "button-circle2";
-    }else{
-      $scope.homeButton();
-        var req = {
-        url: appConfig.backendURL + '/board/user/',
-        data: {user_username: localStorage.getItem('username')},
-        method: 'POST',
-        headers: {
-            Authorization: 'JWT ' + localStorage.getItem('authToken')
-        }
-      }
+    $scope.homeButton();
 
-      $http(req).success(function(data) {
-        $scope.board = data[0];
-        $scope.userBoards = data;
-        $scope.filled_tiles = Object.keys($scope.board.symbols)
-      }) 
+    var req = {
+      url: appConfig.backendURL + '/board/user/',
+      data: {user_username: localStorage.getItem('username')},
+      method: 'POST',
+      headers: {
+          Authorization: 'JWT ' + localStorage.getItem('authToken')
+      }
+    }
+
+    $http(req).success(function(data) {
+      $scope.board = data[$scope.thisPk];
+      $scope.userBoards = data;
+      $scope.filled_tiles = Object.keys($scope.board.symbols)
+    }) 
+  }
+
+  $scope.mainBoardLoader(0, 2);
+
+
+  $scope.selectedBoardTile = function(thisBoard){
+    $scope.index = thisBoard;
+    $scope.allTileBacks = document.getElementsByClassName("board-tile");
+    console.log($scope.allTileBacks[$scope.index]);
+    for(i=0; i<$scope.allTileBacks.length; i++){
+      if($scope.allTileBacks[i] != $scope.allTileBacks[$scope.index]){
+        $scope.allTileBacks[i].src = "img/new_dev_assets/board_tile_notched_default_1.svg";
+      } else{
+        $scope.allTileBacks[i].src = "img/new_dev_assets/board_tile_notched_default_yellow.svg";
+      }
     }
   }
 

@@ -105,7 +105,7 @@
                   <img ng-if="userBoard.board.image" ng-src="{{userBoard.board.image}}" alt="{{userBoard.board.title}}" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-50px;"\>
                 </div> -->
               <div class="col col-40" id="board-section" style="margin-top:-43px;">
-                <div class="boards" ng-repeat="userBoard in userBoards | slice:start:end" ng-click="mainBoardLoader($index, board.pk); selectedBoardTile($index)">
+                <div class="boards" ng-repeat="userBoard in userBoards | slice:start:end" ng-click="mainBoardLoader($index, userBoard.board.pk); selectedBoardTile($index)">
                   <p style="position:fixed; z-index:3; margin-top:25px; margin-left:5px; letter-spacing:.5px;" ng-model="titleLimit" ng-if="userBoard.board.title.length <= 10">
                     {{userBoard.board.title | limitTo: titleLimit}}
                     </p>
