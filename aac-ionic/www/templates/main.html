@@ -99,15 +99,33 @@
             </div>
 
             <div class="col col-40" id="board-section">              
-                <div class="boards" ng-repeat="userBoard in userBoards | sliceArr:start:end" ng-click="chosenBoard($index); sayWord()">
+                <!-- <div class="boards" ng-repeat="userBoard in userBoards | sliceArr:start:end" ng-click="chosenBoard($index); sayWord()">
                   <p style="position:fixed; z-index:3; margin-left:15px;" ng-model="titleLimit">{{userBoard.board.title | limitTo: titleLimit}} <span ng-show="boardObj.board.name.length > titleLimit">...</span></p>
 
                   <img ng-if="userBoard.board.image" ng-src="{{userBoard.board.image}}" alt="{{userBoard.board.title}}" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-50px;"\>
-
-                  <!--<img src="img/new_dev_assets/board_tile_notched_default_1.svg" class="board-tile" style="positon:relative; z-index:0;" alt="board tile">-->
-              </div>
-            </div>
+                </div> -->
+              <div class="col col-40" id="board-section" style="margin-top:-43px;">
+                <div class="boards" ng-repeat="userBoard in userBoards | slice:start:end" ng-click="mainBoardLoader($index, board.pk); selectedBoardTile($index)">
+                  <p style="position:fixed; z-index:3; margin-top:25px; margin-left:5px; letter-spacing:.5px;" ng-model="titleLimit" ng-if="userBoard.board.title.length <= 10">
+                    {{userBoard.board.title | limitTo: titleLimit}}
+                    </p>
             
+                  <p style="position:fixed; z-index:3; margin-top:22px; margin-left:5px; letter-spacing: .5px;"  ng-model="titleLimit" ng-if="userBoard.board.title.length > 10">
+                    {{userBoard.board.title | limitTo:titleLimit | breaking}}
+                  </p>
+
+                  <p style="position:fixed; z-index:3; margin-top:30px; margin-left:5px; letter-spacing: .5px;" ng-model="titleLimit" ng-if="userBoard.board.title.length > 10">
+                    {{userBoard.board.title | limitTo:titleLimit | breaking2}}
+                  </p>
+
+                  <img ng-src="{{userBoard.board.image}}" ng-if="userBoard.board.title.length <= 10" alt="image" ng-click="sayWord()" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-70px;"\>
+
+                  <img src="{{userBoard.board.image}}" ng-if="userBoard.board.title.length > 10"alt="image" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-75px;">
+                  
+                  <img id="{{$index}}" style="position:relative; z-index:0;" class="board-tile" alt="board tile" name="{{$scope.queryValue}}" src="img/new_dev_assets/board_tile_notched_default_1.svg">
+                </div>
+              </div>
+            </div> 
           </div>
         </div>
 

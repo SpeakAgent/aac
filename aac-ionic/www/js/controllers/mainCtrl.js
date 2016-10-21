@@ -97,9 +97,6 @@ app.controller('mainController',
 
   $scope.mainBoardLoader(0, 3);
 
-  $scope.mainBoardLoader();
-  
-
 // COLOR MODAL FUNCTIONS AND OBJECTS
   $scope.colorName =[
     {colorTitle: 'Sky Blue',
