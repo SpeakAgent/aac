@@ -531,10 +531,6 @@ input[type="text"]:focus, textarea:focus {
   border: 2px solid #979797;
   text-align: center; }
 
-.actYellow {
-    background-color: #FFE98E;
-    border: 2px solid #F8D338; }
-
 #regularRow {
   margin: 0;
   padding: 0; }

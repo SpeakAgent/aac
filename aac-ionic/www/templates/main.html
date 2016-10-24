@@ -43,19 +43,19 @@
             <img src="img/AAC_assets/avatar_default.png"
               ng-click="sayPhrase()"/>
 
-            <div class="regulars">
+            <div class="regulars" on-tap="activeHover('yes')" ng-class="{'regulars-hover': activeLateralButtons == 'yes'}">
               Yes
             </div>
 
-            <div class="regulars">
+            <div class="regulars" on-tap="activeHover('no')" ng-class="{'regulars-hover': activeLateralButtons == 'no'}">
               No
             </div>
 
-            <div class="regulars">
+            <div class="regulars" on-tap="activeHover('hold-on')" ng-class="{'regulars-hover': activeLateralButtons == 'hold-on'}">
               Hold On
             </div>
 
-            <div class="regulars">
+            <div class="regulars" on-tap="activeHover('help')" ng-class="{'regulars-hover': activeLateralButtons == 'help'}">
               Help
             </div>
           </div>

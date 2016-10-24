@@ -8,7 +8,7 @@ app.filter('slice', function(){
 });
 
 app.controller('mainController',
-  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, aacService) {
+  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, aacService, $timeout) {
 
   $scope.columns = aacService.columns;
   $scope.rows = aacService.rows;
@@ -355,12 +355,15 @@ app.controller('mainController',
     }
   }
 
-  $("div.regulars").on("mousedown", function() {
-      $(this).toggleClass('actYellow');
-  })
-  .on("mouseup", function(e) {
-      $(this).toggleClass('actYellow');
-  });
+  $scope.activeLateralButtons = '';
+
+  $scope.activeHover = function (button){
+      $scope.activeLateralButtons = button;
+
+      $timeout(function (){
+          $scope.activeLateralButtons = '';
+      }, 300);
+  };
 
 });
 

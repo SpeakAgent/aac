@@ -1,5 +1,10 @@
 /* Empty. Add your own CSS if you like */
-.sidebar{
+/*.sidebar{
 	width:300px;
 	background-color: green;
+}*/
+
+.regulars-hover{
+  border: 5px solid #F8D338;
+  background-color: #FFE98E;
 }
