@@ -27,8 +27,7 @@ app.filter('breaking2', function(){
 
 app.controller('mainController', 
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
-    $location, $ionicPopover, $ionicHistory, appConfig,
-    aacService) {
+    $location, $ionicPopover, $ionicHistory, appConfig) {
     
     $ionicHistory.nextViewOptions({
       disableBack: true
@@ -46,11 +45,11 @@ app.controller('mainController',
       $scope.doLogout();
     };
 
-  $scope.columns = aacService.columns;
-  $scope.rows = aacService.rows;
+  $scope.columns = "abcdef";
+  $scope.rows = "123456";
   $scope.selectedTiles = [];
-  $scope.selectedIndex = aacService.selectedIndex;
-  $scope.titleLimit = aacService.titleLimit; 
+  $scope.selectedIndex = -2;
+  $scope.titleLimit = 20; 
   $scope.start = 0;
   $scope.end = 24;
   $scope.board = {};
