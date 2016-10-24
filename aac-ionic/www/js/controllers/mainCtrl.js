@@ -51,7 +51,7 @@ app.controller('mainController',
 
     $scope.class = "button-circle2";
 
-    if($scope.thisPk == "3"){
+    if($scope.thisPk == "26"){
       $scope.class = "button-circle2 yellow";
     } else{
       $scope.class = "button-circle2";
