@@ -7,8 +7,26 @@ app.filter('slice', function(){
   };
 });
 
+app.filter('breaking', function(){
+  return function(word){
+    if(word.length > 10){
+      firstHalf = word.substr(0,9);
+      return firstHalf;
+    }
+  }
+});
+
+app.filter('breaking2', function(){
+  return function(word){
+    if(word.length > 10){
+      secondHalf = word.substr(10,word.length);
+      return secondHalf;
+    }
+  }
+});
+
 app.controller('mainController',
-  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, aacService) {
+  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, aacService, $timeout) {
 
   $scope.columns = aacService.columns;
   $scope.rows = aacService.rows;
@@ -19,6 +37,9 @@ app.controller('mainController',
   $scope.end = 24;
   $scope.board = {};
   $scope.dummyBoards = aacService.dummyBoards;
+  $scope.quickPhrasePressed = [];
+  $scope.quickPhrases = ['Yes', 'No', 'Hold on', 'Help']
+
   // $scope.dummyBoards[$scope.selectedIndex].pk = "3";
   // $scope.longWords = aacService.longWords;
 
@@ -241,6 +262,7 @@ app.controller('mainController',
     $scope.selectedTiles.push(tile);
 
     console.log($scope.selectedTiles);
+    $scope.selectedIndex = tile;
 
     if($scope.selectedTiles[$scope.selectedIndex] == undefined){
       console.log("no index!!");
@@ -263,6 +285,25 @@ app.controller('mainController',
 // PHRASE BAR FUNCTIONS
   $scope.deleteLastTile = function () {
     $scope.selectedTiles.pop();
+  }
+
+  $scope.sayQuickPhrase = function (phrase) {
+    $scope.quickPhrasePressed.push(phrase);
+    // Do this before TTS so that it works when not in emulator
+    $timeout(function() {
+      console.log("in timeout")
+      $scope.quickPhrasePressed.splice(
+        $scope.quickPhrasePressed.indexOf(phrase), 1)
+    }, 750)
+    $scope.speakText(phrase);
+  }
+
+  $scope.isQuickPhrasePressed = function (phrase) {
+    if ($scope.quickPhrasePressed.indexOf(phrase) > -1) {
+      return true
+    } else {
+      return false
+    }
   }
 
   $scope.sayPhrase = function () {
@@ -353,6 +394,23 @@ app.controller('mainController',
       $scope.selectedBtn2 = true;
     }
   }
+
+  $scope.imageUrl = 'img/AAC_assets/delete_button.png';
+
+  $scope.onTap = function() {
+      console.log("yes?");
+      $scope.imageUrl = 'img/AAC_assets/delete_button_tapped.png';
+      $timeout(function () {
+        $scope.imageUrl = 'img/AAC_assets/delete_button.png';
+      }, 250);
+  };
+
+  $("div.regulars").on("mousedown", function() {
+      $(this).toggleClass('yellow');
+  })
+  .on("mouseup", function(e) {
+      $(this).toggleClass('yellow');
+  });
 
 });
 
