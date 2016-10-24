@@ -74,11 +74,10 @@ app.controller('mainController',
   $scope.mainBoardLoader();
 
   $scope.chosenBoard = function(index){
-    $scope.board = $scope.userBoards[index];
+    $scope.board = $scope.userBoards[index]; 
     $scope.filled_tiles = Object.keys($scope.board.symbols)
   };
   
-
   $scope.homeButton = function(){
     $scope.board = $scope.userBoards[0];
     $scope.filled_tiles = Object.keys($scope.board.symbols)
@@ -169,7 +168,6 @@ app.controller('mainController',
   $scope.colorSelect = function(colorIndex){
     $scope.selectedIndex = colorIndex;
     
-    console.log($scope.selectedIndex);
     var container = document.getElementById('container');
 
     var bodyBack = document.getElementById('bodyBack');
@@ -185,7 +183,6 @@ app.controller('mainController',
     // buttonCircle2.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
 
     var buttonCircle = document.getElementsByClassName('button-circle');
-    console.log(buttonCircle[1].style.backgroundColor);
 
     var colorChoice = document.getElementsByClassName('color-choice');
 
@@ -229,11 +226,10 @@ app.controller('mainController',
 
     $scope.selectedTiles.push(tile);
 
-    console.log($scope.selectedTiles);
     $scope.selectedIndex = tile;
 
     if($scope.selectedTiles[$scope.selectedIndex] == undefined){
-      console.log("no index!!");
+
     }
   }
 
@@ -241,7 +237,7 @@ app.controller('mainController',
 
   $scope.chosenTile = function(tileIndex){
     $scope.selectedIndex = tileIndex;
-    console.log(tileIndex);
+
   };
 
   // $scope.class = "none";
@@ -256,7 +252,6 @@ app.controller('mainController',
   }
 
   $scope.sayPhrase = function () {
-    console.log($scope.selectedTiles);
     var pks = [];
     for (i in $scope.selectedTiles) {
       pks.push($scope.selectedTiles[i].pk);
@@ -266,23 +261,18 @@ app.controller('mainController',
       data: {pks: "[" + pks.toString() + "]"},
       method: 'POST'
     }
-    console.log(req);
     $http(req).success(function(data) {
-      console.log(data);
       $scope.speakText(data.sentence);
     })
   }
 
   $scope.sayWord = function() {
-    console.log($scope.selectedIndex.pk);
     var req = {
       url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
       data: {pks: "[" + $scope.selectedIndex.pk + "]"},
       method: 'POST'
     }
-    console.log(req);
     $http(req).success(function(data) {
-      console.log(data);
       $scope.speakText(data.sentence);
     })
   }
@@ -301,11 +291,9 @@ app.controller('mainController',
 
   $scope.chosenTile = function(tileIndex){
     $scope.selectedIndex = tileIndex;
-    console.log(tileIndex);
   };
 
   $scope.lastSet = function(index){
-    console.log("Last Set button is working");
     if ($scope.start > 0){
       $scope.start = $scope.start - 24;
       $scope.end = $scope.end - 24;
@@ -313,12 +301,11 @@ app.controller('mainController',
   }
 
   $scope.nextSet = function(index){
-    console.log("Next Set button is working");
     if ($scope.end < $scope.userBoards.length){
       $scope.start = $scope.start + 24;
       $scope.end = $scope.end + 24;
     }else{
-      console.log("No more left");
+
     }
   }
 
@@ -327,7 +314,6 @@ app.controller('mainController',
   // $scope.class.color = "white";
 
   $scope.activeHide = function(){
-    console.log("So, it works ...");
     $scope.class = "none";
     if($scope.class === "none"){
       $scope.class = "selected-btn2";
