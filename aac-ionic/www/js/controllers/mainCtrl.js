@@ -257,17 +257,23 @@ app.controller('mainController',
     }
   }
 
-// BOARD TILE FUNCTIONS
-  $scope.clickTile = function(tile) {
-    $scope.selectedTiles.push(tile);
+ // BOARD TILE FUNCTIONS
+   $scope.clickTile = function(tile) {
 
-    console.log($scope.selectedTiles);
-    $scope.selectedIndex = tile;
+     console.log('length:', $scope.selectedTiles.length);
 
-    if($scope.selectedTiles[$scope.selectedIndex] == undefined){
-      console.log("no index!!");
-    }
-  }
+     if ($scope.selectedTiles.length < 8) {
+       console.log('Add tile');
+       $scope.selectedTiles.push(tile);
+
+       console.log($scope.selectedTiles);
+       $scope.selectedIndex = tile;
+
+       if($scope.selectedTiles[$scope.selectedIndex] == undefined){
+         console.log("no index!!");
+       }
+     }
+   }
 
   $scope.class = "white";
 
