@@ -85,7 +85,7 @@ app.controller('mainController',
     }
   }
 
-  $scope.mainBoardLoader(0, 2);
+  $scope.mainBoardLoader(0, 26);
 
   $scope.selectedBoardTile = function(thisBoard){
     $scope.index = thisBoard;

@@ -67,76 +67,95 @@ app.service('aacService', function($http, $ionicModal){
 
       { name:"Art",
         img_path:"img/dummyImages/verbs.png",
-        pk: '4'},
+        pk: '2'},
 
       { name:"Body",
         img_path:"img/dummyImages/lunch.png",
-        pk: '2'},
+        pk: '3'},
 
       { name:"Clothes",
         img_path:"img/dummyImages/feelings.png",
-        pk: '1'},
+        pk: '4'},
 
       { name:"Colors",
         img_path:"img/dummyImages/about_me.png",
         pk: '5'},
 
       { name:"Describe",
-         img_path:"img/aac_board_imgs/bird.png"},
+         img_path:"img/aac_board_imgs/bird.png",
+         pk: '6'},
 
      { name:"Drinks",
-       img_path:"img/aac_board_imgs/clock.png"},
+       img_path:"img/aac_board_imgs/clock.png",
+       pk: '7'},
 
       { name:"Feelings",
-         img_path:"img/aac_board_imgs/crayon.png"},
+         img_path:"img/aac_board_imgs/crayon.png",
+         pk: '8'},
 
      { name:"Food",
-        img_path:"img/aac_board_imgs/alpaca.png"},
+        img_path:"img/aac_board_imgs/alpaca.png",
+        pk: '9'},
 
       { name:"Morning Circle",
-        img_path:"img/aac_board_imgs/art.png"},
+        img_path:"img/aac_board_imgs/art.png",
+        pk: '10'},
 
       { name:"Music",
-        img_path:"img/aac_board_imgs/balloon.png"},
+        img_path:"img/aac_board_imgs/balloon.png",
+        pk: '11'},
 
       { name:"Numbers",
-        img_path:"img/aac_board_imgs/bird.png"},
+        img_path:"img/aac_board_imgs/bird.png",
+        pk: '12'},
 
       { name:"People",
-        img_path:"img/aac_board_imgs/clock.png"},
+        img_path:"img/aac_board_imgs/clock.png",
+        pk: '13'},
 
       { name:"Pets",
-        img_path:"img/aac_board_imgs/crayon.png"},
+        img_path:"img/aac_board_imgs/crayon.png",
+        pk: '14'},
 
       { name:"Places",
-        img_path:"img/aac_board_imgs/alpaca.png"},
+        img_path:"img/aac_board_imgs/alpaca.png",
+        pk: '15'},
 
       { name:"Reading",
-        img_path:"img/aac_board_imgs/art.png"},
+        img_path:"img/aac_board_imgs/art.png",
+        pk: '16'},
 
       { name:"Social",
-        img_path:"img/aac_board_imgs/balloon.png"},
+        img_path:"img/aac_board_imgs/balloon.png",
+        pk: '17'},
 
       { name:"Sports",
-        img_path:"img/aac_board_imgs/bird.png"},
+        img_path:"img/aac_board_imgs/bird.png",
+        pk: '18'},
 
       { name:"Things",
-        img_path:"img/aac_board_imgs/clock.png"},
+        img_path:"img/aac_board_imgs/clock.png",
+        pk: '19'},
 
       { name:"Time",
-        img_path:"img/aac_board_imgs/crayon.png"},
+        img_path:"img/aac_board_imgs/crayon.png",
+        pk: '20'},
 
       { name:"Toys",
-        img_path:"img/aac_board_imgs/alpaca.png"},
+        img_path:"img/aac_board_imgs/alpaca.png",
+        pk: '21'},
 
       { name:"TV",
-        img_path:"img/aac_board_imgs/art.png"},
+        img_path:"img/aac_board_imgs/art.png",
+        pk: '22'},
 
       { name:"Verbs",
-        img_path:"img/aac_board_imgs/balloon.png"},
+        img_path:"img/aac_board_imgs/balloon.png",
+        pk: '23'},
 
       { name:"Weather",
-        img_path:"img/aac_board_imgs/bird.png"},
+        img_path:"img/aac_board_imgs/bird.png",
+        pk: '24'},
 
     ]
 
