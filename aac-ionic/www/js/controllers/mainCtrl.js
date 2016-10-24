@@ -90,18 +90,18 @@ app.controller('mainController',
      url:'img/color_change/colorBlob-skyBlue.svg'},
 
     {colorTitle: 'Electric Green',
-     primaryColor:'#BCE72B', 
-     secondaryColor:'#18745C', 
+     primaryColor:'#BCE72B',
+     secondaryColor:'#18745C',
      url:'img/color_change/colorBlob_electricGreen.svg'},
 
     {colorTitle: 'Hot Pink',
      primaryColor:'#D5388A',
-     secondaryColor:'#F787C6', 
+     secondaryColor:'#F787C6',
      url:'img/color_change/colorBlob_hotPink.svg'},
 
     {colorTitle: 'Tangerine',
      primaryColor:'#E07600',
-     secondaryColor:'#982900', 
+     secondaryColor:'#982900',
      url:'img/color_change/colorBlob_tangerine.svg'},
 
     {colorTitle: 'Butter Yellow',
@@ -126,7 +126,7 @@ app.controller('mainController',
 
     {colorTitle: 'Periwinkle Blue',
      primaryColor:'#8AB6E1',
-     secondaryColor:'#3496C7', 
+     secondaryColor:'#3496C7',
      url:'img/color_change/colorBlob_periwinkleBlue.svg'},
 
     {colorTitle: 'Forest Green',
@@ -192,7 +192,7 @@ app.controller('mainController',
     var placeholder = document.createElement("img");
     placeholder.src = "img/color_change/colorBlob_white.svg";
     placeholder.style.width = "70%";
-    placeholder.style.height = "70%"; 
+    placeholder.style.height = "70%";
     placeholder.id = "placeholder";
 
 
@@ -261,11 +261,30 @@ app.controller('mainController',
   $scope.selectedBtn2 = true;
   // $scope.class.color = "white";
 
-  
+
 
 // PHRASE BAR FUNCTIONS
   $scope.deleteLastTile = function () {
     $scope.selectedTiles.pop();
+  }
+
+  $scope.sayQuickPhrase = function (phrase) {
+    $scope.quickPhrasePressed.push(phrase);
+    // Do this before TTS so that it works when not in emulator
+    $timeout(function() {
+      console.log("in timeout")
+      $scope.quickPhrasePressed.splice(
+        $scope.quickPhrasePressed.indexOf(phrase), 1)
+    }, 750)
+    $scope.speakText(phrase);
+  }
+
+  $scope.isQuickPhrasePressed = function (phrase) {
+    if ($scope.quickPhrasePressed.indexOf(phrase) > -1) {
+      return true
+    } else {
+      return false
+    }
   }
 
   $scope.sayPhrase = function () {
@@ -351,6 +370,23 @@ app.controller('mainController',
       $scope.selectedBtn2 = true;
     }
   }
+
+  $scope.imageUrl = 'img/AAC_assets/delete_button.png';
+
+  $scope.onTap = function() {
+      console.log("yes?");
+      $scope.imageUrl = 'img/AAC_assets/delete_button_tapped.png';
+      $timeout(function () {
+        $scope.imageUrl = 'img/AAC_assets/delete_button.png';
+      }, 250);
+  };
+
+  $("div.regulars").on("mousedown", function() {
+      $(this).toggleClass('yellow');
+  })
+  .on("mouseup", function(e) {
+      $(this).toggleClass('yellow');
+  });
 
 });
 
