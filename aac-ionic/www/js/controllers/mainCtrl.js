@@ -7,10 +7,27 @@ app.filter('sliceArr', function(){
   };
 });
 
+app.filter('breaking', function(){
+  return function(word){
+    if(word.length > 10){
+      firstHalf = word.substr(0,9);
+      return firstHalf;
+    } 
+  }
+});
+
+app.filter('breaking2', function(){
+  return function(word){
+    if(word.length > 10){
+      secondHalf = word.substr(10,word.length);
+      return secondHalf;
+    } 
+  }
+});
+
 app.controller('mainController', 
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
-    $location, $ionicPopover, $ionicHistory, appConfig,
-    aacService) {
+    $location, $ionicPopover, $ionicHistory, appConfig) {
     
     $ionicHistory.nextViewOptions({
       disableBack: true
@@ -28,16 +45,16 @@ app.controller('mainController',
       $scope.doLogout();
     };
 
-  $scope.columns = aacService.columns;
-  $scope.rows = aacService.rows;
+  $scope.columns = "abcdef";
+  $scope.rows = "123456";
   $scope.selectedTiles = [];
-  $scope.selectedIndex = aacService.selectedIndex;
-  $scope.titleLimit = aacService.titleLimit; 
+  $scope.selectedIndex = -2;
+  $scope.titleLimit = 20; 
   $scope.start = 0;
   $scope.end = 24;
   $scope.board = {};
 
-  $scope.getData = function(){
+  $scope.mainBoardLoader = function(){
     var req = {
       url: appConfig.backendURL + '/board/user/',
       data: {user_username: localStorage.getItem('username')},
@@ -52,32 +69,20 @@ app.controller('mainController',
       $scope.userBoards = data;
       $scope.filled_tiles = Object.keys($scope.board.symbols)
     })
-  }
+  };
 
-  $scope.getAboutMe = function(){
-    var req2 = {
-      url: appConfig.backendURL + '/board/first/user/',
-      data: {user_username: localStorage.getItem('username')},
-      method: 'POST',
-      headers: {
-          Authorization: 'JWT ' + localStorage.getItem('authToken')
-      }
-    }
-
-    $http(req2).success(function(data) {
-      $scope.board = data;
-      $scope.filled_tiles = Object.keys($scope.board.symbols)
-    })
-  }
-
-  $scope.getData();
+  $scope.mainBoardLoader();
 
   $scope.chosenBoard = function(index){
-    $scope.board = $scope.userBoards[index];
+    $scope.board = $scope.userBoards[index]; 
+    $scope.filled_tiles = Object.keys($scope.board.symbols)
+  };
+  
+  $scope.homeButton = function(){
+    $scope.board = $scope.userBoards[0];
     $scope.filled_tiles = Object.keys($scope.board.symbols)
   }
-  
-
+// COLOR MODAL FUNCTIONS AND OBJECTS
   $scope.colorName =[
     {colorTitle: 'Sky Blue',
      primaryColor:'#50E2E3',
@@ -163,7 +168,6 @@ app.controller('mainController',
   $scope.colorSelect = function(colorIndex){
     $scope.selectedIndex = colorIndex;
     
-    console.log($scope.selectedIndex);
     var container = document.getElementById('container');
 
     var bodyBack = document.getElementById('bodyBack');
@@ -175,11 +179,10 @@ app.controller('mainController',
     var btnSection = document.getElementById('btn-section');
     btnSection.style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
 
-    var buttonCircle2 = document.getElementById('button-circle2');
-    buttonCircle2.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
+    // var buttonCircle2 = document.getElementById('button-circle2');
+    // buttonCircle2.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
 
     var buttonCircle = document.getElementsByClassName('button-circle');
-    console.log(buttonCircle[1].style.backgroundColor);
 
     var colorChoice = document.getElementsByClassName('color-choice');
 
@@ -210,7 +213,7 @@ app.controller('mainController',
       var colorChoice = document.getElementsByClassName('color-choice');
       var placeholder = document.getElementById("placeholder");
       originalImg[$scope.selectedIndex].style.display = "inline";
-      colorChoice[$scope.selectedIndex].removeChild(placeholder);
+      // colorChoice[$scope.selectedIndex].removeChild(placeholder);
       for(var n = 0; i < buttonCircle.length; n++){
         colorChoice[n].style.backgroundColor = "white";
         $scope.Modal.hide();
@@ -218,50 +221,75 @@ app.controller('mainController',
     }
   }
 
+// BOARD TILE FUNCTIONS
   $scope.clickTile = function(tile) {
+    if(tile.target_board){
+      var req = {
+        url: appConfig.backendURL + '/board/single/',
+        data: {pk: tile.target_board.pk},
+        method: 'POST',
+        headers: {
+            Authorization: 'JWT ' + localStorage.getItem('authToken')
+        }
+      }
 
-    $scope.selectedTiles.push(tile);
+      $http(req).success(function(data) {
+        console.log('loadingData');
+        $scope.board = data;
+        $scope.filled_tiles = Object.keys($scope.board.symbols)
+      })
+    }else{
+      $scope.selectedTiles.push(tile);
 
-    console.log($scope.selectedTiles);
-    $scope.selectedIndex = tile;
+      console.log($scope.selectedTiles);
+      $scope.selectedIndex = tile;
 
-    if($scope.selectedTiles[$scope.selectedIndex] == undefined){
-      console.log("no index!!");
+      if($scope.selectedTiles[$scope.selectedIndex] == undefined){
+        console.log("no index!!");
+      }
     }
   }
 
+  $scope.class = "white";
+
+  $scope.chosenTile = function(tileIndex){
+    $scope.selectedIndex = tileIndex;
+
+  };
+
+  // $scope.class = "none";
+  $scope.selectedBtn2 = true;
+  // $scope.class.color = "white";
+
+  
+
+// PHRASE BAR FUNCTIONS
   $scope.deleteLastTile = function () {
     $scope.selectedTiles.pop();
   }
 
   $scope.sayPhrase = function () {
-    console.log($scope.selectedTiles);
     var pks = [];
     for (i in $scope.selectedTiles) {
       pks.push($scope.selectedTiles[i].pk);
     }
     var req = {
-      url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
+      url: appConfig.backendURL + '/compaction/symbols/',
       data: {pks: "[" + pks.toString() + "]"},
       method: 'POST'
     }
-    console.log(req);
     $http(req).success(function(data) {
-      console.log(data);
       $scope.speakText(data.sentence);
     })
   }
 
   $scope.sayWord = function() {
-    console.log($scope.selectedIndex.pk);
     var req = {
-      url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
+      url: appConfig.backendURL + '/compaction/symbols/',
       data: {pks: "[" + $scope.selectedIndex.pk + "]"},
       method: 'POST'
     }
-    console.log(req);
     $http(req).success(function(data) {
-      console.log(data);
       $scope.speakText(data.sentence);
     })
   }
@@ -280,11 +308,9 @@ app.controller('mainController',
 
   $scope.chosenTile = function(tileIndex){
     $scope.selectedIndex = tileIndex;
-    console.log(tileIndex);
   };
 
   $scope.lastSet = function(index){
-    console.log("Last Set button is working");
     if ($scope.start > 0){
       $scope.start = $scope.start - 24;
       $scope.end = $scope.end - 24;
@@ -292,21 +318,20 @@ app.controller('mainController',
   }
 
   $scope.nextSet = function(index){
-    console.log("Next Set button is working");
     if ($scope.end < $scope.userBoards.length){
       $scope.start = $scope.start + 24;
       $scope.end = $scope.end + 24;
     }else{
-      console.log("No more left");
+
     }
   }
 
-  $scope.class = "none";
+  // $scope.class = "none";
   $scope.selectedBtn2 = true;
   // $scope.class.color = "white";
 
   $scope.activeHide = function(){
-    console.log("So, it works ...");
+    $scope.class = "none";
     if($scope.class === "none"){
       $scope.class = "selected-btn2";
       $scope.hide = true;
@@ -321,6 +346,7 @@ app.controller('mainController',
       $scope.selectedBtn2 = true;
     }
   }
+
 });
 
 app.run(function($ionicPlatform) {

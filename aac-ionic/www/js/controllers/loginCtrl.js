@@ -1,7 +1,7 @@
 var app = angular.module('Login.Ctrl', ['ionic', 'angular-jwt']);
 
 app.controller('LoginController', function($scope, $http,
-  $rootScope, $location, $ionicHistory, jwtHelper, User){
+  $rootScope, $location, $ionicHistory, jwtHelper, appConfig, User){
   
   if(localStorage.getItem('username') && localStorage.getItem('username')){
       $location.path('/main');
