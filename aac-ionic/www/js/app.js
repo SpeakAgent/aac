@@ -8,8 +8,8 @@ var appConfig = angular.module('appConfig', []).constant('appConfig', {
   'backendURL': 'https://lexemes-dev.herokuapp.com'
 })
 
-angular.module('main', ['ionic', 'main.Ctrl', 'main.aacService',
-  'settings.Ctrl', 'boardFactory.Ctrl', 'Login.Ctrl', 'appConfig'])
+angular.module('main', ['ionic', 'main.Ctrl', 'settings.Ctrl',
+                        'boardFactory.Ctrl', 'Login.Ctrl', 'appConfig'])
 
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/main');
