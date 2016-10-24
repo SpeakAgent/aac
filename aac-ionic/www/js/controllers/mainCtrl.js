@@ -437,9 +437,72 @@ app.controller('mainController',
            return;
        }
        $scope.activeChat = !$scope.activeChat;
+       if (!$scope.activeChat) {
+         TTS.speak({
+           text: "Goodbye",
+         }, function () {
+           // Do Something after success
+           console.log("bye");
+         }, function (reason) {
+           // Handle the error case
+         });
+       }
        $scope.activeAvatar = false;
      }, 500);
    };
+
+    //Buddies
+    $scope.buddies = [
+      'Chloe.gif',
+      'Emma.gif',
+      'Harry.gif',
+      'José.gif'
+    ];
+
+    $scope.selectedBuddy = $scope.buddies[0];
+    $scope.activeAvatar = false;
+
+    $scope.buttonAvatar = function(){
+      $timeout(function (){
+
+        if ($scope.buttons.avatar) {
+          return;
+        }
+
+        $scope.activeAvatar = !$scope.activeAvatar;
+        if ($scope.activeAvatar) {
+          $scope.chooseBuddieModal.show();
+          $scope.activeChat = false;
+        }
+      }, 500);
+    };
+
+    $scope.pickme = '';
+    $scope.buddySelect = function (buddy){
+      $scope.pickme = buddy;
+    };
+
+    $scope.buddyPickMe = function (buddy){
+      $scope.selectedBuddy = buddy;
+      $scope.pickme = '';
+      $scope.activeAvatar = false;
+      $scope.chooseBuddieModal.hide();
+    };
+
+    $scope.cancelBuddySelect = function (){
+      $scope.pickme = '';
+      $scope.activeAvatar = false;
+      $scope.chooseBuddieModal.hide();
+    };
+
+     //Modal choose buddy
+     $ionicModal.fromTemplateUrl('templates/aac-partials/_choose_buddie.html',{
+       scope: $scope,
+       animation: 'slide-in-up',
+       backdropClickToClose: false
+     }).then(function(modal){
+       $scope.chooseBuddieModal = modal;
+     });
 
 });
 
