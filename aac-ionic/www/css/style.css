@@ -1,5 +1,14 @@
 /* Empty. Add your own CSS if you like */
-.sidebar{
+/*.sidebar{
 	width:300px;
 	background-color: green;
+}*/
+
+.yellow img {
+    margin: 12px auto !important;
+    display: block;
+}
+
+.inactive {
+    background-color: #BFBFBF !important;
 }

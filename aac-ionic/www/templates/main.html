@@ -43,8 +43,8 @@
           <img src="img/AAC_assets/avatar_default.png"
             ng-click="sayPhrase()"/>
 
-          
-          <div class="regulars" 
+
+          <div class="regulars"
             ng-repeat="phrase in quickPhrases"
             ng-click="sayQuickPhrase(phrase)"
             ng-style="isQuickPhrasePressed(phrase) && {'background-color': '#FFE98E', 'border': '2px solid #F8D338'}">
@@ -91,7 +91,7 @@
             </div>
           </div>
 
-          
+
             <div class="col col-40" id="board-section" style="margin-top:-43px;">
               <div class="boards" ng-repeat="board in dummyBoards | slice:start:end" ng-click="mainBoardLoader($index, board.pk); selectedBoardTile($index)">
                 <!-- chosenBoard($index) -->
@@ -122,19 +122,31 @@
         </div>
 
         <div class="col col-60">
-          <div class="button-circle">
+          <div class="button-circle"
+            on-double-tap="handlerTap('bell');"
+            ng-click="bellAction()"
+            ng-class="{'inactive': buttons.bell}">
             <img src="img/new_dev_assets/bell.png" style="margin-left:17px; margin-top:14px;" />
           </div>
 
-          <div class="button-circle">
-            <img src="img/new_dev_assets/colors.png" style="margin-left:15px; margin-top:14px;" ng-click="openModal()" />
+          <div class="button-circle"
+            on-double-tap="handlerTap('colors');"
+            ng-class="{'inactive': buttons.colors}"
+            ng-click="openModal()">
+            <img src="img/new_dev_assets/colors.png" style="margin-left:15px; margin-top:14px;"/>
           </div>
 
-          <div class="button-circle">
+          <div class="button-circle"
+            on-double-tap="handlerTap('avatar');"
+            ng-click="buttonAvatar();"
+            ng-class="{'yellow': activeAvatar, 'inactive': buttons.avatar}">
             <img src="img/new_dev_assets/avatar.png" style="margin-left:15px; margin-top:14px;" />
           </div>
 
-          <div class="button-circle">
+          <div class="button-circle"
+            on-double-tap="handlerTap('chat');"
+            ng-click="buttonChat();"
+            ng-class="{'yellow': activeChat, 'inactive': buttons.chat}">
             <img src="img/new_dev_assets/chat.png" style="margin-left:15px; margin-top:14px;" />
           </div>
         </div>

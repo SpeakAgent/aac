@@ -12,7 +12,7 @@ app.filter('breaking', function(){
     if(word.length > 10){
       firstHalf = word.substr(0,9);
       return firstHalf;
-    } 
+    }
   }
 });
 
@@ -21,11 +21,11 @@ app.filter('breaking2', function(){
     if(word.length > 10){
       secondHalf = word.substr(10,word.length);
       return secondHalf;
-    } 
+    }
   }
 });
 
-app.controller('mainController', 
+app.controller('mainController',
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, aacService, $timeout) {
 
   $scope.columns = aacService.columns;
@@ -188,7 +188,12 @@ app.controller('mainController',
   });
 
   $scope.openModal = function(index){
-    $scope.Modal.show()
+    $timeout(function (){
+      if ($scope.buttons.colors) {
+        return;
+      }
+      $scope.Modal.show()
+    }, 500);
   }
 
   $scope.closeModal = function(index){
@@ -405,12 +410,37 @@ app.controller('mainController',
       }, 250);
   };
 
-  $("div.regulars").on("mousedown", function() {
-      $(this).toggleClass('yellow');
-  })
-  .on("mouseup", function(e) {
-      $(this).toggleClass('yellow');
-  });
+  $scope.buttons = {
+    bell: false,
+    colors : false,
+    avatar: false,
+    chat: false
+  };
+
+   $scope.handlerTap = function (button){
+     $scope.buttons[button] = !$scope.buttons[button];
+   };
+
+   $scope.bellAction = function (){
+     $timeout(function (){
+       if ($scope.buttons.bell) {
+         return;
+       }
+       console.log('hello from bell action');
+     }, 500);
+   };
+
+   $scope.activeChat = false;
+   $scope.buttonChat = function(){
+     $timeout(function (){
+       if ($scope.buttons.chat) {
+           return;
+       }
+
+       $scope.activeChat = !$scope.activeChat;
+       $scope.activeAvatar = false;
+     }, 500);
+   };
 
 });
 
