@@ -7,8 +7,26 @@ app.filter('slice', function(){
   };
 });
 
+app.filter('breaking', function(){
+  return function(word){
+    if(word.length > 10){
+      firstHalf = word.substr(0,9);
+      return firstHalf;
+    }
+  }
+});
+
+app.filter('breaking2', function(){
+  return function(word){
+    if(word.length > 10){
+      secondHalf = word.substr(10,word.length);
+      return secondHalf;
+    }
+  }
+});
+
 app.controller('mainController',
-  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, aacService, $timeout) {
+function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, aacService, $timeout) {
 
   $scope.columns = aacService.columns;
   $scope.rows = aacService.rows;
@@ -19,6 +37,9 @@ app.controller('mainController',
   $scope.end = 24;
   $scope.board = {};
   $scope.dummyBoards = aacService.dummyBoards;
+  $scope.quickPhrasePressed = [];
+  $scope.quickPhrases = ['Yes', 'No', 'Hold on', 'Help']
+
   // $scope.dummyBoards[$scope.selectedIndex].pk = "3";
   // $scope.longWords = aacService.longWords;
 
@@ -95,67 +116,67 @@ app.controller('mainController',
   }
 
 
-// COLOR MODAL FUNCTIONS AND OBJECTS
+  // COLOR MODAL FUNCTIONS AND OBJECTS
   $scope.colorName =[
     {colorTitle: 'Sky Blue',
-     primaryColor:'#50E2E3',
-     secondaryColor:'#008484',
-     url:'img/color_change/colorBlob-skyBlue.svg'},
+    primaryColor:'#50E2E3',
+    secondaryColor:'#008484',
+    url:'img/color_change/colorBlob-skyBlue.svg'},
 
     {colorTitle: 'Electric Green',
-     primaryColor:'#BCE72B',
-     secondaryColor:'#18745C',
-     url:'img/color_change/colorBlob_electricGreen.svg'},
+    primaryColor:'#BCE72B',
+    secondaryColor:'#18745C',
+    url:'img/color_change/colorBlob_electricGreen.svg'},
 
     {colorTitle: 'Hot Pink',
-     primaryColor:'#D5388A',
-     secondaryColor:'#F787C6',
-     url:'img/color_change/colorBlob_hotPink.svg'},
+    primaryColor:'#D5388A',
+    secondaryColor:'#F787C6',
+    url:'img/color_change/colorBlob_hotPink.svg'},
 
     {colorTitle: 'Tangerine',
-     primaryColor:'#E07600',
-     secondaryColor:'#982900',
-     url:'img/color_change/colorBlob_tangerine.svg'},
+    primaryColor:'#E07600',
+    secondaryColor:'#982900',
+    url:'img/color_change/colorBlob_tangerine.svg'},
 
     {colorTitle: 'Butter Yellow',
-     primaryColor:'#FFDB3B',
-     secondaryColor:'#DEC75F',
-     url:'img/color_change/colorBlob_butterYellow.svg'},
+    primaryColor:'#FFDB3B',
+    secondaryColor:'#DEC75F',
+    url:'img/color_change/colorBlob_butterYellow.svg'},
 
     {colorTitle: 'Tomato Red',
-     primaryColor:'#E6213F',
-     secondaryColor:'#E899A6',
-     url:'img/color_change/colorBlob_tomatoRed.svg'},
+    primaryColor:'#E6213F',
+    secondaryColor:'#E899A6',
+    url:'img/color_change/colorBlob_tomatoRed.svg'},
 
     {colorTitle: 'Denim Blue',
-     primaryColor:'#325DC1',
-     secondaryColor:'#ADB1E8',
-     url:'img/color_change/colorBlob_denimBlue.svg'},
+    primaryColor:'#325DC1',
+    secondaryColor:'#ADB1E8',
+    url:'img/color_change/colorBlob_denimBlue.svg'},
 
     {colorTitle: 'Steel Gray',
-     primaryColor:'#7D989A',
-     secondaryColor:'#A9CED1',
-     url:'img/color_change/colorBlob_steelGray.svg'},
+    primaryColor:'#7D989A',
+    secondaryColor:'#A9CED1',
+    url:'img/color_change/colorBlob_steelGray.svg'},
 
     {colorTitle: 'Periwinkle Blue',
-     primaryColor:'#8AB6E1',
-     secondaryColor:'#3496C7',
-     url:'img/color_change/colorBlob_periwinkleBlue.svg'},
+    primaryColor:'#8AB6E1',
+    secondaryColor:'#3496C7',
+    url:'img/color_change/colorBlob_periwinkleBlue.svg'},
 
     {colorTitle: 'Forest Green',
-     primaryColor:'#18745C',
-     secondaryColor:'#7BB59F',
-     url:'img/color_change/colorBlob_forestGreen.svg'},
+    primaryColor:'#18745C',
+    secondaryColor:'#7BB59F',
+    url:'img/color_change/colorBlob_forestGreen.svg'},
 
     {colorTitle: 'Intense Purple',
-     primaryColor:'#6B28C6',
-     secondaryColor:'#C6A4EB',
-     url:'img/color_change/colorBlob_intensePurple.svg'},
+    primaryColor:'#6B28C6',
+    secondaryColor:'#C6A4EB',
+    url:'img/color_change/colorBlob_intensePurple.svg'},
 
     {colorTitle: 'Seafoam Green',
-     primaryColor:'#2FCB95',
-     secondaryColor:'#A7E8C5',
-     url:'img/color_change/colorBlob_seafoamGreen.svg'},
+    primaryColor:'#2FCB95',
+    secondaryColor:'#A7E8C5',
+    url:'img/color_change/colorBlob_seafoamGreen.svg'},
   ]
 
   $ionicModal.fromTemplateUrl('templates/aac-partials/_color-modal.html',{
@@ -211,14 +232,14 @@ app.controller('mainController',
     placeholder.id = "placeholder";
 
 
-      for(var i = 0; i < buttonCircle.length; i++){
-        buttonCircle[i].style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
-        colorChoice[$scope.selectedIndex].style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
-        if(originalImg[$scope.selectedIndex].style.display = "none"){
-          colorChoice[$scope.selectedIndex].appendChild(placeholder);
-        }
+    for(var i = 0; i < buttonCircle.length; i++){
+      buttonCircle[i].style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
+      colorChoice[$scope.selectedIndex].style.backgroundColor = $scope.colorName[$scope.selectedIndex].primaryColor;
+      if(originalImg[$scope.selectedIndex].style.display = "none"){
+        colorChoice[$scope.selectedIndex].appendChild(placeholder);
       }
-      originalImg[$scope.selectedIndex].style.display = "none";
+    }
+    originalImg[$scope.selectedIndex].style.display = "none";
   }
 
   $scope.changeBackground = function(){
@@ -236,7 +257,7 @@ app.controller('mainController',
     }
   }
 
-// BOARD TILE FUNCTIONS
+  // BOARD TILE FUNCTIONS
   $scope.clickTile = function(tile) {
     $scope.selectedTiles.push(tile);
 
@@ -261,119 +282,136 @@ app.controller('mainController',
 
 
 
-// PHRASE BAR FUNCTIONS
+  // PHRASE BAR FUNCTIONS
   $scope.deleteLastTile = function () {
     $scope.selectedTiles.pop();
   }
 
-  $scope.sayPhrase = function () {
-    console.log($scope.selectedTiles);
-    var pks = [];
-    for (i in $scope.selectedTiles) {
-      pks.push($scope.selectedTiles[i].pk);
+  $scope.sayQuickPhrase = function (phrase) {
+    $scope.quickPhrasePressed.push(phrase);
+    // Do this before TTS so that it works when not in emulator
+    $timeout(function() {
+      console.log("in timeout")
+      $scope.quickPhrasePressed.splice(
+        $scope.quickPhrasePressed.indexOf(phrase), 1)
+      }, 750)
+      $scope.speakText(phrase);
     }
-    var req = {
-      url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
-      data: {pks: "[" + pks.toString() + "]"},
-      method: 'POST'
+
+    $scope.isQuickPhrasePressed = function (phrase) {
+      if ($scope.quickPhrasePressed.indexOf(phrase) > -1) {
+        return true
+      } else {
+        return false
+      }
     }
-    console.log(req);
-    $http(req).success(function(data) {
-      console.log(data);
-      $scope.speakText(data.sentence);
-    })
-  }
 
-  $scope.sayWord = function() {
-    console.log($scope.selectedIndex.pk);
-    var req = {
-      url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
-      data: {pks: "[" + $scope.selectedIndex.pk + "]"},
-      method: 'POST'
+    $scope.sayPhrase = function () {
+      console.log($scope.selectedTiles);
+      var pks = [];
+      for (i in $scope.selectedTiles) {
+        pks.push($scope.selectedTiles[i].pk);
+      }
+      var req = {
+        url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
+        data: {pks: "[" + pks.toString() + "]"},
+        method: 'POST'
+      }
+      console.log(req);
+      $http(req).success(function(data) {
+        console.log(data);
+        $scope.speakText(data.sentence);
+      })
     }
-    console.log(req);
-    $http(req).success(function(data) {
-      console.log(data);
-      $scope.speakText(data.sentence);
-    })
-  }
 
-  $scope.speakText = function(text) {
-    TTS.speak({
-           text: text,
-       }, function () {
-           // Do Something after success
-       }, function (reason) {
-           // Handle the error case
-       });
-  };
-
-  $scope.class = "white";
-
-  $scope.chosenTile = function(tileIndex){
-    $scope.selectedIndex = tileIndex;
-    console.log(tileIndex);
-  };
-
-  $scope.lastSet = function(index){
-    console.log("Last Set button is working");
-    if ($scope.start > 0){
-      $scope.start = $scope.start - 24;
-      $scope.end = $scope.end - 24;
+    $scope.sayWord = function() {
+      console.log($scope.selectedIndex.pk);
+      var req = {
+        url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
+        data: {pks: "[" + $scope.selectedIndex.pk + "]"},
+        method: 'POST'
+      }
+      console.log(req);
+      $http(req).success(function(data) {
+        console.log(data);
+        $scope.speakText(data.sentence);
+      })
     }
-  }
 
-  $scope.nextSet = function(index){
-    console.log("Next Set button is working");
-    if ($scope.end < $scope.dummyBoards.length){
-      $scope.start = $scope.start + 24;
-      $scope.end = $scope.end + 24;
-    }else{
-      console.log("No more left");
+    $scope.speakText = function(text) {
+      TTS.speak({
+        text: text,
+      }, function () {
+        // Do Something after success
+      }, function (reason) {
+        // Handle the error case
+      });
+    };
+
+    $scope.class = "white";
+
+    $scope.chosenTile = function(tileIndex){
+      $scope.selectedIndex = tileIndex;
+      console.log(tileIndex);
+    };
+
+    $scope.lastSet = function(index){
+      console.log("Last Set button is working");
+      if ($scope.start > 0){
+        $scope.start = $scope.start - 24;
+        $scope.end = $scope.end - 24;
+      }
     }
-  }
 
-  // $scope.class = "none";
-  $scope.selectedBtn2 = true;
-  // $scope.class.color = "white";
-
-  $scope.activeHide = function(){
-    console.log("So, it works ...");
-    $scope.class = "none";
-    if($scope.class === "none"){
-      $scope.class = "selected-btn2";
-      $scope.hide = true;
-      $scope.selectedBtn2 = false;
+    $scope.nextSet = function(index){
+      console.log("Next Set button is working");
+      if ($scope.end < $scope.dummyBoards.length){
+        $scope.start = $scope.start + 24;
+        $scope.end = $scope.end + 24;
+      }else{
+        console.log("No more left");
+      }
     }
-  }
 
-  $scope.hideDone = function(){
-    if($scope.class === "selected-btn2"){
+    // $scope.class = "none";
+    $scope.selectedBtn2 = true;
+    // $scope.class.color = "white";
+
+    $scope.activeHide = function(){
+      console.log("So, it works ...");
       $scope.class = "none";
-      $scope.hide = false;
-      $scope.selectedBtn2 = true;
+      if($scope.class === "none"){
+        $scope.class = "selected-btn2";
+        $scope.hide = true;
+        $scope.selectedBtn2 = false;
+      }
     }
-  }
 
-  $scope.activeLateralButtons = '';
-
-  $scope.activeHover = function (button){
-      $scope.activeLateralButtons = button;
-
-      $timeout(function (){
-          $scope.activeLateralButtons = '';
-      }, 300);
-  };
-
-});
-
-app.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    if(window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+    $scope.hideDone = function(){
+      if($scope.class === "selected-btn2"){
+        $scope.class = "none";
+        $scope.hide = false;
+        $scope.selectedBtn2 = true;
+      }
     }
-    if(window.StatusBar) {
-      StatusBar.styleDefault();
-    }
+
+    $scope.imageUrl = 'img/AAC_assets/delete_button.png';
+
+    $scope.onTap = function() {
+      $scope.imageUrl = 'img/AAC_assets/delete_button_tapped.png';
+      $timeout(function () {
+        $scope.imageUrl = 'img/AAC_assets/delete_button.png';
+      }, 250);
+    };
   });
-});
+
+  app.run(function($ionicPlatform) {
+    $ionicPlatform.ready(function() {
+      if(window.cordova && window.cordova.plugins.Keyboard) {
+        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+      }
+      if(window.StatusBar) {
+        StatusBar.styleDefault();
+      }
+    });
+  });
