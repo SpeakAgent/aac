@@ -436,7 +436,6 @@ app.controller('mainController',
        if ($scope.buttons.chat) {
            return;
        }
-
        $scope.activeChat = !$scope.activeChat;
        $scope.activeAvatar = false;
      }, 500);
