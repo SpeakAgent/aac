@@ -412,7 +412,6 @@ app.controller('mainController',
       $(this).toggleClass('yellow');
   });
 
-
 });
 
 app.run(function($ionicPlatform) {
