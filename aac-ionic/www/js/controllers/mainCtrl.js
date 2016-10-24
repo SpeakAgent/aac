@@ -26,7 +26,7 @@ app.filter('breaking2', function(){
 });
 
 app.controller('mainController', 
-  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, aacService) {
+  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, aacService, $timeout) {
 
   $scope.columns = aacService.columns;
   $scope.rows = aacService.rows;
@@ -37,6 +37,8 @@ app.controller('mainController',
   $scope.end = 24;
   $scope.board = {};
   $scope.dummyBoards = aacService.dummyBoards;
+  $scope.quickPhrasePressed = [];
+  $scope.quickPhrases = ['Yes', 'No', 'Hold on', 'Help']
 
   // $scope.dummyBoards[$scope.selectedIndex].pk = "3";
   // $scope.longWords = aacService.longWords;
@@ -285,6 +287,25 @@ app.controller('mainController',
     $scope.selectedTiles.pop();
   }
 
+  $scope.sayQuickPhrase = function (phrase) {
+    $scope.quickPhrasePressed.push(phrase);
+    // Do this before TTS so that it works when not in emulator
+    $timeout(function() {
+      console.log("in timeout")
+      $scope.quickPhrasePressed.splice(
+        $scope.quickPhrasePressed.indexOf(phrase), 1)
+    }, 750)
+    $scope.speakText(phrase);
+  }
+
+  $scope.isQuickPhrasePressed = function (phrase) {
+    if ($scope.quickPhrasePressed.indexOf(phrase) > -1) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   $scope.sayPhrase = function () {
     console.log($scope.selectedTiles);
     var pks = [];
@@ -383,6 +404,13 @@ app.controller('mainController',
         $scope.imageUrl = 'img/AAC_assets/delete_button.png';
       }, 250);
   };
+
+  $("div.regulars").on("mousedown", function() {
+      $(this).toggleClass('yellow');
+  })
+  .on("mouseup", function(e) {
+      $(this).toggleClass('yellow');
+  });
 
 });
 
