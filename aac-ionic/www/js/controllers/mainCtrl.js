@@ -304,6 +304,11 @@ app.controller('mainController',
        });
   };
 
+  $scope.bellSound = function(){
+    var audio = new Audio('assets/sounds/bell.wav');
+    audio.play();
+  }
+
   $scope.class = "white";
 
   $scope.chosenTile = function(tileIndex){
