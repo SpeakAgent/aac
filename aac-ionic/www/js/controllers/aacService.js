@@ -65,158 +65,79 @@ app.service('aacService', function($http, $ionicModal){
 
   this.dummyBoards =[
 
-      { name:"Verbs",
+      { name:"Art",
         img_path:"img/dummyImages/verbs.png",
         pk: '4'},
 
-      { name:"Lunch",
+      { name:"Body",
         img_path:"img/dummyImages/lunch.png",
         pk: '2'},
 
-      { name:"Feelings",
+      { name:"Clothes",
         img_path:"img/dummyImages/feelings.png",
         pk: '1'},
 
-      { name:"About Me",
+      { name:"Colors",
         img_path:"img/dummyImages/about_me.png",
         pk: '5'},
 
-      { name:"Clothes",
+      { name:"Describe",
          img_path:"img/aac_board_imgs/bird.png"},
 
-     { name:"Cars",
+     { name:"Drinks",
        img_path:"img/aac_board_imgs/clock.png"},
 
-      { name:"Art",
+      { name:"Feelings",
          img_path:"img/aac_board_imgs/crayon.png"},
 
      { name:"Food",
         img_path:"img/aac_board_imgs/alpaca.png"},
 
-      { name:"Kind Things",
+      { name:"Morning Circle",
         img_path:"img/aac_board_imgs/art.png"},
 
-      { name:"Morning",
+      { name:"Music",
         img_path:"img/aac_board_imgs/balloon.png"},
 
-      { name:"Number",
+      { name:"Numbers",
         img_path:"img/aac_board_imgs/bird.png"},
 
       { name:"People",
         img_path:"img/aac_board_imgs/clock.png"},
 
-      { name:"Places",
+      { name:"Pets",
         img_path:"img/aac_board_imgs/crayon.png"},
+
+      { name:"Places",
+        img_path:"img/aac_board_imgs/alpaca.png"},
 
       { name:"Reading",
-        img_path:"img/aac_board_imgs/alpaca.png"},
+        img_path:"img/aac_board_imgs/art.png"},
+
+      { name:"Social",
+        img_path:"img/aac_board_imgs/balloon.png"},
 
       { name:"Sports",
-        img_path:"img/aac_board_imgs/art.png"},
+        img_path:"img/aac_board_imgs/bird.png"},
 
       { name:"Things",
-        img_path:"img/aac_board_imgs/balloon.png"},
+        img_path:"img/aac_board_imgs/clock.png"},
 
       { name:"Time",
-        img_path:"img/aac_board_imgs/bird.png"},
+        img_path:"img/aac_board_imgs/crayon.png"},
+
+      { name:"Toys",
+        img_path:"img/aac_board_imgs/alpaca.png"},
+
+      { name:"TV",
+        img_path:"img/aac_board_imgs/art.png"},
 
       { name:"Verbs",
-        img_path:"img/aac_board_imgs/clock.png"},
+        img_path:"img/aac_board_imgs/balloon.png"},
 
       { name:"Weather",
-        img_path:"img/aac_board_imgs/crayon.png"},
-
-      { name:"Nouns",
-        img_path:"img/aac_board_imgs/alpaca.png"},
-
-      { name:"Outdoor",
-        img_path:"img/aac_board_imgs/art.png"},
-
-      { name:"Animals",
-        img_path:"img/aac_board_imgs/balloon.png"},
-
-      { name:"Plants",
         img_path:"img/aac_board_imgs/bird.png"},
 
-      { name:"Stuff",
-        img_path:"img/aac_board_imgs/clock.png"},
-
-      { name:"Things",
-        img_path:"img/aac_board_imgs/crayon.png"},
-
-      // added for sliding option
-      { name:"Nouns",
-        img_path:"img/aac_board_imgs/alpaca.png"},
-
-      { name:"Outdoor",
-        img_path:"img/aac_board_imgs/art.png"},
-
-      { name:"Animals",
-        img_path:"img/aac_board_imgs/balloon.png"},
-
-      { name:"Plants",
-         img_path:"img/aac_board_imgs/bird.png"},
-
-      { name:"Stuff",
-        img_path:"img/aac_board_imgs/clock.png" },
-
-      { name:"Things",
-        img_path:"img/aac_board_imgs/crayon.png"},
-
-        // also added for testing purposes
-      { name:"Nouns",
-        img_path:"img/aac_board_imgs/alpaca.png" },
-
-      { name:"Outdoor",
-        img_path:"img/aac_board_imgs/art.png" },
-
-      { name:"Animals",
-        img_path:"img/aac_board_imgs/balloon.png" },
-
-      { name:"Plants",
-        img_path:"img/aac_board_imgs/bird.png" },
-
-      { name:"Stuff",
-        img_path:"img/aac_board_imgs/clock.png" },
-
-      { name:"Things",
-        img_path:"img/aac_board_imgs/crayon.png"},
-
-      { name:"Nouns",
-        img_path:"img/aac_board_imgs/alpaca.png" },
-
-      { name:"Outdoor",
-        img_path:"img/aac_board_imgs/art.png" },
-
-      { name:"Animals",
-        img_path:"img/aac_board_imgs/balloon.png" },
-
-      { name:"Plants",
-        img_path:"img/aac_board_imgs/bird.png" },
-
-      { name:"Stuff",
-        img_path:"img/aac_board_imgs/clock.png" },
-
-      { name:"Things",
-        img_path:"img/aac_board_imgs/crayon.png"},
-
-      { name:"Nouns",
-        img_path:"img/aac_board_imgs/alpaca.png" },
-
-      { name:"Outdoor",
-        img_path:"img/aac_board_imgs/art.png" },
-
-      { name:"Animals",
-        img_path:"img/aac_board_imgs/balloon.png" },
-
-      { name:"Plants",
-        img_path:"img/aac_board_imgs/bird.png" },
-
-      { name:"Stuff",
-        img_path:"img/aac_board_imgs/clock.png" },
-
-      { name:"Things",
-        img_path:"img/aac_board_imgs/crayon.png"},
     ]
 
     this.aboutMeBoard = {

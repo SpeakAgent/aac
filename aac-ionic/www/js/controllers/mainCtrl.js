@@ -75,14 +75,17 @@ app.controller('mainController',
         method: 'POST'
       }
 
+      console.log("MBL req", req2)
+
       $http(req2).success(function(data) {
+        console.log("MBL success", data)
         $scope.board = data;
         $scope.filled_tiles = Object.keys($scope.board.symbols)
       })
     }
   }
 
-  $scope.mainBoardLoader(0, 3);
+  $scope.mainBoardLoader(0, 2);
 
   $scope.selectedBoardTile = function(thisBoard){
     $scope.index = thisBoard;
