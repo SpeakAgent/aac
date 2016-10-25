@@ -9,12 +9,10 @@ app.controller('settingsController',
 			console.log("Entered settings")
 			$scope.appPrefs = {}
 			// Only the ones we've implemented
-			prefs = ['showPK']
+			prefs = ['showPK', 'compactionOn']
 			for (var i in prefs) {
 			sval = window.localStorage.getItem(prefs[i])
-			console.log("Found", prefs[i], sval)
 			if (sval == null) {
-				console.log("Is null")
 				$scope.appPrefs[prefs[i]] = false
 			} else {
 				if (sval == "true") {
@@ -23,9 +21,6 @@ app.controller('settingsController',
 					$scope.appPrefs[prefs[i]] = false
 				}
 			}
-
-			console.log($scope.appPrefs)
-			
 		}
 		})
 

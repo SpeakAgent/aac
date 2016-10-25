@@ -33,7 +33,9 @@
 					<ion-item item-toggle>
 						<div class="avatar-icon-placeholder"></div> Compaction
 						<label class="toggle toggle-balanced">
-						<input type="checkbox">
+						<input type="checkbox"
+							ng-click="setPreference('compactionOn')"
+							ng-model="appPrefs.compactionOn">
 							<div class="track">
 								<div class="handle"></div>
 							</div>
