@@ -23,14 +23,15 @@ app.controller('mainController',
   // TODO: Make more robust
 
   $scope.$on( "$ionicView.enter", function( scopes, states ) {
-          console.log("Entered main")
-            if (window.localStorage.getItem("showPK") == "true") {
-              $scope.appPrefs['showPK'] = true
-            } else {
-              $scope.appPrefs['showPK'] = false
-            }
-
-            console.log($scope.appPrefs)
+    var settings = ['showPK', 'compactionOn']
+    for (var i in settings) {
+      if (window.localStorage.getItem(settings[i]) == "true") {
+        $scope.appPrefs[settings[i]] = true
+      } else {
+        $scope.appPrefs[settings[i]] = false
+      }
+    }
+    console.log($scope.appPrefs)
     });
   
   // $scope.dummyBoards[$scope.selectedIndex].pk = "3";
@@ -328,16 +329,27 @@ app.controller('mainController',
     for (i in $scope.selectedTiles) {
       pks.push($scope.selectedTiles[i].pk);
     }
-    var req = {
-      url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
-      data: {pks: "[" + pks.toString() + "]"},
-      method: 'POST'
+
+    if ($scope.appPrefs.compactionOn == true) {
+      var req = {
+        url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
+        data: {pks: "[" + pks.toString() + "]"},
+        method: 'POST'
+      }
+      console.log(req);
+      $http(req).success(function(data) {
+        console.log(data);
+        $scope.speakText(data.sentence);
+      })
+    } else {
+      var phrase = "";
+      for (var i in $scope.selectedTiles) {
+        phrase = phrase + " " + $scope.selectedTiles[i].label
+      }
+      console.log("Compaction off. I would say", phrase)
+      $scope.speakText(phrase)
     }
-    console.log(req);
-    $http(req).success(function(data) {
-      console.log(data);
-      $scope.speakText(data.sentence);
-    })
+    
   }
 
   $scope.sayWord = function() {
