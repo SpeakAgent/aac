@@ -63,46 +63,7 @@ app.controller('mainController',
   // can't figure out how to pull this from the service
   // $scope.board = aacService.board;
 
-  $scope.homeButton = function(){
-    console.log("Working?");
-
-    $scope.class = "button-circle2";
-
-    if($scope.thisPk == "26"){
-      $scope.class = "button-circle2 yellow";
-    } else{
-      $scope.class = "button-circle2";
-    }
-  }
-
-  $scope.mainBoardLoader = function(sampleBoard, selectedPk){
-    $scope.selectedIndex = sampleBoard;
-    $scope.thisPk = selectedPk;
-    console.log("selectedIndex:" + $scope.selectedIndex + ", selectedPk " + $scope.thisPk);
-
-    if($scope.thisPk == 5){
-      $scope.board = aacService.aboutMeBoard;
-      $scope.aboutcircle = true;
-      $scope.class = "button-circle2";
-    }else{
-      $scope.homeButton();
-      var req2 = {
-        url: 'https://lexemes-dev.herokuapp.com/board/single/',
-        data: {pk: $scope.thisPk},
-        method: 'POST'
-      }
-
-      console.log("MBL req", req2)
-
-      $http(req2).success(function(data) {
-        console.log("MBL success", data)
-        $scope.board = data;
-        $scope.filled_tiles = Object.keys($scope.board.symbols)
-      })
-    }
-  }
-
-  $scope.mainBoardLoader(0, 26);
+  // $scope.mainBoardLoader(0, 26);
 
   $scope.selectedBoardTile = function(thisBoard){
     $scope.index = thisBoard;
@@ -117,16 +78,9 @@ app.controller('mainController',
     }
   }
 
-  $scope.lastSet = function(index){
-    console.log("Last Set button is working");
-    if ($scope.start > 0){
-      $scope.start = $scope.start - 24;
-      $scope.end = $scope.end - 24;
-    }
-
   $scope.mainBoardLoader = function(){
     var req = {
-      url: 'http://127.0.0.1:8000' + '/board/user/',
+      url: 'https://lexemes-dev.herokuapp.com' + '/board/user/',
       data: {user_username: localStorage.getItem('username')},
       method: 'POST',
       headers: {
@@ -140,11 +94,6 @@ app.controller('mainController',
       $scope.quickbar = data.quickbar;
       $scope.filled_tiles = Object.keys($scope.board.symbols)
     })
-  }
-
-  $scope.homeButton = function(){
-    $scope.board = $scope.userBoards[0];
-    $scope.filled_tiles = Object.keys($scope.board.symbols)
   }
 
   $scope.getAboutMe = function(){
@@ -163,7 +112,7 @@ app.controller('mainController',
     })
   }
 
-  $scope.getData();
+  // $scope.getData();
 
   $scope.chosenBoard = function(index){
     $scope.board = $scope.userBoards[index]; 
@@ -345,6 +294,8 @@ app.controller('mainController',
   $scope.selectedBtn2 = true;
   // $scope.class.color = "white";
 
+}
+
 
 
 // PHRASE BAR FUNCTIONS
@@ -460,14 +411,13 @@ app.controller('mainController',
       }, 250);
   };
 
-  $("div.regulars").on("mousedown", function() {
-      $(this).toggleClass('yellow');
-  })
-  .on("mouseup", function(e) {
-      $(this).toggleClass('yellow');
+  // $("div.regulars").on("mousedown", function() {
+  //     $(this).toggleClass('yellow');
+  // })
+  // .on("mouseup", function(e) {
+  //     $(this).toggleClass('yellow');
+  // });
   });
-
-});
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

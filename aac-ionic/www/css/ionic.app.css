@@ -215,12 +215,6 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2 
   background-color: #008485;
   border-radius: 37.5px; }
 
-.button-circle2.activated {
-  border: 5px solid #F8D338;
-  width: 80px;
-  height: 80px;
-  border-radius: 40px; }
-
 .yellow {
   border: 5px solid #F8D338;
   width: 80px;
@@ -500,14 +494,6 @@ input[type="text"]:focus, textarea:focus {
 #newboard2 {
   padding: 10px 30px 30px 25px; }
 
-.boards{
-  background: url('../img/new_dev_assets/board_tile_notched_default_1.svg');
-}
-
-.boards.activated{
-  background: url('../img/new_dev_assets/board_tile_notched_default_yellow.svg');
-}
-
 .new-board-placeholder {
   height: 650px;
   padding-right: -20px;
@@ -544,10 +530,6 @@ input[type="text"]:focus, textarea:focus {
   float: left;
   border: 2px solid #979797;
   text-align: center; }
-
-.actYellow {
-    background-color: #FFE98E;
-    border: 2px solid #F8D338; }
 
 #regularRow {
   margin: 0;
