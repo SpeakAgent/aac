@@ -373,13 +373,6 @@ app.controller('mainController',
         $scope.imageUrl = 'img/AAC_assets/delete_button.png';
       }, 250);
   };
-
-  $("div.regulars").on("mousedown", function() {
-      $(this).toggleClass('yellow');
-  })
-  .on("mouseup", function(e) {
-      $(this).toggleClass('yellow');
-  });
 });
 
 app.run(function($ionicPlatform) {
