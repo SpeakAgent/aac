@@ -56,7 +56,7 @@ app.controller('mainController',
 
   $scope.mainBoardLoader = function(){
     var req = {
-      url: 'http://127.0.0.1:8000' + '/board/user/',
+      url: appConfig.backendURL + '/board/user/',
       data: {user_username: localStorage.getItem('username')},
       method: 'POST',
       headers: {
@@ -255,10 +255,6 @@ app.controller('mainController',
   // $scope.class = "none";
   $scope.selectedBtn2 = true;
   // $scope.class.color = "white";
-
-}
-
-
 
 // PHRASE BAR FUNCTIONS
   $scope.deleteLastTile = function () {
