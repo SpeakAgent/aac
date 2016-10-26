@@ -316,6 +316,11 @@ app.controller('mainController',
        });
   };
 
+  $scope.bellSound = function(){
+    var audio = new Audio('assets/sounds/bell.wav');
+    audio.play();
+  }
+
   $scope.class = "white";
 
   $scope.chosenTile = function(tileIndex){
@@ -369,13 +374,13 @@ app.controller('mainController',
       }, 250);
   };
 
-  // $("div.regulars").on("mousedown", function() {
-  //     $(this).toggleClass('yellow');
-  // })
-  // .on("mouseup", function(e) {
-  //     $(this).toggleClass('yellow');
-  // });
+  $("div.regulars").on("mousedown", function() {
+      $(this).toggleClass('yellow');
+  })
+  .on("mouseup", function(e) {
+      $(this).toggleClass('yellow');
   });
+});
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
