@@ -23,7 +23,8 @@
 	<ion-content class= "appBody" id="bodyBack" style="background-color:#98E3E3;">
 	    <div class="row">
 			<div class="col col-33" id="settings-menu">
-				<ion-list> 
+				<div class="spacetest">
+				<ion-list>
 					<ion-item class="centered-title">
 						<h1 class="centered-title"><strong>Settings</strong></h1>
 					</ion-item>
@@ -41,7 +42,7 @@
 						<p style="color:#8F8F8F; padding:3px; font-weight:bold; font-style:italic;">Expand symbols into natural language.</p>
 					</ion-item>
 
-					<ion-item>
+					<!-- <ion-item>
 						<div class="avatar-icon-placeholder"></div> Chatting
 						<label class="toggle toggle-balanced">
 						<input type="checkbox">
@@ -55,7 +56,7 @@
 					<ion-item ng-click="panel(1)" id="settings">
 						<div class="avatar-icon-placeholder"></div>Settings Access
 						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
-					</ion-item>
+					</ion-item> -->
 
 					<ion-item ng-click="panel(6)" id="aboutMe">
 						<div class="avatar-icon-placeholder"></div>About Me Profile
@@ -71,7 +72,7 @@
 						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
 					</ion-item>
 
-					<ion-item ng-click="panel(3)" id="sound">
+					<!-- <ion-item ng-click="panel(3)" id="sound">
 						<div class="avatar-icon-placeholder"></div>Sound Effects
 						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
 					</ion-item>
@@ -89,10 +90,10 @@
 					<ion-item ng-click="panel(4)" id="phrase">
 						<div class="avatar-icon-placeholder"></div>Phrase Bar
 						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
-					</ion-item>
+					</ion-item> -->
 				</ion-list>
 
-				<ion-list>
+				<!-- <ion-list>
 					<div class="item item-divider"><strong>Layout</strong></div>
 
 					<ion-item item-toggle>
@@ -109,7 +110,8 @@
 						<div class="avatar-icon-placeholder"></div>Alternate Home Page
 						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
 					</ion-item>
-				</ion-list>
+				</ion-list> -->
+			</div>
 			</div>
 
 <!-- Settings Access Panel -->
@@ -119,7 +121,7 @@
 				<!-- <div class="bar bar-subheader">
 					<h1 class="title"><strong>Settings</strong></h1>
 				</div> -->
-				<ion-list> 
+				<ion-list>
 					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
 						<h1 class="centered-title"><strong>Settings Access</strong></h1>
 					</ion-item>
@@ -132,7 +134,7 @@
 								<div class="handle"></div>
 							</div>
 						</label>
-						
+
 						<p>PIN-Protection</p>
 				</div>
 				<p class="centered-note">Prevent users from changing settings.</p>
@@ -145,14 +147,14 @@
 
 <!-- Synthetic Voice Panel -->
 			<div class="col col-67" id="settings-modal" ng-show="step == 2">
-				<ion-list> 
+				<ion-list>
 					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
 						<h1 class="centered-title"><strong>Synthetic Voice</strong></h1>
 					</ion-item>
 				</ion-list>
 
 				<div class="settings-box">
-					<p>Synthetic Voices</p>	
+					<p>Synthetic Voices</p>
 					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Jane</span><i class="icon ion-play"></i></ion-checkbox>
 					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Malik</span><i class="icon ion-play"></i></ion-checkbox>
 					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Name</span><i class="icon ion-play"></i></ion-checkbox>
@@ -170,7 +172,7 @@
 
 <!-- Sound Effects Panel -->
 			<div class="col col-67" id="settings-modal" ng-show="step == 3">
-				<ion-list> 
+				<ion-list>
 					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
 						<h1 class="centered-title"><strong>Sound Effects</strong></h1>
 					</ion-item>
@@ -196,7 +198,7 @@
 
 <!-- Phrase Bar Panel -->
 			<div class="col col-67" id="settings-modal" ng-show="step == 4">
-				<ion-list> 
+				<ion-list>
 					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
 						<h1 class="centered-title"><strong>Phrase Bar</strong></h1>
 					</ion-item>
@@ -225,7 +227,7 @@
 
 <!-- Alternate Home Page -->
 			<div class="col col-67" id="settings-modal" ng-show="step == 5">
-				<ion-list> 
+				<ion-list>
 					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
 						<h1 class="centered-title"><strong>Alternate Home Page</strong></h1>
 					</ion-item>
@@ -258,7 +260,7 @@
 
 <!-- About Me Panel -->
 			<div class="col col-67" id="settings-modal" ng-show="step == 6">
-				<ion-list> 
+				<ion-list>
 					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
 						<!-- <p style="float:left; font-size:.9em; color:#088788;"><i class="icon ion-chevron-left"></i> General</p> -->
 						<h1 class="centered-title"><strong>About Me Profile</strong></h1>
