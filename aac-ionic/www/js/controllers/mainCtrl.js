@@ -12,7 +12,7 @@ app.filter('breaking', function(){
     if(word.length > 10){
       firstHalf = word.substr(0,9);
       return firstHalf;
-    } 
+    }
   }
 });
 
@@ -21,11 +21,11 @@ app.filter('breaking2', function(){
     if(word.length > 10){
       secondHalf = word.substr(10,word.length);
       return secondHalf;
-    } 
+    }
   }
 });
 
-app.controller('mainController', 
+app.controller('mainController',
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, aacService, $timeout) {
 
   $scope.columns = aacService.columns;
@@ -259,9 +259,11 @@ app.controller('mainController',
       }
     }
   }
-
+  $scope.play = false;
+  $scope.replay = false;
 // BOARD TILE FUNCTIONS
   $scope.clickTile = function(tile) {
+    $scope.play = true;
     $scope.selectedTiles.push(tile);
 
     console.log($scope.selectedTiles);
@@ -323,7 +325,7 @@ app.controller('mainController',
     console.log(req);
     $http(req).success(function(data) {
       console.log(data);
-      $scope.speakText(data.sentence);
+      $scope.speakCompleteText(data.sentence);
     })
   }
 
@@ -345,6 +347,19 @@ app.controller('mainController',
     TTS.speak({
            text: text,
        }, function () {
+           // Do Something after success
+       }, function (reason) {
+           // Handle the error case
+       });
+  };
+
+  $scope.speakCompleteText = function(text) {
+    TTS.speak({
+           text: text,
+       }, function () {
+           return $scope.play = false;
+           return $scope.replay = false;
+           console.log("no");
            // Do Something after success
        }, function (reason) {
            // Handle the error case

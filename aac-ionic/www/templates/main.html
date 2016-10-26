@@ -40,11 +40,11 @@
     <ion-content class= "appBody" id="bodyBack">
       <div class="row" id="regularRow">
         <div class="col col-10" id="regularRowBod">
-          <img src="img/AAC_assets/avatar_default.png"
-            ng-click="sayPhrase()"/>
+          <img src="img/AAC_assets/play.png" ng-click="sayPhrase()" ng-show="play" ng-hide="!play" class="play" />
+          <img src="img/AAC_assets/replay.png" ng-click="sayPhrase()" ng-show="replay" ng-hide"!replay" class="replay" />
+          <img src="img/AAC_assets/avatar_default.png" ng-class="{ 'playing' : play, 'replaying' : replay }"/>
 
-          
-          <div class="regulars" 
+          <div class="regulars"
             ng-repeat="phrase in quickPhrases"
             ng-click="sayQuickPhrase(phrase)"
             ng-style="isQuickPhrasePressed(phrase) && {'background-color': '#FFE98E', 'border': '2px solid #F8D338'}">
@@ -91,7 +91,7 @@
             </div>
           </div>
 
-          
+
             <div class="col col-40" id="board-section" style="margin-top:-43px;">
               <div class="boards" ng-repeat="board in dummyBoards | slice:start:end" ng-click="mainBoardLoader($index, board.pk); selectedBoardTile($index)">
                 <!-- chosenBoard($index) -->

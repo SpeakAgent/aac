@@ -1,5 +1,29 @@
 /* Empty. Add your own CSS if you like */
-.sidebar{
+/*.sidebar{
 	width:300px;
 	background-color: green;
+}*/
+
+.play {
+	width: 50%;
+    position: relative;
+    left: 30%;
+    top: 4.5%;
+}
+
+.replay {
+	width: 50%;
+    position: relative;
+    left: 30%;
+    top: 4.5%;
+}
+
+.playing {
+    margin-top: -50px;
+}
+
+
+
+.replaying {
+    margin-top: -50px;
 }
