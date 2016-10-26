@@ -1,5 +1,11 @@
 /* Empty. Add your own CSS if you like */
-.sidebar{
+/*.sidebar{
 	width:300px;
 	background-color: green;
+}*/
+
+.avatar-icon-placeholder img {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
 }
