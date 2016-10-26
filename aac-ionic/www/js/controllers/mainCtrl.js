@@ -27,7 +27,7 @@ app.filter('breaking2', function(){
 
 app.controller('mainController', 
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
-    $location, $ionicPopover, $ionicHistory, appConfig) {
+    $location, $ionicPopover, $ionicHistory, aacService, appConfig) {
     
     $ionicHistory.nextViewOptions({
       disableBack: true
@@ -45,18 +45,18 @@ app.controller('mainController',
       $scope.doLogout();
     };
 
-  $scope.columns = "abcdef";
-  $scope.rows = "123456";
+	$scope.columns = aacService.columns;
+	$scope.rows = aacService.rows;
   $scope.selectedTiles = [];
-  $scope.selectedIndex = -2;
-  $scope.titleLimit = 20; 
+	$scope.selectedIndex = aacService.selectedIndex;
+	$scope.titleLimit = aacService.titleLimit; 
   $scope.start = 0;
   $scope.end = 24;
   $scope.board = {};
 
   $scope.mainBoardLoader = function(){
     var req = {
-      url: appConfig.backendURL + '/board/user/',
+      url: 'http://127.0.0.1:8000' + '/board/user/',
       data: {user_username: localStorage.getItem('username')},
       method: 'POST',
       headers: {
@@ -65,8 +65,9 @@ app.controller('mainController',
     }
 
     $http(req).success(function(data) {
-      $scope.board = data[0];
-      $scope.userBoards = data;
+      $scope.board = data.boards[0];
+      $scope.userBoards = data.boards;
+      $scope.quickbar = data.quickbar;
       $scope.filled_tiles = Object.keys($scope.board.symbols)
     })
   };
@@ -249,13 +250,6 @@ app.controller('mainController',
       }
     }
   }
-
-  $scope.class = "white";
-
-  $scope.chosenTile = function(tileIndex){
-    $scope.selectedIndex = tileIndex;
-
-  };
 
   // $scope.class = "none";
   $scope.selectedBtn2 = true;

@@ -43,20 +43,35 @@
             <img src="img/AAC_assets/avatar_default.png"
               ng-click="sayPhrase()"/>
 
-            <div class="regulars">
-              Yes
+            <div class="regulars" ng-click="chosenTile(quickbar.lexeme); sayWord();">
+              <span ng-bind="quickbar.lexeme.lexeme | limitTo: titleLimit"></span>
+              <span ng-show="quickbar.lexeme.lexeme.length > titleLimit">...</span>
+              <br />
+              <img src = "{{quickbar.lexeme.symbol.image}}"
+                style="width:40px;height:40px">
             </div>
 
-            <div class="regulars">
-              No
+            <div class="regulars" ng-click="chosenTile(quickbar.lexeme2);sayWord();">
+              <span ng-bind="quickbar.lexeme2.lexeme | limitTo: titleLimit"></span>
+              <span ng-show="quickbar.lexeme2.lexeme.length > titleLimit">...</span>
+              <br />
+              <img src = "{{quickbar.lexeme2.symbol.image}}"
+                style="width:40px;height:40px">
             </div>
 
-            <div class="regulars">
-              Hold On
+            <div class="regulars" ng-click="chosenTile(quickbar.lexeme3);sayWord();">
+              <span ng-bind="quickbar.lexeme3.lexeme | limitTo: titleLimit"></span>
+              <span ng-show="quickbar.lexeme3.lexeme.length > titleLimit">...</span>
+              <br />
+              <img src = "{{quickbar.lexeme3.symbol.image}}"
+                style="width:40px;height:40px">
             </div>
 
-            <div class="regulars">
-              Help
+            <div class="regulars" ng-click="chosenTile(quickbar.lexeme4); sayWord();">
+              <span ng-bind="quickbar.lexeme4.lexeme | limitTo: titleLimit"></span>
+              <span ng-show="quickbar.lexeme4.lexeme.length > titleLimit">...</span>
+              <img src = "{{quickbar.lexeme4.symbol.image}}"
+                style="width:40px;height:40px">
             </div>
           </div>
 
@@ -93,7 +108,7 @@
             </div>
 
             <div class="col col-40" id="board-section">              
-                <div class="boards" ng-repeat="userBoard in userBoards | sliceArr:start:end" ng-click="chosenBoard($index); sayWord()">
+                <div class="boards" ng-repeat="userBoard in userBoards | sliceArr:start:end" ng-click="chosenBoard($index);">
                   <p style="position:fixed; z-index:3; margin-left:15px;" ng-model="titleLimit">{{userBoard.board.title | limitTo: titleLimit}} <span ng-show="boardObj.board.name.length > titleLimit">...</span></p>
 
                   <img ng-if="userBoard.board.image" ng-src="{{userBoard.board.image}}" alt="{{userBoard.board.title}}" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-50px;"\>
