@@ -84,7 +84,13 @@ a#btn-styling.button.button-outline.button-small {
   font-size: .75em;
   margin: 4.5px;
   float: left;
-  text-align: center; }
+  text-align: center;
+  background: url('../img/new_dev_assets/board_tile_notched_default_1.svg');
+}
+
+.boards.activated{
+  background: url('../img/new_dev_assets/board_tile_notched_default_yellow.svg');
+}
 
 .boards a {
   color: #000000;
@@ -214,6 +220,13 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2 
   height: 75px;
   background-color: #008485;
   border-radius: 37.5px; }
+
+.button-circle.activated,
+.button-circle2.activated {
+  border: 5px solid #F8D338;
+  width: 80px;
+  height: 80px;
+  border-radius: 40px; }
 
 .yellow {
   border: 5px solid #F8D338;
@@ -493,6 +506,8 @@ input[type="text"]:focus, textarea:focus {
 
 #newboard2 {
   padding: 10px 30px 30px 25px; }
+
+
 
 .new-board-placeholder {
   height: 650px;

@@ -53,34 +53,10 @@ app.controller('mainController',
   $scope.start = 0;
   $scope.end = 24;
   $scope.board = {};
-  $scope.dummyBoards = aacService.dummyBoards;
-  $scope.quickPhrasePressed = [];
-  $scope.quickPhrases = ['Yes', 'No', 'Hold on', 'Help']
-
-  // $scope.dummyBoards[$scope.selectedIndex].pk = "3";
-  // $scope.longWords = aacService.longWords;
-
-  // can't figure out how to pull this from the service
-  // $scope.board = aacService.board;
-
-  // $scope.mainBoardLoader(0, 26);
-
-  $scope.selectedBoardTile = function(thisBoard){
-    $scope.index = thisBoard;
-    $scope.allTileBacks = document.getElementsByClassName("board-tile");
-    console.log($scope.allTileBacks[$scope.index]);
-    for(i=0; i<$scope.allTileBacks.length; i++){
-      if($scope.allTileBacks[i] != $scope.allTileBacks[$scope.index]){
-        $scope.allTileBacks[i].src = "img/new_dev_assets/board_tile_notched_default_1.svg";
-      } else{
-        $scope.allTileBacks[i].src = "img/new_dev_assets/board_tile_notched_default_yellow.svg";
-      }
-    }
-  }
 
   $scope.mainBoardLoader = function(){
     var req = {
-      url: 'https://lexemes-dev.herokuapp.com' + '/board/user/',
+      url: 'http://127.0.0.1:8000' + '/board/user/',
       data: {user_username: localStorage.getItem('username')},
       method: 'POST',
       headers: {
@@ -94,25 +70,9 @@ app.controller('mainController',
       $scope.quickbar = data.quickbar;
       $scope.filled_tiles = Object.keys($scope.board.symbols)
     })
-  }
+  };
 
-  $scope.getAboutMe = function(){
-    var req2 = {
-      url: appConfig.backendURL + '/board/first/user/',
-      data: {user_username: localStorage.getItem('username')},
-      method: 'POST',
-      headers: {
-          Authorization: 'JWT ' + localStorage.getItem('authToken')
-      }
-    }
-
-    $http(req2).success(function(data) {
-      $scope.board = data;
-      $scope.filled_tiles = Object.keys($scope.board.symbols)
-    })
-  }
-
-  // $scope.getData();
+  $scope.mainBoardLoader();
 
   $scope.chosenBoard = function(index){
     $scope.board = $scope.userBoards[index]; 
@@ -123,7 +83,6 @@ app.controller('mainController',
     $scope.board = $scope.userBoards[0];
     $scope.filled_tiles = Object.keys($scope.board.symbols)
   }
-
 
 // COLOR MODAL FUNCTIONS AND OBJECTS
   $scope.colorName =[
@@ -210,6 +169,7 @@ app.controller('mainController',
 
   $scope.colorSelect = function(colorIndex){
     $scope.selectedIndex = colorIndex;
+
     var container = document.getElementById('container');
 
     var bodyBack = document.getElementById('bodyBack');
@@ -283,10 +243,12 @@ app.controller('mainController',
     }else{
       $scope.selectedTiles.push(tile);
 
-    $scope.selectedIndex = tile;
+      console.log($scope.selectedTiles);
+      $scope.selectedIndex = tile;
 
-    if($scope.selectedTiles[$scope.selectedIndex] == undefined){
-
+      if($scope.selectedTiles[$scope.selectedIndex] == undefined){
+        console.log("no index!!");
+      }
     }
   }
 

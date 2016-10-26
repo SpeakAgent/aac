@@ -127,6 +127,11 @@ a#btn-styling.button.button-outline.button-small{
   margin: 4.5px;
   float: left;
   text-align: center;
+  background: url('../img/new_dev_assets/board_tile_notched_default_1.svg');
+}
+
+.boards.activated{
+  background: url('../img/new_dev_assets/board_tile_notched_default_yellow.svg');
 }
 
 .boards a{
@@ -289,9 +294,13 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2{
   border-radius: 37.5px;
 }
 
-// .button-circle2.yellow{
-//   border: 5px solid #F8D338;
-// }
+.button-circle2.activated,
+.button-circle.activated{
+  border: 5px solid #F8D338;
+  width: 80px;
+  height: 80px;
+}
+
 .yellow{
   border: 5px solid #F8D338;
   width: 80px;
