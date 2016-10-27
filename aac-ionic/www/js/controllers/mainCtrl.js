@@ -12,7 +12,7 @@ app.filter('breaking', function(){
     if(word.length > 10){
       firstHalf = word.substr(0,9);
       return firstHalf;
-    } 
+    }
   }
 });
 
@@ -21,11 +21,11 @@ app.filter('breaking2', function(){
     if(word.length > 10){
       secondHalf = word.substr(10,word.length);
       return secondHalf;
-    } 
+    }
   }
 });
 
-app.controller('mainController', 
+app.controller('mainController',
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, aacService, $timeout) {
 
   $scope.columns = aacService.columns;
@@ -195,7 +195,39 @@ app.controller('mainController',
   }
 
   $scope.closeModal = function(index){
-    $scope.Modal.hide()
+    $scope.Modal.hide();
+    var container = document.getElementById('container');
+
+    var bodyBack = document.getElementById('bodyBack');
+    bodyBack.style.backgroundColor = $scope.colorName[0].secondaryColor;
+
+    var fullBody = document.getElementById('full-body');
+    fullBody.style.backgroundColor = $scope.colorName[0].primaryColor;
+
+    var btnSection = document.getElementById('btn-section');
+    btnSection.style.backgroundColor = $scope.colorName[0].primaryColor;
+
+    var buttonCircle = document.getElementsByClassName('button-circle');
+    console.log(buttonCircle[1].style.backgroundColor);
+
+    var colorChoice = document.getElementsByClassName('color-choice');
+
+    var scribble = document.getElementById('scribble');
+    var originalImg = document.getElementsByClassName('originalImg');
+
+    var placeholder = document.createElement("img");
+    placeholder.src = "img/color_change/colorBlob_white.svg";
+    placeholder.style.width = "70%";
+    placeholder.style.height = "70%";
+    placeholder.id = "placeholder";
+
+    for(var i = 0; i < buttonCircle.length; i++){
+      buttonCircle[i].style.backgroundColor = $scope.colorName[0].secondaryColor;
+      colorChoice[0].style.backgroundColor = $scope.colorName[0].primaryColor;
+      if(originalImg[0].style.display = "none"){
+        colorChoice[0].appendChild(placeholder);
+      }
+    }
   };
 
   $scope.doneCancel = function(){
