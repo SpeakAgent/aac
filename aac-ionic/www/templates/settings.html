@@ -145,27 +145,36 @@
 
 <!-- Synthetic Voice Panel -->
 			<div class="col col-67" id="settings-modal" ng-show="step == 2">
-				<ion-list> 
-					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
-						<h1 class="centered-title"><strong>Synthetic Voice</strong></h1>
-					</ion-item>
-				</ion-list>
+				<form ng-submit="synthVoiceSubmit()">
+					<ion-list> 
+						<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
+							<h1 class="centered-title"><strong>Synthetic Voice</strong></h1>
+						</ion-item>
+					</ion-list>
+					<div ng-include src="'templates/message.html'"></div>
 
-				<div class="settings-box">
-					<p>Synthetic Voices</p>	
-					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Jane</span><i class="icon ion-play"></i></ion-checkbox>
-					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Malik</span><i class="icon ion-play"></i></ion-checkbox>
-					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Name</span><i class="icon ion-play"></i></ion-checkbox>
-				</div>
-
-				<div class="settings-box">
-					<div class="item range" style="border-color:white;">
-						<div class="avatar-icon-placeholder"></div>
-							<input type="range" name="voice">
-						<div class="avatar-icon-placeholder"></div>
+					<div class="settings-box">
+						<p>Synthetic Voices</p>	
+						<ion-list>
+							<ion-radio type="radio" style="border-color:white;" ng-model="user.userinfo.synthetic_voice" value="VICKI"><span class="checkbox-text">Vicki</span><i class="icon ion-play"></i></ion-radio>
+							<ion-radio type="radio" style="border-color:white;" ng-model="user.userinfo.synthetic_voice" value="ALEX"><span class="checkbox-text">Alex</span><i class="icon ion-play"></i></ion-radio>
+							<ion-radio type="radio" style="border-color:white;" ng-model="user.userinfo.synthetic_voice" value="VICTORIA"><span class="checkbox-text">Victoria</span><i class="icon ion-play"></i></ion-radio>
+						</ion-list>
 					</div>
-					<p>Voice Speed</p>
-				</div>
+
+					<div class="settings-box">
+						<p>Voice Speed</p>
+						<div class="item range" style="border-color:white;">
+							<div class="avatar-icon-placeholder"></div>
+							<input type="range" name="synth-speed" min="0" max="100" value="{{ user.userinfo.voice_speed }}" ng-model="user.userinfo.voice_speed">
+							<div class="avatar-icon-placeholder"></div>
+						</div>
+					</div>
+
+					<div class="settings-box">
+						<button type="submit" class="custom-button button-block">Save</button>
+					</div>
+				</form>
 			</div>
 
 <!-- Sound Effects Panel -->
