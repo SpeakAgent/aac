@@ -4,17 +4,27 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 
+var appConfig = angular.module('appConfig', []).constant('appConfig', {
+    'backendURL': 'https://lexemes-dev.herokuapp.com'
+})
 
-angular.module('main', ['ionic', 'main.Ctrl', 'main.aacService', 'settings.Ctrl', 'boardFactory.Ctrl'])
+angular.module('main', ['ionic', 'main.Ctrl', 'settings.Ctrl', 'main.aacService',
+                        'boardFactory.Ctrl', 'Login.Ctrl', 'appConfig'])
 
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/main');
 
-    $stateProvider.state('main',{
-        controller:'mainController',
-        url: '/main',
-        templateUrl: 'templates/main.html'
-      });
+   $stateProvider.state('main',{
+      controller:'mainController',
+      url: '/main',
+      templateUrl: 'templates/main.html'
+    });
+
+    $stateProvider.state('login', {
+      controller: 'LoginController',
+      url: '/login',
+      templateUrl: 'templates/login.html',
+    })
 
     $stateProvider.state('settings',{
         controller: 'settingsController',
