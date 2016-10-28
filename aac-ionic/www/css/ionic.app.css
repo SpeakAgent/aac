@@ -85,12 +85,10 @@ a#btn-styling.button.button-outline.button-small {
   margin: 4.5px;
   float: left;
   text-align: center;
-  background: url('../img/new_dev_assets/board_tile_notched_default_1.svg');
-}
+  background: url("../img/new_dev_assets/board_tile_notched_default_1.svg"); }
 
-.boards.activated{
-  background: url('../img/new_dev_assets/board_tile_notched_default_yellow.svg');
-}
+.boards.activated {
+  background: url("../img/new_dev_assets/board_tile_notched_default_yellow.svg"); }
 
 .boards a {
   color: #000000;
@@ -199,22 +197,33 @@ button#btn-styling.button.button-outline.button-calm.button-small {
 button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2 {
   border-color: #6FCACB; }
 
-.pull-left{
-    float: left;
-}
+#button-circle {
+  width: 75px;
+  height: 75px;
+  background-color: #008485;
+  border-radius: 37.5px;
+  float: left;
+  margin-left: 20px; }
 
 .button-circle {
   width: 75px;
   height: 75px;
   background-color: #008485;
   border-radius: 37.5px;
+  float: left;
   margin-left: 20px; }
 
+.button-circle2 {
+  width: 75px;
+  height: 75px;
+  background-color: #008485;
+  border-radius: 37.5px; }
+
+.button-circle2.activated,
 .button-circle.activated {
   border: 5px solid #F8D338;
   width: 80px;
-  height: 80px;
-  border-radius: 40px; }
+  height: 80px; }
 
 .yellow {
   border: 5px solid #F8D338;
@@ -495,8 +504,6 @@ input[type="text"]:focus, textarea:focus {
 #newboard2 {
   padding: 10px 30px 30px 25px; }
 
-
-
 .new-board-placeholder {
   height: 650px;
   padding-right: -20px;
@@ -521,6 +528,9 @@ input[type="text"]:focus, textarea:focus {
   float: right;
   background: yellow; }
 
+.no-mrg {
+  margin: 0; }
+
 .regulars {
   background-color: #ffffff;
   padding: 10%;
@@ -533,10 +543,6 @@ input[type="text"]:focus, textarea:focus {
   float: left;
   border: 2px solid #979797;
   text-align: center; }
-
-.regulars.activated{
-  border: 5px solid #F8D338;
-}
 
 #regularRow {
   margin: 0;
@@ -695,9 +701,6 @@ input[type="text"]:focus, textarea:focus {
   margin-top: 1px;
   margin-left: 2px;
   margin-bottom: -20px; }
-
-.no-mrg{
-  margin: 0;}
 
 .toggle-note {
   font-size: 8px;
