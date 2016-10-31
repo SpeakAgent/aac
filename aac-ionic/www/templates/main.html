@@ -40,7 +40,12 @@
   <ion-content class= "appBody" id="bodyBack">
     <div class="row" id="regularRow">
       <div class="col col-10" id="regularRowBod">
-        <img src="img/AAC_assets/avatar_default.png" ng-click="sayPhrase()"/>
+
+        <div ng-click="sayPhrase()">
+          <img src="img/AAC_assets/avatar_default.png"/>
+          <img src="img/AAC_assets/play.png" alt="Play" class="play" ng-show="play">
+          <img src="img/AAC_assets/replay.png" alt="Play" class="replay" ng-show="replay">
+        </div>  
 
         <div class="regulars"
           ng-repeat="phrase in quickPhrases"
