@@ -1,9 +1,9 @@
 var app = angular.module('main.Ctrl', ['ionic']);
 
-app.filter('slice', function(){
+app.filter('sliceArr', function(){
   return function(arr, start, end){
+    if (!arr || !arr.length >= 25) { return; }
     return arr.slice(start, end);
-    console.log(arr);
   };
 });
 
@@ -26,98 +26,63 @@ app.filter('breaking2', function(){
 });
 
 app.controller('mainController',
-  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, aacService, $timeout) {
+  function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
+    $location, $ionicPopover, $ionicHistory, aacService, appConfig, $timeout) {
 
-  $scope.columns = aacService.columns;
-  $scope.rows = aacService.rows;
+    $ionicHistory.nextViewOptions({
+      disableBack: true
+    });
+
+    $scope.doLogout = function() {
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('username');
+      localStorage.removeItem('first_name');
+      localStorage.removeItem('last_name');
+      $location.path('/login');
+    };
+
+    if (localStorage.getItem("username") === null) {
+      $scope.doLogout();
+    };
+
+	$scope.columns = aacService.columns;
+	$scope.rows = aacService.rows;
   $scope.selectedTiles = [];
-  $scope.selectedIndex = aacService.selectedIndex;
-  $scope.titleLimit = aacService.titleLimit;
+	$scope.selectedIndex = aacService.selectedIndex;
+	$scope.titleLimit = aacService.titleLimit;
   $scope.start = 0;
   $scope.end = 24;
   $scope.board = {};
-  $scope.dummyBoards = aacService.dummyBoards;
-  $scope.quickPhrasePressed = [];
-  $scope.quickPhrases = ['Yes', 'No', 'Hold on', 'Help']
 
-  // $scope.dummyBoards[$scope.selectedIndex].pk = "3";
-  // $scope.longWords = aacService.longWords;
+  $scope.mainBoardLoader = function(){
+    var req = {
+      url: appConfig.backendURL + '/board/user/',
+      data: {user_username: localStorage.getItem('username')},
+      method: 'POST',
+      headers: {
+          Authorization: 'JWT ' + localStorage.getItem('authToken')
+      }
+    }
 
-  // can't figure out how to pull this from the service
-  // $scope.board = aacService.board;
+    $http(req).success(function(data) {
+      $scope.board = data.boards[0];
+      $scope.userBoards = data.boards;
+      $scope.quickbar = data.quickbar;
+      $scope.filled_tiles = Object.keys($scope.board.symbols)
+    })
+  };
+
+  $scope.mainBoardLoader();
+
+  $scope.chosenBoard = function(index){
+    $scope.board = $scope.userBoards[index];
+    $scope.filled_tiles = Object.keys($scope.board.symbols)
+  };
 
   $scope.homeButton = function(){
-    console.log("Working?");
-
-    $scope.class = "button-circle2";
-
-    if($scope.thisPk == "26"){
-      $scope.class = "button-circle2 yellow";
-    } else{
-      $scope.class = "button-circle2";
-    }
+    $scope.board = $scope.userBoards[0];
+    $scope.filled_tiles = Object.keys($scope.board.symbols)
   }
-
-  $scope.mainBoardLoader = function(sampleBoard, selectedPk){
-    $scope.selectedIndex = sampleBoard;
-    $scope.thisPk = selectedPk;
-    console.log("selectedIndex:" + $scope.selectedIndex + ", selectedPk " + $scope.thisPk);
-
-    if($scope.thisPk == 5){
-      $scope.board = aacService.aboutMeBoard;
-      $scope.aboutcircle = true;
-      $scope.class = "button-circle2";
-    }else{
-      $scope.homeButton();
-      var req2 = {
-        url: 'https://lexemes-dev.herokuapp.com/board/single/',
-        data: {pk: $scope.thisPk},
-        method: 'POST'
-      }
-
-      console.log("MBL req", req2)
-
-      $http(req2).success(function(data) {
-        console.log("MBL success", data)
-        $scope.board = data;
-        $scope.filled_tiles = Object.keys($scope.board.symbols)
-      })
-    }
-  }
-
-  $scope.mainBoardLoader(0, 26);
-
-  $scope.selectedBoardTile = function(thisBoard){
-    $scope.index = thisBoard;
-    $scope.allTileBacks = document.getElementsByClassName("board-tile");
-    console.log($scope.allTileBacks[$scope.index]);
-    for(i=0; i<$scope.allTileBacks.length; i++){
-      if($scope.allTileBacks[i] != $scope.allTileBacks[$scope.index]){
-        $scope.allTileBacks[i].src = "img/new_dev_assets/board_tile_notched_default_1.svg";
-      } else{
-        $scope.allTileBacks[i].src = "img/new_dev_assets/board_tile_notched_default_yellow.svg";
-      }
-    }
-  }
-
-  $scope.lastSet = function(index){
-    console.log("Last Set button is working");
-    if ($scope.start > 0){
-      $scope.start = $scope.start - 24;
-      $scope.end = $scope.end - 24;
-    }
-  }
-
-  $scope.nextSet = function(index){
-    console.log("Next Set button is working");
-    if ($scope.end < $scope.dummyBoards.length){
-      $scope.start = $scope.start + 24;
-      $scope.end = $scope.end + 24;
-    }else{
-      console.log("No more left");
-    }
-  }
-
 
 // COLOR MODAL FUNCTIONS AND OBJECTS
   $scope.colorName =[
@@ -237,7 +202,6 @@ app.controller('mainController',
   $scope.colorSelect = function(colorIndex){
     $scope.selectedIndex = colorIndex;
 
-    console.log($scope.selectedIndex);
     var container = document.getElementById('container');
 
     var bodyBack = document.getElementById('bodyBack');
@@ -253,7 +217,6 @@ app.controller('mainController',
     // buttonCircle2.style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
 
     var buttonCircle = document.getElementsByClassName('button-circle');
-    console.log(buttonCircle[1].style.backgroundColor);
 
     var colorChoice = document.getElementsByClassName('color-choice');
 
@@ -293,29 +256,53 @@ app.controller('mainController',
   }
 
 // BOARD TILE FUNCTIONS
+  //Play and replay
+  $scope.play = false;
+  $scope.replay = false;
   $scope.clickTile = function(tile) {
-    $scope.selectedTiles.push(tile);
+    if(tile.target_board){
+      var req = {
+        url: appConfig.backendURL + '/board/single/',
+        data: {pk: tile.target_board.pk},
+        method: 'POST',
+        headers: {
+            Authorization: 'JWT ' + localStorage.getItem('authToken')
+        }
+      }
 
-    console.log($scope.selectedTiles);
-    $scope.selectedIndex = tile;
+      $http(req).success(function(data) {
+        console.log('loadingData');
+        $scope.board = data;
+        $scope.filled_tiles = Object.keys($scope.board.symbols)
+      })
+    }else{
+      //Se verifica si el usuario ha dado play o replay
+        if ($scope.replay) {
+          //Se limpia el array de items y el index
+          $scope.selectedTiles = [];
+          $scope.selectedIndex = undefined;
+        }
 
-    if($scope.selectedTiles[$scope.selectedIndex] == undefined){
-      console.log("no index!!");
+          $scope.selectedTiles.push(tile);
+          $scope.selectedIndex = tile;
+
+          //Se muestra el boton de play
+          $scope.play = true;
+          //Se oculta el boton de replay
+          $scope.replay = false;
+
+      console.log($scope.selectedTiles);
+      $scope.selectedIndex = tile;
+
+      if($scope.selectedTiles[$scope.selectedIndex] == undefined){
+        console.log("no index!!");
+      }
     }
   }
-
-  $scope.class = "white";
-
-  $scope.chosenTile = function(tileIndex){
-    $scope.selectedIndex = tileIndex;
-    console.log(tileIndex);
-  };
 
   // $scope.class = "none";
   $scope.selectedBtn2 = true;
   // $scope.class.color = "white";
-
-
 
 // PHRASE BAR FUNCTIONS
   $scope.deleteLastTile = function () {
@@ -341,34 +328,35 @@ app.controller('mainController',
     }
   }
 
-  $scope.sayPhrase = function () {
-    console.log($scope.selectedTiles);
-    var pks = [];
-    for (i in $scope.selectedTiles) {
-      pks.push($scope.selectedTiles[i].pk);
-    }
-    var req = {
-      url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
-      data: {pks: "[" + pks.toString() + "]"},
-      method: 'POST'
-    }
-    console.log(req);
-    $http(req).success(function(data) {
-      console.log(data);
-      $scope.speakText(data.sentence);
-    })
-  }
+   $scope.sayPhrase = function () {
+     console.log($scope.selectedTiles);
+     var pks = [];
+     for (i in $scope.selectedTiles) {
+       pks.push($scope.selectedTiles[i].pk);
+     }
+     var req = {
+       url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
+       data: {pks: "[" + pks.toString() + "]"},
+       method: 'POST'
+     }
+     console.log(req);
+     $http(req).success(function(data) {
+       console.log(data);
+       $scope.speakText(data.sentence);
+       //Se oculta boton de play
+       $scope.play = false;
+       //Se muestra boton de play
+       $scope.replay = true;
+     })
+   }
 
   $scope.sayWord = function() {
-    console.log($scope.selectedIndex.pk);
     var req = {
-      url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
+      url: appConfig.backendURL + '/compaction/symbols/',
       data: {pks: "[" + $scope.selectedIndex.pk + "]"},
       method: 'POST'
     }
-    console.log(req);
     $http(req).success(function(data) {
-      console.log(data);
       $scope.speakText(data.sentence);
     })
   }
@@ -383,15 +371,18 @@ app.controller('mainController',
        });
   };
 
+  $scope.bellSound = function(){
+    var audio = new Audio('assets/sounds/bell.wav');
+    audio.play();
+  }
+
   $scope.class = "white";
 
   $scope.chosenTile = function(tileIndex){
     $scope.selectedIndex = tileIndex;
-    console.log(tileIndex);
   };
 
   $scope.lastSet = function(index){
-    console.log("Last Set button is working");
     if ($scope.start > 0){
       $scope.start = $scope.start - 24;
       $scope.end = $scope.end - 24;
@@ -399,12 +390,11 @@ app.controller('mainController',
   }
 
   $scope.nextSet = function(index){
-    console.log("Next Set button is working");
-    if ($scope.end < $scope.dummyBoards.length){
+    if ($scope.end < $scope.userBoards.length){
       $scope.start = $scope.start + 24;
       $scope.end = $scope.end + 24;
     }else{
-      console.log("No more left");
+
     }
   }
 
@@ -413,7 +403,6 @@ app.controller('mainController',
   // $scope.class.color = "white";
 
   $scope.activeHide = function(){
-    console.log("So, it works ...");
     $scope.class = "none";
     if($scope.class === "none"){
       $scope.class = "selected-btn2";
@@ -439,14 +428,6 @@ app.controller('mainController',
         $scope.imageUrl = 'img/AAC_assets/delete_button.png';
       }, 250);
   };
-
-  $("div.regulars").on("mousedown", function() {
-      $(this).toggleClass('yellow');
-  })
-  .on("mouseup", function(e) {
-      $(this).toggleClass('yellow');
-  });
-
 });
 
 app.run(function($ionicPlatform) {
