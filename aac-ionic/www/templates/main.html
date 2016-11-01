@@ -94,8 +94,9 @@
                 <img src = "{{symbol.symbol.image}}"
                   style="width:40px;height:40px">
               </div>
-              <img src="img/AAC_assets/delete_button.png" id="home-section"
-                ng-click="deleteLastTile()" />
+              <img ng-src="{{ imageUrl }}" id="home-section" ng-click="deleteLastTile()" on-tap="onTap()"/>
+
+              <img ng-src="img/chat_buddies/{{selectedBuddy}}" style="width:12%;float:right;margin-top:-15px;display:block;margin-right:-10.5rem" ng-show="activeChat"/>
             </div>
           </div>
 
@@ -135,11 +136,11 @@
         </div>
         
         <div class="col col-60">
-          <div class="button-circle"
-            on-double-tap="handlerTap('bell');"
-            ng-click="bellAction()"
-            ng-class="{'inactive': buttons.bell}">
-            <img src="img/new_dev_assets/bell.png" style="margin-left:17px; margin-top:14px;" />
+          <div class="button-circle pull-left"
+           on-double-tap="handlerTap('bell');"
+           ng-class="{'inactive': buttons.bell}"
+           ng-click="bellSound()" >
+            <img src="img/new_dev_assets/bell.png" style="margin-left:17px; margin-top:14px;"/>
           </div>
 
           <div class="button-circle"

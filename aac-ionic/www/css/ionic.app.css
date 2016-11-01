@@ -197,14 +197,6 @@ button#btn-styling.button.button-outline.button-calm.button-small {
 button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2 {
   border-color: #6FCACB; }
 
-#button-circle {
-  width: 75px;
-  height: 75px;
-  background-color: #008485;
-  border-radius: 37.5px;
-  float: left;
-  margin-left: 20px; }
-
 .button-circle {
   width: 75px;
   height: 75px;
@@ -221,9 +213,9 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2 
 
 .button-circle2.activated,
 .button-circle.activated {
-  border: 5px solid #F8D338;
-  width: 80px;
-  height: 80px; }
+    border: 3px solid #F8D338;
+    width: 80px;
+    height: 80px;}
 
 .yellow {
   border: 5px solid #F8D338;

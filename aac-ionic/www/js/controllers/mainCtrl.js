@@ -164,9 +164,41 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }, 500);
     }
 
-    $scope.closeModal = function(index){
-      $scope.Modal.hide()
-    };
+  $scope.closeModal = function(index){
+    $scope.Modal.hide();
+    var container = document.getElementById('container');
+
+    var bodyBack = document.getElementById('bodyBack');
+    bodyBack.style.backgroundColor = $scope.colorName[0].secondaryColor;
+
+    var fullBody = document.getElementById('full-body');
+    fullBody.style.backgroundColor = $scope.colorName[0].primaryColor;
+
+    var btnSection = document.getElementById('btn-section');
+    btnSection.style.backgroundColor = $scope.colorName[0].primaryColor;
+
+    var buttonCircle = document.getElementsByClassName('button-circle');
+    console.log(buttonCircle[1].style.backgroundColor);
+
+      var colorChoice = document.getElementsByClassName('color-choice');
+
+      var scribble = document.getElementById('scribble');
+      var originalImg = document.getElementsByClassName('originalImg');
+
+      var placeholder = document.createElement("img");
+      placeholder.src = "img/color_change/colorBlob_white.svg";
+      placeholder.style.width = "70%";
+      placeholder.style.height = "70%";
+      placeholder.id = "placeholder";
+
+    for(var i = 0; i < buttonCircle.length; i++){
+      buttonCircle[i].style.backgroundColor = $scope.colorName[0].secondaryColor;
+      colorChoice[0].style.backgroundColor = $scope.colorName[0].primaryColor;
+      if(originalImg[0].style.display = "none"){
+        colorChoice[0].appendChild(placeholder);
+      }
+    }
+  };
 
     $scope.doneCancel = function(){
       this.style.border = "blue";
@@ -249,12 +281,13 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           $scope.filled_tiles = Object.keys($scope.board.symbols)
         })
       }else{
-        //Se verifica si el usuario ha dado play o replay
-        if ($scope.replay) {
-          //Se limpia el array de items y el index
-          $scope.selectedTiles = [];
-          $scope.selectedIndex = undefined;
-        }
+        if ($scope.selectedTiles.length < 8) {
+          //Se verifica si el usuario ha dado play o replay
+          if ($scope.replay) {
+            //Se limpia el array de items y el index
+            $scope.selectedTiles = [];
+            $scope.selectedIndex = undefined;
+          }
 
         $scope.selectedTiles.push(tile);
         $scope.selectedIndex = tile;
@@ -264,11 +297,12 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         //Se oculta el boton de replay
         $scope.replay = false;
 
-        console.log($scope.selectedTiles);
-        $scope.selectedIndex = tile;
+          console.log($scope.selectedTiles);
+          $scope.selectedIndex = tile;
 
-        if($scope.selectedTiles[$scope.selectedIndex] == undefined){
-          console.log("no index!!");
+          if($scope.selectedTiles[$scope.selectedIndex] == undefined){
+            console.log("no index!!");
+          }
         }
       }
     }
@@ -345,6 +379,10 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       };
 
       $scope.bellSound = function(){
+        if ($scope.buttons.bell) {
+          return;
+        }
+
         var audio = new Audio('assets/sounds/bell.wav');
         audio.play();
       }
@@ -384,23 +422,15 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         }
       }
 
-      $scope.hideDone = function(){
-        if($scope.class === "selected-btn2"){
-          $scope.class = "none";
-          $scope.hide = false;
-          $scope.selectedBtn2 = true;
-        }
-      }
+  $scope.onTap = function() {
+      console.log("yes?");
+      $scope.imageUrl = 'img/AAC_assets/delete_button_tapped.png';
+      $timeout(function () {
+        $scope.imageUrl = 'img/AAC_assets/delete_button.png';
+      }, 250);
+  };
 
       $scope.imageUrl = 'img/AAC_assets/delete_button.png';
-
-      $scope.onTap = function() {
-        console.log("yes?");
-        $scope.imageUrl = 'img/AAC_assets/delete_button_tapped.png';
-        $timeout(function () {
-          $scope.imageUrl = 'img/AAC_assets/delete_button.png';
-        }, 250);
-      };
 
       $scope.buttons = {
         bell: false,
@@ -409,39 +439,101 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         chat: false
       };
 
+   $scope.activeChat = false;
+   $scope.buttonChat = function(){
+     $timeout(function (){
+       if ($scope.buttons.chat) {
+           return;
+       }
+       $scope.activeChat = !$scope.activeChat;
+       if (!$scope.activeChat) {
+         TTS.speak({
+           text: "Goodbye",
+         }, function () {
+           // Do Something after success
+           console.log("bye");
+         }, function (reason) {
+           // Handle the error case
+         });
+       }
+       $scope.activeAvatar = false;
+     }, 500);
+   };
       $scope.handlerTap = function (button){
         $scope.buttons[button] = !$scope.buttons[button];
       };
 
-      $scope.bellAction = function (){
-        $timeout(function (){
-          if ($scope.buttons.bell) {
-            return;
-          }
-          console.log('hello from bell action');
-        }, 500);
-      };
+    //Buddies
+    $scope.buddies = [
+      'Chloe.gif',
+      'Emma.gif',
+      'Harry.gif',
+      'José.gif'
+    ];
 
-      $scope.activeChat = false;
-      $scope.buttonChat = function(){
-        $timeout(function (){
-          if ($scope.buttons.chat) {
-            return;
-          }
-          $scope.activeChat = !$scope.activeChat;
-          $scope.activeAvatar = false;
-        }, 500);
-      };
+    $scope.selectedBuddy = $scope.buddies[0];
+    $scope.activeAvatar = false;
 
-    });
+    $scope.buttonAvatar = function(){
+      $timeout(function (){
 
-    app.run(function($ionicPlatform) {
-      $ionicPlatform.ready(function() {
-        if(window.cordova && window.cordova.plugins.Keyboard) {
-          cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        if ($scope.buttons.avatar) {
+          return;
         }
-        if(window.StatusBar) {
-          StatusBar.styleDefault();
+
+        $scope.activeAvatar = !$scope.activeAvatar;
+        if ($scope.activeAvatar) {
+          $scope.chooseBuddieModal.show();
+          $scope.activeChat = false;
         }
-      });
-    });
+      }, 500);
+    };
+
+    $scope.pickme = '';
+    $scope.buddySelect = function (buddy){
+      $scope.pickme = buddy;
+    };
+
+    $scope.buddyPickMe = function (buddy){
+      $scope.selectedBuddy = buddy;
+      $scope.pickme = '';
+      $scope.activeAvatar = false;
+      $scope.chooseBuddieModal.hide();
+    };
+
+    $scope.cancelBuddySelect = function (){
+      $scope.pickme = '';
+      $scope.activeAvatar = false;
+      $scope.chooseBuddieModal.hide();
+    };
+
+     //Modal choose buddy
+     $ionicModal.fromTemplateUrl('templates/aac-partials/_choose_buddie.html',{
+       scope: $scope,
+       animation: 'slide-in-up',
+       backdropClickToClose: false
+     }).then(function(modal){
+       $scope.chooseBuddieModal = modal;
+     });
+
+     $scope.hideDone = function(){
+        if($scope.class === "selected-btn2"){
+          $scope.class = "none";
+          $scope.hide = false;
+          $scope.selectedBtn2 = true;
+        }
+      }
+
+      $scope.imageUrl = 'img/AAC_assets/delete_button.png';
+});
+
+app.run(function($ionicPlatform) {
+  $ionicPlatform.ready(function() {
+    if(window.cordova && window.cordova.plugins.Keyboard) {
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+    }
+    if(window.StatusBar) {
+      StatusBar.styleDefault();
+    }
+  });
+});
