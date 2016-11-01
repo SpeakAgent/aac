@@ -7,12 +7,12 @@ app.filter('slice', function(){
 });
 
 app.controller('boardFactoryController',
-	function($http, $scope, $location, $ionicPopover, $location, aacService){
+	function($http, $scope, $location, $ionicPopover, $location){
 		$scope.start = 0;
 		$scope.end = 24;
 		$scope.board = {};
-		$scope.dummyBoards = aacService.dummyBoards;
-		$scope.titleLimit = aacService.titleLimit; 
+		// $scope.dummyBoards = aacService.dummyBoards;
+		// $scope.titleLimit = aacService.titleLimit; 
 
 		$scope.getData = function(){
 		  var req = {
@@ -47,7 +47,7 @@ app.controller('boardFactoryController',
 		    console.log($scope.dummyBoards[$scope.selectedIndex].pk);
 		    $scope.getData();
 		  } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
-		    $scope.board = aacService.aboutMeBoard;
+		    // $scope.board = aacService.aboutMeBoard;
 		    $scope.aboutcircle = true;
 		  } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
 		    console.log($scope.board.pk);
@@ -77,7 +77,7 @@ app.controller('boardFactoryController',
 })
 
 app.controller('newBoardController',
-	function($http, $scope, $location, aacService, $ionicModal){
+	function($http, $scope, $location, $ionicModal){
 
 
 		$ionicModal.fromTemplateUrl('templates/aac-partials/_word-change.html',{
@@ -98,13 +98,13 @@ app.controller('newBoardController',
 })
 
 app.controller('editBoardController',
-	function($http, $scope, $location, aacService, $ionicModal, $ionicPopover){
+	function($http, $scope, $location, $ionicModal, $ionicPopover){
 
-		$scope.columns = aacService.columns;
-		$scope.rows = aacService.rows;
+		// $scope.columns = aacService.columns;
+		// $scope.rows = aacService.rows;
 		$scope.selectedTiles = [];
-		$scope.selectedIndex = aacService.selectedIndex;
-		$scope.titleLimit = aacService.titleLimit; 
+		// $scope.selectedIndex = aacService.selectedIndex;
+		// $scope.titleLimit = aacService.titleLimit; 
 		$scope.board = {};
 
 		$scope.clickTile = function(tile) {
