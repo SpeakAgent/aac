@@ -26,7 +26,8 @@ app.filter('breaking2', function(){
 });
 
 app.controller('mainController',
-  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, $ionicHistory, aacService, appConfig, $timeout) {
+function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
+  $location, $ionicPopover, $ionicHistory, aacService, appConfig, $timeout) {
 
     $ionicHistory.nextViewOptions({
       disableBack: true
@@ -154,14 +155,14 @@ app.controller('mainController',
       $scope.Modal = modal;
     });
 
-  $scope.openModal = function(index){
-    $timeout(function (){
-      if ($scope.buttons.colors) {
-        return;
-      }
-      $scope.Modal.show()
-    }, 500);
-  }
+    $scope.openModal = function(index){
+      $timeout(function (){
+        if ($scope.buttons.colors) {
+          return;
+        }
+        $scope.Modal.show()
+      }, 500);
+    }
 
   $scope.closeModal = function(index){
     $scope.Modal.hide();
@@ -179,16 +180,16 @@ app.controller('mainController',
     var buttonCircle = document.getElementsByClassName('button-circle');
     console.log(buttonCircle[1].style.backgroundColor);
 
-    var colorChoice = document.getElementsByClassName('color-choice');
+      var colorChoice = document.getElementsByClassName('color-choice');
 
-    var scribble = document.getElementById('scribble');
-    var originalImg = document.getElementsByClassName('originalImg');
+      var scribble = document.getElementById('scribble');
+      var originalImg = document.getElementsByClassName('originalImg');
 
-    var placeholder = document.createElement("img");
-    placeholder.src = "img/color_change/colorBlob_white.svg";
-    placeholder.style.width = "70%";
-    placeholder.style.height = "70%";
-    placeholder.id = "placeholder";
+      var placeholder = document.createElement("img");
+      placeholder.src = "img/color_change/colorBlob_white.svg";
+      placeholder.style.width = "70%";
+      placeholder.style.height = "70%";
+      placeholder.id = "placeholder";
 
     for(var i = 0; i < buttonCircle.length; i++){
       buttonCircle[i].style.backgroundColor = $scope.colorName[0].secondaryColor;
@@ -288,13 +289,13 @@ app.controller('mainController',
             $scope.selectedIndex = undefined;
           }
 
-          $scope.selectedTiles.push(tile);
-          $scope.selectedIndex = tile;
+        $scope.selectedTiles.push(tile);
+        $scope.selectedIndex = tile;
 
-          //Se muestra el boton de play
-          $scope.play = true;
-          //Se oculta el boton de replay
-          $scope.replay = false;
+        //Se muestra el boton de play
+        $scope.play = true;
+        //Se oculta el boton de replay
+        $scope.replay = false;
 
           console.log($scope.selectedTiles);
           $scope.selectedIndex = tile;
@@ -378,6 +379,10 @@ app.controller('mainController',
       };
 
       $scope.bellSound = function(){
+        if ($scope.buttons.bell) {
+          return;
+        }
+
         var audio = new Audio('assets/sounds/bell.wav');
         audio.play();
       }
@@ -425,25 +430,14 @@ app.controller('mainController',
       }, 250);
   };
 
-  $scope.buttons = {
-    bell: false,
-    colors : false,
-    avatar: false,
-    chat: false
-  };
+      $scope.imageUrl = 'img/AAC_assets/delete_button.png';
 
-   $scope.handlerTap = function (button){
-     $scope.buttons[button] = !$scope.buttons[button];
-   };
-
-   $scope.bellAction = function (){
-     $timeout(function (){
-       if ($scope.buttons.bell) {
-         return;
-       }
-       console.log('hello from bell action');
-     }, 500);
-   };
+      $scope.buttons = {
+        bell: false,
+        colors : false,
+        avatar: false,
+        chat: false
+      };
 
    $scope.activeChat = false;
    $scope.buttonChat = function(){
@@ -465,6 +459,9 @@ app.controller('mainController',
        $scope.activeAvatar = false;
      }, 500);
    };
+      $scope.handlerTap = function (button){
+        $scope.buttons[button] = !$scope.buttons[button];
+      };
 
     //Buddies
     $scope.buddies = [

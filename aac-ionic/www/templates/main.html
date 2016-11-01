@@ -134,9 +134,12 @@
             <img src="img/new_dev_assets/home.png" style="margin-left:15px; margin-top:12px;" />
           </div>
         </div>
-
+        
         <div class="col col-60">
-          <div class="button-circle pull-left" ng-click="bellSound()" >
+          <div class="button-circle pull-left"
+           on-double-tap="handlerTap('bell');"
+           ng-class="{'inactive': buttons.bell}"
+           ng-click="bellSound()" >
             <img src="img/new_dev_assets/bell.png" style="margin-left:17px; margin-top:14px;"/>
           </div>
 
