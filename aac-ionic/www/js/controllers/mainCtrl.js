@@ -26,9 +26,7 @@ app.filter('breaking2', function(){
 });
 
 app.controller('mainController',
-  function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
-           $location, $ionicPopover, $ionicHistory, aacService,
-           appConfig, $timeout) {
+  function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $location, $ionicPopover, $ionicHistory, aacService, appConfig, $timeout) {
 
     $ionicHistory.nextViewOptions({
       disableBack: true
@@ -165,9 +163,41 @@ app.controller('mainController',
     }, 500);
   }
 
-    $scope.closeModal = function(index){
-      $scope.Modal.hide()
-    };
+  $scope.closeModal = function(index){
+    $scope.Modal.hide();
+    var container = document.getElementById('container');
+
+    var bodyBack = document.getElementById('bodyBack');
+    bodyBack.style.backgroundColor = $scope.colorName[0].secondaryColor;
+
+    var fullBody = document.getElementById('full-body');
+    fullBody.style.backgroundColor = $scope.colorName[0].primaryColor;
+
+    var btnSection = document.getElementById('btn-section');
+    btnSection.style.backgroundColor = $scope.colorName[0].primaryColor;
+
+    var buttonCircle = document.getElementsByClassName('button-circle');
+    console.log(buttonCircle[1].style.backgroundColor);
+
+    var colorChoice = document.getElementsByClassName('color-choice');
+
+    var scribble = document.getElementById('scribble');
+    var originalImg = document.getElementsByClassName('originalImg');
+
+    var placeholder = document.createElement("img");
+    placeholder.src = "img/color_change/colorBlob_white.svg";
+    placeholder.style.width = "70%";
+    placeholder.style.height = "70%";
+    placeholder.id = "placeholder";
+
+    for(var i = 0; i < buttonCircle.length; i++){
+      buttonCircle[i].style.backgroundColor = $scope.colorName[0].secondaryColor;
+      colorChoice[0].style.backgroundColor = $scope.colorName[0].primaryColor;
+      if(originalImg[0].style.display = "none"){
+        colorChoice[0].appendChild(placeholder);
+      }
+    }
+  };
 
     $scope.doneCancel = function(){
       this.style.border = "blue";
