@@ -145,27 +145,36 @@
 
 <!-- Synthetic Voice Panel -->
 			<div class="col col-67" id="settings-modal" ng-show="step == 2">
-				<ion-list> 
-					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
-						<h1 class="centered-title"><strong>Synthetic Voice</strong></h1>
-					</ion-item>
-				</ion-list>
+				<form ng-submit="synthVoiceSubmit()">
+					<ion-list> 
+						<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
+							<h1 class="centered-title"><strong>Synthetic Voice</strong></h1>
+						</ion-item>
+					</ion-list>
+					<div ng-include src="'templates/message.html'"></div>
 
-				<div class="settings-box">
-					<p>Synthetic Voices</p>	
-					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Jane</span><i class="icon ion-play"></i></ion-checkbox>
-					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Malik</span><i class="icon ion-play"></i></ion-checkbox>
-					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Name</span><i class="icon ion-play"></i></ion-checkbox>
-				</div>
-
-				<div class="settings-box">
-					<div class="item range" style="border-color:white;">
-						<div class="avatar-icon-placeholder"></div>
-							<input type="range" name="voice">
-						<div class="avatar-icon-placeholder"></div>
+					<div class="settings-box">
+						<p>Synthetic Voices</p>	
+						<ion-list>
+							<ion-radio type="radio" style="border-color:white;" ng-model="user.userinfo.synthetic_voice" value="VICKI"><span class="checkbox-text">Vicki</span><i class="icon ion-play"></i></ion-radio>
+							<ion-radio type="radio" style="border-color:white;" ng-model="user.userinfo.synthetic_voice" value="ALEX"><span class="checkbox-text">Alex</span><i class="icon ion-play"></i></ion-radio>
+							<ion-radio type="radio" style="border-color:white;" ng-model="user.userinfo.synthetic_voice" value="VICTORIA"><span class="checkbox-text">Victoria</span><i class="icon ion-play"></i></ion-radio>
+						</ion-list>
 					</div>
-					<p>Voice Speed</p>
-				</div>
+
+					<div class="settings-box">
+						<p>Voice Speed</p>
+						<div class="item range" style="border-color:white;">
+							<div class="avatar-icon-placeholder"></div>
+							<input type="range" name="synth-speed" min="0" max="100" value="{{ user.userinfo.voice_speed }}" ng-model="user.userinfo.voice_speed">
+							<div class="avatar-icon-placeholder"></div>
+						</div>
+					</div>
+
+					<div class="settings-box">
+						<button type="submit" class="custom-button button-block">Save</button>
+					</div>
+				</form>
 			</div>
 
 <!-- Sound Effects Panel -->
@@ -264,7 +273,8 @@
 						<h1 class="centered-title"><strong>About Me Profile</strong></h1>
 					</ion-item>
 				</ion-list>
-
+				<div ng-include src="'templates/message.html'"></div>
+				
 				<!-- <div class="settings-content"> -->
 				<div class="settings-box">
 					About Me Profile
@@ -272,77 +282,83 @@
 
 				<p class="about-content">DRAFT TEXT: Fill in the information below to create a board all about your communicator. Fields left blank will not display on the About Me Board. You may also upload an image of your communicator to use as the Boards's symbol.</p>
 
-				<div class="about-symbol-select">
-					<p style="margin-left: 10px; margin-top: 65px; margin-bottom: -70px; font-size:.75em;">About Me</p>
+				<form ng-submit="SubmitAboutMe()" enctype="multipart/form-data">
+					<div class="about-symbol-select">
+						<p style="margin-left: 10px; margin-top: 65px; margin-bottom: -70px; font-size:.75em;">About Me</p>
 
-					<img ng-src="img/aac_board_imgs/fakejsonimg/I.png" alt="image" style="width:6%; height:6%; position:relative; z-index:2; margin-bottom:-60px; margin-left:18px; float:left; margin-top:15px;"\>
+						<img ng-show="!user.userinfo.image" ng-src="img/aac_board_imgs/fakejsonimg/I.png" alt="image" style="width:6%; height:6%; position:relative; z-index:2; margin-bottom:-60px; margin-left:18px; float:left; margin-top:15px;"\>
+						<img ng-show="user.userinfo.image" ng-src="{{user.userinfo.image}}"   alt="image"  style="width: 8%; height: 6%;position:relative; z-index:2; margin-bottom:-60px; margin-left:12px; float:left; margin-top:15px;">
 
-					<img src="img/new_dev_assets/board_tile_notched_default.svg" alt="board tile" style="float:left; positon:relative; z-index:0;">
+						<img src="img/new_dev_assets/board_tile_notched_default.svg" alt="board tile" style="float:left; positon:relative; z-index:0;">
 
-					<!-- <p style="position:relative; z-index:3; margin-top:-60px">About Me</p> -->
+						<!-- <p style="position:relative; z-index:3; margin-top:-60px">About Me</p> -->
 
-					<p class="board-instructions2" style="float:left; width:60%; margin-left:30px;">Replace About Me Board symbol</p>
+						<p class="board-instructions2" style="float:left; width:60%; margin-left:30px;">Replace About Me Board symbol</p>
 
-					<button class="done-button" style="float:left; margin-top:20px; margin-left:30px;"><p><i class="icon ion-ios-search"></i> Browse...</p></button>
-				</div>
-				<p class="about-content" style="float:left">Nickname
-					<span class="annotation">For example, "Sam"</span>
-					<input type="text">
-				</p>
-				<p class="about-content" style="float:left">Birthday
-					<span class="annotation">For example, "March second"</span>
-					<input type="text">
-				</p>
-				<p class="about-content" style="float:left">Hometown
-					<span class="annotation">For example, "Buffalo"</span>
-					<input type="text">
-				</p>
-				<p class="about-content" style="float:left">Name of best friend
-					<span class="annotation">For example, "Timmy"</span>
-					<input type="text">
-				</p>
-				<p class="about-content" style="float:left">Siblings
-					<span class="annotation">For example, "two little sisters"</span>
-					<input type="text">
-				</p>
-				<p class="about-content" style="float:left">Pets
-					<span class="annotation">For example, "two cats and one hamster"</span>
-					<input type="text">
-				</p>
-				<p class="about-content" style="float:left">Gender
-					<span class="annotation">For example, "girl"</span>
-					<input type="text">
-				</p>
-				<p class="about-content" style="float:left">Age
-					<span class="annotation">For example, "nine"</span>
-					<input type="text">
-				</p>
-				<p class="about-content" style="float:left">Favorite Toy
-					<span class="annotation">For example, "blocks"</span>
-					<input type="text">
-				</p>
-				<p class="about-content" style="float:left">Hobby
-					<span class="annotation">For example, "play video game"</span>
-					<input type="text">
-				</p>
-				<p class="about-content" style="float:left">Favorite sports team
-					<span class="annotation">For example, "Washington Capitals"</span>
-					<input type="text">
-				</p>
-				<p class="about-content" style="float:left">Favorite food
-					<span class="annotation">For example, "hot dogs"</span>
-					<input type="text">
-				</p>
-				<p class="about-content" style="float:left">Favorite ice cream flavor
-					<span class="annotation">For example, "rocky road"</span>
-					<input type="text">
-				</p>
-				<p class="about-content" style="float:left">Favorite color
-					<span class="annotation">For example, "green"</span>
-					<input type="text">
-					<button class="custom-button" style="margin-top:20px;">Save</button>
-				</p>
+						<p style="margin-top:20px; margin-left:30px; float: left;">
+							<input type="file" ng-model="file" custom-on-change="uploadFile" accept=".png,.jpg,.gif">
+						</p>
 
+						<!--<button class="done-button" style="float:left; margin-top:20px; margin-left:30px;"><p><i class="icon ion-ios-search"></i> Browse...</p></button>-->
+					</div>
+					<p class="about-content" style="float:left">Nickname
+						<span class="annotation">For example, "Sam"</span>
+						<input type="text">
+					</p>
+					<p class="about-content" style="float:left">Birthday
+						<span class="annotation">For example, "March second"</span>
+						<input type="text">
+					</p>
+					<p class="about-content" style="float:left">Hometown
+						<span class="annotation">For example, "Buffalo"</span>
+						<input type="text">
+					</p>
+					<p class="about-content" style="float:left">Name of best friend
+						<span class="annotation">For example, "Timmy"</span>
+						<input type="text">
+					</p>
+					<p class="about-content" style="float:left">Siblings
+						<span class="annotation">For example, "two little sisters"</span>
+						<input type="text">
+					</p>
+					<p class="about-content" style="float:left">Pets
+						<span class="annotation">For example, "two cats and one hamster"</span>
+						<input type="text">
+					</p>
+					<p class="about-content" style="float:left">Gender
+						<span class="annotation">For example, "girl"</span>
+						<input type="text">
+					</p>
+					<p class="about-content" style="float:left">Age
+						<span class="annotation">For example, "nine"</span>
+						<input type="text">
+					</p>
+					<p class="about-content" style="float:left">Favorite Toy
+						<span class="annotation">For example, "blocks"</span>
+						<input type="text">
+					</p>
+					<p class="about-content" style="float:left">Hobby
+						<span class="annotation">For example, "play video game"</span>
+						<input type="text">
+					</p>
+					<p class="about-content" style="float:left">Favorite sports team
+						<span class="annotation">For example, "Washington Capitals"</span>
+						<input type="text">
+					</p>
+					<p class="about-content" style="float:left">Favorite food
+						<span class="annotation">For example, "hot dogs"</span>
+						<input type="text">
+					</p>
+					<p class="about-content" style="float:left">Favorite ice cream flavor
+						<span class="annotation">For example, "rocky road"</span>
+						<input type="text">
+					</p>
+					<p class="about-content" style="float:left">Favorite color
+						<span class="annotation">For example, "green"</span>
+						<input type="text">
+						<button class="custom-button" style="margin-top:20px;" type="submit" ng-disabled="message">Save</button>
+					</p>
+				</form>
 				<!-- </div> -->
 			</div>
 		</div>

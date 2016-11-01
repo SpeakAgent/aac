@@ -84,7 +84,11 @@ a#btn-styling.button.button-outline.button-small {
   font-size: .75em;
   margin: 4.5px;
   float: left;
-  text-align: center; }
+  text-align: center;
+  background: url("../img/new_dev_assets/board_tile_notched_default_1.svg"); }
+
+.boards.activated {
+  background: url("../img/new_dev_assets/board_tile_notched_default_yellow.svg"); }
 
 .boards a {
   color: #000000;
@@ -193,14 +197,6 @@ button#btn-styling.button.button-outline.button-calm.button-small {
 button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2 {
   border-color: #6FCACB; }
 
-#button-circle {
-  width: 75px;
-  height: 75px;
-  background-color: #008485;
-  border-radius: 37.5px;
-  float: left;
-  margin-left: 20px; }
-
 .button-circle {
   width: 75px;
   height: 75px;
@@ -214,6 +210,12 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2 
   height: 75px;
   background-color: #008485;
   border-radius: 37.5px; }
+
+.button-circle2.activated,
+.button-circle.activated {
+    border: 3px solid #F8D338;
+    width: 80px;
+    height: 80px;}
 
 .yellow {
   border: 3px solid #F8D338;
@@ -518,6 +520,9 @@ input[type="text"]:focus, textarea:focus {
   float: right;
   background: yellow; }
 
+.no-mrg {
+  margin: 0; }
+
 .regulars {
   background-color: #ffffff;
   padding: 10%;
@@ -530,10 +535,6 @@ input[type="text"]:focus, textarea:focus {
   float: left;
   border: 2px solid #979797;
   text-align: center; }
-
-.actYellow {
-    background-color: #FFE98E;
-    border: 2px solid #F8D338; }
 
 #regularRow {
   margin: 0;
