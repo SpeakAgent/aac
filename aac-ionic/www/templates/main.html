@@ -1,157 +1,162 @@
-  <ion-header-bar class="bar-dark">
-    <i class="icon ion-unlocked"></i>
-    <div class="buttonsdiv">
-      <!-- <i class="icon ion-unlocked"></i> -->
+<ion-header-bar class="bar-dark">
+  <i class="icon ion-unlocked"></i>
+  <div class="buttonsdiv">
+    <!-- <i class="icon ion-unlocked"></i> -->
 
-      <a href="#/settings" class="button button-outline button-small" id="btn-styling">
-        <i class="icon ion-gear-b"></i> Settings
-      </a>
+    <a href="#/settings" class="button button-outline button-small" id="btn-styling">
+      <i class="icon ion-gear-b"></i> Settings
+    </a>
 
-      <a href="#/board_factory" class="button button-outline button-small" id="btn-styling">
-        <i class="icon ion-grid"></i>
-        Board Factory
-        <br>
-        <p class="show-hide-label">*Requires Wifi</p>
-      </a>
+    <a href="#/board_factory" class="button button-outline button-small" id="btn-styling">
+      <i class="icon ion-grid"></i>
+      Board Factory
+      <br>
+      <p class="show-hide-label">*Requires Wifi</p>
+    </a>
 
-      <button class="button button-outline button-calm button-small" id="btn-styling" ng-click="activeHide()" ng-class="class1">
-        <i class="icon ion-eye-disabled" ng-show="selectedBtn2 == true"></i>
-        <i class="icon ion-eye-disabled" ng-show="selectedBtn2 == false" style="color:white;"></i>
-        <span class="hide-label" ng-show="selectedBtn2 == true">Hide Tiles</span>
-        <span class="hide-label2" ng-show="selectedBtn2 == false">Hide Tiles</span>
+    <button class="button button-outline button-calm button-small" id="btn-styling" ng-click="activeHide()" ng-class="class1">
+      <i class="icon ion-eye-disabled" ng-show="selectedBtn2 == true"></i>
+      <i class="icon ion-eye-disabled" ng-show="selectedBtn2 == false" style="color:white;"></i>
+      <span class="hide-label" ng-show="selectedBtn2 == true">Hide Tiles</span>
+      <span class="hide-label2" ng-show="selectedBtn2 == false">Hide Tiles</span>
 
-        <div class="toggle-content" style="float:right">
-          <label class="toggle toggle-dark-green toggle-small" ng-if="hide">
-            <input type="checkbox">
-            <div class="track" id="track-color">
-              <div class="handle" id="handle-color"></div>
-            </div>
-          </label>
-          <p class="toggle-note" ng-if="hide">Show All Tiles</p>
+      <div class="toggle-content" style="float:right">
+        <label class="toggle toggle-dark-green toggle-small" ng-if="hide">
+          <input type="checkbox">
+          <div class="track" id="track-color">
+            <div class="handle" id="handle-color"></div>
+          </div>
+        </label>
+        <p class="toggle-note" ng-if="hide">Show All Tiles</p>
+      </div>
+    </button>
+
+    <button class="done-button" ng-click="hideDone()" ng-if="hide"><p><i class="icon ion-checkmark-round"></i><a href="#/home">DONE</a></p>
+    </button>
+  </div>
+</ion-header-bar>
+
+<ion-view view-title="AAC" class="pane">
+  <ion-content class= "appBody" id="bodyBack">
+    <div class="row" id="regularRow">
+      <div class="col col-10" id="regularRowBod">
+
+        <div ng-click="sayPhrase()">
+          <img src="img/AAC_assets/avatar_default.png"/>
+          <img src="img/AAC_assets/play.png" alt="Play" class="play" ng-show="play">
+          <img src="img/AAC_assets/replay.png" alt="Play" class="replay" ng-show="replay">
+        </div>  
+
+        <div class="regulars"
+          ng-repeat="phrase in quickPhrases"
+          ng-click="sayQuickPhrase(phrase)"
+          ng-style="isQuickPhrasePressed(phrase) && {'background-color': '#FFE98E', 'border': '2px solid #F8D338'}">
+          {{ phrase }}
         </div>
-      </button>
 
-      <button class="done-button" ng-click="hideDone()" ng-if="hide"><p><i class="icon ion-checkmark-round"></i><a href="#/home">DONE</a></p>
-      </button>
-    </div>
-  </ion-header-bar>
-
-  <ion-view view-title="AAC" class="pane">
-    <ion-content class= "appBody" id="bodyBack">
-      <div class="row" id="regularRow">
-        <div class="col col-10" id="regularRowBod">
-          <img src="img/AAC_assets/avatar_default.png" ng-click="sayPhrase()"/>
-
-          <div class="regulars" 
-            ng-repeat="phrase in quickPhrases"
-            ng-click="sayQuickPhrase(phrase)"
-            ng-style="isQuickPhrasePressed(phrase) && {'background-color': '#FFE98E', 'border': '2px solid #F8D338'}">
-            {{ phrase }}
+         <div class="regulars" ng-click="chosenTile(quickbar.lexeme); sayWord();">
+            <span ng-bind="quickbar.lexeme.lexeme | limitTo: titleLimit"></span>
+            <span ng-show="quickbar.lexeme.lexeme.length > titleLimit">...</span>
+            <br />
+            <img src = "{{quickbar.lexeme.symbol.image}}"
+              style="width:40px;height:40px">
           </div>
 
-           <div class="regulars" ng-click="chosenTile(quickbar.lexeme); sayWord();">
-              <span ng-bind="quickbar.lexeme.lexeme | limitTo: titleLimit"></span>
-              <span ng-show="quickbar.lexeme.lexeme.length > titleLimit">...</span>
-              <br />
-              <img src = "{{quickbar.lexeme.symbol.image}}"
-                style="width:40px;height:40px">
-            </div>
+          <div class="regulars" ng-click="chosenTile(quickbar.lexeme2);sayWord();">
+            <span ng-bind="quickbar.lexeme2.lexeme | limitTo: titleLimit"></span>
+            <span ng-show="quickbar.lexeme2.lexeme.length > titleLimit">...</span>
+            <br />
+            <img src = "{{quickbar.lexeme2.symbol.image}}"
+              style="width:40px;height:40px">
+          </div>
 
-            <div class="regulars" ng-click="chosenTile(quickbar.lexeme2);sayWord();">
-              <span ng-bind="quickbar.lexeme2.lexeme | limitTo: titleLimit"></span>
-              <span ng-show="quickbar.lexeme2.lexeme.length > titleLimit">...</span>
-              <br />
-              <img src = "{{quickbar.lexeme2.symbol.image}}"
-                style="width:40px;height:40px">
-            </div>
+          <div class="regulars" ng-click="chosenTile(quickbar.lexeme3);sayWord();">
+            <span ng-bind="quickbar.lexeme3.lexeme | limitTo: titleLimit"></span>
+            <span ng-show="quickbar.lexeme3.lexeme.length > titleLimit">...</span>
+            <br />
+            <img src = "{{quickbar.lexeme3.symbol.image}}"
+              style="width:40px;height:40px">
+          </div>
 
-            <div class="regulars" ng-click="chosenTile(quickbar.lexeme3);sayWord();">
-              <span ng-bind="quickbar.lexeme3.lexeme | limitTo: titleLimit"></span>
-              <span ng-show="quickbar.lexeme3.lexeme.length > titleLimit">...</span>
-              <br />
-              <img src = "{{quickbar.lexeme3.symbol.image}}"
-                style="width:40px;height:40px">
-            </div>
+          <div class="regulars" ng-click="chosenTile(quickbar.lexeme4); sayWord();">
+            <span ng-bind="quickbar.lexeme4.lexeme | limitTo: titleLimit"></span>
+            <span ng-show="quickbar.lexeme4.lexeme.length > titleLimit">...</span>
+            <img src = "{{quickbar.lexeme4.symbol.image}}"
+              style="width:40px;height:40px">
+          </div>
+        </div>
 
-            <div class="regulars" ng-click="chosenTile(quickbar.lexeme4); sayWord();">
-              <span ng-bind="quickbar.lexeme4.lexeme | limitTo: titleLimit"></span>
-              <span ng-show="quickbar.lexeme4.lexeme.length > titleLimit">...</span>
-              <img src = "{{quickbar.lexeme4.symbol.image}}"
-                style="width:40px;height:40px">
+        <div class="col col-90" id="full-body">
+          <div class="word-builder">
+            <div class="word-builder-input" style="margin-left:-15px">
+              <div class="tile" ng-repeat="symbol in selectedTiles">
+                {{ symbol.word }}<br>
+                <img src = "{{symbol.symbol.image}}"
+                  style="width:40px;height:40px">
+              </div>
+              <img src="img/AAC_assets/delete_button.png" id="home-section"
+                ng-click="deleteLastTile()" />
             </div>
           </div>
 
-          <div class="col col-90" id="full-body">
-            <div class="word-builder">
-              <div class="word-builder-input" style="margin-left:-15px">
-                <div class="tile" ng-repeat="symbol in selectedTiles">
-                  {{ symbol.word }}<br>
-                  <img src = "{{symbol.symbol.image}}"
-                    style="width:40px;height:40px">
+          <div class="col col-60" id="tile-section">
+            <div class="tile-section-border">
+              <span ng-repeat="row in rows">
+                <div class="tile" ng-repeat="col in columns" ng-click="clickTile(board.symbols[col+row]); sayWord();"  ng-class="{lightBlue:board.symbols[col+row]==selectedIndex}";>
+                  <span ng-show="filled_tiles.indexOf(col+row)!=-1">
+                    <p class="tile-words">{{board.symbols[col+row].word | limitTo: titleLimit}}</p>
+                      <!-- <span ng-show="board.symbols[col+row].word.length > titleLimit">...</span> -->
+                      <br>
+                    <img src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px">
+                  </span>
                 </div>
-                <img src="img/AAC_assets/delete_button.png" id="home-section"
-                  ng-click="deleteLastTile()" />
-              </div>
-            </div>
-
-            <div class="col col-60" id="tile-section">
-              <div class="tile-section-border">
-                <span ng-repeat="row in rows">
-                  <div class="tile" ng-repeat="col in columns" ng-click="clickTile(board.symbols[col+row]); sayWord();"  ng-class="{lightBlue:board.symbols[col+row]==selectedIndex}";>
-                    <span ng-show="filled_tiles.indexOf(col+row)!=-1">
-                      <p class="tile-words">{{board.symbols[col+row].word | limitTo: titleLimit}}</p>
-                        <!-- <span ng-show="board.symbols[col+row].word.length > titleLimit">...</span> -->
-                        <br>
-                      <img src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px">
-                    </span>
-                  </div>
-                </span>
-              </div>
-            </div>
-
-            <div class="col col-40" id="board-section">              
-                <div class="boards" ng-repeat="userBoard in userBoards | sliceArr:start:end" ng-click="chosenBoard($index); sayWord()">
-                  <p style="position:fixed; z-index:3; margin-left:15px;" ng-model="titleLimit">{{userBoard.board.title | limitTo: titleLimit}} <span ng-show="boardObj.board.name.length > titleLimit">...</span></p>
-
-                  <img ng-if="userBoard.board.image" ng-src="{{userBoard.board.image}}" alt="{{userBoard.board.title}}" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-50px;"\>
-
-                  <!--<img src="img/new_dev_assets/board_tile_notched_default_1.svg" class="board-tile" style="positon:relative; z-index:0;" alt="board tile">-->
-              </div>
-            </div>
-          </div>
-      </div>
-
-        <!-- Bottom function buttons -->
-        <div class="row" id="btn-section">
-          <div class="col col-10" id="home-button-section">
-            <div class="button-circle no-mrg" ng-click="homeButton()">
-              <img src="img/new_dev_assets/home.png" style="margin-left:15px; margin-top:12px;" />
+              </span>
             </div>
           </div>
 
-          <div class="col col-60">
-            <div class="button-circle pull-left" ng-click="bellSound()" >
-              <img src="img/new_dev_assets/bell.png" style="margin-left:17px; margin-top:14px;"/>
-            </div>
+          <div class="col col-40" id="board-section">
+              <div class="boards" ng-repeat="userBoard in userBoards | sliceArr:start:end" ng-click="chosenBoard($index); sayWord()">
+                <p style="position:fixed; z-index:3; margin-left:15px;" ng-model="titleLimit">{{userBoard.board.title | limitTo: titleLimit}} <span ng-show="boardObj.board.name.length > titleLimit">...</span></p>
 
-            <div class="button-circle pull-left" ng-click="openModal()">
-              <img src="img/new_dev_assets/colors.png" style="margin-left:15px; margin-top:14px;" />
-            </div>
+                <img ng-if="userBoard.board.image" ng-src="{{userBoard.board.image}}" alt="{{userBoard.board.title}}" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-50px;"\>
 
-            <div class="button-circle pull-left">
-              <img src="img/new_dev_assets/avatar.png" style="margin-left:15px; margin-top:14px;" />
+                <!--<img src="img/new_dev_assets/board_tile_notched_default_1.svg" class="board-tile" style="positon:relative; z-index:0;" alt="board tile">-->
             </div>
-
-            <div class="button-circle pull-left">
-              <img src="img/new_dev_assets/chat.png" style="margin-left:15px; margin-top:14px;" />
-            </div>
-          </div>
-
-          <div class="col col-30" ng-if="userBoards.length >= 25">
-            <img ng-click="lastSet($index)" src="img/AAC_assets/left.png" style="margin-left:50px;"/>
-            <img ng-click="nextSet($index)" src="img/AAC_assets/right.png" style="margin-left:30px;"/>
           </div>
         </div>
+    </div>
+
+      <!-- Bottom function buttons -->
+      <div class="row" id="btn-section">
+        <div class="col col-10" id="home-button-section">
+          <div class="button-circle no-mrg" ng-click="homeButton()">
+            <img src="img/new_dev_assets/home.png" style="margin-left:15px; margin-top:12px;" />
+          </div>
+        </div>
+
+        <div class="col col-60">
+          <div class="button-circle pull-left" ng-click="bellSound()" >
+            <img src="img/new_dev_assets/bell.png" style="margin-left:17px; margin-top:14px;"/>
+          </div>
+
+          <div class="button-circle pull-left" ng-click="openModal()">
+            <img src="img/new_dev_assets/colors.png" style="margin-left:15px; margin-top:14px;" />
+          </div>
+
+          <div class="button-circle pull-left">
+            <img src="img/new_dev_assets/avatar.png" style="margin-left:15px; margin-top:14px;" />
+          </div>
+
+          <div class="button-circle pull-left">
+            <img src="img/new_dev_assets/chat.png" style="margin-left:15px; margin-top:14px;" />
+          </div>
+        </div>
+
+        <div class="col col-30" ng-if="userBoards.length >= 25">
+          <img ng-click="lastSet($index)" src="img/AAC_assets/left.png" style="margin-left:50px;"/>
+          <img ng-click="nextSet($index)" src="img/AAC_assets/right.png" style="margin-left:30px;"/>
+        </div>
       </div>
-    </ion-content>
-  </ion-view>
+    </div>
+  </ion-content>
+</ion-view>

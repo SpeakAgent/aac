@@ -1,7 +1,18 @@
-/* Empty. Add your own CSS if you like */
-.sidebar{
-	width:300px;
-	background-color: green;
+.play, .replay {
+	position: absolute;
+	left: 3%;
+	width: 40px;
+	margin: 0 auto;
+	display: block;
+	top: 5%;
+}
+
+.playing {
+    margin-top: -50px;
+}
+
+.replaying {
+    margin-top: -50px;
 }
 
 #avatar-bg-image{

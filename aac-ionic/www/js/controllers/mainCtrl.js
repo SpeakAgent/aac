@@ -12,7 +12,7 @@ app.filter('breaking', function(){
     if(word.length > 10){
       firstHalf = word.substr(0,9);
       return firstHalf;
-    } 
+    }
   }
 });
 
@@ -21,14 +21,14 @@ app.filter('breaking2', function(){
     if(word.length > 10){
       secondHalf = word.substr(10,word.length);
       return secondHalf;
-    } 
+    }
   }
 });
 
-app.controller('mainController', 
+app.controller('mainController',
   function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $location, $ionicPopover, $ionicHistory, aacService, appConfig) {
-    
+
     $ionicHistory.nextViewOptions({
       disableBack: true
     });
@@ -49,7 +49,7 @@ app.controller('mainController',
 	$scope.rows = aacService.rows;
   $scope.selectedTiles = [];
 	$scope.selectedIndex = aacService.selectedIndex;
-	$scope.titleLimit = aacService.titleLimit; 
+	$scope.titleLimit = aacService.titleLimit;
   $scope.start = 0;
   $scope.end = 24;
   $scope.board = {};
@@ -75,10 +75,10 @@ app.controller('mainController',
   $scope.mainBoardLoader();
 
   $scope.chosenBoard = function(index){
-    $scope.board = $scope.userBoards[index]; 
+    $scope.board = $scope.userBoards[index];
     $scope.filled_tiles = Object.keys($scope.board.symbols)
   };
-  
+
   $scope.homeButton = function(){
     $scope.board = $scope.userBoards[0];
     $scope.filled_tiles = Object.keys($scope.board.symbols)
@@ -224,6 +224,9 @@ app.controller('mainController',
   }
 
 // BOARD TILE FUNCTIONS
+  //Play and replay
+  $scope.play = false;
+  $scope.replay = false;
   $scope.clickTile = function(tile) {
     if(tile.target_board){
       var req = {
@@ -241,7 +244,20 @@ app.controller('mainController',
         $scope.filled_tiles = Object.keys($scope.board.symbols)
       })
     }else{
-      $scope.selectedTiles.push(tile);
+      //Se verifica si el usuario ha dado play o replay
+        if ($scope.replay) {
+          //Se limpia el array de items y el index
+          $scope.selectedTiles = [];
+          $scope.selectedIndex = undefined;
+        }
+
+          $scope.selectedTiles.push(tile);
+          $scope.selectedIndex = tile;
+
+          //Se muestra el boton de play
+          $scope.play = true;
+          //Se oculta el boton de replay
+          $scope.replay = false;
 
       console.log($scope.selectedTiles);
       $scope.selectedIndex = tile;
@@ -280,20 +296,27 @@ app.controller('mainController',
     }
   }
 
-  $scope.sayPhrase = function () {
-    var pks = [];
-    for (i in $scope.selectedTiles) {
-      pks.push($scope.selectedTiles[i].pk);
-    }
-    var req = {
-      url: appConfig.backendURL + '/compaction/symbols/',
-      data: {pks: "[" + pks.toString() + "]"},
-      method: 'POST'
-    }
-    $http(req).success(function(data) {
-      $scope.speakText(data.sentence);
-    })
-  }
+   $scope.sayPhrase = function () {
+     console.log($scope.selectedTiles);
+     var pks = [];
+     for (i in $scope.selectedTiles) {
+       pks.push($scope.selectedTiles[i].pk);
+     }
+     var req = {
+       url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
+       data: {pks: "[" + pks.toString() + "]"},
+       method: 'POST'
+     }
+     console.log(req);
+     $http(req).success(function(data) {
+       console.log(data);
+       $scope.speakText(data.sentence);
+       //Se oculta boton de play
+       $scope.play = false;
+       //Se muestra boton de play
+       $scope.replay = true;
+     })
+   }
 
   $scope.sayWord = function() {
     var req = {
