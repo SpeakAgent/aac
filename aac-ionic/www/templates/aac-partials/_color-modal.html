@@ -7,8 +7,12 @@
       <img ng-src="{{title.url}}" alt="image" style="width:70%; height:70%;" class="originalImg" />
       </div>
 
-      <div class="round-button" ng-click="changeBackground()"><a href=";javascript"></a>Done</div>
-      <div class="round-button2" ng-click="closeModal()">Cancel</div>
+      <div class="round-button done" ng-click="changeBackground()">
+        <i class="fa fa-check" aria-hidden="true"></i> Done
+      </div>
+      <div class="round-button2 cancel" ng-click="closeModal()">
+        <i class="fa fa-times" aria-hidden="true"></i> Cancel
+      </div>
     </div>
   </ion-content>
 </div>
