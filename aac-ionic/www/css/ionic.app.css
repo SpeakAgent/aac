@@ -216,7 +216,7 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2 
   border-radius: 37.5px; }
 
 .yellow {
-  border: 3px solid #F8D338;
+  border: 5px solid #F8D338;
   width: 80px;
   height: 80px;
   border-radius: 40px; }
@@ -530,10 +530,6 @@ input[type="text"]:focus, textarea:focus {
   float: left;
   border: 2px solid #979797;
   text-align: center; }
-
-.actYellow {
-    background-color: #FFE98E;
-    border: 2px solid #F8D338; }
 
 #regularRow {
   margin: 0;
