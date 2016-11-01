@@ -26,8 +26,9 @@ app.filter('breaking2', function(){
 });
 
 app.controller('mainController',
-function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
-  $location, $ionicPopover, $ionicHistory, aacService, appConfig) {
+  function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
+           $location, $ionicPopover, $ionicHistory, aacService,
+           appConfig, $timeout) {
 
     $ionicHistory.nextViewOptions({
       disableBack: true
@@ -155,9 +156,14 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       $scope.Modal = modal;
     });
 
-    $scope.openModal = function(index){
+  $scope.openModal = function(index){
+    $timeout(function (){
+      if ($scope.buttons.colors) {
+        return;
+      }
       $scope.Modal.show()
-    }
+    }, 500);
+  }
 
     $scope.closeModal = function(index){
       $scope.Modal.hide()
@@ -381,7 +387,109 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         }
       }
 
-      $scope.hideDone = function(){
+  $scope.onTap = function() {
+      console.log("yes?");
+      $scope.imageUrl = 'img/AAC_assets/delete_button_tapped.png';
+      $timeout(function () {
+        $scope.imageUrl = 'img/AAC_assets/delete_button.png';
+      }, 250);
+  };
+
+  $scope.buttons = {
+    bell: false,
+    colors : false,
+    avatar: false,
+    chat: false
+  };
+
+   $scope.handlerTap = function (button){
+     $scope.buttons[button] = !$scope.buttons[button];
+   };
+
+   $scope.bellAction = function (){
+     $timeout(function (){
+       if ($scope.buttons.bell) {
+         return;
+       }
+       console.log('hello from bell action');
+     }, 500);
+   };
+
+   $scope.activeChat = false;
+   $scope.buttonChat = function(){
+     $timeout(function (){
+       if ($scope.buttons.chat) {
+           return;
+       }
+       $scope.activeChat = !$scope.activeChat;
+       if (!$scope.activeChat) {
+         TTS.speak({
+           text: "Goodbye",
+         }, function () {
+           // Do Something after success
+           console.log("bye");
+         }, function (reason) {
+           // Handle the error case
+         });
+       }
+       $scope.activeAvatar = false;
+     }, 500);
+   };
+
+    //Buddies
+    $scope.buddies = [
+      'Chloe.gif',
+      'Emma.gif',
+      'Harry.gif',
+      'José.gif'
+    ];
+
+    $scope.selectedBuddy = $scope.buddies[0];
+    $scope.activeAvatar = false;
+
+    $scope.buttonAvatar = function(){
+      $timeout(function (){
+
+        if ($scope.buttons.avatar) {
+          return;
+        }
+
+        $scope.activeAvatar = !$scope.activeAvatar;
+        if ($scope.activeAvatar) {
+          $scope.chooseBuddieModal.show();
+          $scope.activeChat = false;
+        }
+      }, 500);
+    };
+
+    $scope.pickme = '';
+    $scope.buddySelect = function (buddy){
+      $scope.pickme = buddy;
+    };
+
+    $scope.buddyPickMe = function (buddy){
+      $scope.selectedBuddy = buddy;
+      $scope.pickme = '';
+      $scope.activeAvatar = false;
+      $scope.chooseBuddieModal.hide();
+    };
+
+    $scope.cancelBuddySelect = function (){
+      $scope.pickme = '';
+      $scope.activeAvatar = false;
+      $scope.chooseBuddieModal.hide();
+    };
+
+     //Modal choose buddy
+     $ionicModal.fromTemplateUrl('templates/aac-partials/_choose_buddie.html',{
+       scope: $scope,
+       animation: 'slide-in-up',
+       backdropClickToClose: false
+     }).then(function(modal){
+       $scope.chooseBuddieModal = modal;
+     });
+
+     $scope.hideDone = function(){
         if($scope.class === "selected-btn2"){
           $scope.class = "none";
           $scope.hide = false;
@@ -390,23 +498,15 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
 
       $scope.imageUrl = 'img/AAC_assets/delete_button.png';
+});
 
-      $scope.onTap = function() {
-        console.log("yes?");
-        $scope.imageUrl = 'img/AAC_assets/delete_button_tapped.png';
-        $timeout(function () {
-          $scope.imageUrl = 'img/AAC_assets/delete_button.png';
-        }, 250);
-      };
-    });
-
-    app.run(function($ionicPlatform) {
-      $ionicPlatform.ready(function() {
-        if(window.cordova && window.cordova.plugins.Keyboard) {
-          cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-        }
-        if(window.StatusBar) {
-          StatusBar.styleDefault();
-        }
-      });
-    });
+app.run(function($ionicPlatform) {
+  $ionicPlatform.ready(function() {
+    if(window.cordova && window.cordova.plugins.Keyboard) {
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+    }
+    if(window.StatusBar) {
+      StatusBar.styleDefault();
+    }
+  });
+});
