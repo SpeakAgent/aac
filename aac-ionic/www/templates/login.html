@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="css/login.css">
+
+<ion-view>
+	<ion-content class="padding login-background">
+        <div class="login-box">
+            <h1 class="text-center padding">Welcome to AAC!</h1>
+            <div class="row row-center responsive-sm">
+                <div class="col col-80 col-offset-10 padding col-center login-section">
+                    <div class="padding">
+                        <p class="error text-center" ng-if="loginError">{{loginError}}
+                        Please double-check your username and password.
+                        </p>
+                        <form ng-submit="doLogin()">
+                            <div class="list list-inset">
+                                <label class="item item-input login-label">
+                                    <input type="text" placeholder="Username" class="login-input" ng-model="loginData.username">
+                                </label>
+                                <label class="item item-input">
+                                    <input type="password" placeholder="Password" class="login-input" ng-model="loginData.password">
+                                </label>
+                            </div>
+                            <button class="button button-block button-balanced" type="submit">
+                                <span class="ion-log-in"></span> Log In
+                            </button>
+                        </form>
+                        <p class="text-center">
+                            <a>Forgot your password?</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
