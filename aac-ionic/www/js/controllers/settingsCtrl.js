@@ -11,10 +11,44 @@ app.directive('customOnChange', function() {
 });
 
 app.controller('settingsController',
-	function($http, $scope, $location, $timeout, $window, appConfig){
+	function($http, $scope, $cordovaFileTransfer, $location, $timeout, $window, appConfig){
 		$scope.settings = true;
 		$scope.step = 1;
 		$scope.file = undefined;
+
+		$scope.downloadBoard = function() {
+			console.log("Downloading a board");
+			var req = {
+				url: "https://lexemes-dev.herokuapp.com/board/single/",
+				data: {
+					pk: 26
+				},
+				headers: {
+					Authorization: 'JWT ' + localStorage.getItem('authToken')
+				},
+				method: "POST"
+			}
+
+			$http(req).success(function(data){
+				$scope.dlboard = data;
+				console.log($scope.dlboard.board.image);
+				var url = $scope.dlboard.board.image;
+				var targetPath = cordova.file.documentsDirectory + "testimg.png";
+				var trustHosts = true;
+				var options = {};
+
+				$cordovaFileTransfer.download(url, targetPath, options, trustHosts)
+			      .then(function(result) {
+			        console.log("Done!", result)
+			      }, function(err) {
+			        console.log("Error", err)
+			      }, function (progress) {
+			        $timeout(function () {
+			          $scope.downloadProgress = (progress.loaded / progress.total) * 100;
+			        });
+			      });
+			})
+		}
 		
 		$scope.alertAnimation = function(message){
 			$scope.message = message;
@@ -266,6 +300,32 @@ app.controller('settingsController',
 		      self.style.backgroundColor = "#008485";
 		      self.style.color = "white";
 		      $scope.step = 6;
+
+		      var synthetic = document.getElementById("synthetic");
+		      synthetic.style.backgroundColor = "white";
+		      synthetic.style.color = "black";
+
+		      var sound = document.getElementById("sound");
+		      sound.style.backgroundColor = "white";
+		      sound.style.color = "black";
+
+		      var phrase = document.getElementById("phrase");
+		      phrase.style.backgroundColor = "white";
+		      phrase.style.color = "black";
+
+		      var settings = document.getElementById("settings");
+		      settings.style.backgroundColor = "white";
+		      settings.style.color = "black";
+
+		      var alternate = document.getElementById("alternate");
+		      alternate.style.backgroundColor = "white";
+		      alternate.style.color = "black";
+
+		  } else if(number == "11"){
+		      var self = document.getElementById("aboutMe");
+		      self.style.backgroundColor = "#008485";
+		      self.style.color = "white";
+		      $scope.step = 11;
 
 		      var synthetic = document.getElementById("synthetic");
 		      synthetic.style.backgroundColor = "white";
