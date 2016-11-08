@@ -68,7 +68,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         $scope.board = data.boards[0];
         $scope.userBoards = data.boards;
         $scope.quickbar = data.quickbar;
-        $scope.filled_tiles = Object.keys($scope.board.symbols)
+        $scope.filled_tiles = Object.keys($scope.board)
       })
     };
 
@@ -76,12 +76,12 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
     $scope.chosenBoard = function(index){
       $scope.board = $scope.userBoards[index];
-      $scope.filled_tiles = Object.keys($scope.board.symbols)
+      $scope.filled_tiles = Object.keys($scope.board)
     };
 
     $scope.homeButton = function(){
       $scope.board = $scope.userBoards[0];
-      $scope.filled_tiles = Object.keys($scope.board.symbols)
+      $scope.filled_tiles = Object.keys($scope.board)
     }
 
     // COLOR MODAL FUNCTIONS AND OBJECTS
@@ -278,7 +278,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         $http(req).success(function(data) {
           console.log('loadingData');
           $scope.board = data;
-          $scope.filled_tiles = Object.keys($scope.board.symbols)
+          $scope.filled_tiles = Object.keys($scope.board)
         })
       }else{
         if ($scope.selectedTiles.length < 8) {
