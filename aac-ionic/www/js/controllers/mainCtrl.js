@@ -307,6 +307,14 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
     }
 
+    $scope.getTileClickColor = function(tile){
+      if (tile == $scope.selectedIndex && tile.word_class == 'pronoun'){
+        return 'lightYellow';
+      }else if(tile == $scope.selectedIndex){
+        return 'lightBlue';
+      }
+    }
+
     // $scope.class = "none";
     $scope.selectedBtn2 = true;
     // $scope.class.color = "white";
