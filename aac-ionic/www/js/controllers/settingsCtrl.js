@@ -15,7 +15,7 @@ app.controller('settingsController',
 		$scope.settings = true;
 		$scope.step = 1;
 		$scope.file = undefined;
-		
+
 		$scope.alertAnimation = function(message){
 			$scope.message = message;
    		    $timeout(function(){$scope.message = null}, 2700);
@@ -86,13 +86,13 @@ app.controller('settingsController',
 		$scope.uploadFile = function(e){
 			var image = e.target.files[0];
 			var read = new FileReader();
-					
+
 			$scope.profileImgName = e.target.files[0].name
- 
+
 			imageUrl = e.target.files[0]
-			
-			read.onloadend = function(evt) {  
-				result_base64 = evt.target.result; 
+
+			read.onloadend = function(evt) {
+				result_base64 = evt.target.result;
 				$scope.profileImgBase64 = btoa(read.result);
 			};
 			read.readAsBinaryString(image);

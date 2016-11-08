@@ -335,6 +335,49 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         }
       }
 
+      $scope.callBuddy = function () {
+          console.log("Buddy called.")
+          var app_id = "1409613061631";
+          var user_key = "22979a79e76310f4250128edd868e5fa";
+          var botname = "uglybuddy";
+          var text = "Hello";
+
+          // Get a sentence
+          var pks = [];
+          for (i in $scope.selectedTiles) {
+            pks.push($scope.selectedTiles[i].pk);
+          }
+          var sreq = {
+            url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
+            data: {pks: "[" + pks.toString() + "]"},
+            method: 'POST'
+          }
+
+          $http(sreq).success(function(data) {
+            console.log(data)
+            // That's right! No data or auth for this
+            var req = {
+              url: "https://aiaas.pandorabots.com/talk/1409613061631/uglybuddy?input=" + data.sentence + "&user_key=22979a79e76310f4250128edd868e5fa",
+              method: "POST"
+            }
+            $http(req).success(function(data){
+              $scope.speakText(data.responses[0]);
+
+              //Se oculta boton de play
+              $scope.play = false;
+              //Se muestra boton de play
+              $scope.replay = true;
+            })
+          })
+        }
+
+        $scope.$on('callBuddyEvent', function(){
+          $scope.callEvent = true;
+          $timeout(function (){
+            $scope.callEvent = false;
+          }, 1000);
+        });
+
       $scope.sayPhrase = function () {
         console.log($scope.selectedTiles);
         var pks = [];
@@ -465,10 +508,30 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
     //Buddies
     $scope.buddies = [
-      'Chloe.gif',
-      'Emma.gif',
-      'Harry.gif',
-      'José.gif'
+      {
+        name: 'Chloe',
+        gif: 'chameleon.gif',
+        think: 'chameleon_think.gif',
+        talk: 'chameleon_talk.gif'
+      },
+      {
+        name: 'Emma',
+        gif: 'emma.gif',
+        think: 'emma_think.gif',
+        talk: 'emma_talk.gif'
+      },
+      {
+        name: 'Harry',
+        gif: 'hedgehog.gif',
+        think: 'hedgehog_think.gif',
+        talk: 'hedgehog_talk.gif'
+      },
+      {
+        name: 'José',
+        gif: 'jose.gif',
+        think: 'jose_think.gif',
+        talk: 'jose_talk.gif'
+      }
     ];
 
     $scope.selectedBuddy = $scope.buddies[0];
