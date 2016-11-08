@@ -111,7 +111,9 @@
           <div class="col col-60" id="tile-section">
             <div class="tile-section-border">
               <span ng-repeat="row in rows">
-                <div class="tile" ng-repeat="col in columns" ng-click="clickTile(board.symbols[col+row]); sayWord();"  ng-class="{lightBlue:board.symbols[col+row]==selectedIndex}";>
+                <div class="tile" ng-repeat="col in columns"
+                  ng-click="clickTile(board.symbols[col+row]); sayWord();"
+                  ng-class="{ lightYellow: board.symbols[col+row].word_class=='pronoun', lightBlue: board.symbols[col+row]==selectedIndex }";>
                   <span ng-show="filled_tiles.indexOf(col+row)!=-1">
                     <p class="tile-words">{{board.symbols[col+row].word | limitTo: titleLimit}}</p>
                       <!-- <span ng-show="board.symbols[col+row].word.length > titleLimit">...</span> -->
