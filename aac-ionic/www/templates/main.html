@@ -41,7 +41,13 @@
     <div class="row" id="regularRow">
       <div class="col col-10" id="regularRowBod">
 
-        <div ng-click="sayPhrase()">
+        <div ng-click="sayPhrase()" ng-show="!activeChat">
+          <img src="img/AAC_assets/avatar_default.png"/>
+          <img src="img/AAC_assets/play.png" alt="Play" class="play" ng-show="play">
+          <img src="img/AAC_assets/replay.png" alt="Play" class="replay" ng-show="replay">
+        </div>
+
+        <div ng-click="callBuddy()" ng-show="activeChat">
           <img src="img/AAC_assets/avatar_default.png"/>
           <img src="img/AAC_assets/play.png" alt="Play" class="play" ng-show="play">
           <img src="img/AAC_assets/replay.png" alt="Play" class="replay" ng-show="replay">
@@ -95,9 +101,10 @@
                   style="width:40px;height:40px">
               </div>
               <img ng-src="{{ imageUrl }}" id="home-section" ng-click="deleteLastTile()" on-tap="onTap()"/>
-              <img src="img/AAC_assets/avatar_button.png" id="home-section" ng-click="callBuddy()" />
+              <img ng-src="img/chat_buddies/{{selectedBuddy.think}}" style="width:15%;float:right;margin-top:5px;display:block;margin-right:-24%" ng-show="activeChat && !callEvent"/>
 
-              <img ng-src="img/chat_buddies/{{selectedBuddy}}" style="width:12%;float:right;margin-top:-15px;display:block;margin-right:-10.5rem" ng-show="activeChat"/>
+              <img ng-src="img/chat_buddies/{{selectedBuddy.talk}}" style="width:14%;float:right;margin-top:-15px;display:block;margin-right:-23%" ng-show="activeChat && callEvent"/>
+
             </div>
           </div>
 

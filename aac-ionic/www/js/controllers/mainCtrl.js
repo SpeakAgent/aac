@@ -361,10 +361,22 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
               method: "POST"
             }
             $http(req).success(function(data){
-              $scope.speakText(data.responses[0])
+              $scope.speakText(data.responses[0]);
+
+              //Se oculta boton de play
+              $scope.play = false;
+              //Se muestra boton de play
+              $scope.replay = true;
             })
           })
         }
+
+        $scope.$on('callBuddyEvent', function(){
+          $scope.callEvent = true;
+          $timeout(function (){
+            $scope.callEvent = false;
+          }, 1000);
+        });
 
       $scope.sayPhrase = function () {
         console.log($scope.selectedTiles);
@@ -496,10 +508,30 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
     //Buddies
     $scope.buddies = [
-      'Chloe.gif',
-      'Emma.gif',
-      'Harry.gif',
-      'José.gif'
+      {
+        name: 'Chloe',
+        gif: 'chameleon.gif',
+        think: 'chameleon_think.gif',
+        talk: 'chameleon_talk.gif'
+      },
+      {
+        name: 'Emma',
+        gif: 'emma.gif',
+        think: 'emma_think.gif',
+        talk: 'emma_talk.gif'
+      },
+      {
+        name: 'Harry',
+        gif: 'hedgehog.gif',
+        think: 'hedgehog_think.gif',
+        talk: 'hedgehog_talk.gif'
+      },
+      {
+        name: 'José',
+        gif: 'jose.gif',
+        think: 'jose_think.gif',
+        talk: 'jose_talk.gif'
+      }
     ];
 
     $scope.selectedBuddy = $scope.buddies[0];

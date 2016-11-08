@@ -10,12 +10,12 @@
       </h2>
 
       <div id="container" class="buddy-choice"
-           ng-repeat="buddy in buddies track by $index"
-           ng-click="buddySelect(buddies[$index])"
-           ng-class="{'pickme-active' : pickme == buddies[$index]}">
-          {{buddies[$index].substring(0, (buddies[$index].length - 4));}} <br>
-          <img ng-src="img/chat_buddies/{{buddies[$index]}}" alt="buddy" style="width:70%;" class="originalImg" />
-          <button ng-if="pickme == buddies[$index]" class="button-pickme" ng-click="buddyPickMe(buddies[$index]);">
+           ng-repeat="buddy in buddies"
+           ng-click="buddySelect(buddy)"
+           ng-class="{'pickme-active' : pickme == buddy}">
+          {{buddy.name}} <br>
+          <img ng-src="img/chat_buddies/{{buddy.gif}}" alt="buddy" style="width:70%;" class="originalImg" />
+          <button ng-if="pickme == buddy" class="button-pickme" ng-click="buddyPickMe(buddy);">
             Pick me!
           </button>
       </div>
