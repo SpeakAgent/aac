@@ -77,6 +77,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $scope.chosenBoard = function(index){
       $scope.board = $scope.userBoards[index];
       $scope.filled_tiles = Object.keys($scope.board.symbols)
+      $scope.sayWord();
     };
 
     $scope.homeButton = function(){
@@ -281,6 +282,13 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           $scope.filled_tiles = Object.keys($scope.board.symbols)
         })
       }else{
+        for(x=0; x < $scope.selectedTiles.length; x++){
+          if($scope.selectedTiles[x].pk == tile.pk){
+            $scope.selectedIndex = tile;
+            return;
+          }
+        }
+
         if ($scope.selectedTiles.length < 8) {
           //Se verifica si el usuario ha dado play o replay
           if ($scope.replay) {
@@ -305,6 +313,8 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           }
         }
       }
+
+      $scope.sayWord();
     }
 
     // $scope.class = "none";
@@ -434,6 +444,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
       $scope.chosenTile = function(tileIndex){
         $scope.selectedIndex = tileIndex;
+        $scope.sayWord();
       };
 
       $scope.lastSet = function(index){
