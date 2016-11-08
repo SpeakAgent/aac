@@ -107,7 +107,6 @@
                   ng-click="clickTile(board.symbols[col+row]); sayWord();"
                   ng-class="getTileClickColor(board.symbols[col+row])";>
                   <span ng-show="filled_tiles.indexOf(col+row)!=-1">
-                    {{board.symbols[col+row].word_class}}
                     <p class="tile-words">{{board.symbols[col+row].word | limitTo: titleLimit}}</p>
                       <!-- <span ng-show="board.symbols[col+row].word.length > titleLimit">...</span> -->
                       <br>
