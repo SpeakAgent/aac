@@ -90,7 +90,7 @@
           <div class="word-builder">
             <div class="word-builder-input" style="margin-left:-15px">
               <div class="tile" ng-repeat="symbol in selectedTiles">
-                {{ symbol.word }}<br>
+                <span ng-bind="symbol.label? (symbol.label | limitTo: titleLimit) : (symbol.word | limitTo: titleLimit)"></span>
                 <img src = "{{symbol.symbol.image}}"
                   style="width:40px;height:40px">
               </div>
@@ -107,9 +107,9 @@
                   ng-click="clickTile(board.symbols[col+row]);"
                   ng-class="{ lightYellow: board.symbols[col+row].word_class=='pronoun', lightBlue: board.symbols[col+row]==selectedIndex }";>
                   <span ng-show="filled_tiles.indexOf(col+row)!=-1">
-                    <p class="tile-words">{{board.symbols[col+row].word | limitTo: titleLimit}}</p>
-                      <!-- <span ng-show="board.symbols[col+row].word.length > titleLimit">...</span> -->
-                      <br>
+                    <p ng-bind="board.symbols[col+row].label? (board.symbols[col+row].label | limitTo: titleLimit) : (board.symbols[col+row].word | limitTo: titleLimit)"
+                      class="tile-words"></p>
+                      <br />
                     <img src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px">
                   </span>
                 </div>
