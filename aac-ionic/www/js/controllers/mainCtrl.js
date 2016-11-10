@@ -74,7 +74,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           $scope.userBoards = data.boards;
           $scope.quickbar = data.quickbar;
           $scope.filled_tiles = Object.keys($scope.board.symbols)
-          
+          window.localStorage['boards'] = angular.toJson(data);
         })
       } else {
         var data = angular.fromJson(window.localStorage['boards'])
