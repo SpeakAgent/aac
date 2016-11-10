@@ -855,6 +855,19 @@ input[type="text"]:focus, textarea:focus{
   border-color:white;
 }
 
+.boards {
+  padding: .5%;
+  height: 70px;
+  width: 70px;
+  font-size: .75em;
+  margin: 4.5px;
+  float: left;
+  text-align: center;
+  background: url("../img/new_dev_assets/board_tile_notched_default_1.svg"); }
+
+.boards.activated {
+  background: url("../img/new_dev_assets/board_tile_notched_default_yellow.svg"); }
+
 .lightBlue{
   background-color:#83EFF0;
   border-color:white;
