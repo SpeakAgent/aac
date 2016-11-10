@@ -76,13 +76,19 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
     $scope.chosenBoard = function(index){
       $scope.board = $scope.userBoards[index];
-      $scope.filled_tiles = Object.keys($scope.board.symbols)
-      $scope.sayWord();
+      $scope.filled_tiles = Object.keys($scope.board.symbols);
+      $scope.speakText($scope.userBoards[index].board.title);
     };
 
     $scope.homeButton = function(){
-      $scope.board = $scope.userBoards[0];
-      $scope.filled_tiles = Object.keys($scope.board.symbols)
+      for(var y=0; y < $scope.userBoards.length; y++){
+        if($scope.userBoards[y].board.home_board == true){
+          $scope.board = $scope.userBoards[y];
+          $scope.filled_tiles = Object.keys($scope.board.symbols)
+          return;
+        }
+ 
+      }
     }
 
     // COLOR MODAL FUNCTIONS AND OBJECTS
@@ -266,6 +272,10 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $scope.play = false;
     $scope.replay = false;
     $scope.clickTile = function(tile) {
+      if(!tile){
+        return;
+      }
+      
       if(tile.target_board){
         var req = {
           url: appConfig.backendURL + '/board/single/',
@@ -279,23 +289,26 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         $http(req).success(function(data) {
           console.log('loadingData');
           $scope.board = data;
-          $scope.filled_tiles = Object.keys($scope.board.symbols)
+          $scope.filled_tiles = Object.keys($scope.board)
         })
-      }else{
-        for(x=0; x < $scope.selectedTiles.length; x++){
-          if($scope.selectedTiles[x].pk == tile.pk){
-            $scope.selectedIndex = tile;
-            return;
-          }
-        }
 
-        if ($scope.selectedTiles.length < 8) {
-          //Se verifica si el usuario ha dado play o replay
-          if ($scope.replay) {
-            //Se limpia el array de items y el index
-            $scope.selectedTiles = [];
-            $scope.selectedIndex = undefined;
-          }
+        return;
+      }
+
+      for(var x=0; x < $scope.selectedTiles.length; x++){
+        if($scope.selectedTiles[x].pk == tile.pk){
+          $scope.selectedIndex = tile;
+          return;
+        }
+      }
+
+      if ($scope.selectedTiles.length < 8) {
+        //Se verifica si el usuario ha dado play o replay
+        if ($scope.replay) {
+          //Se limpia el array de items y el index
+          $scope.selectedTiles = [];
+          $scope.selectedIndex = undefined;
+        }
 
         $scope.selectedTiles.push(tile);
         $scope.selectedIndex = tile;
@@ -305,12 +318,10 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         //Se oculta el boton de replay
         $scope.replay = false;
 
-          console.log($scope.selectedTiles);
-          $scope.selectedIndex = tile;
+        $scope.selectedIndex = tile;
 
-          if($scope.selectedTiles[$scope.selectedIndex] == undefined){
-            console.log("no index!!");
-          }
+        if($scope.selectedTiles[$scope.selectedIndex] == undefined){
+          console.log("no index!!");
         }
       }
 
@@ -411,6 +422,11 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
 
       $scope.sayWord = function() {
+        if($scope.selectedIndex.label){
+          $scope.speakText($scope.selectedIndex.label);
+          return;
+        }
+
         var req = {
           url: appConfig.backendURL + '/compaction/symbols/',
           data: {pks: "[" + $scope.selectedIndex.pk + "]"},

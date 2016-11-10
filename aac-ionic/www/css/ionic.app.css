@@ -232,7 +232,7 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2 
   border-radius: 40px; }
 
 .buttonsdiv {
-  margin-left: 20px; }
+  margin: 0 auto; }
 
 #centered-custom-button {
   margin-left: 38%;
@@ -421,10 +421,10 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2 
   font-size: 2.5em; }
   .icon.ion-locked {
     color: #B70016;
-    margin-left: 200px; }
+  }
   .icon.ion-unlocked {
     color: #77ce20;
-    margin-left: 200px; }
+  }
 
 input[type="text"] {
   display: block;
@@ -464,7 +464,7 @@ input[type="text"]:focus, textarea:focus {
 .tile-words {
   line-height: 100%;
   letter-spacing: .5px;
-  margin-bottom: -16px;
+  margin-bottom: 8px;
   margin-top: 2px; }
 
 .list-container {

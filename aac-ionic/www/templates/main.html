@@ -1,5 +1,5 @@
 <ion-header-bar class="bar-dark">
-  <i class="icon ion-unlocked"></i>
+  <!--<i class="icon ion-unlocked"></i>-->
   <div class="buttonsdiv">
     <!-- <i class="icon ion-unlocked"></i> -->
 
@@ -7,12 +7,13 @@
       <i class="icon ion-gear-b"></i> Settings
     </a>
 
+    <!--
     <a href="#/board_factory" class="button button-outline button-small" id="btn-styling">
       <i class="icon ion-grid"></i>
       Board Factory
       <br>
       <p class="show-hide-label">*Requires Wifi</p>
-    </a>
+    </a>-->
 
     <button class="button button-outline button-calm button-small" id="btn-styling" ng-click="activeHide()" ng-class="class1">
       <i class="icon ion-eye-disabled" ng-show="selectedBtn2 == true"></i>
@@ -54,34 +55,34 @@
           {{ phrase }}
         </div>
 
-         <div class="regulars" ng-click="chosenTile(quickbar.lexeme); sayWord()">
-            <span ng-bind="quickbar.lexeme.lexeme | limitTo: titleLimit"></span>
-            <span ng-show="quickbar.lexeme.lexeme.length > titleLimit">...</span>
+         <div class="regulars" ng-click="chosenTile(quickbar.lexeme);">
+            {{ quickbar.lexeme.lexeme | limitTo: titleLimit }}
             <br />
-            <img src="{{quickbar.lexeme.symbol.image}}"
+            <img  src="{{quickbar.lexeme.symbol.image}}"
+              ng-if="quickbar.lexeme.symbol.image"
               style="width:40px;height:40px">
           </div>
 
           <div class="regulars" ng-click="chosenTile(quickbar.lexeme2);">
-            <span ng-bind="quickbar.lexeme2.lexeme | limitTo: titleLimit"></span>
-            <span ng-show="quickbar.lexeme2.lexeme.length > titleLimit">...</span>
+            {{ quickbar.lexeme2.lexeme | limitTo: titleLimit }}
             <br />
-            <img src = "{{quickbar.lexeme2.symbol.image}}"
+            <img src="{{quickbar.lexeme2.symbol.image}}"
+              ng-if="quickbar.lexeme2.symbol.image"
               style="width:40px;height:40px">
           </div>
 
           <div class="regulars" ng-click="chosenTile(quickbar.lexeme3);">
-            <span ng-bind="quickbar.lexeme3.lexeme | limitTo: titleLimit"></span>
-            <span ng-show="quickbar.lexeme3.lexeme.length > titleLimit">...</span>
+            {{ quickbar.lexeme3.lexeme | limitTo: titleLimit }}
             <br />
             <img src = "{{quickbar.lexeme3.symbol.image}}"
+              ng-if="quickbar.lexeme3.symbol.image"
               style="width:40px;height:40px">
           </div>
 
           <div class="regulars" ng-click="chosenTile(quickbar.lexeme4);">
-            <span ng-bind="quickbar.lexeme4.lexeme | limitTo: titleLimit"></span>
-            <span ng-show="quickbar.lexeme4.lexeme.length > titleLimit">...</span>
-            <img src = "{{quickbar.lexeme4.symbol.image}}"
+            {{ quickbar.lexeme4.lexeme | limitTo: titleLimit }}
+            <img src="{{quickbar.lexeme4.symbol.image}}"
+              ng-if="quickbar.lexeme4.symbol.image"
               style="width:40px;height:40px">
           </div>
         </div>
@@ -90,8 +91,10 @@
           <div class="word-builder">
             <div class="word-builder-input" style="margin-left:-15px">
               <div class="tile" ng-repeat="symbol in selectedTiles">
-                <span ng-bind="symbol.label? (symbol.label | limitTo: titleLimit) : (symbol.word | limitTo: titleLimit)"></span>
+                <p ng-bind="symbol.label? (symbol.label | limitTo: titleLimit) : (symbol.word | limitTo: titleLimit)"
+                class="tile-words"></p>
                 <img src = "{{symbol.symbol.image}}"
+                  ng-if="symbol.symbol.image"
                   style="width:40px;height:40px">
               </div>
               <img ng-src="{{ imageUrl }}" id="home-section" ng-click="deleteLastTile()" on-tap="onTap()"/>
@@ -109,8 +112,7 @@
                   <span ng-show="filled_tiles.indexOf(col+row)!=-1">
                     <p ng-bind="board.symbols[col+row].label? (board.symbols[col+row].label | limitTo: titleLimit) : (board.symbols[col+row].word | limitTo: titleLimit)"
                       class="tile-words"></p>
-                      <br />
-                    <img src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px">
+                    <img ng-if="board.symbols[col+row].symbol.image" src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px">
                   </span>
                 </div>
               </span>
