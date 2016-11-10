@@ -56,7 +56,7 @@
         </div>
 
          <div class="regulars" ng-click="chosenTile(quickbar.lexeme);">
-            {{ quickbar.lexeme.lexeme | limitTo: titleLimit }}
+            {{ quickbar.lexeme.lexeme | charLimit: titleLimit }}
             <br />
             <img  src="{{quickbar.lexeme.symbol.image}}"
               ng-if="quickbar.lexeme.symbol.image"
@@ -64,7 +64,7 @@
           </div>
 
           <div class="regulars" ng-click="chosenTile(quickbar.lexeme2);">
-            {{ quickbar.lexeme2.lexeme | limitTo: titleLimit }}
+            {{ quickbar.lexeme2.lexeme | charLimit: titleLimit }}
             <br />
             <img src="{{quickbar.lexeme2.symbol.image}}"
               ng-if="quickbar.lexeme2.symbol.image"
@@ -72,7 +72,7 @@
           </div>
 
           <div class="regulars" ng-click="chosenTile(quickbar.lexeme3);">
-            {{ quickbar.lexeme3.lexeme | limitTo: titleLimit }}
+            {{ quickbar.lexeme3.lexeme | charLimit: titleLimit }}
             <br />
             <img src = "{{quickbar.lexeme3.symbol.image}}"
               ng-if="quickbar.lexeme3.symbol.image"
@@ -80,7 +80,7 @@
           </div>
 
           <div class="regulars" ng-click="chosenTile(quickbar.lexeme4);">
-            {{ quickbar.lexeme4.lexeme | limitTo: titleLimit }}
+            {{ quickbar.lexeme4.lexeme | charLimit: titleLimit }}
             <img src="{{quickbar.lexeme4.symbol.image}}"
               ng-if="quickbar.lexeme4.symbol.image"
               style="width:40px;height:40px">
@@ -92,7 +92,7 @@
             <div class="word-builder-input" style="margin-left:-15px">
               <div class="tile" ng-repeat="symbol in selectedTiles"
                 ng-click="clickTile(board.symbols[col+row]);">
-                <p ng-bind="symbol.label? (symbol.label | limitTo: titleLimit) : (symbol.word | limitTo: titleLimit)"
+                <p ng-bind="symbol.label? (symbol.label | charLimit: titleLimit) : (symbol.word | charLimit: titleLimit)"
                 class="tile-words"></p>
                 <img src = "{{symbol.symbol.image}}"
                   ng-if="symbol.symbol.image"
@@ -111,7 +111,7 @@
                   ng-click="clickTile(board.symbols[col+row]);"
                   ng-class="{ lightYellow: board.symbols[col+row].word_class=='pronoun', lightBlue: board.symbols[col+row]==selectedIndex }";>
                   <span ng-show="filled_tiles.indexOf(col+row)!=-1">
-                    <p ng-bind="board.symbols[col+row].label? (board.symbols[col+row].label | limitTo: titleLimit) : (board.symbols[col+row].word | limitTo: titleLimit)"
+                    <p ng-bind="board.symbols[col+row].label? (board.symbols[col+row].label | charLimit: titleLimit) : (board.symbols[col+row].word | charLimit: titleLimit)"
                       class="tile-words"></p>
                     <img ng-if="board.symbols[col+row].symbol.image" src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px">
                   </span>
@@ -122,7 +122,7 @@
 
           <div class="col col-40" id="board-section">
               <div class="boards" ng-repeat="userBoard in userBoards | sliceArr:start:end" ng-click="chosenBoard($index);">
-                <p style="position:fixed; z-index:3; margin-left:15px;" ng-model="titleLimit">{{userBoard.board.title | limitTo: titleLimit}} <span ng-show="boardObj.board.name.length > titleLimit">...</span></p>
+                <p style="position:fixed; z-index:3; margin-left:15px;" ng-model="titleLimit">{{userBoard.board.title | charLimit: titleLimit}}</p>
 
                 <img ng-if="userBoard.board.image" ng-src="{{userBoard.board.image}}" alt="{{userBoard.board.title}}" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-50px;"\>
 

@@ -25,6 +25,12 @@ app.filter('breaking2', function(){
   }
 });
 
+app.filter('charLimit', function () {
+      return function (word, limit) {
+          return word.length > limit? word.substring(0, limit) + '...' : word;
+      };
+  });
+
 app.controller('mainController',
 function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
   $location, $ionicPopover, $ionicHistory, aacService, appConfig, $timeout) {
@@ -75,9 +81,9 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $scope.mainBoardLoader();
 
     $scope.chosenBoard = function(index){
+      $scope.speakText($scope.userBoards[index].board.title);
       $scope.board = $scope.userBoards[index];
       $scope.filled_tiles = Object.keys($scope.board.symbols);
-      $scope.speakText($scope.userBoards[index].board.title);
     };
 
     $scope.homeButton = function(){
@@ -458,8 +464,8 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       $scope.class = "white";
 
       $scope.chosenTile = function(tileIndex){
-        $scope.selectedIndex = tileIndex;
         $scope.sayWord();
+        $scope.selectedIndex = tileIndex;
       };
 
       $scope.lastSet = function(index){
