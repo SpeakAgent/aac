@@ -55,22 +55,50 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $scope.board = {};
 
     $scope.mainBoardLoader = function(){
-      var req = {
-        url: appConfig.backendURL + '/board/user/',
-        data: {user_username: localStorage.getItem('username')},
-        method: 'POST',
-        headers: {
-          Authorization: 'JWT ' + localStorage.getItem('authToken')
-        }
-      }
+      // Make sure we have to do this call! Are there boards already saved?
 
-      $http(req).success(function(data) {
+      if ($scope.checkBoards()) {
+        var req = {
+          url: appConfig.backendURL + '/board/user/',
+          data: {user_username: localStorage.getItem('username')},
+          method: 'POST',
+          headers: {
+            Authorization: 'JWT ' + localStorage.getItem('authToken')
+          }
+        }
+
+        console.log("Getting boards", req)
+
+        $http(req).success(function(data) {
+          $scope.board = data.boards[0];
+          $scope.userBoards = data.boards;
+          $scope.quickbar = data.quickbar;
+          $scope.filled_tiles = Object.keys($scope.board.symbols)
+          window.localStorage['boards'] = angular.toJson(data);
+        })
+      } else {
+        var data = angular.fromJson(window.localStorage['boards'])
+        console.log(data)
+        $scope.userBoards = data.boards
         $scope.board = data.boards[0];
-        $scope.userBoards = data.boards;
         $scope.quickbar = data.quickbar;
-        $scope.filled_tiles = Object.keys($scope.board)
-      })
+        $scope.filled_tiles = Object.keys($scope.board.symbols)
+      }
     };
+
+    $scope.checkBoards = function(data) {
+      // Do we actually need to download the boards
+      // Return bool
+
+      // For now, let's just make a file.
+      // window.localStorage['boards'] = angular.toJson(data);
+      // console.log("Saved boards", angular.fromJson(window.localStorage['boards']))
+      if (localStorage.getItem('boards') !== null) {
+        return false // Get the boards
+      } else {
+        return true // Do not get the boards
+      }
+    }
 
     $scope.mainBoardLoader();
 
