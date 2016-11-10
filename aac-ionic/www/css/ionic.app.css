@@ -5929,7 +5929,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
 }
 
 .panels.active{
-  background-color: #008485;
+  background-color: #008485!important;
   color: white;
 }
 
