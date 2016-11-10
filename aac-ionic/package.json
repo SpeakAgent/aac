@@ -21,7 +21,8 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
-    "cordova-plugin-tts"
+    "cordova-plugin-tts",
+    "cordova-plugin-file"
   ],
   "cordovaPlatforms": [
     "ios"
