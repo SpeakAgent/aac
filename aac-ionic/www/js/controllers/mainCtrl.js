@@ -1,4 +1,4 @@
-var app = angular.module('main.Ctrl', ['ionic']);
+var app = angular.module('main.Ctrl', ['ionic', 'ngCordova']);
 
 app.filter('sliceArr', function(){
   return function(arr, start, end){

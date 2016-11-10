@@ -78,6 +78,13 @@
 						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
 					</ion-item>
 
+					<ion-item ng-click="panel(11)" id="synthetic">
+						<div class="avatar-icon-placeholder">
+							<img src="img/AAC_assets/icon-synthetic-voice.png" />
+						</div>Download board
+						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
+					</ion-item>
+
 					<!-- <ion-item ng-click="panel(3)" id="sound">
 						<div class="avatar-icon-placeholder"></div>Sound Effects
 						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
@@ -237,6 +244,19 @@
 							</div>
 						</label>
 						<p>Clear Phrase Bar After Speaking</p>
+				</div>
+			</div>
+
+<!-- Download Board Panel -->
+			<div class="col col-67" id="settings-modal" ng-show="step == 11">
+				<ion-list>
+					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
+						<h1 class="centered-title"><strong>Download board</strong></h1>
+					</ion-item>
+				</ion-list>
+
+				<div class="settings-box">
+						<button ng-click="downloadBoard()">Download</button>
 				</div>
 			</div>
 
