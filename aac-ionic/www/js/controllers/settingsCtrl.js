@@ -19,35 +19,27 @@ app.controller('settingsController',
 		$scope.downloadBoard = function() {
 			console.log("Downloading a board");
 			var req = {
-				url: "https://lexemes-dev.herokuapp.com/board/single/",
-				data: {
-					pk: 26
-				},
-				headers: {
-					Authorization: 'JWT ' + localStorage.getItem('authToken')
-				},
-				method: "POST"
-			}
+	          url: appConfig.backendURL + '/board/user/',
+	          data: {user_username: localStorage.getItem('username')},
+	          method: 'POST',
+	          headers: {
+	            Authorization: 'JWT ' + localStorage.getItem('authToken')
+	          }
+	        }
 
-			$http(req).success(function(data){
-				$scope.dlboard = data;
-				console.log($scope.dlboard.board.image);
-				var url = $scope.dlboard.board.image;
-				var targetPath = cordova.file.documentsDirectory + "testimg.png";
-				var trustHosts = true;
-				var options = {};
+	        console.log("Getting boards", req)
 
-				$cordovaFileTransfer.download(url, targetPath, options, trustHosts)
-			      .then(function(result) {
-			        console.log("Done!", result)
-			      }, function(err) {
-			        console.log("Error", err)
-			      }, function (progress) {
-			        $timeout(function () {
-			          $scope.downloadProgress = (progress.loaded / progress.total) * 100;
-			        });
-			      });
-			})
+	        $http(req).success(function(data) {
+	          $scope.board = data.boards[0];
+	          $scope.userBoards = data.boards;
+	          $scope.quickbar = data.quickbar;
+	          $scope.filled_tiles = Object.keys($scope.board.symbols)
+	          console.log("Got boards", data)
+	          window.localStorage['boards'] = angular.toJson(data);
+	        })
+	        .error(function(error) {
+	        	console.log("Could not download", error)
+	        })
 		}
 		
 		$scope.alertAnimation = function(message){
