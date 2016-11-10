@@ -601,9 +601,7 @@ input[type="text"]:focus, textarea:focus {
   background-color: #ffffff;
   margin-left: 15%;
   margin-top: 5%;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 30px;
+  padding: 10px 30px;
   font-size: 1.2em;
   width: 70%; }
 
@@ -5924,6 +5922,16 @@ ion-tabs.tabs-color-active-dark .tab-item {
   .tab-item.active.tab-item-dark,
   .tab-item.activated.tab-item-dark {
     color: #000000; }
+
+.panels{
+  background-color: white;
+  color: black;
+}
+
+.panels.active{
+  background-color: #008485;
+  color: white;
+}
 
 .item.tabs {
   display: -webkit-box;

@@ -27,7 +27,7 @@ app.filter('breaking2', function(){
 
 app.filter('charLimit', function () {
       return function (word, limit) {
-          return word.length > limit? word.substring(0, limit) + '...' : word;
+          return word && word.length > limit? word.substring(0, limit) + '...' : word;
       };
   });
 
@@ -328,9 +328,9 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         if($scope.selectedTiles[$scope.selectedIndex] == undefined){
           console.log("no index!!");
         }
-      }
 
-      $scope.sayWord();
+        $scope.sayWord();
+      }
     }
 
     // $scope.class = "none";
