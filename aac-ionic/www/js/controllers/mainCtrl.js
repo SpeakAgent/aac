@@ -529,9 +529,10 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
        $scope.activeAvatar = false;
      }, 500);
    };
-      $scope.handlerTap = function (button){
-        $scope.buttons[button] = !$scope.buttons[button];
-      };
+
+    $scope.handlerTap = function (button){
+      $scope.buttons[button] = !$scope.buttons[button];
+    };
 
     //Buddies
     $scope.buddies = [
