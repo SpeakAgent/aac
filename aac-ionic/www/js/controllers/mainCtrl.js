@@ -87,7 +87,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           $scope.filled_tiles = Object.keys($scope.board.symbols)
           return;
         }
- 
       }
     }
 
