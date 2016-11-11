@@ -688,6 +688,11 @@ input[type="text"]:focus, textarea:focus {
   overflow: hidden;
 }
 
+.tile.lightBlue {
+  background-color: #83EFF0;
+  border-color: white; }
+>>>>>>> ebf6db0... Image caching is partially working
+
 .boards:active {
   background: url("../img/new_dev_assets/board_tile_tapped.svg") no-repeat !important;}
 

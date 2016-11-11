@@ -15,7 +15,7 @@ app.filter('charLimit', function () {
 
 app.controller('mainController',
 function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
-    $ionicPopover, $state, aacService, appConfig, $timeout,
+    $ionicPopover, $state, aacService, appConfig, $timeout, $location,
     sessionService, $location, $ionicHistory, $cordovaFileTransfer) {
 
     $ionicHistory.nextViewOptions({
@@ -109,16 +109,20 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
         $http(req).success(function(data) {
           $scope.board = data.boards[0];
-          console.log(data.boards[0].board.pk);
-          $scope.selectedBoardIndex = data.boards[0].board.pk;
+          console.log("board", $scope.board) 
           $scope.userBoards = data.boards;
           $scope.quickbar = data.quickbar;
-          sessionService.set('boards', angular.toJson(data));
-          $scope.getHomeBoard();
-        }).error(function (data) {
-          $scope.errData = data
-        });
+          $scope.filled_tiles = Object.keys($scope.board.symbols)
+          $scope.downloadBoards(data)
+          console.log("Board ready, updating a thing ")
+          img = $cordovaFile.readAsDataURL(cordova.file.applicationDirectory, "getty-apple_large.jpg")
+          // img = cordova.file.applicationDirectory + "getty-apple_large.jpg"
+          console.log("Image...", img)
+          console.log(JSON.stringify($scope.board.symbols.f5.symbol.image))
+          $scope.board.symbols.f5.symbol.image = img; 
+          $scope.board.symbols.f5.symbol.thumb = img;  
 
+        })
       } else {
         var data = angular.fromJson(sessionService.get('boards'));
         console.log(data)
