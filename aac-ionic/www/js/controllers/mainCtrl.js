@@ -86,7 +86,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       window.resolveLocalFileSystemURL(
         path, 
         function(data) {
-          console.log("Got it!", JSON.stringify(data));
           return data}, 
         function(err) {console.log("Nope")});
     }
@@ -115,12 +114,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           $scope.filled_tiles = Object.keys($scope.board.symbols)
           $scope.downloadBoards(data)
           console.log("Board ready, updating a thing ")
-          // listDir(cordova.file.applicationDirectory);
-
-          $cordovaFile.readAsBinaryString(cordova.file.applicationDirectory, "www/img/apple.png")
-            .then(function(binaryString) {
-              console.log("BinS:", binaryString)
-            }, function(error) {console.log("Error", JSON.stringify(error))})
 
           $cordovaFile.readAsDataURL(
             cordova.file.applicationDirectory, "www/img/apple.png")
@@ -128,7 +121,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
               $scope.board.symbols.a1.symbol.image = res; 
               $scope.board.symbols.a1.symbol.thumb = res;  
             })
-          // img = cordova.file.applicationDirectory + "getty-apple_large.jpg"
         })
       } else {
         var data = angular.fromJson(sessionService.get('boards'));
