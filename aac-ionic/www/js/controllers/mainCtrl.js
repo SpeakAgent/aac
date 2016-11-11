@@ -45,10 +45,10 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
     $scope.Download = function () {
       ionic.Platform.ready(function(){
-       var url = "https://g.foolcdn.com/editorial/images/213457/getty-apple_large.jpg";
+       var url = "http://findicons.com/files/icons/1187/pickin_time/128/apple.png";
        var filename = url.split("/").pop();
        // var targetPath = '/tmp/aac/' + filename;
-       var targetPath = cordova.file.applicationDirectory + filename;
+       var targetPath = cordova.file.applicationDirectory + "www/img/" + filename;
 
 
 
@@ -115,13 +115,20 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           $scope.filled_tiles = Object.keys($scope.board.symbols)
           $scope.downloadBoards(data)
           console.log("Board ready, updating a thing ")
-          img = $cordovaFile.readAsDataURL(cordova.file.applicationDirectory, "getty-apple_large.jpg")
-          // img = cordova.file.applicationDirectory + "getty-apple_large.jpg"
-          console.log("Image...", img)
-          console.log(JSON.stringify($scope.board.symbols.f5.symbol.image))
-          $scope.board.symbols.f5.symbol.image = img; 
-          $scope.board.symbols.f5.symbol.thumb = img;  
+          // listDir(cordova.file.applicationDirectory);
 
+          $cordovaFile.readAsBinaryString(cordova.file.applicationDirectory, "www/img/apple.png")
+            .then(function(binaryString) {
+              console.log("BinS:", binaryString)
+            }, function(error) {console.log("Error", JSON.stringify(error))})
+
+          $cordovaFile.readAsDataURL(
+            cordova.file.applicationDirectory, "www/img/apple.png")
+            .then(function(res) {
+              $scope.board.symbols.a1.symbol.image = res; 
+              $scope.board.symbols.a1.symbol.thumb = res;  
+            })
+          // img = cordova.file.applicationDirectory + "getty-apple_large.jpg"
         })
       } else {
         var data = angular.fromJson(sessionService.get('boards'));
