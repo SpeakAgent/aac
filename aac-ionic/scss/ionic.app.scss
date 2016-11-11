@@ -929,6 +929,16 @@ input[type="text"]:focus, textarea:focus{
   font-size:50%;
 }
 
+.panels{
+  background-color: white;
+  color: black;
+}
+
+.panels.active{
+  background-color: #008485!important;
+  color: white;
+}
+
 .triangle-topright {
   width: 0;
   height: 0;

@@ -11,8 +11,8 @@ app.service('aacService', function($http, $ionicModal){
 	this.titleLimit = 20;
   this.aacService = {};
   this.aacService.data = {};
-  this.voice_volume = 100;
-  this.voice = 'Siri';
+  this.voice_volume = 150;
+  this.synthetic_voice = 'FEMALE';
 
   // this.longWords = [
   //   {

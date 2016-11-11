@@ -7,24 +7,6 @@ app.filter('sliceArr', function(){
   };
 });
 
-app.filter('breaking', function(){
-  return function(word){
-    if(word.length > 10){
-      firstHalf = word.substr(0,9);
-      return firstHalf;
-    }
-  }
-});
-
-app.filter('breaking2', function(){
-  return function(word){
-    if(word.length > 10){
-      secondHalf = word.substr(10,word.length);
-      return secondHalf;
-    }
-  }
-});
-
 app.filter('charLimit', function () {
       return function (word, limit) {
           return word && word.length > limit? word.substring(0, limit) + '...' : word;
@@ -33,11 +15,7 @@ app.filter('charLimit', function () {
 
 app.controller('mainController',
 function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
-  $location, $ionicPopover, $ionicHistory, aacService, appConfig, $timeout) {
-
-    $ionicHistory.nextViewOptions({
-      disableBack: true
-    });
+  $location, $ionicPopover, aacService, appConfig, $timeout) {
 
     $scope.doLogout = function() {
       localStorage.removeItem('authToken');
@@ -62,7 +40,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
     $scope.mainBoardLoader = function(){
       // Make sure we have to do this call! Are there boards already saved?
-
       if ($scope.checkBoards()) {
         var req = {
           url: appConfig.backendURL + '/board/user/',
@@ -92,6 +69,23 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
     };
 
+   	$scope.getUserInformation = function(){
+			req = {
+				url: appConfig.backendURL + '/user/aac/settings/',
+				method: 'POST',
+				headers: {
+				Authorization: 'JWT ' + localStorage.getItem('authToken')
+				},
+				data: {username: localStorage.getItem("username")}
+			};
+			$http(req).success(function (data) {
+          var synthetic_voice = data.userinfo && data.userinfo.synthetic_voice != null? data.userinfo.synthetic_voice : 'FEMALE';
+          var voice_speed  = data.userinfo && data.userinfo.voice_speed != null? (data.userinfo.voice_speed * 0.01).toFixed(2) : 1.5;
+          localStorage.setItem('synthetic_voice', synthetic_voice);
+          localStorage.setItem('voice_speed', voice_speed);
+			});
+		};
+
     $scope.checkBoards = function(data) {
       // Do we actually need to download the boards
       // Return bool
@@ -105,22 +99,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         return true // Do not get the boards
       }
     }
-
-   	$scope.getUserInformation = function(){
-			req = {
-				url: appConfig.backendURL + '/user/aac/settings/',
-				method: 'POST',
-				headers: {
-				Authorization: 'JWT ' + localStorage.getItem('authToken')
-				},
-				data: {username: localStorage.getItem("username")}
-			};
-			$http(req).success(function (data) {
-          $scope.user = data;
-          aacService.voice = data.userinfo && data.userinfo.synthetic_voice != null? data.userinfo.synthetic_voice : 'Siri';
-          aacService.voice_speed = data.userinfo && data.userinfo.voice_speed != null? (data.userinfo.voice_speed * 0.01).toFixed(2) : 1;
-			});
-		};
 
     $scope.mainBoardLoader();
     $scope.getUserInformation();
@@ -480,11 +458,19 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         })
       }
 
+      $scope.getLocale = function(voice){
+        if(voice == 'MALE'){
+          return 'en-GB';
+        }else{
+          return 'en-US';
+        }
+      }
+
       $scope.speakText = function(text) {
-        console.log(aacService.voice_speed)
         TTS.speak({
           text: text,
-          rate: aacService.voice_speed
+          rate: localStorage.getItem('voice_speed'),
+          locale: $scope.getLocale(localStorage.getItem('synthetic_voice'))
         }, function () {
           // Do Something after success
         }, function (reason) {
