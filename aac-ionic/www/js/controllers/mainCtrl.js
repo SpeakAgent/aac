@@ -293,6 +293,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $scope.play = false;
     $scope.replay = false;
     $scope.clickTile = function(tile) {
+      
       if(tile.target_board){
         var req = {
           url: appConfig.backendURL + '/board/single/',
