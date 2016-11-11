@@ -16,7 +16,11 @@ app.filter('charLimit', function () {
 app.controller('mainController',
 function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $ionicPopover, $state, aacService, appConfig, $timeout,
-    sessionService) {
+    sessionService, $location, $ionicHistory, $cordovaFileTransfer) {
+
+    $ionicHistory.nextViewOptions({
+      disableBack: true
+    });
 
     $scope.doLogout = function() {
       sessionService.destroy('authToken');
@@ -38,6 +42,56 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $scope.start = 0;
     $scope.end = 24;
     $scope.board = {};
+
+    $scope.Download = function () {
+      ionic.Platform.ready(function(){
+       var url = "https://g.foolcdn.com/editorial/images/213457/getty-apple_large.jpg";
+       var filename = url.split("/").pop();
+       // var targetPath = '/tmp/aac/' + filename;
+       var targetPath = cordova.file.applicationDirectory + filename;
+
+
+
+        $cordovaFileTransfer.download(url, targetPath, {}, true).then(function (result) {
+              console.log('Save file on '+targetPath+' success!');
+              getFile(targetPath)
+        }, function (error) {
+              console.log('Error Download file', JSON.stringify(error));
+        }, function (progress) {
+              $scope.downloadProgress = (progress.loaded / progress.total) * 100;
+        });
+      });
+    }
+
+    function listDir(path){
+      window.resolveLocalFileSystemURL(path,
+        function (fileSystem) {
+          var reader = fileSystem.createReader();
+          reader.readEntries(
+            function (entries) {
+              console.log(JSON.stringify(entries));
+            },
+            function (err) {
+              console.log(json.stringify(err));
+            }
+          );
+        }, function (err) {
+          console.log(err);
+        }
+      );
+    }
+
+    function getFile(path) {
+      console.log("Getting file", path)
+      window.resolveLocalFileSystemURL(
+        path, 
+        function(data) {
+          console.log("Got it!", JSON.stringify(data));
+          return data}, 
+        function(err) {console.log("Nope")});
+    }
+
+    $scope.Download()
 
     $scope.mainBoardLoader = function(){
       // Make sure we have to do this call! Are there boards already saved?
@@ -118,6 +172,17 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       } else {
         return true // Do not get the boards
       }
+    }
+
+    $scope.downloadBoards = function(data) {
+      window.localStorage['boards'] = angular.toJson(data);
+
+      // Go through each board
+      // For each board, save the board symbol, thumb
+        // Update path in JSON
+        // For each board.board.word, save word symbol, thumb
+          // Update path in JSON
+
     }
 
     $scope.mainBoardLoader();
