@@ -78,7 +78,24 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       })
     };
 
+   	$scope.getUserInformation = function(){
+			req = {
+				url: appConfig.backendURL + '/user/aac/settings/',
+				method: 'POST',
+				headers: {
+				Authorization: 'JWT ' + localStorage.getItem('authToken')
+				},
+				data: {username: localStorage.getItem("username")}
+			};
+			$http(req).success(function (data) {
+          $scope.user = data;
+          aacService.voice = data.userinfo && data.userinfo.synthetic_voice != null? data.userinfo.synthetic_voice : 'Siri';
+          aacService.voice_speed = data.userinfo && data.userinfo.voice_speed != null? (data.userinfo.voice_speed * 0.01).toFixed(2) : 1;
+			});
+		};
+
     $scope.mainBoardLoader();
+    $scope.getUserInformation();
 
     $scope.chosenBoard = function(index){
       $scope.speakText($scope.userBoards[index].board.title);
@@ -325,10 +342,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
         $scope.selectedIndex = tile;
 
-        if($scope.selectedTiles[$scope.selectedIndex] == undefined){
-          console.log("no index!!");
-        }
-
         $scope.sayWord();
       }
     }
@@ -374,14 +387,13 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
             pks.push($scope.selectedTiles[i].pk);
           }
           var sreq = {
-            url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
+            url: appConfig.backendURL + '/compaction/symbols/',
             data: {pks: "[" + pks.toString() + "]"},
             method: 'POST'
           }
 
           $http(sreq).success(function(data) {
             console.log(data)
-            // That's right! No data or auth for this
             var req = {
               url: "https://aiaas.pandorabots.com/talk/1409613061631/uglybuddy?input=" + data.sentence + "&user_key=22979a79e76310f4250128edd868e5fa",
               method: "POST"
@@ -389,9 +401,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
             $http(req).success(function(data){
               $scope.speakText(data.responses[0]);
 
-              //Se oculta boton de play
               $scope.play = false;
-              //Se muestra boton de play
               $scope.replay = true;
             })
           })
@@ -443,8 +453,10 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
 
       $scope.speakText = function(text) {
+        console.log(aacService.voice_speed)
         TTS.speak({
           text: text,
+          rate: aacService.voice_speed
         }, function () {
           // Do Something after success
         }, function (reason) {
@@ -463,9 +475,9 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
       $scope.class = "white";
 
-      $scope.chosenTile = function(tileIndex){
-        $scope.sayWord();
-        $scope.selectedIndex = tileIndex;
+      $scope.chosenTile = function(tile){
+        $scope.selectedIndex = tile;
+        $scope.speakText(tile.lexeme);
       };
 
       $scope.lastSet = function(index){
@@ -522,14 +534,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
        }
        $scope.activeChat = !$scope.activeChat;
        if (!$scope.activeChat) {
-         TTS.speak({
-           text: "Goodbye",
-         }, function () {
-           // Do Something after success
-           console.log("bye");
-         }, function (reason) {
-           // Handle the error case
-         });
+         $scope.speakText("Goodbye");
        }
        $scope.activeAvatar = false;
      }, 500);

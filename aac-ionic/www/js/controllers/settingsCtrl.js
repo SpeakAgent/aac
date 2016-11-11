@@ -11,7 +11,7 @@ app.directive('customOnChange', function() {
 });
 
 app.controller('settingsController',
-	function($http, $scope, $cordovaFileTransfer, $location, $timeout, $window, appConfig){
+	function($http, $scope, $cordovaFileTransfer, $location, $timeout, $window, appConfig, aacService){
 		$scope.settings = true;
 		$scope.step = 1;
 		$scope.file = undefined;
@@ -78,7 +78,8 @@ app.controller('settingsController',
 			};
 			$http(req).success(function (data) {
 				$scope.user = data;
-				console.log(data);
+				aacService.voice = data.userinfo && data.userinfo.synthetic_voice != null? data.userinfo.synthetic_voice : 'Siri';
+          		aacService.voice_speed = data.userinfo && data.userinfo.voice_speed != null? (data.userinfo.voice_speed * 0.01).toFixed(2) : 1;
 			})
 		};
 
@@ -145,7 +146,6 @@ app.controller('settingsController',
 			}
 			return $http(user_req)
 			.success(function(data) {
-				$scope.getUserInformation();
 				var message = {
 					text: data.message,
 					type: 'success',
@@ -154,6 +154,7 @@ app.controller('settingsController',
 				$window.scrollTo(0, 0);
 
 				$scope.alertAnimation(message);
+				$scope.getUserInformation();
 			})
 			.error(function (data) {
 				$window.scrollTo(0, 0);
