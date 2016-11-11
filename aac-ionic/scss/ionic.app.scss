@@ -39,6 +39,7 @@ $tomato-red-primary: #EA465F;
 $manual-minus-pink: #FFE0D4;
 $speak-agent-blue: #50E2E3;
 $speak-agent-dark-blue: #008485;
+$speak-agent-light-yellow: #FFEFAD;
 $speak-agent-light-blue: #83EFF0;
 $speak-agent-light-blue2: #65e5e6;
 $speak-agent-light-blue3: #98e3e3;
@@ -336,7 +337,7 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2{
 
   &.lightBlue{
     background-color:$speak-agent-light-blue;
-    border-color:$white;
+    border-color: $white;
     text-align: center;
     margin-left: 0;
   }
@@ -398,19 +399,19 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2{
   border-style: solid;
   border-color: $speak-agent-dark-blue;
   border-radius: 20px;
-  color: white;
+  color: $white;
   padding:5px;
   font-weight:600;
   box-shadow: 0px 3px 0px 0px $button-dark-blue;
 }
 
 .custom-button a{
-  color:white;
+  color: $white;
   text-decoration: none;
 }
 
 .custom-button-inverse{
-  background-color: white;
+  background-color: $white;
   border-style: solid;
   border-color: $speak-agent-dark-blue;
   border-radius: 20px;
@@ -421,7 +422,7 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2{
 }
 
 .done-button{
-  background-color: white;
+  background-color: $white;
   float: right;
   border-radius: 20px;
   border-style: solid;
@@ -766,11 +767,11 @@ input[type="text"]:focus, textarea:focus{
 }
 
 .selected-btn2{
-  color:white;
+  color: $white;
 }
 
 .selected-btn2, .selected-btn2 a, .selected-btn2 i{
-  color:white;
+  color: $white;
 }
 
 .settings-box{
@@ -819,7 +820,7 @@ input[type="text"]:focus, textarea:focus{
 
 .tile{
   background-color: #ffffff;
-  border: 2px solid #979797;
+  border: 2px solid $dark-grey;
 }
 
 .tile2 {
@@ -827,7 +828,7 @@ input[type="text"]:focus, textarea:focus{
 }
 
 .tile.white{
-  background-color:white;
+  background-color: $white;
 }
 
 #tile-section{
@@ -842,18 +843,22 @@ input[type="text"]:focus, textarea:focus{
 }
 
 .tile.selectedColor {
-    background-color: #000;
+    background-color: $black;
+}
+
+.lightBlue{
+  background-color: $speak-agent-light-blue!important;
+  border-color:$white!important;
 }
 
 .tile.lightBlue{
-  background-color:#83EFF0;
-  border-color:white;
+  background-color: $speak-agent-light-blue!important;
+  border-color: $white!important;
 }
 
-.tile.lightBlue{
-  background-color:#83EFF0;
-  border-color:white;
-}
+.tile.lightYellow {
+  background-color: $speak-agent-light-yellow;
+  border-color: $dark-grey }
 
 .boards {
   padding: .5%;
@@ -867,15 +872,6 @@ input[type="text"]:focus, textarea:focus{
 
 .boards.activated {
   background: url("../img/new_dev_assets/board_tile_notched_default_yellow.svg"); }
-
-.lightBlue{
-  background-color:#83EFF0;
-  border-color:white;
-}
-
-.tile.lightYellow {
-  background-color: #FFEFAD;
-  border-color: #979797 }
 
 .title-section, .symbol-section, .tag-section{
   padding-bottom:20px;
@@ -906,8 +902,8 @@ input[type="text"]:focus, textarea:focus{
 
 .toggle.toggle-dark-green input + .track{
   height:15px;
-  background-color: #979797;
-  border-color: #979797;
+  background-color: $dark-grey;
+  border-color: $dark-grey;
 }
 
 .toggle.toggle-dark-green.toggle-small{
