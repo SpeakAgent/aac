@@ -11,7 +11,7 @@ app.directive('customOnChange', function() {
 });
 
 app.controller('settingsController',
-	function($http, $scope, $cordovaFileTransfer, $location, $timeout, $window, appConfig){
+	function($http, $scope, $cordovaFileTransfer, $location, $timeout, $window, appConfig, aacService){
 		$scope.settings = true;
 		$scope.step = 1;
 		$scope.file = undefined;
@@ -70,7 +70,8 @@ app.controller('settingsController',
 			};
 			$http(req).success(function (data) {
 				$scope.user = data;
-				console.log(data);
+				aacService.voice = data.userinfo && data.userinfo.synthetic_voice != null? data.userinfo.synthetic_voice : 'Siri';
+          		aacService.voice_speed = data.userinfo && data.userinfo.voice_speed != null? (data.userinfo.voice_speed * 0.01).toFixed(2) : 1;
 			})
 		};
 
@@ -137,7 +138,6 @@ app.controller('settingsController',
 			}
 			return $http(user_req)
 			.success(function(data) {
-				$scope.getUserInformation();
 				var message = {
 					text: data.message,
 					type: 'success',
@@ -146,6 +146,7 @@ app.controller('settingsController',
 				$window.scrollTo(0, 0);
 
 				$scope.alertAnimation(message);
+				$scope.getUserInformation();
 			})
 			.error(function (data) {
 				$window.scrollTo(0, 0);
@@ -158,190 +159,10 @@ app.controller('settingsController',
 			});
 		}
 
+		$scope.step = 6;
+
 		$scope.panel = function(number){
-		  if(number == "1"){
-		    var self = document.getElementById("settings");
-		    self.style.backgroundColor = "#008485";
-		    self.style.color = "white";
-		    $scope.step = 1;
-		      var synthetic = document.getElementById("synthetic");
-		      synthetic.style.backgroundColor = "white";
-		      synthetic.style.color = "black";
-
-		      var sound = document.getElementById("sound");
-		      sound.style.backgroundColor = "white";
-		      sound.style.color = "black";
-
-		      var phrase = document.getElementById("phrase");
-		      phrase.style.backgroundColor = "white";
-		      phrase.style.color = "black";
-
-		      var alternate = document.getElementById("alternate");
-		      alternate.style.backgroundColor = "white";
-		      alternate.style.color = "black";
-
-		      var aboutMe = document.getElementById("aboutMe");
-		      aboutMe.style.backgroundColor = "white";
-		      aboutMe.style.color = "black";
-		  } else if(number == "2"){
-		      var self = document.getElementById("synthetic");
-		      self.style.backgroundColor = "#008485";
-		      self.style.color = "white";
-		      $scope.step = 2;
-
-		      var settings = document.getElementById("settings");
-		      settings.style.backgroundColor = "white";
-		      settings.style.color = "black";
-
-		      var sound = document.getElementById("sound");
-		      sound.style.backgroundColor = "white";
-		      sound.style.color = "black";
-
-		      var phrase = document.getElementById("phrase");
-		      phrase.style.backgroundColor = "white";
-		      phrase.style.color = "black";
-
-		      var alternate = document.getElementById("alternate");
-		      alternate.style.backgroundColor = "white";
-		      alternate.style.color = "black";
-
-		      var aboutMe = document.getElementById("aboutMe");
-		      aboutMe.style.backgroundColor = "white";
-		      aboutMe.style.color = "black";
-
-		  } else if(number == "3"){
-		      var self = document.getElementById("sound");
-		      self.style.backgroundColor = "#008485";
-		      self.style.color = "white";
-		      $scope.step = 3;
-
-		      var synthetic = document.getElementById("synthetic");
-		      synthetic.style.backgroundColor = "white";
-		      synthetic.style.color = "black";
-
-		      var settings = document.getElementById("settings");
-		      settings.style.backgroundColor = "white";
-		      settings.style.color = "black";
-
-		      var phrase = document.getElementById("phrase");
-		      phrase.style.backgroundColor = "white";
-		      phrase.style.color = "black";
-
-		      var alternate = document.getElementById("alternate");
-		      alternate.style.backgroundColor = "white";
-		      alternate.style.color = "black";
-
-		      var aboutMe = document.getElementById("aboutMe");
-		      aboutMe.style.backgroundColor = "white";
-		      aboutMe.style.color = "black";
-
-		  } else if(number == "4"){
-		      var self = document.getElementById("phrase");
-		      self.style.backgroundColor = "#008485";
-		      self.style.color = "white";
-		      $scope.step = 4;
-
-		      var synthetic = document.getElementById("synthetic");
-		      synthetic.style.backgroundColor = "white";
-		      synthetic.style.color = "black";
-
-		      var sound = document.getElementById("sound");
-		      sound.style.backgroundColor = "white";
-		      sound.style.color = "black";
-
-		      var settings = document.getElementById("settings");
-		      settings.style.backgroundColor = "white";
-		      settings.style.color = "black";
-
-		      var alternate = document.getElementById("alternate");
-		      alternate.style.backgroundColor = "white";
-		      alternate.style.color = "black";
-
-		      var aboutMe = document.getElementById("aboutMe");
-		      aboutMe.style.backgroundColor = "white";
-		      aboutMe.style.color = "black";
-
-		  } else if(number == "5"){
-		      var self = document.getElementById("alternate");
-		      self.style.backgroundColor = "#008485";
-		      self.style.color = "white";
-		      $scope.step = 5;
-
-		      var synthetic = document.getElementById("synthetic");
-		      synthetic.style.backgroundColor = "white";
-		      synthetic.style.color = "black";
-
-		      var sound = document.getElementById("sound");
-		      sound.style.backgroundColor = "white";
-		      sound.style.color = "black";
-
-		      var phrase = document.getElementById("phrase");
-		      phrase.style.backgroundColor = "white";
-		      phrase.style.color = "black";
-
-		      var settings = document.getElementById("settings");
-		      settings.style.backgroundColor = "white";
-		      settings.style.color = "black";
-
-		      var aboutMe = document.getElementById("aboutMe");
-		      aboutMe.style.backgroundColor = "white";
-		      aboutMe.style.color = "black";
-
-		  }else if(number == "6"){
-		      var self = document.getElementById("aboutMe");
-		      self.style.backgroundColor = "#008485";
-		      self.style.color = "white";
-		      $scope.step = 6;
-
-		      var synthetic = document.getElementById("synthetic");
-		      synthetic.style.backgroundColor = "white";
-		      synthetic.style.color = "black";
-
-		      var sound = document.getElementById("sound");
-		      sound.style.backgroundColor = "white";
-		      sound.style.color = "black";
-
-		      var phrase = document.getElementById("phrase");
-		      phrase.style.backgroundColor = "white";
-		      phrase.style.color = "black";
-
-		      var settings = document.getElementById("settings");
-		      settings.style.backgroundColor = "white";
-		      settings.style.color = "black";
-
-		      var alternate = document.getElementById("alternate");
-		      alternate.style.backgroundColor = "white";
-		      alternate.style.color = "black";
-
-		  } else if(number == "11"){
-		      var self = document.getElementById("aboutMe");
-		      self.style.backgroundColor = "#008485";
-		      self.style.color = "white";
-		      $scope.step = 11;
-
-		      var synthetic = document.getElementById("synthetic");
-		      synthetic.style.backgroundColor = "white";
-		      synthetic.style.color = "black";
-
-		      var sound = document.getElementById("sound");
-		      sound.style.backgroundColor = "white";
-		      sound.style.color = "black";
-
-		      var phrase = document.getElementById("phrase");
-		      phrase.style.backgroundColor = "white";
-		      phrase.style.color = "black";
-
-		      var settings = document.getElementById("settings");
-		      settings.style.backgroundColor = "white";
-		      settings.style.color = "black";
-
-		      var alternate = document.getElementById("alternate");
-		      alternate.style.backgroundColor = "white";
-		      alternate.style.color = "black";
-
-		  } else {
-		    console.log("This isn't working either?!? God!?!?");
-		  }
+			$scope.step = number;
 		}
 	}
 );

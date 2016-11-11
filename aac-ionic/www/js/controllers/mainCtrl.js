@@ -25,6 +25,12 @@ app.filter('breaking2', function(){
   }
 });
 
+app.filter('charLimit', function () {
+      return function (word, limit) {
+          return word && word.length > limit? word.substring(0, limit) + '...' : word;
+      };
+  });
+
 app.controller('mainController',
 function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
   $location, $ionicPopover, $ionicHistory, aacService, appConfig, $timeout) {
@@ -100,16 +106,39 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
     }
 
+   	$scope.getUserInformation = function(){
+			req = {
+				url: appConfig.backendURL + '/user/aac/settings/',
+				method: 'POST',
+				headers: {
+				Authorization: 'JWT ' + localStorage.getItem('authToken')
+				},
+				data: {username: localStorage.getItem("username")}
+			};
+			$http(req).success(function (data) {
+          $scope.user = data;
+          aacService.voice = data.userinfo && data.userinfo.synthetic_voice != null? data.userinfo.synthetic_voice : 'Siri';
+          aacService.voice_speed = data.userinfo && data.userinfo.voice_speed != null? (data.userinfo.voice_speed * 0.01).toFixed(2) : 1;
+			});
+		};
+
     $scope.mainBoardLoader();
+    $scope.getUserInformation();
 
     $scope.chosenBoard = function(index){
+      $scope.speakText($scope.userBoards[index].board.title);
       $scope.board = $scope.userBoards[index];
-      $scope.filled_tiles = Object.keys($scope.board)
+      $scope.filled_tiles = Object.keys($scope.board.symbols);
     };
 
     $scope.homeButton = function(){
-      $scope.board = $scope.userBoards[0];
-      $scope.filled_tiles = Object.keys($scope.board)
+      for(var y=0; y < $scope.userBoards.length; y++){
+        if($scope.userBoards[y].board.home_board == true){
+          $scope.board = $scope.userBoards[y];
+          $scope.filled_tiles = Object.keys($scope.board.symbols)
+          return;
+        }
+      }
     }
 
     // COLOR MODAL FUNCTIONS AND OBJECTS
@@ -293,6 +322,9 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $scope.play = false;
     $scope.replay = false;
     $scope.clickTile = function(tile) {
+      if(!tile){
+        return;
+      }
       
       if(tile.target_board){
         var req = {
@@ -309,14 +341,24 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           $scope.board = data;
           $scope.filled_tiles = Object.keys($scope.board)
         })
-      }else{
-        if ($scope.selectedTiles.length < 8) {
-          //Se verifica si el usuario ha dado play o replay
-          if ($scope.replay) {
-            //Se limpia el array de items y el index
-            $scope.selectedTiles = [];
-            $scope.selectedIndex = undefined;
-          }
+
+        return;
+      }
+
+      for(var x=0; x < $scope.selectedTiles.length; x++){
+        if($scope.selectedTiles[x].pk == tile.pk){
+          $scope.selectedIndex = tile;
+          return;
+        }
+      }
+
+      if ($scope.selectedTiles.length < 8) {
+        //Se verifica si el usuario ha dado play o replay
+        if ($scope.replay) {
+          //Se limpia el array de items y el index
+          $scope.selectedTiles = [];
+          $scope.selectedIndex = undefined;
+        }
 
         $scope.selectedTiles.push(tile);
         $scope.selectedIndex = tile;
@@ -326,13 +368,9 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         //Se oculta el boton de replay
         $scope.replay = false;
 
-          console.log($scope.selectedTiles);
-          $scope.selectedIndex = tile;
+        $scope.selectedIndex = tile;
 
-          if($scope.selectedTiles[$scope.selectedIndex] == undefined){
-            console.log("no index!!");
-          }
-        }
+        $scope.sayWord();
       }
     }
 
@@ -377,14 +415,13 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
             pks.push($scope.selectedTiles[i].pk);
           }
           var sreq = {
-            url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
+            url: appConfig.backendURL + '/compaction/symbols/',
             data: {pks: "[" + pks.toString() + "]"},
             method: 'POST'
           }
 
           $http(sreq).success(function(data) {
             console.log(data)
-            // That's right! No data or auth for this
             var req = {
               url: "https://aiaas.pandorabots.com/talk/1409613061631/uglybuddy?input=" + data.sentence + "&user_key=22979a79e76310f4250128edd868e5fa",
               method: "POST"
@@ -392,9 +429,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
             $http(req).success(function(data){
               $scope.speakText(data.responses[0]);
 
-              //Se oculta boton de play
               $scope.play = false;
-              //Se muestra boton de play
               $scope.replay = true;
             })
           })
@@ -430,6 +465,11 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
 
       $scope.sayWord = function() {
+        if($scope.selectedIndex.label){
+          $scope.speakText($scope.selectedIndex.label);
+          return;
+        }
+
         var req = {
           url: appConfig.backendURL + '/compaction/symbols/',
           data: {pks: "[" + $scope.selectedIndex.pk + "]"},
@@ -441,8 +481,10 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
 
       $scope.speakText = function(text) {
+        console.log(aacService.voice_speed)
         TTS.speak({
           text: text,
+          rate: aacService.voice_speed
         }, function () {
           // Do Something after success
         }, function (reason) {
@@ -461,8 +503,9 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
       $scope.class = "white";
 
-      $scope.chosenTile = function(tileIndex){
-        $scope.selectedIndex = tileIndex;
+      $scope.chosenTile = function(tile){
+        $scope.selectedIndex = tile;
+        $scope.speakText(tile.lexeme);
       };
 
       $scope.lastSet = function(index){
@@ -519,21 +562,15 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
        }
        $scope.activeChat = !$scope.activeChat;
        if (!$scope.activeChat) {
-         TTS.speak({
-           text: "Goodbye",
-         }, function () {
-           // Do Something after success
-           console.log("bye");
-         }, function (reason) {
-           // Handle the error case
-         });
+         $scope.speakText("Goodbye");
        }
        $scope.activeAvatar = false;
      }, 500);
    };
-      $scope.handlerTap = function (button){
-        $scope.buttons[button] = !$scope.buttons[button];
-      };
+
+    $scope.handlerTap = function (button){
+      $scope.buttons[button] = !$scope.buttons[button];
+    };
 
     //Buddies
     $scope.buddies = [
