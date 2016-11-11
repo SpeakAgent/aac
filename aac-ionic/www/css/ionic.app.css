@@ -659,10 +659,6 @@ input[type="text"]:focus, textarea:focus {
   background-color: #83EFF0;
   border-color: white; }
 
-.tile.lightYellow {
-  background-color: #FFEFAD;
-  border-color: #979797 }
-
 .tile.lightBlue {
   background-color: #83EFF0;
   border-color: white; }
@@ -670,6 +666,10 @@ input[type="text"]:focus, textarea:focus {
 .lightBlue {
   background-color: #83EFF0;
   border-color: white; }
+
+.tile.lightYellow {
+  background-color: #FFEFAD;
+  border-color: #979797 }
 
 .title-section, .symbol-section, .tag-section {
   padding-bottom: 20px; }
