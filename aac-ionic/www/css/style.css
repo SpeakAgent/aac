@@ -151,6 +151,29 @@ i.fa {
     animation-direction: alternate;
 }
 
+.hide-tile{
+	background-color: transparent !important;
+	border: none !important;
+	background: none;
+}
+.item-eye{
+	position: absolute;
+    margin-left: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    width: 20px;
+    margin-top: -10px;
+}
+.item-dark{
+	background-color: rgb(218, 214, 214) !important;
+	background: none;
+}
+.eye-red{
+	color: red;
+}
+.eye-green{
+	color: green;
+}
 
 @keyframes slideDown {
 	0% {
