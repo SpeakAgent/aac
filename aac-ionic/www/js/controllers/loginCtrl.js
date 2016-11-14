@@ -1,14 +1,14 @@
 var app = angular.module('Login.Ctrl', ['ionic', 'angular-jwt']);
 
 app.controller('LoginController', function($scope, $http, $location,
-  jwtHelper, appConfig, aacService){
+  $state, jwtHelper, appConfig, aacService, sessionService){
   
-  if(localStorage.getItem('username') && localStorage.getItem('username')){
-      $location.path('/main');
+  if(sessionService.get('username')){
+      $state.go('main');
   }
 
   $scope.loginData = {};
-  $scope.authToken = localStorage.getItem('authToken');
+  $scope.authToken = sessionService.get('authToken');
   if ($scope.authToken) {
     $scope.username = jwtHelper.decodeToken($scope.authToken).username;
   }
@@ -17,10 +17,10 @@ app.controller('LoginController', function($scope, $http, $location,
   $scope.doLogout = function(data, status, headers, config) {
     $scope.authToken = null;
     $scope.username= null;
-    localStorage.removeItem('authToken');
-    localStorage.removeItem('username');
-    localStorage.removeItem('first_name');
-    localStorage.removeItem('last_name');
+    sessionService.destroy('authToken');
+    sessionService.destroy('username');
+    sessionService.destroy('first_name');
+    sessionService.destroy('last_name');
 
     $scope.$apply()
 
@@ -31,7 +31,7 @@ app.controller('LoginController', function($scope, $http, $location,
       'location.favorites',
     ];
 
-    $location.path('/login');
+    $state.go('login');
   };
 
   // Perform the login action when the user submits the login form
@@ -48,14 +48,13 @@ app.controller('LoginController', function($scope, $http, $location,
       });
 
     responsePromise.success(function(data, status, headers, config) {
-      debugger;
-      localStorage.setItem('authToken', data.token);
-      localStorage.setItem('username', $scope.loginData.username);
-      localStorage.setItem('startSession', new Date().getTime());
+      sessionService.set('authToken', data.token);
+      sessionService.set('username', 'luis');
+      sessionService.set('startSession', new Date().getTime());
 
       $http.defaults.headers.common.Authorization = 'Token ' + data.token;
 
-      $location.path('/author/');
+      $state.go('main');
     });
 
     responsePromise.error(function(data, status, headers, config) {

@@ -9,7 +9,8 @@ var appConfig = angular.module('appConfig', []).constant('appConfig', {
 })
 
 angular.module('main', ['ionic', 'main.Ctrl', 'settings.Ctrl', 'main.aacService',
-                        'boardFactory.Ctrl', 'Login.Ctrl', 'appConfig'])
+                        'boardFactory.Ctrl', 'Login.Ctrl', 'appConfig',
+                        'sessionService'])
 
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/main');

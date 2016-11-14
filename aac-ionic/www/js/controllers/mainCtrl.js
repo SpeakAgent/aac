@@ -15,17 +15,17 @@ app.filter('charLimit', function () {
 
 app.controller('mainController',
 function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
-  $location, $ionicPopover, aacService, appConfig, $timeout) {
-
+  $location, $ionicPopover, $state, aacService, appConfig, $timeout,
+  sessionService) {
     $scope.doLogout = function() {
-      localStorage.removeItem('authToken');
-      localStorage.removeItem('username');
-      localStorage.removeItem('first_name');
-      localStorage.removeItem('last_name');
-      $location.path('/login');
+      sessionService.destroy('authToken');
+      sessionService.destroy('username');
+      sessionService.destroy('first_name');
+      sessionService.destroy('last_name');
+      $state.go('login');
     };
 
-    if (localStorage.getItem("username") === null) {
+    if (sessionService.get("username") === null) {
       $scope.doLogout();
     };
 
@@ -43,10 +43,10 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       if ($scope.checkBoards()) {
         var req = {
           url: appConfig.backendURL + '/board/user/',
-          data: {user_username: localStorage.getItem('username')},
+          data: {user_username: sessionService.get('username')},
           method: 'POST',
           headers: {
-            Authorization: 'JWT ' + localStorage.getItem('authToken')
+            Authorization: 'JWT ' + sessionService.get('authToken')
           }
         }
 
@@ -74,15 +74,15 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 				url: appConfig.backendURL + '/user/aac/settings/',
 				method: 'POST',
 				headers: {
-				Authorization: 'JWT ' + localStorage.getItem('authToken')
+				Authorization: 'JWT ' + sessionService.get('authToken')
 				},
-				data: {username: localStorage.getItem("username")}
+				data: {username: sessionService.get("username")}
 			};
 			$http(req).success(function (data) {
           var synthetic_voice = data.userinfo && data.userinfo.synthetic_voice != null? data.userinfo.synthetic_voice : 'FEMALE';
           var voice_speed  = data.userinfo && data.userinfo.voice_speed != null? (data.userinfo.voice_speed * 0.01).toFixed(2) : 1.5;
-          localStorage.setItem('synthetic_voice', synthetic_voice);
-          localStorage.setItem('voice_speed', voice_speed);
+          sessionService.set('synthetic_voice', synthetic_voice);
+          sessionService.set('voice_speed', voice_speed);
 			});
 		};
 
@@ -93,7 +93,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       // For now, let's just make a file.
       // window.localStorage['boards'] = angular.toJson(data);
       // console.log("Saved boards", angular.fromJson(window.localStorage['boards']))
-      if (localStorage.getItem('boards') !== null) {
+      if (sessionService.get('boards') !== null) {
         return false // Get the boards
       } else {
         return true // Do not get the boards
@@ -310,7 +310,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           data: {pk: tile.target_board.pk},
           method: 'POST',
           headers: {
-            Authorization: 'JWT ' + localStorage.getItem('authToken')
+            Authorization: 'JWT ' + sessionService.get('authToken')
           }
         }
 
@@ -469,8 +469,8 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       $scope.speakText = function(text) {
         TTS.speak({
           text: text,
-          rate: localStorage.getItem('voice_speed'),
-          locale: $scope.getLocale(localStorage.getItem('synthetic_voice'))
+          rate: sessionService.get('voice_speed'),
+          locale: $scope.getLocale(sessionService.get('synthetic_voice'))
         }, function () {
           // Do Something after success
         }, function (reason) {

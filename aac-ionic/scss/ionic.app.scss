@@ -310,7 +310,7 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2{
 }
 
 .buttonsdiv{
-  margin-left: 20px;
+  margin: 0 auto;
 }
 
 #centered-custom-button{
@@ -709,6 +709,11 @@ input[type="text"]:focus, textarea:focus{
   text-align: center;
 }
 
+.regulars img{
+  width:40px;
+  height:40px;
+}
+
 #regularRow{
   margin:0; 
   padding:0;
@@ -775,11 +780,8 @@ input[type="text"]:focus, textarea:focus{
 
 .settings-box{
   background-color: $white;
-  margin-left: 15%;
-  margin-top:5%;
-  padding-top:10px;
-  padding-bottom:10px;
-  padding-left: 30px;
+  margin: 5% 15%;
+  padding: 10px 30px; 
   font-size: 1.2em;
   width:70%;
 }
@@ -821,6 +823,10 @@ input[type="text"]:focus, textarea:focus{
   background-color: #ffffff;
   border: 2px solid $dark-grey;
 }
+
+.tile img{
+  width:40px;
+  height:40px;}
 
 .tile2 {
   background-color: #73E7E8;
@@ -867,10 +873,16 @@ input[type="text"]:focus, textarea:focus{
   margin: 4.5px;
   float: left;
   text-align: center;
+  overflow: hidden;
   background: url("../img/new_dev_assets/board_tile_notched_default_1.svg"); }
 
 .boards.activated {
   background: url("../img/new_dev_assets/board_tile_notched_default_yellow.svg"); }
+
+.boards img{
+    width: 65%;
+    height: 65%; }
+
 
 .title-section, .symbol-section, .tag-section{
   padding-bottom:20px;
@@ -976,6 +988,10 @@ input[type="text"]:focus, textarea:focus{
   float: left;
   margin-top: -6px;
   margin-left: -5px;
+}
+
+.pull-left{
+  float: left;
 }
 
 // Include all of Ionic

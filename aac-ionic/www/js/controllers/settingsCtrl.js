@@ -11,7 +11,8 @@ app.directive('customOnChange', function() {
 });
 
 app.controller('settingsController',
-	function($http, $scope, $cordovaFileTransfer, $location, $timeout, $window, appConfig, aacService){
+	function($http, $scope, $cordovaFileTransfer,
+	$timeout, $window, $state, appConfig, aacService, sessionService){
 		$scope.settings = true;
 		$scope.step = 1;
 		$scope.file = undefined;
@@ -20,10 +21,10 @@ app.controller('settingsController',
 			console.log("Downloading a board");
 			var req = {
 	          url: appConfig.backendURL + '/board/user/',
-	          data: {user_username: localStorage.getItem('username')},
+	          data: {user_username: sessionService.get('username')},
 	          method: 'POST',
 	          headers: {
-	            Authorization: 'JWT ' + localStorage.getItem('authToken')
+	            Authorization: 'JWT ' + sessionService.get('authToken')
 	          }
 	        }
 
@@ -48,14 +49,12 @@ app.controller('settingsController',
 		}
 
 		$scope.doLogout = function() {
-			localStorage.removeItem('authToken');
-			localStorage.removeItem('username');
-			localStorage.removeItem('first_name');
-			localStorage.removeItem('last_name');
-	         $location.path('/login');
+			sessionService.destroy('authToken');
+			sessionService.destroy('username');
+	        $state.go('login');
 		};
 
-		if (localStorage.getItem("username") === null) {
+		if (sessionService.get("username") === null) {
 			$scope.doLogout();
 		};
 
@@ -64,16 +63,16 @@ app.controller('settingsController',
 				url: appConfig.backendURL + '/user/aac/settings/',
 				method: 'POST',
 				headers: {
-				Authorization: 'JWT ' + localStorage.getItem('authToken')
+				Authorization: 'JWT ' + sessionService.get('authToken')
 				},
-				data: {username: localStorage.getItem("username")}
+				data: {username: sessionService.get("username")}
 			};
 			$http(req).success(function (data) {
 				$scope.user = data;
 				var synthetic_voice = data.userinfo && data.userinfo.synthetic_voice != null? data.userinfo.synthetic_voice : 'FEMALE';
 				var voice_speed  = data.userinfo && data.userinfo.voice_speed != null? (data.userinfo.voice_speed * 0.01).toFixed(2) : 1.5;
-				localStorage.setItem('synthetic_voice', synthetic_voice);
-				localStorage.setItem('voice_speed', voice_speed);
+				sessionService.set('synthetic_voice', synthetic_voice);
+				sessionService.set('voice_speed', voice_speed);
 			})
 		};
 
@@ -82,9 +81,9 @@ app.controller('settingsController',
 				url: appConfig.backendURL + '/user/info/',
 				method: 'POST',
 				headers: {
-					Authorization: 'JWT ' + localStorage.getItem('authToken'),
+					Authorization: 'JWT ' + sessionService.get('authToken'),
 				},
-				data: {username: localStorage.getItem("username"),
+				data: {username: sessionService.get("username"),
 					   synthetic_voice: this.user.userinfo.synthetic_voice,
 					   voice_speed: this.user.userinfo.voice_speed}
 			}
@@ -132,9 +131,9 @@ app.controller('settingsController',
 				url: appConfig.backendURL + '/user/info/',
 				method: 'POST',
 				headers: {
-					Authorization: 'JWT ' + localStorage.getItem('authToken'),
+					Authorization: 'JWT ' + sessionService.get('authToken'),
 				},
-				data: {username: localStorage.getItem("username"),
+				data: {username: sessionService.get("username"),
 					   profile_image: $scope.profileImgBase64,
 					   profile_image_name: $scope.profileImgName}
 			}
