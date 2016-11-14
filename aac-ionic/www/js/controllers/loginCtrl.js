@@ -19,8 +19,7 @@ app.controller('LoginController', function($scope, $http, $location,
     $scope.username= null;
     sessionService.destroy('authToken');
     sessionService.destroy('username');
-    sessionService.destroy('first_name');
-    sessionService.destroy('last_name');
+    sessionService.destroy('boards');
 
     $scope.$apply()
 
@@ -49,7 +48,7 @@ app.controller('LoginController', function($scope, $http, $location,
 
     responsePromise.success(function(data, status, headers, config) {
       sessionService.set('authToken', data.token);
-      sessionService.set('username', 'luis');
+      sessionService.set('username', $scope.loginData.username);
       sessionService.set('startSession', new Date().getTime());
 
       $http.defaults.headers.common.Authorization = 'Token ' + data.token;

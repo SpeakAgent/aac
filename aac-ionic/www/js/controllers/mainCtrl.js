@@ -15,13 +15,14 @@ app.filter('charLimit', function () {
 
 app.controller('mainController',
 function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
-  $location, $ionicPopover, $state, aacService, appConfig, $timeout,
-  sessionService) {
+    $ionicPopover, $state, aacService, appConfig, $timeout,
+    sessionService) {
+
     $scope.doLogout = function() {
       sessionService.destroy('authToken');
       sessionService.destroy('username');
-      sessionService.destroy('first_name');
-      sessionService.destroy('last_name');
+      sessionService.destroy('boards');
+
       $state.go('login');
     };
 
@@ -57,10 +58,13 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           $scope.userBoards = data.boards;
           $scope.quickbar = data.quickbar;
           $scope.filled_tiles = Object.keys($scope.board.symbols)
-          window.localStorage['boards'] = angular.toJson(data);
-        })
+          sessionService.set('boards', angular.toJson(data));
+        }).error(function (data) {
+          $scope.errData = data
+        });
+
       } else {
-        var data = angular.fromJson(window.localStorage['boards'])
+        var data = angular.fromJson(sessionService.get('boards'));
         console.log(data)
         $scope.userBoards = data.boards
         $scope.board = data.boards[0];
@@ -83,7 +87,9 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           var voice_speed  = data.userinfo && data.userinfo.voice_speed != null? (data.userinfo.voice_speed * 0.01).toFixed(2) : 1.5;
           sessionService.set('synthetic_voice', synthetic_voice);
           sessionService.set('voice_speed', voice_speed);
-			});
+			}).error(function (data) {
+          $scope.errData = data
+      });
 		};
 
     $scope.checkBoards = function(data) {
@@ -318,7 +324,9 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           console.log('loadingData');
           $scope.board = data;
           $scope.filled_tiles = Object.keys($scope.board)
-        })
+        }).error(function (data) {
+          $scope.errData = data
+        });
 
         return;
       }

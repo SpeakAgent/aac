@@ -12,4 +12,4 @@ return {
      return localStorage.removeItem(key);
    },
  };
-}])
+}]);

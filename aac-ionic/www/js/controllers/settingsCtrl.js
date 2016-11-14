@@ -36,7 +36,7 @@ app.controller('settingsController',
 	          $scope.quickbar = data.quickbar;
 	          $scope.filled_tiles = Object.keys($scope.board.symbols)
 	          console.log("Got boards", data)
-	          window.localStorage['boards'] = angular.toJson(data);
+	          sessionService.set('boards', angular.toJson(data));
 	        })
 	        .error(function(error) {
 	        	console.log("Could not download", error)
