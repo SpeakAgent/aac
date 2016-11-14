@@ -13,7 +13,7 @@ angular.module('main', ['ionic', 'main.Ctrl', 'settings.Ctrl', 'main.aacService'
                         'sessionService'])
 
   .config(function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/main');
 
    $stateProvider.state('main',{
       controller:'mainController',
