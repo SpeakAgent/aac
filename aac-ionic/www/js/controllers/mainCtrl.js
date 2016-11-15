@@ -650,7 +650,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       $scope.selectedBuddy = buddy;
       $scope.pickme = '';
       $scope.activeAvatar = false;
-      $scope.chooseBuddieModal.hide();
+      console.log(buddy);
     };
 
     $scope.cancelBuddySelect = function (){

@@ -107,6 +107,19 @@
 					</ion-item> -->
 				</ion-list>
 
+
+
+				<ion-list>
+					<div class="item item-divider"><strong>Personalization</strong></div>
+
+					<ion-item ng-click="panel(13)" class="panels" ng-class="{active: 13 == step}">
+						<div class="avatar-icon-placeholder">
+							<img src="img/AAC_assets/icon-choosebuddy.png" />
+						</div>Choose Buddy
+						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
+					</ion-item>
+				</ion-list>
+
 				<!-- <ion-list>
 					<div class="item item-divider"><strong>Layout</strong></div>
 
@@ -257,6 +270,25 @@
 
 				<div class="settings-box">
 						<button class="custom-button button-block" ng-click="downloadBoard()">Download</button>
+				</div>
+			</div>
+
+			<!-- Choose Buddy Panel -->
+			<div class="col col-67" id="settings-modal" ng-show="step == 13">
+				<ion-list>
+					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
+						<h1 class="centered-title"><strong>Choose Buddy</strong></h1>
+					</ion-item>
+				</ion-list>
+
+				<div class="settings-box" ng-controller="mainController">
+					<div id="container" class="buddy-choice" ng-repeat="buddy in buddies" ng-click="buddySelect(buddy)" ng-class="{'pickme-active' : pickme == buddy}">
+			            {{buddy.name}} <br>
+			            <img ng-src="img/chat_buddies/{{buddy.gif}}" alt="buddy" style="width:70%;" class="originalImg" />
+			            <button ng-if="pickme == buddy" class="button-pickme" ng-click="buddyPickMe(buddy);">
+			              Pick me!
+			            </button>
+			        </div>
 				</div>
 			</div>
 

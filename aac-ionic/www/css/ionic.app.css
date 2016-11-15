@@ -605,10 +605,9 @@ input[type="text"]:focus, textarea:focus {
 
 .settings-box {
   background-color: #ffffff;
-  margin: 5% 15%;
-  padding: 10px 30px;
-  font-size: 1.2em;
-  width: 70%; }
+  margin: 5% 9%;
+  padding: 5% 0 47%;
+  font-size: 1.2em; }
 
 .settings-box.ion-checkbox {
   border-color: #000000; }
@@ -767,7 +766,7 @@ input[type="text"]:focus, textarea:focus {
   margin: 10px; }
 
 .word-builder-input {
-  width: 800px;
+  width: 730px;
   height: 80px;
   border-radius: 10px;
   background-color: #ffffff;
