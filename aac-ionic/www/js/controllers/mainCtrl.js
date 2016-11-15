@@ -379,6 +379,11 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     // PHRASE BAR FUNCTIONS
     $scope.deleteLastTile = function () {
       $scope.selectedTiles.pop();
+      console.log($scope.selectedTiles.length);
+      if ($scope.selectedTiles.length <= 0) {
+        $scope.play = false;
+        $scope.replay = false;
+      }
     }
 
     $scope.sayQuickPhrase = function (phrase) {
@@ -557,14 +562,14 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }, 250);
   };
 
-      $scope.imageUrl = 'img/AAC_assets/delete_button.png';
+  $scope.imageUrl = 'img/AAC_assets/delete_button.png';
 
-      $scope.buttons = {
-        bell: false,
-        colors : false,
-        avatar: false,
-        chat: false
-      };
+  $scope.buttons = {
+    bell: false,
+    colors : false,
+    avatar: false,
+    chat: false
+  };
 
    $scope.activeChat = false;
    $scope.buttonChat = function(){
