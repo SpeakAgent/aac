@@ -104,7 +104,7 @@
               <span ng-repeat="row in rows">
                 <div class="tile" ng-repeat="col in columns"
                   ng-click="clickTile(board.symbols[col+row]);"
-                  ng-class="{ lightBlue: board.symbols[col+row]==selectedIndex, lightYellow: board.symbols[col+row].word_class.indexOf('pronoun') > -1 }";>
+                  ng-class="{ lightYellow: board.symbols[col+row].word_class.indexOf('pronoun') > -1 }";>
                   <span ng-show="filled_tiles.indexOf(col+row)!=-1">
                     <p ng-bind="board.symbols[col+row].label? (board.symbols[col+row].label | charLimit: titleLimit) : (board.symbols[col+row].word | charLimit: titleLimit)"
                       class="tile-words"></p>

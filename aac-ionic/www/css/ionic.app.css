@@ -666,7 +666,7 @@ input[type="text"]:focus, textarea:focus {
   background-color: #83EFF0 !important;
   border-color: #ffffff !important; }
 
-.tile.lightBlue {
+.tile.activated {
   background-color: #83EFF0 !important;
   border-color: #ffffff !important; }
 

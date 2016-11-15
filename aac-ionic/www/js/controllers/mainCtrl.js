@@ -116,17 +116,21 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     };
 
     $scope.homeButton = function(){
-      for(var y=0; y < $scope.userBoards.length; y++){
-        if($scope.userBoards[y].board.home_board == true){
-          $scope.board = $scope.userBoards[y];
-          $scope.filled_tiles = Object.keys($scope.board.symbols)
+      $scope.filled_tiles = Object.keys($scope.board.symbols)
+      
+    }
+
+    $scope.getHomeBoard = function(){
+      for(var y=0; y < $scope.userBoards.length; y++) {
+        if($scope.userBoards[y].board.home_board == true) {
+          $scope.homeBoard = $scope.userBoards[y];
           return;
         }
       }
     }
 
     // COLOR MODAL FUNCTIONS AND OBJECTS
-    $scope.colorName =[
+    $scope.colorName = [
       {colorTitle: 'Sky Blue',
       primaryColor:'#50E2E3',
       secondaryColor:'#008484',
@@ -186,7 +190,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       primaryColor:'#2FCB95',
       secondaryColor:'#A7E8C5',
       url:'img/color_change/colorBlob_seafoamGreen.svg'},
-    ]
+    ];
 
     $ionicModal.fromTemplateUrl('templates/aac-partials/_color-modal.html',{
       // id: '1',
