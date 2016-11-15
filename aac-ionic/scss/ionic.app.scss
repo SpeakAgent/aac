@@ -869,17 +869,17 @@ input[type="text"]:focus, textarea:focus{
 
 .boards {
   padding: .5%;
-  height: 70px;
+  height: 72px;
   width: 70px;
   font-size: .75em;
   margin: 4.5px;
   float: left;
   text-align: center;
   overflow: hidden;
-  background: url("../img/new_dev_assets/board_tile_notched_default_1.svg"); }
+  background: url("../img/new_dev_assets/board_tile_notched_default_1.svg") no-repeat; }
 
 .boards.activated {
-  background: url("../img/new_dev_assets/board_tile_notched_default_yellow.svg"); }
+  background: url("../img/new_dev_assets/board_tile_notched_default_yellow.svg") no-repeat; }
 
 .boards img{
     width: 65%;

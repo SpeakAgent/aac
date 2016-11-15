@@ -79,7 +79,7 @@ a#btn-styling.button.button-outline.button-small {
 
 .boards {
   padding: .5%;
-  height: 72px;
+  height: 70px;
   width: 70px;
   font-size: .75em;
   margin: 4.5px;
@@ -109,7 +109,7 @@ a#btn-styling.button.button-outline.button-small {
 
 .board-factory-placeholder {
   width: 70px;
-  height: 72px;
+  height: 70px;
   border-radius: 15px;
   background-color: #73e7e8;
   float: left;
@@ -685,10 +685,10 @@ input[type="text"]:focus, textarea:focus {
   float: left;
   text-align: center;
   overflow: hidden;
-  background: url("../img/new_dev_assets/board_tile_notched_default_1.svg"); }
+  background: url("../img/new_dev_assets/board_tile_notched_default_1.svg") no-repeat; }
 
 .boards.activated {
-  background: url("../img/new_dev_assets/board_tile_notched_default_yellow.svg"); }
+  background: url("../img/new_dev_assets/board_tile_notched_default_yellow.svg") no-repeat; }
 
 .boards img {
   width: 65%;
@@ -767,7 +767,7 @@ input[type="text"]:focus, textarea:focus {
   margin: 10px; }
 
 .word-builder-input {
-  width: 730px;
+  width: 800px;
   height: 80px;
   border-radius: 10px;
   background-color: #ffffff;
