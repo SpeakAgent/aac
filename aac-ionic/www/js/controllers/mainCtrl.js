@@ -322,7 +322,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       if(!tile){
         return;
       }
-      
+
       if(tile.target_board){
         var req = {
           url: appConfig.backendURL + '/board/single/',
@@ -677,6 +677,66 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
 
       $scope.imageUrl = 'img/AAC_assets/delete_button.png';
+
+  /**
+  * Hide Tiles
+  */
+  $scope.hideItem = function (col, row){
+    $scope.board.symbols[col+row].hidden = !$scope.board.symbols[col+row].hidden;
+  };
+
+  $scope.hideRegular = function (lexemePK){
+    for(l in $scope.quickbar){
+      if ($scope.quickbar[l].pk === lexemePK) {
+        $scope.quickbar[l].hidden = !$scope.quickbar[l].hidden;
+        break;
+      }
+    }
+  };
+
+  $scope.hideUserBoard = function (userBoardPK){
+    for(u in $scope.userBoards){
+      if ($scope.userBoards[u].board.pk === userBoardPK) {
+        $scope.userBoards[u].board.hidden = !$scope.userBoards[u].board.hidden;
+        break;
+      }
+    }
+  };
+
+  // Toggle flag
+  $scope.toggleTiles = false;
+  /**
+  * function that detects change on flag
+  * to show all hidden tiles
+  */
+  $scope.enableItems = function (){
+    //Go over all tiles
+    for(var tile in $scope.board.symbols){
+      //If tile is hidden
+      if ($scope.board.symbols[tile].hidden) {
+        //change to visible
+        $scope.board.symbols[tile].hidden = false;
+      }
+    }
+
+    //Go over tiles
+    for(var lexeme in $scope.quickbar){
+      //If tile is hidden
+      if ($scope.quickbar[lexeme].hidden) {
+        //change to visible
+        $scope.quickbar[lexeme].hidden = false;
+      }
+    }
+
+    for(var userBoard in $scope.userBoards){
+      //If hidden
+      if ($scope.userBoards[userBoard].board.hidden) {
+        //change to visible
+        $scope.userBoards[userBoard].board.hidden = false;
+      }
+    }
+  }
+
 });
 
 app.run(function($ionicPlatform) {
