@@ -135,6 +135,7 @@
 
   <div class="col col-90" id="full-body">
     <div class="word-builder">
+      <img src="img/AAC_assets/left-caret.png" style="position:absolute;float:left;top:45px;left:92px;"/>
       <div class="word-builder-input" style="margin-left:-15px">
         <div class="tile" ng-repeat="symbol in selectedTiles" ng-click="clickTile(board.symbols[col+row]);">
           <p ng-bind="symbol.label? (symbol.label | charLimit: titleLimit) : (symbol.word | charLimit: titleLimit)" class="tile-words"></p>
