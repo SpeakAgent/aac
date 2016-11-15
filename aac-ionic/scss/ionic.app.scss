@@ -131,8 +131,9 @@ a#btn-styling.button.button-outline.button-small{
   background: url('../img/new_dev_assets/board_tile_notched_default_1.svg');
 }
 
-.boards.activated{
-  background: url('../img/new_dev_assets/board_tile_notched_default_yellow.svg');
+.boards.activated,
+.activated-board {
+  background: url('../img/new_dev_assets/board_tile_notched_default_yellow.svg')!important;
 }
 
 .boards a{
@@ -296,7 +297,8 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2{
 }
 
 .button-circle2.activated,
-.button-circle.activated{
+.button-circle.activated,
+.home-activated {
   border: 5px solid #F8D338;
   width: 80px;
   height: 80px;
@@ -996,6 +998,3 @@ input[type="text"]:focus, textarea:focus{
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
-
-
-

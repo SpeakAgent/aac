@@ -55,10 +55,12 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
         $http(req).success(function(data) {
           $scope.board = data.boards[0];
+          console.log(data.boards[0].board.pk);
+          $scope.selectedBoardIndex = data.boards[0].board.pk;
           $scope.userBoards = data.boards;
           $scope.quickbar = data.quickbar;
-          $scope.filled_tiles = Object.keys($scope.board.symbols)
           sessionService.set('boards', angular.toJson(data));
+          $scope.getHomeBoard();
         }).error(function (data) {
           $scope.errData = data
         });
@@ -67,9 +69,10 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         var data = angular.fromJson(sessionService.get('boards'));
         console.log(data)
         $scope.userBoards = data.boards
+        $scope.selectedBoardIndex = data.boards[0].board.pk;
         $scope.board = data.boards[0];
         $scope.quickbar = data.quickbar;
-        $scope.filled_tiles = Object.keys($scope.board.symbols)
+        $scope.getHomeBoard();
       }
     };
 
@@ -92,6 +95,17 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       });
 		};
 
+    $scope.getHomeBoard = function(){
+      for(var y=0; y < $scope.userBoards.length; y++) {
+        if($scope.userBoards[y].board.home_board == true) {
+          $scope.homeBoard = $scope.userBoards[y];
+          return;
+        }
+      }
+
+      $scope.homeBoard = $scope.userBoards[0];
+    }
+
     $scope.checkBoards = function(data) {
       // Do we actually need to download the boards
       // Return bool
@@ -110,23 +124,14 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $scope.getUserInformation();
 
     $scope.chosenBoard = function(index){
-      $scope.speakText($scope.userBoards[index].board.title);
+      $scope.selectedBoardIndex = $scope.userBoards[index].board.pk;
       $scope.board = $scope.userBoards[index];
-      $scope.filled_tiles = Object.keys($scope.board.symbols);
+      $scope.speakText($scope.userBoards[index].board.title);
     };
 
     $scope.homeButton = function(){
-      $scope.filled_tiles = Object.keys($scope.board.symbols)
-      
-    }
-
-    $scope.getHomeBoard = function(){
-      for(var y=0; y < $scope.userBoards.length; y++) {
-        if($scope.userBoards[y].board.home_board == true) {
-          $scope.homeBoard = $scope.userBoards[y];
-          return;
-        }
-      }
+      $scope.selectedBoardIndex = $scope.homeBoard.board.pk;
+      $scope.board = $scope.homeBoard;
     }
 
     // COLOR MODAL FUNCTIONS AND OBJECTS
@@ -201,12 +206,16 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     });
 
     $scope.openModal = function(index){
+      if ($scope.buttons.colors) {
+        return;
+      }
+
       $timeout(function (){
         if ($scope.buttons.colors) {
           return;
         }
         $scope.Modal.show()
-      }, 500);
+      }, 200);
     }
 
   $scope.closeModal = function(index){
@@ -327,7 +336,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         $http(req).success(function(data) {
           console.log('loadingData');
           $scope.board = data;
-          $scope.filled_tiles = Object.keys($scope.board)
         }).error(function (data) {
           $scope.errData = data
         });
@@ -491,12 +499,18 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       };
 
       $scope.bellSound = function(){
-        if ($scope.buttons.bell) {
-          return;
-        }
+          if ($scope.buttons.bell) {
+            return;
+          }
 
-        var audio = new Audio('assets/sounds/bell.wav');
-        audio.play();
+         $timeout(function (){
+            if ($scope.buttons.bell) {
+              return;
+            }
+
+            var audio = new Audio('assets/sounds/bell.wav');
+            audio.play();
+          }, 200);
       }
 
       $scope.class = "white";
@@ -554,6 +568,9 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
    $scope.activeChat = false;
    $scope.buttonChat = function(){
+     if ($scope.buttons.chat) {
+       return;
+     }
      $timeout(function (){
        if ($scope.buttons.chat) {
            return;
@@ -563,7 +580,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
          $scope.speakText("Goodbye");
        }
        $scope.activeAvatar = false;
-     }, 500);
+     }, 200);
    };
 
     $scope.handlerTap = function (button){
@@ -602,8 +619,11 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $scope.activeAvatar = false;
 
     $scope.buttonAvatar = function(){
-      $timeout(function (){
+      if ($scope.buttons.avatar) {
+        return;
+      }
 
+      $timeout(function (){
         if ($scope.buttons.avatar) {
           return;
         }
@@ -613,7 +633,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           $scope.chooseBuddieModal.show();
           $scope.activeChat = false;
         }
-      }, 500);
+      }, 200);
     };
 
     $scope.pickme = '';
