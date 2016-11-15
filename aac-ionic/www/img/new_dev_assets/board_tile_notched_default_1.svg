@@ -1,25 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="70px" height="72px" viewBox="0 0 78 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 3.7.2 (28276) - http://www.bohemiancoding.com/sketch -->
-    <title>Board Tile Notched Style Copy 23</title>
+<svg width="78px" height="80px" viewBox="0 0 78 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
+    <title>Board Tile Notched Shape</title>
     <desc>Created with Sketch.</desc>
     <defs>
-        <polygon id="path-1" points="0 0 59.4444444 0 74 15.7142857 74 76 0 76"></polygon>
+        <polygon id="path-1" points="2 2 67.4444444 2 76 11.7142857 76 78 2 78"></polygon>
         <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-2" y="-2" width="78" height="80">
-            <rect x="-2" y="-2" width="78" height="80" fill="white"></rect>
+            <rect x="0" y="0" width="78" height="80" fill="white"></rect>
             <use xlink:href="#path-1" fill="black"></use>
         </mask>
     </defs>
-    <g id="General-App" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Morning-Circle-Board" transform="translate(-927.000000, -171.000000)">
-            <g id="Board-Tiles-Areas" transform="translate(675.000000, 141.000000)">
-                <g id="Board-Tile-Notched-Style" transform="translate(254.000000, 32.000000)">
-                    <g id="Board-Tile-Notched-Style-Copy-128">
-                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
-                        <use stroke="#979797" mask="url(#mask-2)" stroke-width="4" xlink:href="#path-1"></use>
-                    </g>
-                </g>
-            </g>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Board-Tile-Notched-Shape" stroke-width="4" stroke="#979797">
+            <use mask="url(#mask-2)" xlink:href="#path-1"></use>
         </g>
     </g>
 </svg>
