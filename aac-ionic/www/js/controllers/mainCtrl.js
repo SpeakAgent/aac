@@ -517,7 +517,7 @@ $scope.sayQuickPhrase = function (phrase) {
   $scope.activeHide = function(){
     $scope.class = "none";
     if($scope.class === "none"){
-      $scope.class = "selected-btn2 hide-box";
+      $scope.class = "selected-btn2";
       $scope.hide = true;
       $scope.selectedBtn2 = false;
     }
@@ -631,6 +631,17 @@ $scope.sayQuickPhrase = function (phrase) {
     $scope.chooseBuddieModal = modal;
   });
 
+  $scope.hideDone = function(){
+    console.log('hello');
+    if($scope.class === "selected-btn2"){
+      $scope.class = "none";
+      $scope.hide = false;
+      $scope.selectedBtn2 = true;
+    }
+  };
+
+  $scope.imageUrl = 'img/AAC_assets/delete_button.png';
+
   /**
   * Hide Tiles
   */
@@ -690,16 +701,6 @@ $scope.sayQuickPhrase = function (phrase) {
     }
   }
 
-  $scope.hideDone = function(){
-    console.log("si?");
-    if($scope.class === "selected-btn2"){
-      $scope.class = "none";
-      $scope.hide = false;
-      $scope.selectedBtn2 = true;
-    }
-  }
-
-  $scope.imageUrl = 'img/AAC_assets/delete_button.png';
 });
 
 app.run(function($ionicPlatform) {

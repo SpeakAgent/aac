@@ -156,23 +156,72 @@ i.fa {
 	border: none !important;
 	background: none;
 }
+
 .item-eye{
-	position: absolute;
-    margin-left: 20px;
+    position: absolute;
     background-color: #fff;
-    border-radius: 5px;
+    font-size: 16px !important;
+    border-radius: 50px;
     width: 20px;
-    margin-top: -10px;
+    height: 20px;
+    display: table !important;
+    margin: -1% 0 0 5.3%;
 }
+
 .item-dark{
 	background-color: rgb(218, 214, 214) !important;
 	background: none;
 }
+
 .eye-red{
-	color: red;
+	color: #d0021b;
 }
+
 .eye-green{
-	color: green;
+	color: #8ED642;
+}
+
+button.done-button:active {
+    background: #006364;
+}
+
+i.icon.ion-checkmark-round:active {
+    color: #006364;
+}
+
+.done-button a:active {
+    color: #fff;
+    background: transparent;
+}
+
+.active-hide-tile {
+    background: #6fcacb !important;
+    height: 38px;
+    color: white !important;
+    width: 50%;
+}
+
+.hide-tile span.hide-label2 {
+    position: relative;
+    top: 3px;
+    left: -2px;
+}
+
+.toggle.toggle-dark-green.toggle-small {
+    margin-bottom: -10px;
+}
+
+.buttonsdiv {
+    width: 40%;
+}
+
+.toggle {
+    float: none;
+}
+
+.toggle-note {
+    font-size: 10px;
+    margin: -18px 0 0 0;
 }
 
 @keyframes slideDown {
