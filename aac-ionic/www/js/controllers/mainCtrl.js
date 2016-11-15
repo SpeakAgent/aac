@@ -43,24 +43,61 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $scope.end = 24;
     $scope.board = {};
 
-    $scope.Download = function () {
+    function replaceImage (boardIndex, symbolIndex, targetPath, filename) {
+      console.log("Would be replacing",
+        $scope.userBoards[boardIndex].board.title,
+        targetPath, filename)
+      if (symbolIndex === null) {
+        // We're just replacing the board image
+        $cordovaFile.readAsDataURL(
+          cordova.file.applicationDirectory, "www/img/" + filename)
+          .then(function(res) {
+            console.log("Implanting apple on", boardIndex, $scope.userBoards[boardIndex].board.title)
+            $scope.userBoards[boardIndex].board.image = res;
+            $scope.userBoards[boardIndex].board.thumb = res;
+          })
+        }
+    }
+
+    $scope.Download = function (url, boardIndex, symbolIndex) {
+      if (url === null) {
+        return null
+      }
       ionic.Platform.ready(function(){
-       var url = "http://findicons.com/files/icons/1187/pickin_time/128/apple.png";
-       var filename = url.split("/").pop();
-       // var targetPath = '/tmp/aac/' + filename;
+        var filename = url.split("/").pop()
+        console.log("filename 1", filename)
+        filename = filename.split("?")[0]
+        console.log("filename 2", filename)
+        console.log(url.split("/"))
+        url = url.split("?")[0]
+
        var targetPath = cordova.file.applicationDirectory + "www/img/" + filename;
-
-
-
-        $cordovaFileTransfer.download(url, targetPath, {}, true).then(function (result) {
+        $cordovaFileTransfer.download(
+          url, 
+          targetPath, 
+          {}, 
+          true)
+        .then(function (result) {
               console.log('Save file on '+targetPath+' success!');
-              getFile(targetPath)
+              replaceImage(boardIndex, symbolIndex, targetPath, filename);
         }, function (error) {
               console.log('Error Download file', JSON.stringify(error));
         }, function (progress) {
               $scope.downloadProgress = (progress.loaded / progress.total) * 100;
         });
       });
+    }
+
+    function saveBoardImages () {
+      console.log("# boards", $scope.userBoards.length)
+      for (var i in $scope.userBoards) {
+        // Download board image
+        var board = $scope.userBoards[i].board
+        // console.log(JSON.stringify(board))
+        console.log("Downloading", board.title, 
+          board.image)
+        $scope.Download(board.image, i, null)
+      }
     }
 
     function listDir(path){
@@ -90,8 +127,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         function(err) {console.log("Nope")});
     }
 
-    $scope.Download()
-
     $scope.mainBoardLoader = function(){
       // Make sure we have to do this call! Are there boards already saved?
       if ($scope.checkBoards()) {
@@ -113,14 +148,14 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           $scope.quickbar = data.quickbar;
           $scope.filled_tiles = Object.keys($scope.board.symbols)
           $scope.downloadBoards(data)
-          console.log("Board ready, updating a thing ")
-
-          $cordovaFile.readAsDataURL(
-            cordova.file.applicationDirectory, "www/img/apple.png")
-            .then(function(res) {
-              $scope.board.symbols.a1.symbol.image = res; 
-              $scope.board.symbols.a1.symbol.thumb = res;  
-            })
+          console.log("Board ready, saving images")
+        })
+        .error(function(error) {
+          console.log("Error")
+          console.log(error)
+        })
+        .then(function () {
+          saveBoardImages();
         })
       } else {
         var data = angular.fromJson(sessionService.get('boards'));
