@@ -173,22 +173,9 @@
     </div>
 
     <div class="col col-40" id="board-section">
-      <div class="boards" ng-if="selectedBtn2" ng-repeat="userBoard in userBoards | sliceArr:start:end" ng-class="{'hide-tile': userBoard.board.hidden}">
-        <div ng-click="chosenBoard($index); sayWord()" ng-if="!userBoard.board.hidden">
-          <p style="position:fixed; z-index:3; margin-left:15px;" ng-model="titleLimit">{{userBoard.board.title | limitTo: titleLimit}} <span ng-show="boardObj.board.name.length > titleLimit">...</span></p>
-          <img ng-if="userBoard.board.image" ng-src="{{userBoard.board.image}}" alt="{{userBoard.board.title}}" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-50px;"\>
-        </div>
-      </div>
-
-      <div class="boards" ng-repeat="userBoard in userBoards | sliceArr:start:end" ng-click="hideUserBoard(userBoard.board.pk);" ng-class="{'item-dark': userBoard.board.hidden}" ng-if="!selectedBtn2">
-        <span class="fa fa-eye-slash item-eye" aria-hidden="true" ng-class="{'eye-red': !userBoard.board.hidden}" ng-if="!userBoard.board.hidden"></span>
-        <span class="fa fa-eye item-eye" aria-hidden="true" ng-class="{'eye-green': userBoard.board.hidden}" ng-if="userBoard.board.hidden"></span>
-
-        <p style="position:fixed; z-index:3; margin-left:15px;" ng-model="titleLimit">
-          {{userBoard.board.title | limitTo: titleLimit}}
-          <span ng-show="boardObj.board.name.length > titleLimit">...</span>
-        </p>
-        <img ng-if="userBoard.board.image" ng-src="{{userBoard.board.image}}" alt="{{userBoard.board.title}}" style="width:65%; height:65%; position:relative; z-index:2; margin-bottom:-50px;"\>
+      <div class="boards" ng-class="{ 'activated-board': selectedBoardIndex == userBoard.board.pk }" ng-repeat="userBoard in userBoards | sliceArr:start:end" ng-click="chosenBoard($index);">
+        <p class="tile-words" ng-model="titleLimit">{{userBoard.board.title | charLimit: titleLimit}}</p>
+        <img ng-if="userBoard.board.image" ng-src="{{userBoard.board.image}}" alt="{{userBoard.board.title}}" \>
       </div>
     </div>
   </div>
