@@ -271,15 +271,6 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2{
   border-color: $speak-agent-light-blue5;
 }
 
-#button-circle{
-  width:75px;
-  height:75px;
-  background-color: #008485;
-  border-radius: 37.5px;
-  float:left;
-  margin-left:20px;
-}
-
 .button-circle{
   width:75px;
   height:75px;
@@ -287,6 +278,7 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2{
   border-radius: 37.5px;
   float:left;
   margin-left:20px;
+  padding-top: 14px;
 }
 
 .button-circle2{
@@ -300,15 +292,12 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2{
 .button-circle.activated,
 .home-activated {
   border: 5px solid #F8D338;
-  width: 80px;
-  height: 80px;
+  padding-top: 10px;
 }
 
 .yellow{
   border: 5px solid #F8D338;
-  width: 80px;
-  height:80px;
-  border-radius:40px;
+  padding-top: 10px;
 }
 
 .buttonsdiv{
@@ -867,20 +856,20 @@ input[type="text"]:focus, textarea:focus{
   background-color: $speak-agent-light-yellow;
   border-color: $dark-grey }
 
-.boards {
-  padding: .5%;
-  height: 72px;
-  width: 70px;
-  font-size: .75em;
-  margin: 4.5px;
-  float: left;
-  text-align: center;
-  overflow: hidden;
-}
+ .boards {
+   padding: .5%;
+   height: 72px;
+   width: 70px;
+   font-size: .75em;
+   margin: 4.5px;
+   float: left;
+   text-align: center;
+   overflow: hidden;
+ }
 
-.boards:active {
-  background: url("../img/new_dev_assets/board_tile_tapped.svg") no-repeat;
-}
+ .boards:active {
+   background: url("../img/new_dev_assets/board_tile_tapped.svg") no-repeat;
+ }
 
 .boards img{
     width: 65%;

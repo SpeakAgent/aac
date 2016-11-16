@@ -10,11 +10,6 @@
     border-radius: 18px;
 }
 
-.yellow img {
-    margin: 12px auto !important;
-    display: block;
-}
-
 .done:active {
     color: #fff;
     background-color: #589317 !important;
@@ -46,11 +41,6 @@ i.fa {
 	margin: 0 auto;
 	display: block;
 	top: 5%;
-}
-
-.yellow img {
-    margin: 12px auto !important;
-    display: block;
 }
 
 .inactive {
