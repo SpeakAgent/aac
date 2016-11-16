@@ -145,6 +145,7 @@ i.fa {
 	background-color: transparent !important;
 	border: none !important;
 	background: none;
+    visibility: hidden;
 }
 
 .item-eye{
