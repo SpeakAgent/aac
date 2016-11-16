@@ -224,6 +224,14 @@ i.icon.ion-checkmark-round:active {
     margin: -18px 0 0 0;
 }
 
+.regulars:active, .tile:active {
+    border: 4px solid #fff;
+}
+
+.tile.lightYellow:active {
+    border-color: #FFEFAD;
+}
+
 @keyframes slideDown {
 	0% {
 		transform: translateY(-100%);
