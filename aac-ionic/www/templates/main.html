@@ -152,7 +152,7 @@
       <div class="tile-section-border">
         <span ng-repeat="row in rows">
 
-          <div class="tile" ng-repeat="col in columns" ng-click="clickTile(board.symbols[col+row]);" ng-class="{ lightBlue: board.symbols[col+row]==selectedIndex, lightYellow: board.symbols[col+row].word_class.indexOf('pronoun') > -1, 'hide-tile': board.symbols[col+row].hidden};" ng-if="selectedBtn2">
+          <div class="tile" ng-repeat="col in columns" ng-click="clickTile(board.symbols[col+row]);" ng-class="{lightYellow: board.symbols[col+row].word_class.indexOf('pronoun') > -1, 'hide-tile': board.symbols[col+row].hidden};" ng-if="selectedBtn2">
             <span ng-show="filled_tiles.indexOf(col+row)!=-1 && !board.symbols[col+row].hidden" ng-click="clickTile(board.symbols[col+row]); sayWord();">
               <p class="tile-words">{{board.symbols[col+row].word | limitTo: titleLimit}}</p>
               <img ng-if="board.symbols[col+row].symbol.image" ng-src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px">
