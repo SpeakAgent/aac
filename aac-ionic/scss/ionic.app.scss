@@ -118,7 +118,23 @@ a#btn-styling.button.button-outline.button-small{
 #blue-list-item{
   background-color: $speak-agent-light-blue3;
   font-weight: bold;
-} 
+}
+
+.boards {
+  padding: .5%;
+  height: 72px;
+  width: 70px;
+  font-size: .75em;
+  margin: 4.5px;
+  float: left;
+  text-align: center;
+  background: url("../img/new_dev_assets/board_tile_default.svg");
+}
+
+.boards.activated,
+.activated-board {
+  background: url("../img/new_dev_assets/board_tile_current.svg");
+}
 
 .boards a{
   color: $black;
@@ -179,7 +195,7 @@ a#btn-styling.button.button-outline.button-small{
 
 #board-section{
   margin-top:-20px;
-  float:left; 
+  float:left;
 }
 
 #bodyBack{
@@ -192,21 +208,21 @@ a#btn-styling.button.button-outline.button-small{
 }
 
 #btn-section{
-  background:$speak-agent-blue; 
+  background:$speak-agent-blue;
   padding:0;
 }
 
 #btn-styling{
   border-color:$speak-agent-blue;
-  color:$speak-agent-blue; 
-  border-radius:0; 
+  color:$speak-agent-blue;
+  border-radius:0;
   margin-left:8px;
 }
 
 #btn-styling-buddy{
   border-color:$speak-agent-blue;
-  color:$speak-agent-blue; 
-  border-radius:0; 
+  color:$speak-agent-blue;
+  border-radius:0;
   margin-left:8px;
   width:20%;
 }
@@ -336,7 +352,7 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2{
   margin-bottom: 30px;
   float: left;
   text-align: center;
-  
+
   a{
     color: $black;
     text-decoration: none;
@@ -356,8 +372,8 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2{
 }
 
 #color-modal-style{
-  width:80%; 
-  margin-left:-10%; 
+  width:80%;
+  margin-left:-10%;
   height: 80%;
   margin-top:-5%;
   opacity:.9;
@@ -461,12 +477,12 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2{
 }
 
 #home-section{
-  float: right; 
+  float: right;
   margin-top:12px;
 }
 
 #home-button-section{
-  background: $white; 
+  background: $white;
   padding-left: 15px;
   margin:0;
 }
@@ -690,7 +706,7 @@ input[type="text"]:focus, textarea:focus{
 }
 
 #regularRow{
-  margin:0; 
+  margin:0;
   padding:0;
 }
 
@@ -756,7 +772,7 @@ input[type="text"]:focus, textarea:focus{
 .settings-box{
   background-color: $white;
   margin: 5% 15%;
-  padding: 10px 30px; 
+  padding: 10px 30px;
   font-size: 1.2em;
   width:70%;
 }
@@ -784,7 +800,7 @@ input[type="text"]:focus, textarea:focus{
 }
 
 .tile, .tile2{
-  padding:.5%; 
+  padding:.5%;
   border-radius: 12px;
   height:74px;
   width:74px;
@@ -812,13 +828,13 @@ input[type="text"]:focus, textarea:focus{
 }
 
 #tile-section{
-  margin-top:-33px; 
-  float: left; 
+  margin-top:-33px;
+  float: left;
 }
 
 .tile-section-border{
-  margin-top:12px; 
-  float: left; 
+  margin-top:12px;
+  float: left;
   border-right: 2px solid $white;
 }
 
@@ -839,16 +855,16 @@ input[type="text"]:focus, textarea:focus{
   /*background-color: $speak-agent-light-yellow;*/
   border-color: $dark-grey }
 
-.boards {
-  padding: .5%;
-  height: 72px;
-  width: 70px;
-  font-size: .75em;
-  margin: 4.5px;
-  float: left;
-  text-align: center;
-  overflow: hidden;
-  background: url("../img/new_dev_assets/board_tile_default.svg") no-repeat; }
+ .boards {
+   padding: .5%;
+   height: 72px;
+   width: 70px;
+   font-size: .75em;
+   margin: 4.5px;
+   float: left;
+   text-align: center;
+   overflow: hidden;
+ }
 
 .boards.activated {
   background: url("../img/new_dev_assets/board_tile_tapped.svg") no-repeat;}
@@ -875,13 +891,13 @@ input[type="text"]:focus, textarea:focus{
     left: 4px;
     width: 20px;
     height: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
   }
 }
 
 .toggle.toggle-dark-green input:checked + .track {
   border-color: #006D6F;
-  background-color: #006D6F; 
+  background-color: #006D6F;
   /*width:10px;*/
   height:15px;
   float:left;
@@ -895,10 +911,10 @@ input[type="text"]:focus, textarea:focus{
 }
 
 .toggle.toggle-dark-green.toggle-small{
-  position:relative; 
-  z-index:3; 
-  margin-top:1px; 
-  margin-left:2px; 
+  position:relative;
+  z-index:3;
+  margin-top:1px;
+  margin-left:2px;
   margin-bottom:-20px;
 }
 
@@ -910,7 +926,7 @@ input[type="text"]:focus, textarea:focus{
 }
 
 .top-button{
-  position:absolute; 
+  position:absolute;
   margin:42% 30% 30% 39%;
 }
 

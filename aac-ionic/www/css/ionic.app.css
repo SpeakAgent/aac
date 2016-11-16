@@ -77,6 +77,20 @@ a#btn-styling.button.button-outline.button-small {
   background-color: #98e3e3;
   font-weight: bold; }
 
+.boards {
+  padding: .5%;
+  height: 72px;
+  width: 70px;
+  font-size: .75em;
+  margin: 4.5px;
+  float: left;
+  text-align: center;
+  background: url("../img/new_dev_assets/board_tile_default.svg"); }
+
+.boards.activated,
+.activated-board {
+  background: url("../img/new_dev_assets/board_tile_current.svg"); }
+
 .boards a {
   color: #000000;
   text-decoration: none; }
@@ -659,8 +673,7 @@ input[type="text"]:focus, textarea:focus {
   margin: 4.5px;
   float: left;
   text-align: center;
-  overflow: hidden;
-  background: url("../img/new_dev_assets/board_tile_default.svg") no-repeat; }
+  overflow: hidden; }
 
 .boards.activated {
   background: url("../img/new_dev_assets/board_tile_tapped.svg") no-repeat; }
