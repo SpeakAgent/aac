@@ -174,7 +174,17 @@
     </div>
 
     <div class="col col-40" id="board-section">
-      <div class="boards" ng-class="{ 'activated-board': selectedBoardIndex == userBoard.board.pk }" ng-repeat="userBoard in userBoards | sliceArr:start:end" ng-click="chosenBoard($index);">
+      <div class="boards" ng-if="selectedBtn2" ng-repeat="userBoard in userBoards | sliceArr:start:end" ng-class="{'activated-board': selectedBoardIndex == userBoard.board.pk, 'hide-tile': userBoard.board.hidden}">
+        <div ng-click="chosenBoard($index); sayWord()" ng-if="!userBoard.board.hidden">
+          <p class="tile-words" ng-model="titleLimit">{{userBoard.board.title | charLimit: titleLimit}}</p>
+          <img ng-if="userBoard.board.image" ng-src="{{userBoard.board.image}}" alt="{{userBoard.board.title}}" \>
+        </div>
+      </div>
+
+      <div class="boards" ng-repeat="userBoard in userBoards | sliceArr:start:end" ng-click="hideUserBoard(userBoard.board.pk);" ng-class="{'item-dark': userBoard.board.hidden}" ng-if="!selectedBtn2">
+        <span class="fa fa-eye-slash item-eye" aria-hidden="true" ng-class="{'eye-red': !userBoard.board.hidden}" ng-if="!userBoard.board.hidden"></span>
+        <span class="fa fa-eye item-eye" aria-hidden="true" ng-class="{'eye-green': userBoard.board.hidden}" ng-if="userBoard.board.hidden"></span>
+
         <p class="tile-words" ng-model="titleLimit">{{userBoard.board.title | charLimit: titleLimit}}</p>
         <img ng-if="userBoard.board.image" ng-src="{{userBoard.board.image}}" alt="{{userBoard.board.title}}" \>
       </div>

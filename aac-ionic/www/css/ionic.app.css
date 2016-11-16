@@ -688,8 +688,8 @@ input[type="text"]:focus, textarea:focus {
   overflow: hidden;
 }
 
-.boards.activated {
-  background: url("../img/new_dev_assets/board_tile_tapped.svg") no-repeat;}
+.boards:active {
+  background: url("../img/new_dev_assets/board_tile_tapped.svg") no-repeat !important;}
 
 .boards img {
   width: 65%;
