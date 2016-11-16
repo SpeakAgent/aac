@@ -832,12 +832,11 @@ input[type="text"]:focus, textarea:focus{
 }
 
 .tile.activated{
-  background-color: $speak-agent-light-blue!important;
-  border-color: $white!important;
+  border: 4px solid $white !important;
 }
 
 .tile.lightYellow {
-  background-color: $speak-agent-light-yellow;
+  /*background-color: $speak-agent-light-yellow;*/
   border-color: $dark-grey }
 
 .boards {
@@ -851,7 +850,9 @@ input[type="text"]:focus, textarea:focus{
   overflow: hidden;
   background: url("../img/new_dev_assets/board_tile_default.svg") no-repeat; }
 
-.boards:active,
+.boards.activated {
+  background: url("../img/new_dev_assets/board_tile_tapped.svg") no-repeat;}
+
 .activated-board {
  background: url("../img/new_dev_assets/board_tile_current.svg") no-repeat; }
 
@@ -949,7 +950,7 @@ input[type="text"]:focus, textarea:focus{
 }
 
 .word-builder-input{
-  width:800px;
+  width: 730px;
   height:80px;
   border-radius: 10px;
   background-color: $white;

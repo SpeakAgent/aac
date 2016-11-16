@@ -175,7 +175,8 @@
     </div>
 
     <div class="col col-40" id="board-section">
-      <div class="boards" ng-if="selectedBtn2" ng-repeat="userBoard in userBoards | sliceArr:start:end" ng-class="{'activated-board': selectedBoardIndex == userBoard.board.pk, 'hide-tile': userBoard.board.hidden}">
+      <div class="boards" ng-if="selectedBtn2" ng-repeat="userBoard in userBoards | sliceArr:start:end" ng-class="{'activated-board': selectedBoardIndex == userBoard.board.pk, 'hide-tile': userBoard.board.hidden}"
+           ng-click="chosenBoard($index);">
         <div ng-click="chosenBoard($index); sayWord()" ng-if="!userBoard.board.hidden">
           <p class="tile-words" ng-model="titleLimit">{{userBoard.board.title | charLimit: titleLimit}}</p>
           <img ng-if="userBoard.board.image" ng-src="{{userBoard.board.image}}" alt="{{userBoard.board.title}}" \>
