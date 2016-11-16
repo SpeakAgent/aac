@@ -256,7 +256,9 @@
 				</ion-list>
 
 				<div class="settings-box">
-						<button ng-click="downloadBoard()">Download</button>
+						<button ng-click="downloadBoard()"
+							ng-hide="downloadInProgress">Download</button>
+						<p ng-show="downloadInProgress">Downloading... Please wait! It might take a few minutes.</p>
 				</div>
 			</div>
 
