@@ -215,7 +215,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           return;
         }
         $scope.Modal.show()
-      }, 200);
+      }, 300);
     }
 
   $scope.closeModal = function(index){
@@ -515,7 +515,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
             var audio = new Audio('assets/sounds/bell.wav');
             audio.play();
-          }, 200);
+          }, 300);
       }
 
       $scope.class = "white";
@@ -585,7 +585,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
          $scope.speakText("Goodbye");
        }
        $scope.activeAvatar = false;
-     }, 200);
+     }, 300);
    };
 
     $scope.handlerTap = function (button){
@@ -638,7 +638,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           $scope.chooseBuddieModal.show();
           $scope.activeChat = false;
         }
-      }, 200);
+      }, 300);
     };
 
     $scope.pickme = '';
