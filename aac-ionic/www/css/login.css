@@ -1,35 +1,29 @@
-.login-background{
-    background-color: #008485;
-    padding-top: 190px;
-}
+.login-background {
+  background-color: #008485;
+  padding-top: 190px; }
 
-.login-section{
-    background-color: white;
-    border-radius: 14px;
-    box-shadow: 4px 4px 2px light-gray;
-}
+.login-section {
+  background-color: white;
+  border-radius: 14px;
+  box-shadow: 4px 4px 2px light-gray; }
 
-.login-box h1{
-    color: white;
-}
+.login-box h1 {
+  color: white; }
 
-.login-label{
-    margin: 0px!important;
-}
+.login-label {
+  margin: 0px !important; }
 
 .login-input {
-    background: none!important;
-    box-shadow: none!important;
-    border: none!important;
-    outline: none;
-    padding: 3px 0px 3px 3px!important;
-    margin: 0px !important;
-}
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  outline: none;
+  padding: 3px 0px 3px 3px !important;
+  margin: 0px !important; }
 
 .login-input:focus {
-    background: none!important;
-    box-shadow: none!important;
-    border: none!important;
-    outline: none;
-    padding: 3px 0px 3px 3px!important;
-}
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  outline: none;
+  padding: 3px 0px 3px 3px !important; }
