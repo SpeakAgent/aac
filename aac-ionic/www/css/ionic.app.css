@@ -77,21 +77,6 @@ a#btn-styling.button.button-outline.button-small {
   background-color: #98e3e3;
   font-weight: bold; }
 
-.boards {
-  padding: .5%;
-  height: 72px;
-  width: 70px;
-  font-size: .75em;
-  margin: 4.5px;
-  float: left;
-  text-align: center;
-  background: url("../img/new_dev_assets/board_tile_default.svg");
-}
-
-.boards.activated,
-.activated-board {
-  background: url("../img/new_dev_assets/board_tile_current.svg"); }
-
 .boards a {
   color: #000000;
   text-decoration: none; }
@@ -199,21 +184,14 @@ button#btn-styling.button.button-outline.button-calm.button-small {
 button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2 {
   border-color: #6FCACB; }
 
-#button-circle {
-  width: 75px;
-  height: 75px;
-  background-color: #008485;
-  border-radius: 37.5px;
-  float: left;
-  margin-left: 20px; }
-
 .button-circle {
   width: 75px;
   height: 75px;
   background-color: #008485;
   border-radius: 37.5px;
   float: left;
-  margin-left: 20px; }
+  margin-left: 20px;
+  padding-top: 14px; }
 
 .button-circle2 {
   width: 75px;
@@ -225,14 +203,11 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2 
 .button-circle.activated,
 .home-activated {
   border: 5px solid #F8D338;
-  width: 80px;
-  height: 80px; }
+  padding-top: 10px; }
 
 .yellow {
   border: 5px solid #F8D338;
-  width: 80px;
-  height: 80px;
-  border-radius: 40px; }
+  padding-top: 10px; }
 
 .buttonsdiv {
   margin: 0 auto; }
@@ -670,8 +645,8 @@ input[type="text"]:focus, textarea:focus {
   border-color: #ffffff !important; }
 
 .tile.activated {
-  /*background-color: #83EFF0 !important;*/
-  border: 4px solid #ffffff !important; }
+  background-color: #83EFF0 !important;
+  border-color: #ffffff !important; }
 
 .tile.lightYellow {
   background-color: #FFEFAD;
@@ -686,10 +661,11 @@ input[type="text"]:focus, textarea:focus {
   float: left;
   text-align: center;
   overflow: hidden;
-}
+  background: url("../img/new_dev_assets/board_tile_default.svg") no-repeat; }
 
-.boards.activated {
-  background: url("../img/new_dev_assets/board_tile_tapped.svg") no-repeat;}
+.boards:active,
+.activated-board {
+  background: url("../img/new_dev_assets/board_tile_current.svg") no-repeat; }
 
 .boards img {
   width: 65%;
@@ -768,7 +744,7 @@ input[type="text"]:focus, textarea:focus {
   margin: 10px; }
 
 .word-builder-input {
-  width: 730px;
+  width: 800px;
   height: 80px;
   border-radius: 10px;
   background-color: #ffffff;
