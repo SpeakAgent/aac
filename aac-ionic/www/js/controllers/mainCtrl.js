@@ -16,7 +16,7 @@ app.filter('charLimit', function () {
 app.controller('mainController',
 function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $ionicPopover, $state, aacService, appConfig, $timeout,
-    sessionService) {
+    sessionService, $rootScope) {
 
     $scope.doLogout = function() {
       sessionService.destroy('authToken');
@@ -620,7 +620,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
     ];
 
-    $scope.selectedBuddy = $scope.buddies[0];
+    $rootScope.selectedBuddy = $scope.buddies[0];
     $scope.activeAvatar = false;
 
     $scope.buttonAvatar = function(){
@@ -647,7 +647,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     };
 
     $scope.buddyPickMe = function (buddy){
-      $scope.selectedBuddy = buddy;
+      $rootScope.selectedBuddy = buddy;
       $scope.pickme = '';
       $scope.activeAvatar = false;
       console.log(buddy);
