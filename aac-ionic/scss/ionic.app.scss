@@ -983,5 +983,13 @@ input[type="text"]:focus, textarea:focus{
   float: left;
 }
 
+.pull-right{
+  float: left;
+}
+
+.pull-none{
+  float: none;
+}
+
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";

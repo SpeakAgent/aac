@@ -773,6 +773,12 @@ input[type="text"]:focus, textarea:focus {
 .pull-left {
   float: left; }
 
+.pull-right {
+  float: left; }
+
+.pull-none {
+  float: none; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
