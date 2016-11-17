@@ -142,7 +142,8 @@ i.fa {
 .eye-green {
   color: #8ED642; }
 
-button.done-button:active {
+button.done-button:active,
+button.done-button.activated {
   background: #006364; }
 
 i.icon.ion-checkmark-round:active {

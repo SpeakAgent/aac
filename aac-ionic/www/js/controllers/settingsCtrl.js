@@ -165,5 +165,9 @@ app.controller('settingsController',
 		$scope.panel = function(number){
 			$scope.step = number;
 		}
+
+		$scope.settingsToMain = function(){
+			$state.go('main');
+		}
 	}
 );

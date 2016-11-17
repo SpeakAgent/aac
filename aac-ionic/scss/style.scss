@@ -172,7 +172,8 @@ i.fa {
 	color: #8ED642;
 }
 
-button.done-button:active {
+button.done-button:active,
+button.done-button.activated {
     background: #006364;
 }
 
@@ -203,7 +204,7 @@ i.icon.ion-checkmark-round:active {
 }
 
 .buttonsdiv {
-    width: 40%;
+    width: 44%;
 }
 
 .toggle {
