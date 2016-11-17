@@ -1,3 +1,413 @@
+
+// Ionic Starter App
+
+// angular.module is a global place for creating, registering and retrieving Angular modules
+// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
+// the 2nd parameter is an array of 'requires'
+
+var appConfig = angular.module('appConfig', []).constant('appConfig', {
+    'backendURL': 'https://lexemes-dev.herokuapp.com'
+})
+
+angular.module('main', ['ionic', 'main.Ctrl', 'settings.Ctrl', 'main.aacService',
+                        'boardFactory.Ctrl', 'Login.Ctrl', 'appConfig',
+                        'sessionService'])
+
+  .config(function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/main');
+
+   $stateProvider.state('main',{
+      controller:'mainController',
+      url: '/main',
+      templateUrl: 'templates/main.html'
+    });
+
+    $stateProvider.state('login', {
+      controller: 'LoginController',
+      url: '/login',
+      templateUrl: 'templates/login.html',
+    })
+
+    $stateProvider.state('settings',{
+        controller: 'settingsController',
+        url:'/settings',
+        templateUrl: 'templates/settings.html'
+      });
+
+    $stateProvider.state('board_factory',{
+      controller: 'boardFactoryController',
+      url:'/board_factory',
+      templateUrl: 'templates/board_factory.html'
+    })
+
+    $stateProvider.state('board_factory/:id',{
+      controller: 'editBoardController',
+      url:'/board_factory/edit/:id',
+      templateUrl: 'templates/board_edit.html'
+    })
+
+    $stateProvider.state('board_factory/new',{
+      controller: 'newBoardController',
+      url:'/board_factory/new',
+      templateUrl: 'templates/board_factory_new.html'
+    })
+  })
+
+var app = angular.module('main.aacService', ['ionic']);
+
+app.service('aacService', function($http, $ionicModal){
+  
+	this.title = "This is a title";
+	this.board = {};
+	this.board.title = "Home";
+	this.columns = "abcdef";
+	this.rows = "123456";
+	this.selectedIndex = -2;
+	this.titleLimit = 20;
+  this.aacService = {};
+  this.aacService.data = {};
+  this.voice_volume = 150;
+  this.synthetic_voice = 'FEMALE';
+
+  // this.longWords = [
+  //   {
+  //     word:"puzzlement",
+  //     image:"img/aac_board_imgs/crayon.png"
+  //   },
+  //   {
+  //     word:"abdominohysterectomy",
+  //     image:"img/aac_board_imgs/alpaca.png"
+  //   },
+  //   {
+  //     word:"razzmatazz",
+  //     image:"img/aac_board_imgs/art.png"
+  //   },
+  //   {
+  //     word:"antienvironmentalist",
+  //     image:"img/aac_board_imgs/balloon.png"
+  //   },
+  //   {
+  //     word: "bumfuzzles",
+  //     image:"img/aac_board_imgs/bird.png"
+  //   },
+  //   {
+  //     word: "antiinsurrectionists",
+  //     image:"img/aac_board_imgs/clock.png"
+  //   },
+  //   {
+  //     word:"bemuzzling",
+  //     image:"img/aac_board_imgs/crayon.png",
+  //   },
+  //   {
+  //     word:"compartmentalization",
+  //     image:"img/aac_board_imgs/alpaca.png",
+  //   },
+  //   {
+  //     word:"skyjacking",
+  //     image:"img/aac_board_imgs/art.png",
+  //   },
+  //   {
+  //     word:"counterintuitiveness",
+  //     image:"img/aac_board_imgs/balloon.png",
+  //   },
+  //   {
+  //     word:"zigzagging",
+  //     image:"img/aac_board_imgs/bird.png",
+  //   },
+  //   {
+  //     word:"electrophysiologists",
+  //     image:"img/aac_board_imgs/clock.png",
+  //   },
+  // ]
+
+// }
+
+    // this.board = {};
+  // this.board.data = {};
+
+  // this.aacService.getBoard = function(){
+  //   var ureq = {
+  //     url: "http://iamready.herokuapp.com/users/user/all/",
+  //     data: {
+  //       pk: localStorage.getItem('pk'),
+  //       mode: "simple"
+  //     },
+  //     method: "POST",
+  //     headers: {
+  //       Authorization: 'JWT ' + localStorage.getItem('authToken')
+  //     },
+  //   }
+
+  //   $http.get(ureq)
+  //     .success(function(data){
+  //       aacService.data.nukes = data;
+  //       console.log(aacService.data.nukes);
+  //     });
+
+  //   return aacService;
+  // } 
+})
+var app = angular.module('boardFactory.Ctrl', ['ionic']);
+
+app.filter('slice', function(){
+  return function(arr, start, end){
+    return arr.slice(start, end);
+  };
+});
+
+app.controller('boardFactoryController',
+	function($http, $scope, $location, $ionicPopover, $location){
+		$scope.start = 0;
+		$scope.end = 24;
+		$scope.board = {};
+		// $scope.dummyBoards = aacService.dummyBoards;
+		// $scope.titleLimit = aacService.titleLimit; 
+
+		$scope.getData = function(){
+		  var req = {
+		    url: 'https://lexemes-dev.herokuapp.com/board/single/',
+		    data: {pk: 3},
+		    method: 'POST'
+			}
+
+
+		  $http(req).success(function(data) {
+		    $scope.board = data;
+		    $scope.filled_tiles = Object.keys($scope.board.symbols)
+		  })
+		}
+
+		$scope.getAboutMe = function(){
+		  var req2 = {
+		    url: 'https://lexemes-dev.herokuapp.com/board/single/',
+		    data: {pk: 4},
+		    method: 'POST'
+		  }
+
+		  $http(req2).success(function(data) {
+		    $scope.board = data;
+		    $scope.filled_tiles = Object.keys($scope.board.symbols)
+		  })
+		}
+
+		$scope.chosenBoard = function(sampleBoard){
+		  $scope.selectedIndex = sampleBoard;
+		  if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
+		    console.log($scope.dummyBoards[$scope.selectedIndex].pk);
+		    $scope.getData();
+		  } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
+		    // $scope.board = aacService.aboutMeBoard;
+		    $scope.aboutcircle = true;
+		  } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
+		    console.log($scope.board.pk);
+		     $scope.getAboutMe();
+		  }else{
+		    console.log("This icon doesn't have an associated board");
+		  }
+		}
+
+		$scope.lastSet = function(index){
+		    console.log("Last Set button is working");
+		    if ($scope.start > 0){
+		      $scope.start = $scope.start - 24;
+		      $scope.end = $scope.end - 24;
+		    }
+		 }
+
+		$scope.nextSet = function(index){
+		    console.log("Next Set button is working");
+		    if ($scope.end < $scope.dummyBoards.length){
+		      $scope.start = $scope.start + 24;
+		      $scope.end = $scope.end + 24;
+		    }else{
+		      console.log("No more left");
+		    }
+		}
+})
+
+app.controller('newBoardController',
+	function($http, $scope, $location, $ionicModal){
+
+
+		$ionicModal.fromTemplateUrl('templates/aac-partials/_word-change.html',{
+		    scope: $scope,
+		    animation: 'slide-in-up'
+		  }).then(function(modal){
+		    $scope.Modal = modal;
+		  });
+
+		  $scope.openModal = function(index){
+		    $scope.Modal.show()
+		  }
+
+		  $scope.closeModal = function(index){
+		    $scope.Modal.hide()
+		  };
+
+})
+
+app.controller('editBoardController',
+	function($http, $scope, $location, $ionicModal, $ionicPopover){
+
+		// $scope.columns = aacService.columns;
+		// $scope.rows = aacService.rows;
+		$scope.selectedTiles = [];
+		// $scope.selectedIndex = aacService.selectedIndex;
+		// $scope.titleLimit = aacService.titleLimit; 
+		$scope.board = {};
+
+		$scope.clickTile = function(tile) {
+
+		    $scope.board();
+		    $scope.selectedTiles.push(tile);
+
+		    console.log($scope.selectedTiles);
+		    $scope.selectedIndex = tile;
+
+		    if($scope.selectedTiles[$scope.selectedIndex] == undefined){
+		      console.log("no index!!");
+		    }
+		}
+
+		$ionicModal.fromTemplateUrl('templates/aac-partials/_add-multiple-words.html',{
+		    scope: $scope,
+		    animation: 'slide-in-up'
+		  }).then(function(modal){
+		    $scope.Modal = modal;
+		  });
+
+		  $scope.openModal = function(index){
+		    $scope.Modal.show()
+		  }
+
+		  $scope.closeModal = function(index){
+		    $scope.Modal.hide()
+		  };
+
+		  		var template = '<ion-popover-view class="popover-stuff2"><ion-content><p class="closing-x" ng-click="closePopover()">X</p><p class="popover-stuff">To edit the content of tiles with a yellow dot, go to Settings <a href="#/settings"><button class="custom-button"><i class="icon ion-gear-a"></i> Open Settings</button></a></p></ion-popover-view>';
+
+		$scope.popover = $ionicPopover.fromTemplate(template, {
+		   scope: $scope
+		});
+
+		$ionicPopover.fromTemplateUrl('settings-popover.html', {
+		   scope: $scope
+		}).then(function(popover){
+		   $scope.popover = popover;
+		});
+
+		$scope.blankInputs =[
+		    { 
+		      placeholder:"ENTER WORD"
+		    },
+		    {
+		      placeholder:"ENTER WORD"
+		    },
+		    {
+		      placeholder:"ENTER WORD"
+		    },
+		    {
+		      placeholder:"ENTER WORD"
+		    }
+		 ]
+
+		$scope.moreInputs = function(){
+		    console.log("More Inputs!!!");
+		    $scope.blankInputs.push(
+		      {'placeholder':'ENTER WORD'}, 
+		      {'placeholder':'ENTER WORD'},
+		      {'placeholder':'ENTER WORD'},
+		      {'placeholder':'ENTER WORD'},
+		      {'placeholder':'ENTER WORD'}
+		    );
+		}
+
+		$scope.openPopover = function($event){
+		   $scope.popover.show($event);
+		};
+
+		$scope.closePopover = function(){
+		   $scope.popover.hide();
+		};
+
+		$scope.$on('$destroy', function(){
+		   $scope.popover.remove();
+		});
+
+		$scope.$on('popover.hidden', function(){
+		});
+
+		$scope.$on('popover.removed', function(){
+		});
+
+})
+
+
+var app = angular.module('Login.Ctrl', ['ionic', 'angular-jwt']);
+
+app.controller('LoginController', function($scope, $http, $location,
+  $state, jwtHelper, appConfig, aacService, sessionService){
+  
+  if(sessionService.get('username')){
+      $state.go('main');
+  }
+
+  $scope.loginData = {};
+  $scope.authToken = sessionService.get('authToken');
+  if ($scope.authToken) {
+    $scope.username = jwtHelper.decodeToken($scope.authToken).username;
+  }
+
+  //Perform logout
+  $scope.doLogout = function(data, status, headers, config) {
+    $scope.authToken = null;
+    $scope.username= null;
+    sessionService.destroy('authToken');
+    sessionService.destroy('username');
+    sessionService.destroy('boards');
+
+    $scope.$apply()
+
+    var clearKeys = [
+      'authToken',
+      'username',
+      'userProfile',
+      'location.favorites',
+    ];
+
+    $state.go('login');
+  };
+
+  // Perform the login action when the user submits the login form
+  $scope.doLogin = function() {
+    $scope.loginData.username = $scope.loginData.username.toLowerCase();
+    $scope.loginError = '';
+
+    // Handle login
+    var tokenAuthURL = appConfig.backendURL + '/api-token-auth/';
+    var responsePromise = $http.post(tokenAuthURL,
+      {
+        'username': $scope.loginData.username,
+        'password': $scope.loginData.password
+      });
+
+    responsePromise.success(function(data, status, headers, config) {
+      sessionService.set('authToken', data.token);
+      sessionService.set('username', $scope.loginData.username);
+      sessionService.set('startSession', new Date().getTime());
+
+      $http.defaults.headers.common.Authorization = 'Token ' + data.token;
+
+      $state.go('main');
+    });
+
+    responsePromise.error(function(data, status, headers, config) {
+      $scope.loginError = "Unable to log in with the provided username and password.";
+    });
+
+  };
+});
+
 var app = angular.module('main.Ctrl', ['ionic', 'ngCordova']);
 
 app.filter('sliceArr', function(){
@@ -16,10 +426,9 @@ app.filter('charLimit', function () {
 app.controller('mainController',
 function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $ionicPopover, $state, aacService, appConfig, $timeout,
-    sessionService, analyticService) {
+    sessionService) {
 
-    // analyticService.view("hello");
-    analyticService.event("Event Tile", "bla", "Yes", "Pancho");
+    window.ga.startTrackerWithId('UA-87583113-1', 30)
 
     $scope.doLogout = function() {
       sessionService.destroy('authToken');
@@ -752,3 +1161,194 @@ app.run(function($ionicPlatform) {
     }
   });
 });
+
+angular.module('sessionService', ['ionic'])
+
+.factory('sessionService',['$http',function($http){
+return {
+   set:function(key,value){
+      return localStorage.setItem(key,JSON.stringify(value));
+   },
+   get:function(key){
+    console.log("Bad key?", key)
+    console.log("Val for key", localStorage.getItem(key))
+     try {
+        return JSON.parse(localStorage.getItem(key));
+    } catch(err) {
+        return localStorage.getItem(key);
+    }
+   },
+   destroy:function(key){
+     return localStorage.removeItem(key);
+   },
+ };
+}]);
+var app = angular.module('settings.Ctrl', ['ionic']);
+
+app.directive('customOnChange', function() {
+  return {
+    restrict: 'A',
+    link: function (scope, element, attrs) {
+      var onChangeFunc = scope.$eval(attrs.customOnChange);
+      element.bind('change', onChangeFunc);
+    }
+  };
+});
+
+app.controller('settingsController',
+	function($http, $scope, $cordovaFileTransfer,
+	$timeout, $window, $state, appConfig, aacService, sessionService){
+		$scope.settings = true;
+		$scope.step = 1;
+		$scope.file = undefined;
+
+		$scope.downloadBoard = function() {
+			console.log("Downloading a board");
+			var req = {
+	          url: appConfig.backendURL + '/board/user/',
+	          data: {user_username: sessionService.get('username')},
+	          method: 'POST',
+	          headers: {
+	            Authorization: 'JWT ' + sessionService.get('authToken')
+	          }
+	        }
+
+	        console.log("Getting boards", req)
+
+	        $http(req).success(function(data) {
+	          $scope.board = data.boards[0];
+	          $scope.userBoards = data.boards;
+	          $scope.quickbar = data.quickbar;
+	          $scope.filled_tiles = Object.keys($scope.board.symbols)
+	          console.log("Got boards", data)
+	          sessionService.set('boards', angular.toJson(data));
+	        })
+	        .error(function(error) {
+	        	console.log("Could not download", error)
+	        })
+		}
+		
+		$scope.alertAnimation = function(message){
+			$scope.message = message;
+   		    $timeout(function(){$scope.message = null}, 2700);
+		}
+
+		$scope.doLogout = function() {
+			sessionService.destroy('authToken');
+			sessionService.destroy('username');
+	        $state.go('login');
+		};
+
+		if (sessionService.get("username") === null) {
+			$scope.doLogout();
+		};
+
+		$scope.getUserInformation = function(){
+			req = {
+				url: appConfig.backendURL + '/user/aac/settings/',
+				method: 'POST',
+				headers: {
+				Authorization: 'JWT ' + sessionService.get('authToken')
+				},
+				data: {username: sessionService.get("username")}
+			};
+			$http(req).success(function (data) {
+				$scope.user = data;
+				var synthetic_voice = data.userinfo && data.userinfo.synthetic_voice != null? data.userinfo.synthetic_voice : 'FEMALE';
+				var voice_speed  = data.userinfo && data.userinfo.voice_speed != null? (data.userinfo.voice_speed * 0.01).toFixed(2) : 1.5;
+				sessionService.set('synthetic_voice', synthetic_voice);
+				sessionService.set('voice_speed', voice_speed);
+			})
+		};
+
+		$scope.synthVoiceSubmit = function(){
+			user_req = {
+				url: appConfig.backendURL + '/user/info/',
+				method: 'POST',
+				headers: {
+					Authorization: 'JWT ' + sessionService.get('authToken'),
+				},
+				data: {username: sessionService.get("username"),
+					   synthetic_voice: this.user.userinfo.synthetic_voice,
+					   voice_speed: this.user.userinfo.voice_speed}
+			}
+			return $http(user_req)
+			.success(function(data) {
+				$scope.getUserInformation();
+				var message = {
+					text: 'Synthetic Voice options was saved successfully.',
+					type: 'success',
+					animation: 'slideDown'
+				};
+
+				$scope.alertAnimation(message);
+			})
+			.error(function (data) {
+				$window.scrollTo(0, 0);
+				var message = {
+					text: 'An error ocurred updating user information!',
+					type: 'danger',
+					animation: 'slideDown'
+				};
+				$scope.alertAnimation(message);
+			});
+		}
+
+		$scope.getUserInformation();
+
+		$scope.uploadFile = function(e){
+			var image = e.target.files[0];
+			var read = new FileReader();
+
+			$scope.profileImgName = e.target.files[0].name
+
+			imageUrl = e.target.files[0]
+
+			read.onloadend = function(evt) {
+				result_base64 = evt.target.result;
+				$scope.profileImgBase64 = btoa(read.result);
+			};
+			read.readAsBinaryString(image);
+		};
+
+		$scope.SubmitAboutMe = function(){
+			user_req = {
+				url: appConfig.backendURL + '/user/info/',
+				method: 'POST',
+				headers: {
+					Authorization: 'JWT ' + sessionService.get('authToken'),
+				},
+				data: {username: sessionService.get("username"),
+					   profile_image: $scope.profileImgBase64,
+					   profile_image_name: $scope.profileImgName}
+			}
+			return $http(user_req)
+			.success(function(data) {
+				var message = {
+					text: data.message,
+					type: 'success',
+					animation: 'slideDown'
+				};
+				$window.scrollTo(0, 0);
+
+				$scope.alertAnimation(message);
+				$scope.getUserInformation();
+			})
+			.error(function (data) {
+				$window.scrollTo(0, 0);
+				var message = {
+					text: 'An error ocurred updating user information!',
+					type: 'danger',
+					animation: 'slideDown'
+				};
+				$scope.alertAnimation(message);
+			});
+		}
+
+		$scope.step = 6;
+
+		$scope.panel = function(number){
+			$scope.step = number;
+		}
+	}
+);
