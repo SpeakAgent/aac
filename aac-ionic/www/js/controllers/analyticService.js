@@ -2,24 +2,30 @@ angular.module('analyticService', ['ionic'])
 
 .factory('analyticService', function(){
 return {
-   start: function(){
-      try{
-        analytics.startTrackerWithId('UA-87583113-1');
-      }catch(error){
-        
-      }
-   },
    view: function(title){
       try{
-        analytics.trackView(title);
+        window.analytics.trackView(title);
       }catch (error){
 
       }
    },
-   event: function(category, action, label, value){
+   event: function(category, action, label){
       try{
-        debugger;
-        analytics.trackEvent(category, action, label, Value);
+        window.analytics.trackEvent(category, action, label);
+      }catch (error){
+        
+      }
+   },
+   TileEvent: function(category, action, label){
+      try{
+        window.analytics.trackEvent(category, action, label);
+      }catch (error){
+        
+      }
+   },
+   PhraseEvent: function(category, action, label){
+      try{
+        window.analytics.trackEvent(category, action, label);
       }catch (error){
         
       }

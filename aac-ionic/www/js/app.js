@@ -10,12 +10,12 @@ var appConfig = angular.module('appConfig', []).constant('appConfig', {
 
 angular.module('main', ['ionic', 'main.Ctrl', 'settings.Ctrl', 'main.aacService',
                         'boardFactory.Ctrl', 'Login.Ctrl', 'appConfig',
-                        'sessionService', 'analyticService'])
+                        'sessionService', 'analyticService', 'angularMoment'])
 
 .run(function($ionicPlatform, $ionicPopup) {
       $ionicPlatform.ready(function() {
         try {
-          analytics.startTrackerWithId('UA-87583113-1');
+          window.analytics.startTrackerWithId('UA-87583113-1');
         } catch(error) {
           console.log("Google Analytics Unavailable");
         }

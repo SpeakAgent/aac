@@ -1,4 +1,4 @@
-var app = angular.module('main.Ctrl', ['ionic', 'ngCordova']);
+var app = angular.module('main.Ctrl', ['ionic', 'ngCordova', 'angularMoment']);
 
 app.filter('sliceArr', function(){
   return function(arr, start, end){
@@ -15,11 +15,8 @@ app.filter('charLimit', function () {
 
 app.controller('mainController',
 function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
-    $ionicPopover, $state, aacService, appConfig, $timeout,
+    $ionicPopover, $state, aacService, appConfig, $timeout, moment,
     sessionService, analyticService) {
-
-    // analyticService.view("hello");
-    analyticService.event("Event Tile", "bla", "Yes", "Pancho");
 
     $scope.doLogout = function() {
       sessionService.destroy('authToken');
@@ -319,10 +316,18 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     //Play and replay
     $scope.play = false;
     $scope.replay = false;
+
     $scope.clickTile = function(tile) {
       if(!tile){
         return;
       }
+
+      var analyticLabel = "Tile Type: Symbol" + ", Word: " + tile.word + ", Word ID: " + tile.pk +
+        ", Part of Speech: " + tile.word_class + ", Board: " + $scope.board.board.title + ", Location: " + "" +
+        ", Timestamp: " + moment().format('M/D/YYYY, h:mm:ss a') +
+        ", User: " + sessionService.get("username") + ", Mode: " + $scope.activeChat;
+
+      analyticService.event("Touch", "Tile Touch", analyticLabel);
 
       if(tile.target_board){
         var req = {
@@ -340,6 +345,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         }).error(function (data) {
           $scope.errData = data
         });
+
 
         return;
       }
@@ -458,6 +464,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           method: 'POST'
         }
         console.log(req);
+
         $http(req).success(function(data) {
           console.log(data);
           $scope.speakText(data.sentence);
@@ -465,6 +472,17 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           $scope.play = false;
           //Se muestra boton de play
           $scope.replay = true;
+
+          console.log($scope.selectedTiles);
+
+          var analyticLabel = "Input Phrase: " + $scope.selectedTiles.map(function(elem){return elem.word;}).join(', ') +
+          ", Output Phrase: " + 'data.sentence' +
+          ", Phrase length: " + $scope.selectedTiles.length +
+          ", Board: " + $scope.board.board.title + ", Location: " + "" +
+          ", Timestamp: " + moment().format('M/D/YYYY, h:mm:ss a') +
+          ", User: " + sessionService.get("username") + ", Mode: " + $scope.activeChat;
+          
+          analyticService.PhraseEvent("Sentence", "Play Phrase", analyticLabel);
         })
       }
 
@@ -521,9 +539,16 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
       $scope.class = "white";
 
-      $scope.chosenTile = function(tile){
+      $scope.quickBarTile = function(tile){
         $scope.selectedIndex = tile;
-        $scope.speakText(tile.lexeme);
+        $scope.speakText(tile.word.root_word);
+
+        var analyticLabel = "Tile Type: Quickbar" + ", Word: " + tile.word.root_word + ", Word ID: " + tile.pk +
+        ", Part of Speech: " + tile.word.word_class.title + ", Board: " + $scope.board.board.title + ", Location: " + "" +
+        ", Timestamp: " + moment().format('M/D/YYYY, h:mm:ss a') +
+        ", User: " + sessionService.get("username") + ", Mode: " + $scope.activeChat;
+
+        analyticService.event("Touch", "Tile Touch", analyticLabel);
       };
 
       $scope.lastSet = function(index){

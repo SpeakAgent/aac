@@ -7,7 +7,7 @@ app.filter('slice', function(){
 });
 
 app.controller('boardFactoryController',
-	function($http, $scope, $location, $ionicPopover, $location){
+	function($http, $scope, $location, $ionicPopover){
 		$scope.start = 0;
 		$scope.end = 24;
 		$scope.board = {};
