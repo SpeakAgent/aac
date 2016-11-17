@@ -18,6 +18,7 @@ return {
    },
    event: function(category, action, label, value){
       try{
+        debugger;
         analytics.trackEvent(category, action, label, Value);
       }catch (error){
         
