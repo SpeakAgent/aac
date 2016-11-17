@@ -16,7 +16,7 @@ app.filter('charLimit', function () {
 app.controller('mainController',
 function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $ionicPopover, $state, aacService, appConfig, $timeout,
-    sessionService) {
+    sessionService, $cordovaFile, $cordovaFileTransfer) {
 
     $scope.doLogout = function() {
       sessionService.destroy('authToken');
@@ -39,9 +39,118 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $scope.end = 24;
     $scope.board = {};
 
+    $scope.downloadBoards = function(data) {
+      window.localStorage['boards'] = angular.toJson(data);
+
+      // Go through each board
+      // For each board, save the board symbol, thumb
+        // Update path in JSON
+        // For each board.board.word, save word symbol, thumb
+          // Update path in JSON
+
+    }
+
+    $scope.Download = function (url, boardIndex, symbolIndex) {
+      if (url === null) {
+        return null
+      }
+      ionic.Platform.ready(function(){
+        var filename = url.split("/").pop()
+        console.log("filename 1", filename)
+        filename = filename.split("?")[0]
+        console.log("filename 2", filename)
+        console.log(url.split("/"))
+        url = url.split("?")[0]
+
+       var targetPath = cordova.file.applicationDirectory + "www/img/" + filename;
+        $cordovaFileTransfer.download(
+          url, 
+          targetPath, 
+          {}, 
+          true)
+        .then(function (result) {
+              console.log('Save file on '+targetPath+' success!');
+              replaceImage(boardIndex, symbolIndex, targetPath, filename);
+        }, function (error) {
+              console.log('Error Download file', JSON.stringify(error));
+        }, function (progress) {
+              $scope.downloadProgress = (progress.loaded / progress.total) * 100;
+        });
+      });
+    }
+
+    function replaceImage (boardIndex, symbolIndex, targetPath, filename) {
+      console.log("Would be replacing",
+        $scope.userBoards[boardIndex].board.title, symbolIndex,
+        targetPath, filename)
+      if (symbolIndex === null && boardIndex !== null) {
+        // We're just replacing the board image
+        $cordovaFile.readAsDataURL(
+          cordova.file.applicationDirectory, "www/img/" + filename)
+          .then(function(res) {
+            // console.log("Implanting apple on", boardIndex, $scope.userBoards[boardIndex].board.title)
+            $scope.userBoards[boardIndex].board.image = res;
+            $scope.userBoards[boardIndex].board.thumb = res;
+
+          })
+      } else if (boardIndex !== null && symbolIndex !== null ) {
+          // If we have a board and a symbol, replace the symbol
+          console.log("Replacing a symbol", boardIndex, symbolIndex, targetPath,
+            filename)
+          $cordovaFile.readAsDataURL(
+          cordova.file.applicationDirectory, "www/img/" + filename)
+          .then(function(res) {
+            console.log("Implanting apple on symbol", 
+              boardIndex, symbolIndex, 
+              $scope.userBoards[boardIndex].symbols[symbolIndex])
+            $scope.userBoards[boardIndex].symbols[symbolIndex].symbol.image = res;
+            $scope.userBoards[boardIndex].symbols[symbolIndex].symbol.thumb = res;
+
+          })
+        } else if (boardIndex === null && symbolIndex !== null) {
+          // We have no board, but a symbol? Quickbar
+          console.log("Replacing a quickbar", boardIndex, symbolIndex, targetPath,
+            filename)
+          $cordovaFile.readAsDataURL(
+          cordova.file.applicationDirectory, "www/img/" + filename)
+          .then(function(res) {
+            console.log("Implanting apple on symbol", 
+              boardIndex, symbolIndex, 
+              $scope.userBoards[boardIndex].symbols[symbolIndex])
+            $scope.quickbar[symbolIndex].symbol.image = res;
+            $scope.userBoards[boardIndex].symbols[symbolIndex].symbol.thumb = res;
+        })
+
+      }
+
+        window.localStorage['boards'] = angular.toJson(
+          {'boards': $scope.userBoards,
+           'quickbar': $scope.quickbar});
+    }
+
+    function saveBoardImages () {
+      console.log("# boards", $scope.userBoards.length)
+      for (var i in $scope.userBoards) {
+        // Download board image
+        var board = $scope.userBoards[i].board
+        var symbols = $scope.userBoards[i].symbols
+        // console.log(JSON.stringify(board))
+        console.log("Downloading", board.title, 
+          board.image)
+        $scope.Download(board.image, i, null)
+        // Now, download the board tile images
+        console.log("Symbols", JSON.stringify(symbols))
+        for (var si in symbols) {
+          console.log("Symbol index", si)
+          $scope.Download(symbols[si].symbol.image, i, si)
+        }
+      }
+    }
+
     $scope.mainBoardLoader = function(){
       // Make sure we have to do this call! Are there boards already saved?
-      if ($scope.checkBoards()) {
+      if (window.localStorage.getItem('boards') === null) {
+      // if (true) {
         var req = {
           url: appConfig.backendURL + '/board/user/',
           data: {user_username: sessionService.get('username')},
@@ -55,19 +164,23 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
         $http(req).success(function(data) {
           $scope.board = data.boards[0];
-          console.log(data.boards[0].board.pk);
-          $scope.selectedBoardIndex = data.boards[0].board.pk;
+          console.log("board", $scope.board) 
           $scope.userBoards = data.boards;
           $scope.quickbar = data.quickbar;
-          sessionService.set('boards', angular.toJson(data));
-          $scope.getHomeBoard();
-        }).error(function (data) {
-          $scope.errData = data
-        });
-
+          $scope.filled_tiles = Object.keys($scope.board.symbols)
+          $scope.downloadBoards(data)
+          console.log("Board ready, saving images")
+        })
+        .error(function(error) {
+          console.log("Error")
+          console.log(error)
+        })
+        .then(function () {
+          saveBoardImages();
+        })
       } else {
-        var data = angular.fromJson(sessionService.get('boards'));
-        console.log(data)
+        var data = angular.fromJson(window.localStorage['boards'])
+        console.log(JSON.stringify(data))
         $scope.userBoards = data.boards
         $scope.selectedBoardIndex = data.boards[0].board.pk;
         $scope.board = data.boards[0];
