@@ -79,17 +79,17 @@ a#btn-styling.button.button-outline.button-small {
 
 .boards {
   padding: .5%;
-  height: 70px;
+  height: 72px;
   width: 70px;
   font-size: .75em;
   margin: 4.5px;
   float: left;
   text-align: center;
-  background: url("../img/new_dev_assets/board_tile_notched_default_1.svg"); }
+  background: url("../img/new_dev_assets/board_tile_default.svg"); }
 
 .boards.activated,
 .activated-board {
-  background: url("../img/new_dev_assets/board_tile_notched_default_yellow.svg") !important; }
+  background: url("../img/new_dev_assets/board_tile_current.svg"); }
 
 .boards a {
   color: #000000;
@@ -198,21 +198,14 @@ button#btn-styling.button.button-outline.button-calm.button-small {
 button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2 {
   border-color: #6FCACB; }
 
-#button-circle {
-  width: 75px;
-  height: 75px;
-  background-color: #008485;
-  border-radius: 37.5px;
-  float: left;
-  margin-left: 20px; }
-
 .button-circle {
   width: 75px;
   height: 75px;
   background-color: #008485;
   border-radius: 37.5px;
   float: left;
-  margin-left: 20px; }
+  margin-left: 20px;
+  padding-top: 14px; }
 
 .button-circle2 {
   width: 75px;
@@ -224,14 +217,11 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2 
 .button-circle.activated,
 .home-activated {
   border: 5px solid #F8D338;
-  width: 80px;
-  height: 80px; }
+  padding-top: 10px; }
 
 .yellow {
   border: 5px solid #F8D338;
-  width: 80px;
-  height: 80px;
-  border-radius: 40px; }
+  padding-top: 10px; }
 
 .buttonsdiv {
   margin: 0 auto; }
@@ -605,9 +595,10 @@ input[type="text"]:focus, textarea:focus {
 
 .settings-box {
   background-color: #ffffff;
-  margin: 5% 9%;
-  padding: 5% 0 47%;
-  font-size: 1.2em; }
+  margin: 5% 15%;
+  padding: 10px 30px;
+  font-size: 1.2em;
+  width: 70%; }
 
 .settings-box.ion-checkbox {
   border-color: #000000; }
@@ -667,12 +658,8 @@ input[type="text"]:focus, textarea:focus {
   background-color: #83EFF0 !important;
   border-color: #ffffff !important; }
 
-.tile.activated {
-  background-color: #83EFF0 !important;
-  border-color: #ffffff !important; }
-
 .tile.lightYellow {
-  background-color: #FFEFAD;
+  /*background-color: $speak-agent-light-yellow;*/
   border-color: #979797; }
 
 .boards {
@@ -683,11 +670,13 @@ input[type="text"]:focus, textarea:focus {
   margin: 4.5px;
   float: left;
   text-align: center;
-  overflow: hidden;
-  background: url("../img/new_dev_assets/board_tile_notched_default_1.svg") no-repeat; }
+  overflow: hidden; }
 
 .boards.activated {
-  background: url("../img/new_dev_assets/board_tile_notched_default_yellow.svg") no-repeat; }
+  background: url("../img/new_dev_assets/board_tile_tapped.svg") no-repeat; }
+
+.activated-board {
+  background: url("../img/new_dev_assets/board_tile_current.svg") no-repeat; }
 
 .boards img {
   width: 65%;
