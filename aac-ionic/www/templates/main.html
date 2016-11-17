@@ -1,6 +1,6 @@
 <ion-header-bar class="bar-dark">
   <!--<i class="icon ion-unlocked"></i>-->
-  <div class="buttonsdiv">
+  <div class="buttonsdiv text-center">
     <!-- <i class="icon ion-unlocked"></i> -->
 
     <a href="#/settings" class="button button-outline button-small" id="btn-styling">
@@ -63,7 +63,7 @@
         <div ng-show="selectedBtn2">
 
           <div class="regulars" ng-class="{'hide-tile': quickbar.lexeme.hidden}">
-            <div ng-show="!quickbar.lexeme.hidden" ng-click="chosenTile(quickbar.lexeme); sayWord();">
+            <div ng-show="!quickbar.lexeme.hidden" ng-click="chosenTile(quickbar.lexeme);">
               {{ quickbar.lexeme.lexeme | limitTo: titleLimit }}
               <br />
               <img  ng-src="{{quickbar.lexeme.symbol.image}}" ng-if="quickbar.lexeme.symbol.image" style="width:40px;height:40px">
@@ -71,7 +71,7 @@
           </div>
 
           <div class="regulars" ng-class="{'hide-tile': quickbar.lexeme2.hidden}">
-            <div ng-show="!quickbar.lexeme2.hidden" ng-click="chosenTile(quickbar.lexeme2); sayWord();">
+            <div ng-show="!quickbar.lexeme2.hidden" ng-click="chosenTile(quickbar.lexeme2);">
               {{ quickbar.lexeme2.lexeme | limitTo: titleLimit }}
               <br />
               <img ng-src="{{quickbar.lexeme2.symbol.image}}" ng-if="quickbar.lexeme2.symbol.image" style="width:40px;height:40px">
@@ -79,7 +79,7 @@
           </div>
 
           <div class="regulars" ng-class="{'hide-tile': quickbar.lexeme3.hidden}">
-            <div ng-show="!quickbar.lexeme3.hidden" ng-click="chosenTile(quickbar.lexeme3); sayWord();">
+            <div ng-show="!quickbar.lexeme3.hidden" ng-click="chosenTile(quickbar.lexeme3);">
               {{ quickbar.lexeme3.lexeme | limitTo: titleLimit }}
               <br />
               <img ng-src = "{{quickbar.lexeme3.symbol.image}}" ng-if="quickbar.lexeme3.symbol.image" style="width:40px;height:40px">
@@ -87,7 +87,7 @@
           </div>
 
           <div class="regulars" ng-class="{'hide-tile': quickbar.lexeme4.hidden}">
-            <div ng-show="!quickbar.lexeme4.hidden" ng-click="chosenTile(quickbar.lexeme4); sayWord();">
+            <div ng-show="!quickbar.lexeme4.hidden" ng-click="chosenTile(quickbar.lexeme4);">
               {{ quickbar.lexeme4.lexeme | limitTo: titleLimit }}
               <img ng-src="{{quickbar.lexeme4.symbol.image}}" ng-if="quickbar.lexeme4.symbol.image" style="width:40px;height:40px">
             </div>
@@ -151,9 +151,8 @@
     <div class="col col-60" id="tile-section">
       <div class="tile-section-border">
         <span ng-repeat="row in rows">
-
           <div class="tile" ng-repeat="col in columns" ng-click="clickTile(board.symbols[col+row]);" ng-class="{lightYellow: board.symbols[col+row].word_class.indexOf('pronoun') > -1, 'hide-tile': board.symbols[col+row].hidden};" ng-if="selectedBtn2">
-            <span ng-show="filled_tiles.indexOf(col+row)!=-1 && !board.symbols[col+row].hidden" ng-click="clickTile(board.symbols[col+row]); sayWord();">
+            <span ng-show="filled_tiles.indexOf(col+row)!=-1 && !board.symbols[col+row].hidden" ng-click="clickTile(board.symbols[col+row]);">
               <p ng-bind="board.symbols[col+row].label? (board.symbols[col+row].label | charLimit: titleLimit) : (board.symbols[col+row].word | charLimit: titleLimit)"
                  class="tile-words"></p>
               <img ng-if="board.symbols[col+row].symbol.image" ng-src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px">
@@ -175,9 +174,8 @@
     </div>
 
     <div class="col col-40" id="board-section">
-      <div class="boards" ng-if="selectedBtn2" ng-repeat="userBoard in userBoards | sliceArr:start:end" ng-class="{'activated-board': selectedBoardIndex == userBoard.board.pk, 'hide-tile': userBoard.board.hidden}"
-           ng-click="chosenBoard($index);">
-        <div ng-click="chosenBoard($index); sayWord()" ng-if="!userBoard.board.hidden">
+      <div class="boards" ng-if="selectedBtn2" ng-click="chosenBoard($index);" ng-repeat="userBoard in userBoards | sliceArr:start:end" ng-class="{'activated-board': selectedBoardIndex == userBoard.board.pk, 'hide-tile': userBoard.board.hidden}">
+        <div ng-if="!userBoard.board.hidden">
           <p class="tile-words" ng-model="titleLimit">{{userBoard.board.title | charLimit: titleLimit}}</p>
           <img ng-if="userBoard.board.image" ng-src="{{userBoard.board.image}}" alt="{{userBoard.board.title}}" \>
         </div>

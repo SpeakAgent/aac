@@ -129,7 +129,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $scope.chosenBoard = function(index){
       $scope.selectedBoardIndex = $scope.userBoards[index].board.pk;
       $scope.board = $scope.userBoards[index];
-      $scope.speakText($scope.userBoards[index].board.title);
     };
 
     $scope.homeButton = function(){
@@ -218,7 +217,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           return;
         }
         $scope.Modal.show()
-      }, 300);
+      }, 500);
     }
 
   $scope.closeModal = function(index){
@@ -290,7 +289,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       placeholder.style.width = "70%";
       placeholder.style.height = "70%";
       placeholder.id = "placeholder";
-
 
       for(var i = 0; i < buttonCircle.length; i++){
         buttonCircle[i].style.backgroundColor = $scope.colorName[$scope.selectedIndex].secondaryColor;
@@ -518,7 +516,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
             var audio = new Audio('assets/sounds/bell.wav');
             audio.play();
-          }, 300);
+          }, 500);
       }
 
       $scope.class = "white";
@@ -588,7 +586,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
          $scope.speakText("Goodbye");
        }
        $scope.activeAvatar = false;
-     }, 300);
+     }, 500);
    };
 
     $scope.handlerTap = function (button){
@@ -641,7 +639,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           $scope.chooseBuddieModal.show();
           $scope.activeChat = false;
         }
-      }, 300);
+      }, 500);
     };
 
     $scope.pickme = '';
