@@ -476,7 +476,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           console.log($scope.selectedTiles);
 
           var analyticLabel = "Input Phrase: " + $scope.selectedTiles.map(function(elem){return elem.word;}).join(', ') +
-          ", Output Phrase: " + 'data.sentence' +
+          ", Output Phrase: " + data.sentence +
           ", Phrase length: " + $scope.selectedTiles.length +
           ", Board: " + $scope.board.board.title +
           ", Timestamp: " + moment().format('M/D/YYYY, h:mm:ss a') +
