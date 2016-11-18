@@ -205,7 +205,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     });
 
     $scope.openModal = function(index){
-      if ($scope.clicked) {
+      if ($scope.clicked || $scope.buttons.colors) {
           $scope.cancelClick = true;
           return;
       }
@@ -511,7 +511,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       };
 
       $scope.bellSound = function(){
-          if ($scope.clicked) {
+          if ($scope.clicked || $scope.buttons.bell) {
               $scope.cancelClick = true;
               return;
           }
@@ -588,7 +588,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
    $scope.activeChat = false;
    $scope.buttonChat = function(){
-      if ($scope.clicked) {
+      if ($scope.clicked || $scope.buttons.chat) {
           $scope.cancelClick = true;
           return;
       }
@@ -649,7 +649,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $scope.activeAvatar = false;
 
     $scope.buttonAvatar = function(){
-      if ($scope.clicked) {
+      if ($scope.clicked || $scope.buttons.avatar) {
           $scope.cancelClick = true;
           return;
       }
