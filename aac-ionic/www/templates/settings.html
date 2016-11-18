@@ -256,7 +256,12 @@
 				</ion-list>
 
 				<div class="settings-box">
-						<button class="custom-button button-block" ng-click="downloadBoard()">Download</button>
+						<button class="custom-button button-block" ng-click="downloadBoard()" ng-hide="downloadInProgress">Download</button>
+						<p ng-show="downloadInProgress">Downloading your boards! Please be patient, since this takes a while.</p>
+						<p>Status messages:<br>
+						<ul>
+							<li ng-repeat="status in statuses | limitTo:20">{{ status }}</li>
+						</ul>
 				</div>
 			</div>
 

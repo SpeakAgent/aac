@@ -12,36 +12,149 @@ app.directive('customOnChange', function() {
 
 app.controller('settingsController',
 	function($http, $scope, $cordovaFileTransfer,
-	$timeout, $window, $state, appConfig, aacService, sessionService){
+	$timeout, $window, $state, appConfig, aacService, sessionService,
+	$cordovaFile, $cordovaFileTransfer){
 		$scope.settings = true;
 		$scope.step = 1;
 		$scope.file = undefined;
+		$scope.downloadInProgress = false;
+		$scope.statuses = [];
 
 		$scope.downloadBoard = function() {
-			console.log("Downloading a board");
-			var req = {
-	          url: appConfig.backendURL + '/board/user/',
-	          data: {user_username: sessionService.get('username')},
-	          method: 'POST',
-	          headers: {
-	            Authorization: 'JWT ' + sessionService.get('authToken')
-	          }
-	        }
+			$scope.statuses.unshift("=========")
+            $scope.downloadInProgress = true;
+            console.log("Downloading a board");
+            $scope.statuses.unshift("Getting boards...")
+            var req = {
+              url: appConfig.backendURL + '/board/user/',
+              data: {user_username: sessionService.get('username')},
+              method: 'POST',
+              headers: {
+                Authorization: 'JWT ' + sessionService.get('authToken')
+              }
+            }
 
-	        console.log("Getting boards", req)
+            console.log("Getting boards", req)
 
-	        $http(req).success(function(data) {
-	          $scope.board = data.boards[0];
-	          $scope.userBoards = data.boards;
-	          $scope.quickbar = data.quickbar;
-	          $scope.filled_tiles = Object.keys($scope.board.symbols)
-	          console.log("Got boards", data)
-	          sessionService.set('boards', angular.toJson(data));
-	        })
-	        .error(function(error) {
-	        	console.log("Could not download", error)
-	        })
-		}
+            $http(req).success(function(data) {
+              $scope.board = data.boards[0];
+              $scope.userBoards = data.boards;
+              $scope.quickbar = data.quickbar;
+              $scope.filled_tiles = Object.keys($scope.board.symbols)
+              console.log("Got boards", data)
+              sessionService.set('boards', angular.toJson(data));
+              $scope.statuses.unshift("Have boards. # of boards: " + $scope.userBoards.length)
+            })
+            .error(function(error) {
+                console.log("Could not download", error)
+                $scope.statuses.unshift("Could not download the boards.")
+                $scope.downloadInProgress = false;
+            })
+            .then(function () {
+                saveBoardImages();  
+            })
+        }
+
+        function saveBoardImages () {
+          console.log("# boards", $scope.userBoards.length)
+          for (var i in $scope.userBoards) {
+            // Download board image
+            var board = $scope.userBoards[i].board
+            $scope.statuses.unshift("Getting images for " + board.title)
+            var symbols = $scope.userBoards[i].symbols
+            // console.log(JSON.stringify(board))
+            console.log("Downloading", board.title, 
+              board.image)
+            $scope.Download(board.image, i, null)
+            // Now, download the board tile images
+            console.log("Symbols", JSON.stringify(symbols))
+            for (var si in symbols) {
+              console.log("Symbol index", si)
+              $scope.Download(symbols[si].symbol.image, i, si)
+            }
+          }
+        }
+
+        $scope.Download = function (url, boardIndex, symbolIndex) {
+          if (url === null) {
+            return null
+          }
+          ionic.Platform.ready(function(){
+            var filename = url.split("/").pop()
+            console.log("filename 1", filename)
+            filename = filename.split("?")[0]
+            console.log("filename 2", filename)
+            console.log(url.split("/"))
+            url = url.split("?")[0]
+
+           var targetPath = cordova.file.applicationDirectory + "www/img/" + filename;
+            $cordovaFileTransfer.download(
+              url, 
+              targetPath, 
+              {}, 
+              true)
+            .then(function (result) {
+                  console.log('Save file on '+targetPath+' success!');
+                  replaceImage(boardIndex, symbolIndex, targetPath, filename);
+                  $scope.statuses.unshift("Saved file " + filename)
+            }, function (error) {
+                  console.log('Error Download file', JSON.stringify(error));
+            }, function (progress) {
+                  $scope.downloadProgress = (progress.loaded / progress.total) * 100;
+            });
+          });
+        }
+
+        function replaceImage (boardIndex, symbolIndex, targetPath, filename) {
+        	$scope.downloadInProgress = false;
+          console.log("Would be replacing",
+            $scope.userBoards[boardIndex].board.title, symbolIndex,
+            targetPath, filename)
+          $scope.statuses.unshift("Replacing " + filename)
+          if (symbolIndex === null && boardIndex !== null) {
+            // We're just replacing the board image
+            $cordovaFile.readAsDataURL(
+              cordova.file.applicationDirectory, "www/img/" + filename)
+              .then(function(res) {
+                // console.log("Implanting apple on", boardIndex, $scope.userBoards[boardIndex].board.title)
+                $scope.userBoards[boardIndex].board.image = res;
+                $scope.userBoards[boardIndex].board.thumb = res;
+
+              })
+          } else if (boardIndex !== null && symbolIndex !== null ) {
+              // If we have a board and a symbol, replace the symbol
+              console.log("Replacing a symbol", boardIndex, symbolIndex, targetPath,
+                filename)
+              $cordovaFile.readAsDataURL(
+              cordova.file.applicationDirectory, "www/img/" + filename)
+              .then(function(res) {
+                console.log("Implanting apple on symbol", 
+                  boardIndex, symbolIndex, 
+                  $scope.userBoards[boardIndex].symbols[symbolIndex])
+                $scope.userBoards[boardIndex].symbols[symbolIndex].symbol.image = res;
+                $scope.userBoards[boardIndex].symbols[symbolIndex].symbol.thumb = res;
+
+              })
+            } else if (boardIndex === null && symbolIndex !== null) {
+              // We have no board, but a symbol? Quickbar
+              console.log("Replacing a quickbar", boardIndex, symbolIndex, targetPath,
+                filename)
+              $cordovaFile.readAsDataURL(
+              cordova.file.applicationDirectory, "www/img/" + filename)
+              .then(function(res) {
+                console.log("Implanting apple on symbol", 
+                  boardIndex, symbolIndex, 
+                  $scope.userBoards[boardIndex].symbols[symbolIndex])
+                $scope.quickbar[symbolIndex].symbol.image = res;
+                $scope.userBoards[boardIndex].symbols[symbolIndex].symbol.thumb = res;
+            })
+
+          }
+
+            window.localStorage['boards'] = angular.toJson(
+              {'boards': $scope.userBoards,
+               'quickbar': $scope.quickbar});
+        }
 		
 		$scope.alertAnimation = function(message){
 			$scope.message = message;
