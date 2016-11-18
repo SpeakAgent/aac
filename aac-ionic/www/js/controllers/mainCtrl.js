@@ -323,7 +323,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
 
       var analyticLabel = "Tile Type: Symbol" + ", Word: " + tile.word + ", Word ID: " + tile.pk +
-        ", Part of Speech: " + tile.word_class + ", Board: " + $scope.board.board.title + ", Location: " + "" +
+        ", Part of Speech: " + tile.word_class + ", Board: " + $scope.board.board.title +
         ", Timestamp: " + moment().format('M/D/YYYY, h:mm:ss a') +
         ", User: " + sessionService.get("username") + ", Mode: " + $scope.activeChat;
 
@@ -478,7 +478,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           var analyticLabel = "Input Phrase: " + $scope.selectedTiles.map(function(elem){return elem.word;}).join(', ') +
           ", Output Phrase: " + 'data.sentence' +
           ", Phrase length: " + $scope.selectedTiles.length +
-          ", Board: " + $scope.board.board.title + ", Location: " + "" +
+          ", Board: " + $scope.board.board.title +
           ", Timestamp: " + moment().format('M/D/YYYY, h:mm:ss a') +
           ", User: " + sessionService.get("username") + ", Mode: " + $scope.activeChat;
           
@@ -544,7 +544,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         $scope.speakText(tile.word.root_word);
 
         var analyticLabel = "Tile Type: Quickbar" + ", Word: " + tile.word.root_word + ", Word ID: " + tile.pk +
-        ", Part of Speech: " + tile.word.word_class.title + ", Board: " + $scope.board.board.title + ", Location: " + "" +
+        ", Part of Speech: " + tile.word.word_class.title + ", Board: " + $scope.board.board.title +
         ", Timestamp: " + moment().format('M/D/YYYY, h:mm:ss a') +
         ", User: " + sessionService.get("username") + ", Mode: " + $scope.activeChat;
 
