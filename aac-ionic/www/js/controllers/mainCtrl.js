@@ -618,7 +618,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
     ];
 
-    $rootScope.selectedBuddy = $scope.buddies[0];
+    $rootScope.selectedBuddy = $rootScope.selectedBuddy || $scope.buddies[0];
     $scope.activeAvatar = false;
 
     $scope.buttonAvatar = function(){
