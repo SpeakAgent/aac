@@ -205,15 +205,24 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     });
 
     $scope.openModal = function(index){
-      if ($scope.buttons.colors) {
-        return;
+      if ($scope.clicked) {
+          $scope.cancelClick = true;
+          return;
       }
 
+      $scope.clicked = true;
+
       $timeout(function (){
-        if ($scope.buttons.colors) {
+        if ($scope.cancelClick) {
+          $scope.cancelClick = false;
+          $scope.clicked = false;
           return;
         }
+
         $scope.Modal.show()
+
+        $scope.cancelClick = false;
+        $scope.clicked = false;
       }, 500);
     }
 
@@ -523,17 +532,25 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       };
 
       $scope.bellSound = function(){
-          if ($scope.buttons.bell) {
-            return;
+          if ($scope.clicked) {
+              $scope.cancelClick = true;
+              return;
           }
 
+          $scope.clicked = true;
+
          $timeout(function (){
-            if ($scope.buttons.bell) {
+            if ($scope.cancelClick) {
+              $scope.cancelClick = false;
+              $scope.clicked = false;
               return;
             }
 
             var audio = new Audio('assets/sounds/bell.wav');
             audio.play();
+
+            $scope.cancelClick = false;
+            $scope.clicked = false;
           }, 500);
       }
 
@@ -599,18 +616,28 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
    $scope.activeChat = false;
    $scope.buttonChat = function(){
-     if ($scope.buttons.chat) {
-       return;
-     }
-     $timeout(function (){
-       if ($scope.buttons.chat) {
-           return;
-       }
+      if ($scope.clicked) {
+          $scope.cancelClick = true;
+          return;
+      }
+
+      $scope.clicked = true;
+
+      $timeout(function (){
+        if ($scope.cancelClick) {
+          $scope.cancelClick = false;
+          $scope.clicked = false;
+          return;
+        }
+
        $scope.activeChat = !$scope.activeChat;
        if (!$scope.activeChat) {
          $scope.speakText("Goodbye");
        }
        $scope.activeAvatar = false;
+
+       $scope.cancelClick = false;
+       $scope.clicked = false;
      }, 500);
    };
 
@@ -646,16 +673,21 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
     ];
 
-    $scope.selectedBuddy = $scope.buddies[0];
+    $rootScope.selectedBuddy = $rootScope.selectedBuddy || $scope.buddies[0];
     $scope.activeAvatar = false;
 
     $scope.buttonAvatar = function(){
-      if ($scope.buttons.avatar) {
-        return;
+      if ($scope.clicked) {
+          $scope.cancelClick = true;
+          return;
       }
 
+      $scope.clicked = true;
+
       $timeout(function (){
-        if ($scope.buttons.avatar) {
+        if ($scope.cancelClick) {
+          $scope.cancelClick = false;
+          $scope.clicked = false;
           return;
         }
 
@@ -664,6 +696,9 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           $scope.chooseBuddieModal.show();
           $scope.activeChat = false;
         }
+
+        $scope.cancelClick = false;
+        $scope.clicked = false;
       }, 500);
     };
 
@@ -673,10 +708,10 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     };
 
     $scope.buddyPickMe = function (buddy){
-      $scope.selectedBuddy = buddy;
+      $rootScope.selectedBuddy = buddy;
       $scope.pickme = '';
       $scope.activeAvatar = false;
-      $scope.chooseBuddieModal.hide();
+      console.log(buddy);
     };
 
     $scope.cancelBuddySelect = function (){
