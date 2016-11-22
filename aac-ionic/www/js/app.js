@@ -15,7 +15,7 @@ angular.module('main', ['ionic', 'main.Ctrl', 'settings.Ctrl', 'main.aacService'
 .run(function($ionicPlatform, $ionicPopup) {
       $ionicPlatform.ready(function() {
         try {
-          window.analytics.startTrackerWithId('UA-87583113-1');
+          window.analytics.startTrackerWithId('UA-54749327-1');
         } catch(error) {
           console.log("Google Analytics Unavailable");
         }

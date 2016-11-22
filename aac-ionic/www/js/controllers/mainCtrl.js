@@ -15,8 +15,8 @@ app.filter('charLimit', function () {
 
 app.controller('mainController',
 function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
-    $ionicPopover, $state, aacService, appConfig, $timeout, moment,
-    sessionService, analyticService) {
+    $ionicPopover, $state, aacService, appConfig, $timeout, $rootScope,
+    moment, sessionService, analyticService) {
 
     $scope.doLogout = function() {
       sessionService.destroy('authToken');
