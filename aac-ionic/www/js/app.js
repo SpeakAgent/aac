@@ -10,44 +10,53 @@ var appConfig = angular.module('appConfig', []).constant('appConfig', {
 
 angular.module('main', ['ionic', 'main.Ctrl', 'settings.Ctrl', 'main.aacService',
                         'boardFactory.Ctrl', 'Login.Ctrl', 'appConfig',
-                        'sessionService'])
+                        'sessionService', 'analyticService', 'angularMoment'])
 
-  .config(function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/main');
+.run(function($ionicPlatform, $ionicPopup) {
+      $ionicPlatform.ready(function() {
+        try {
+          window.analytics.startTrackerWithId('UA-54749327-1');
+        } catch(error) {
+          console.log("Google Analytics Unavailable");
+        }
+      });
+})
+.config(function($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise('/main');
 
-   $stateProvider.state('main',{
-      controller:'mainController',
-      url: '/main',
-      templateUrl: 'templates/main.html'
+  $stateProvider.state('main',{
+    controller:'mainController',
+    url: '/main',
+    templateUrl: 'templates/main.html'
+  });
+
+  $stateProvider.state('login', {
+    controller: 'LoginController',
+    url: '/login',
+    templateUrl: 'templates/login.html',
+  })
+
+  $stateProvider.state('settings',{
+      controller: 'settingsController',
+      url:'/settings',
+      templateUrl: 'templates/settings.html'
     });
 
-    $stateProvider.state('login', {
-      controller: 'LoginController',
-      url: '/login',
-      templateUrl: 'templates/login.html',
-    })
-
-    $stateProvider.state('settings',{
-        controller: 'settingsController',
-        url:'/settings',
-        templateUrl: 'templates/settings.html'
-      });
-
-    $stateProvider.state('board_factory',{
-      controller: 'boardFactoryController',
-      url:'/board_factory',
-      templateUrl: 'templates/board_factory.html'
-    })
-
-    $stateProvider.state('board_factory/:id',{
-      controller: 'editBoardController',
-      url:'/board_factory/edit/:id',
-      templateUrl: 'templates/board_edit.html'
-    })
-
-    $stateProvider.state('board_factory/new',{
-      controller: 'newBoardController',
-      url:'/board_factory/new',
-      templateUrl: 'templates/board_factory_new.html'
-    })
+  $stateProvider.state('board_factory',{
+    controller: 'boardFactoryController',
+    url:'/board_factory',
+    templateUrl: 'templates/board_factory.html'
   })
+
+  $stateProvider.state('board_factory/:id',{
+    controller: 'editBoardController',
+    url:'/board_factory/edit/:id',
+    templateUrl: 'templates/board_edit.html'
+  })
+
+  $stateProvider.state('board_factory/new',{
+    controller: 'newBoardController',
+    url:'/board_factory/new',
+    templateUrl: 'templates/board_factory_new.html'
+  })
+});
