@@ -1,6 +1,6 @@
 var app = angular.module('main.aacService', ['ionic']);
 
-app.service('aacService', function($http, $ionicModal){
+app.service('aacService', function(){
   
 	this.title = "This is a title";
 	this.board = {};
