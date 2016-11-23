@@ -659,7 +659,7 @@ input[type="text"]:focus, textarea:focus {
   border-color: #ffffff !important; }
 
 .tile.lightYellow {
-  /*background-color: $speak-agent-light-yellow;*/
+  background-color: #FFEFAD;
   border-color: #979797; }
 
 .boards {
