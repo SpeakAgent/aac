@@ -176,9 +176,9 @@ button.done-button.activated {
     background: #006364;
 }
 
-i.icon.ion-checkmark-round:active {
-    color: #006364;
-}
+// i.icon.ion-checkmark-round:active {
+//     color: #006364;
+// }
 
 .done-button a:active {
     color: #fff;
@@ -221,6 +221,53 @@ i.icon.ion-checkmark-round:active {
 
 .tile.lightYellow:active {
     border-color: #FFEFAD;
+}
+
+i.icon.ion-checkmark-round {
+    color: #008485;
+}
+
+button.done-button {
+    color: #008485;
+    font-weight: 700;
+    margin-bottom: -1px;
+    margin-right: 6px;
+    margin-top: -5px;
+    display: inline-table;
+    vertical-align: middle;
+}
+
+.toggle-small .handle {
+    background-color: white !important;
+}
+
+.toggle-small input:checked+.track .handle {
+    background-color: #77CE20 !important;
+}
+
+#handle-color {
+    background-color: none !important;
+}
+
+a#btn-styling.button.button-outline.button-small {
+    border-color: #bfbfbf;
+    color: #bfbfbf;
+}
+
+button#btn-styling.button.button-outline.button-calm.button-small {
+    border-color: #bfbfbf;
+}
+
+i.icon.ion-eye-disabled, .hide-label {
+    color: #bfbfbf;
+}
+
+.done-button i:active {
+    color: white;
+}
+
+.done-button span {
+    font-size: 15px;
 }
 
 @keyframes slideDown {
