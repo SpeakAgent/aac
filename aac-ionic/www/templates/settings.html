@@ -1,426 +1,428 @@
 <ion-header-bar class="bar-dark">
-  <div class="buttonsdiv text-center">
-    <!--<i class="icon ion-unlocked"></i>-->
-    <!-- <i class="icon ion-locked"></i> -->
-    <button class="button button-outline button-calm button-small" id="selected-btn">
-      <a href="/#/settings"><i class="icon ion-gear-b"></i> Settings</a>
-    </button>
-	<!--
-    <button class="button button-outline button-calm button-small" id="btn-styling">
-      <i class="icon ion-grid"></i><a href="#/board_factory">Board Factory</a>
-      <br>
-      <p class="show-hide-label">*Requires Wifi</p>
-    </button>-->
-    <button class="button button-outline button-calm button-small" id="btn-styling" style="margin-right:10px;">
-      <!-- <i class="icon ion-eye-disabled"></i>  -->
-      <i class="icon ion-eye-disabled"></i><span class="hide-label">Hide Tiles</span>
-    </button>
+	<div class="buttonsdiv text-center">
+		<!--<i class="icon ion-unlocked"></i>-->
+		<!-- <i class="icon ion-locked"></i> -->
+		<button class="button button-outline button-calm button-small" id="selected-btn">
+			<a href="/#/settings"><i class="icon ion-gear-b"></i> Settings</a>
+		</button>
+		<!--
+		<button class="button button-outline button-calm button-small" id="btn-styling">
+		<i class="icon ion-grid"></i><a href="#/board_factory">Board Factory</a>
+		<br>
+		<p class="show-hide-label">*Requires Wifi</p>
+		</button>-->
+		<button class="button button-outline button-calm button-small" id="btn-styling" style="margin-right:10px;">
+			<!-- <i class="icon ion-eye-disabled"></i>  -->
+			<i class="icon ion-eye-disabled"></i><span class="hide-label">Hide Tiles</span>
+		</button>
 
-    <button class="done-button pull-none" ng-click="settingsToMain();"><p><i class="icon ion-checkmark-round"></i>DONE</p></button></div>
-  </div>
+		<button class="done-button pull-none" ng-click="settingsToMain();">
+			<i class="icon ion-checkmark-round"><span>DONE</span></i>
+		</button>
+	</div>
 </ion-header-bar>
 
 <ion-view view-title="AAC" class="pane">
 	<ion-content class= "appBody" id="bodyBack" style="background-color:#98E3E3;">
-	    <div class="row">
+		<div class="row">
 			<div class="col col-33" id="settings-menu">
 				<div class="spacetest">
-				<ion-list>
-					<ion-item class="centered-title">
-						<h1 class="centered-title"><strong>Settings</strong></h1>
-					</ion-item>
+					<ion-list>
+						<ion-item class="centered-title">
+							<h1 class="centered-title"><strong>Settings</strong></h1>
+						</ion-item>
 
-					<div class="item item-divider"><strong>General</strong></div>
+						<div class="item item-divider"><strong>General</strong></div>
 
-					<ion-item item-toggle>
-						<div class="avatar-icon-placeholder">
-							<img src="img/AAC_assets/icon-compaction.png" />
-						</div> Compaction
-						<label class="toggle toggle-balanced">
-						<input type="checkbox">
-							<div class="track">
-								<div class="handle"></div>
-							</div>
-						</label>
-						<p style="color:#8F8F8F; padding:3px; font-weight:bold; font-style:italic;">Expand symbols into natural language.</p>
-					</ion-item>
+						<ion-item item-toggle>
+							<div class="avatar-icon-placeholder">
+								<img src="img/AAC_assets/icon-compaction.png" />
+							</div> Compaction
+							<label class="toggle toggle-balanced">
+								<input type="checkbox">
+								<div class="track">
+									<div class="handle"></div>
+								</div>
+							</label>
+							<p style="color:#8F8F8F; padding:3px; font-weight:bold; font-style:italic;">Expand symbols into natural language.</p>
+						</ion-item>
 
-					<!-- <ion-item>
+						<!-- <ion-item>
 						<div class="avatar-icon-placeholder"></div> Chatting
 						<label class="toggle toggle-balanced">
 						<input type="checkbox">
-							<div class="track">
-								<div class="handle"></div>
-							</div>
-						</label>
-						<p style="color:#8F8F8F; padding:3px; font-weight:bold; font-style:italic;">Enable/disable live chat buddy</p>
-					</ion-item>
+						<div class="track">
+						<div class="handle"></div>
+					</div>
+				</label>
+				<p style="color:#8F8F8F; padding:3px; font-weight:bold; font-style:italic;">Enable/disable live chat buddy</p>
+			</ion-item>
 
-					<ion-item ng-click="panel(1)" class="panels" ng-class="{active: 1 == step}">
-						<div class="avatar-icon-placeholder"></div>Settings Access
-						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
-					</ion-item> -->
+			<ion-item ng-click="panel(1)" class="panels" ng-class="{active: 1 == step}">
+			<div class="avatar-icon-placeholder"></div>Settings Access
+			<span class="item-note"><i class="icon ion-chevron-right"></i></span>
+		</ion-item> -->
 
-					<!-- <ion-item ng-click="panel(6)" class="panels" ng-class="{active: 6 == step}">
-						<div class="avatar-icon-placeholder">
-							<img src="img/AAC_assets/icon-aboutme.png" />
-						</div>About Me Profile
-						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
-					</ion-item> -->
-				</ion-list>
+		<!-- <ion-item ng-click="panel(6)" class="panels" ng-class="{active: 6 == step}">
+		<div class="avatar-icon-placeholder">
+		<img src="img/AAC_assets/icon-aboutme.png" />
+	</div>About Me Profile
+	<span class="item-note"><i class="icon ion-chevron-right"></i></span>
+</ion-item> -->
+</ion-list>
 
-				<ion-list>
-					<div class="item item-divider"><strong>Interface</strong></div>
+<ion-list>
+	<div class="item item-divider"><strong>Interface</strong></div>
 
-					<ion-item ng-click="panel(2)" class="panels" ng-class="{active: 2 == step}">
-						<div class="avatar-icon-placeholder">
-							<img src="img/AAC_assets/icon-synthetic-voice.png" />
-						</div>Synthetic Voice
-						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
-					</ion-item>
+	<ion-item ng-click="panel(2)" class="panels" ng-class="{active: 2 == step}">
+		<div class="avatar-icon-placeholder">
+			<img src="img/AAC_assets/icon-synthetic-voice.png" />
+		</div>Synthetic Voice
+		<span class="item-note"><i class="icon ion-chevron-right"></i></span>
+	</ion-item>
 
-					<ion-item ng-click="panel(11, 'download')" class="panels" ng-class="{active: 11 == step}">
-						<div class="avatar-icon-placeholder">
-							<img src="img/AAC_assets/icon-synthetic-voice.png" />
-						</div>Download board
-						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
-					</ion-item>
+	<ion-item ng-click="panel(11, 'download')" class="panels" ng-class="{active: 11 == step}">
+		<div class="avatar-icon-placeholder">
+			<img src="img/AAC_assets/icon-synthetic-voice.png" />
+		</div>Download board
+		<span class="item-note"><i class="icon ion-chevron-right"></i></span>
+	</ion-item>
 
-					<!-- <ion-item ng-click="panel(3)" class="panels" ng-class="{active: 3 == step}">
-						<div class="avatar-icon-placeholder"></div>Sound Effects
-						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
-					</ion-item>
+	<!-- <ion-item ng-click="panel(3)" class="panels" ng-class="{active: 3 == step}">
+	<div class="avatar-icon-placeholder"></div>Sound Effects
+	<span class="item-note"><i class="icon ion-chevron-right"></i></span>
+</ion-item>
 
-					<ion-item item-toggle>
-						<div class="avatar-icon-placeholder"></div>Symbol Labels
-						<label class="toggle toggle-balanced">
-						<input type="checkbox">
-							<div class="track">
-								<div class="handle"></div>
-							</div>
-						</label>
-					</ion-item>
+<ion-item item-toggle>
+<div class="avatar-icon-placeholder"></div>Symbol Labels
+<label class="toggle toggle-balanced">
+<input type="checkbox">
+<div class="track">
+<div class="handle"></div>
+</div>
+</label>
+</ion-item>
 
-					<ion-item ng-click="panel(4)" class="panels" ng-class="{active: 4 == step}">
-						<div class="avatar-icon-placeholder"></div>Phrase Bar
-						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
-					</ion-item> -->
-				</ion-list>
+<ion-item ng-click="panel(4)" class="panels" ng-class="{active: 4 == step}">
+<div class="avatar-icon-placeholder"></div>Phrase Bar
+<span class="item-note"><i class="icon ion-chevron-right"></i></span>
+</ion-item> -->
+</ion-list>
 
 
 
-				<ion-list>
-					<div class="item item-divider"><strong>Personalization</strong></div>
+<ion-list>
+	<div class="item item-divider"><strong>Personalization</strong></div>
 
-					<ion-item ng-click="panel(13)" class="panels" ng-class="{active: 13 == step}">
-						<div class="avatar-icon-placeholder">
-							<img src="img/AAC_assets/icon-choosebuddy.png" />
-						</div>Choose Buddy
-						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
-					</ion-item>
-				</ion-list>
+	<ion-item ng-click="panel(13)" class="panels" ng-class="{active: 13 == step}">
+		<div class="avatar-icon-placeholder">
+			<img src="img/AAC_assets/icon-choosebuddy.png" />
+		</div>Choose Buddy
+		<span class="item-note"><i class="icon ion-chevron-right"></i></span>
+	</ion-item>
+</ion-list>
 
-				<!-- <ion-list>
-					<div class="item item-divider"><strong>Layout</strong></div>
+<!-- <ion-list>
+<div class="item item-divider"><strong>Layout</strong></div>
 
-					<ion-item item-toggle>
-						<div class="avatar-icon-placeholder"></div>Quickbar
-						<label class="toggle toggle-balanced">
-						<input type="checkbox">
-							<div class="track">
-								<div class="handle"></div>
-							</div>
-						</label>
-					</ion-item>
+<ion-item item-toggle>
+<div class="avatar-icon-placeholder"></div>Quickbar
+<label class="toggle toggle-balanced">
+<input type="checkbox">
+<div class="track">
+<div class="handle"></div>
+</div>
+</label>
+</ion-item>
 
-					<ion-item ng-click="panel(5)" class="panels" ng-class="{active: 5 == step}">
-						<div class="avatar-icon-placeholder"></div>Alternate Home Page
-						<span class="item-note"><i class="icon ion-chevron-right"></i></span>
-					</ion-item>
-				</ion-list> -->
-			</div>
-			</div>
+<ion-item ng-click="panel(5)" class="panels" ng-class="{active: 5 == step}">
+<div class="avatar-icon-placeholder"></div>Alternate Home Page
+<span class="item-note"><i class="icon ion-chevron-right"></i></span>
+</ion-item>
+</ion-list> -->
+</div>
+</div>
 
 <!-- Settings Access Panel -->
-			<div class="col col-67" id="settings-modal" ng-hide="step != 1">
-				<!-- ng-hide="step != 1" -->
+<div class="col col-67" id="settings-modal" ng-hide="step != 1">
+	<!-- ng-hide="step != 1" -->
 
-				<!-- <div class="bar bar-subheader">
-					<h1 class="title"><strong>Settings</strong></h1>
-				</div> -->
-				<ion-list>
-					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
-						<h1 class="centered-title"><strong>Settings Access</strong></h1>
-					</ion-item>
-				</ion-list>
+	<!-- <div class="bar bar-subheader">
+	<h1 class="title"><strong>Settings</strong></h1>
+</div> -->
+<ion-list>
+	<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
+		<h1 class="centered-title"><strong>Settings Access</strong></h1>
+	</ion-item>
+</ion-list>
 
-				<div class="settings-box">
-						<label class="toggle toggle-balanced" style="margin-right:5px;">
-						<input type="checkbox">
-							<div class="track">
-								<div class="handle"></div>
-							</div>
-						</label>
+<div class="settings-box">
+	<label class="toggle toggle-balanced" style="margin-right:5px;">
+		<input type="checkbox">
+		<div class="track">
+			<div class="handle"></div>
+		</div>
+	</label>
 
-						<p>PIN-Protection</p>
-				</div>
-				<p class="centered-note">Prevent users from changing settings.</p>
+	<p>PIN-Protection</p>
+</div>
+<p class="centered-note">Prevent users from changing settings.</p>
 
-				<div class="settings-box">
-					Set Pin
-					<span class="warning-text">INSERT DEVELOPER MAGIC HERE</span>
-				</div>
-			</div>
+<div class="settings-box">
+	Set Pin
+	<span class="warning-text">INSERT DEVELOPER MAGIC HERE</span>
+</div>
+</div>
 
 <!-- Synthetic Voice Panel -->
-			<div class="col col-67" id="settings-modal" ng-show="step == 2">
-                <form ng-submit="synthVoiceSubmit()">
-					<ion-list>
-						<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
-							<h1 class="centered-title"><strong>Synthetic Voice</strong></h1>
-						</ion-item>
-					</ion-list>
-					<div ng-include src="'templates/message.html'"></div>
+<div class="col col-67" id="settings-modal" ng-show="step == 2">
+	<form ng-submit="synthVoiceSubmit()">
+		<ion-list>
+			<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
+				<h1 class="centered-title"><strong>Synthetic Voice</strong></h1>
+			</ion-item>
+		</ion-list>
+		<div ng-include src="'templates/message.html'"></div>
 
-					<div class="settings-box">
-						<p>Synthetic Voices</p>
-						<ion-list>
-							<ion-radio type="radio" style="border-color:white;" ng-model="user.userinfo.synthetic_voice" value="FEMALE"><span class="checkbox-text">Female</span><i class="icon ion-play"></i></ion-radio>
-							<ion-radio type="radio" style="border-color:white;" ng-model="user.userinfo.synthetic_voice" value="MALE"><span class="checkbox-text">Male</span><i class="icon ion-play"></i></ion-radio>
-						</ion-list>
-					</div>
+		<div class="settings-box">
+			<p>Synthetic Voices</p>
+			<ion-list>
+				<ion-radio type="radio" style="border-color:white;" ng-model="user.userinfo.synthetic_voice" value="FEMALE"><span class="checkbox-text">Female</span><i class="icon ion-play"></i></ion-radio>
+				<ion-radio type="radio" style="border-color:white;" ng-model="user.userinfo.synthetic_voice" value="MALE"><span class="checkbox-text">Male</span><i class="icon ion-play"></i></ion-radio>
+			</ion-list>
+		</div>
 
-					<div class="settings-box">
-						<p>Voice Speed</p>
-						<div class="item range" style="border-color:white;">
-							<div class="avatar-icon-placeholder"></div>
-							<input type="range" name="synth-speed" min="0" max="150" value="{{ user.userinfo.voice_speed }}" ng-model="user.userinfo.voice_speed">
-							<div class="avatar-icon-placeholder"></div>
-						</div>
-					</div>
-
-					<div class="settings-box">
-						<button type="submit" class="custom-button button-block">Save</button>
-					</div>
-				</form>
+		<div class="settings-box">
+			<p>Voice Speed</p>
+			<div class="item range" style="border-color:white;">
+				<div class="avatar-icon-placeholder"></div>
+				<input type="range" name="synth-speed" min="0" max="150" value="{{ user.userinfo.voice_speed }}" ng-model="user.userinfo.voice_speed">
+				<div class="avatar-icon-placeholder"></div>
 			</div>
+		</div>
+
+		<div class="settings-box">
+			<button type="submit" class="custom-button button-block">Save</button>
+		</div>
+	</form>
+</div>
 
 <!-- Sound Effects Panel -->
-			<div class="col col-67" id="settings-modal" ng-show="step == 3">
-				<ion-list>
-					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
-						<h1 class="centered-title"><strong>Sound Effects</strong></h1>
-					</ion-item>
-				</ion-list>
+<div class="col col-67" id="settings-modal" ng-show="step == 3">
+	<ion-list>
+		<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
+			<h1 class="centered-title"><strong>Sound Effects</strong></h1>
+		</ion-item>
+	</ion-list>
 
-				<div class="settings-box">
-					<label class="toggle toggle-balanced" style="margin-right:5px;">
-						<input type="checkbox">
-							<div class="track">
-								<div class="handle"></div>
-							</div>
-					</label>
-					<p>Sound Effects</p>
-				</div>
-
-				<div class="settings-box">
-					<ion-checkbox style="border-color:white;"><span class="checkbox-text">School Bell</span></ion-checkbox>
-					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Glissandro</span></ion-checkbox>
-					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Label</span></ion-checkbox>
-					<ion-checkbox style="border-color:white;"><span class="checkbox-text">Label</span></ion-checkbox>
-				</div>
+	<div class="settings-box">
+		<label class="toggle toggle-balanced" style="margin-right:5px;">
+			<input type="checkbox">
+			<div class="track">
+				<div class="handle"></div>
 			</div>
+		</label>
+		<p>Sound Effects</p>
+	</div>
+
+	<div class="settings-box">
+		<ion-checkbox style="border-color:white;"><span class="checkbox-text">School Bell</span></ion-checkbox>
+		<ion-checkbox style="border-color:white;"><span class="checkbox-text">Glissandro</span></ion-checkbox>
+		<ion-checkbox style="border-color:white;"><span class="checkbox-text">Label</span></ion-checkbox>
+		<ion-checkbox style="border-color:white;"><span class="checkbox-text">Label</span></ion-checkbox>
+	</div>
+</div>
 
 <!-- Phrase Bar Panel -->
-			<div class="col col-67" id="settings-modal" ng-show="step == 4">
-				<ion-list>
-					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
-						<h1 class="centered-title"><strong>Phrase Bar</strong></h1>
-					</ion-item>
-				</ion-list>
+<div class="col col-67" id="settings-modal" ng-show="step == 4">
+	<ion-list>
+		<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
+			<h1 class="centered-title"><strong>Phrase Bar</strong></h1>
+		</ion-item>
+	</ion-list>
 
-				<div class="settings-box">
-						<label class="toggle toggle-balanced" style="margin-right:5px;">
-						<input type="checkbox">
-							<div class="track">
-								<div class="handle"></div>
-							</div>
-						</label>
-						<p>Speak Each Symbol When Added</p>
-				</div>
-
-				<div class="settings-box">
-						<label class="toggle toggle-balanced" style="margin-right:5px;">
-						<input type="checkbox">
-							<div class="track">
-								<div class="handle"></div>
-							</div>
-						</label>
-						<p>Clear Phrase Bar After Speaking</p>
-				</div>
+	<div class="settings-box">
+		<label class="toggle toggle-balanced" style="margin-right:5px;">
+			<input type="checkbox">
+			<div class="track">
+				<div class="handle"></div>
 			</div>
+		</label>
+		<p>Speak Each Symbol When Added</p>
+	</div>
+
+	<div class="settings-box">
+		<label class="toggle toggle-balanced" style="margin-right:5px;">
+			<input type="checkbox">
+			<div class="track">
+				<div class="handle"></div>
+			</div>
+		</label>
+		<p>Clear Phrase Bar After Speaking</p>
+	</div>
+</div>
 
 <!-- Download Board Panel -->
-			<div class="col col-67" id="settings-modal" ng-show="step == 11">
-				<ion-list>
-					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
-						<h1 class="centered-title"><strong>Download board</strong></h1>
-					</ion-item>
-				</ion-list>
+<div class="col col-67" id="settings-modal" ng-show="step == 11">
+	<ion-list>
+		<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
+			<h1 class="centered-title"><strong>Download board</strong></h1>
+		</ion-item>
+	</ion-list>
 
-				<div class="settings-box">
-						<button class="custom-button button-block" ng-click="downloadBoard()">Download</button>
-				</div>
-			</div>
+	<div class="settings-box">
+		<button class="custom-button button-block" ng-click="downloadBoard()">Download</button>
+	</div>
+</div>
 
-			<!-- Choose Buddy Panel -->
-			<div class="col col-67" id="settings-modal" ng-show="step == 13">
-				<ion-list>
-					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
-						<h1 class="centered-title"><strong>Choose Buddy</strong></h1>
-					</ion-item>
-				</ion-list>
+<!-- Choose Buddy Panel -->
+<div class="col col-67" id="settings-modal" ng-show="step == 13">
+	<ion-list>
+		<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
+			<h1 class="centered-title"><strong>Choose Buddy</strong></h1>
+		</ion-item>
+	</ion-list>
 
-				<div class="settings-box" ng-controller="mainController">
-					<div id="container" class="buddy-choice" ng-repeat="buddy in buddies" ng-click="buddySelect(buddy)" ng-class="{'pickme-active' : pickme == buddy}">
-			            {{buddy.name}} <br>
-			            <img ng-src="img/chat_buddies/{{buddy.gif}}" alt="buddy" style="width:70%;" class="originalImg" />
-			            <button ng-if="pickme == buddy" class="button-pickme" ng-click="buddyPickMe(buddy);">
-			              Pick me!
-			            </button>
-			        </div>
-				</div>
-			</div>
+	<div class="settings-box" ng-controller="mainController">
+		<div id="container" class="buddy-choice" ng-repeat="buddy in buddies" ng-click="buddySelect(buddy)" ng-class="{'pickme-active' : pickme == buddy}">
+			{{buddy.name}} <br>
+			<img ng-src="img/chat_buddies/{{buddy.gif}}" alt="buddy" style="width:70%;" class="originalImg" />
+			<button ng-if="pickme == buddy" class="button-pickme" ng-click="buddyPickMe(buddy);">
+				Pick me!
+			</button>
+		</div>
+	</div>
+</div>
 
 <!-- Alternate Home Page -->
-			<div class="col col-67" id="settings-modal" ng-show="step == 5">
-				<ion-list>
-					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
-						<h1 class="centered-title"><strong>Alternate Home Page</strong></h1>
-					</ion-item>
-				</ion-list>
+<div class="col col-67" id="settings-modal" ng-show="step == 5">
+	<ion-list>
+		<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
+			<h1 class="centered-title"><strong>Alternate Home Page</strong></h1>
+		</ion-item>
+	</ion-list>
 
-				<div class="settings-box">
-						<label class="toggle toggle-balanced" style="margin-right:5px;">
-						<input type="checkbox">
-							<div class="track">
-								<div class="handle"></div>
-							</div>
-						</label>
-						<p>Default Grid</p>
-
-						<br>
-
-						<label class="toggle toggle-balanced" style="margin-right:5px;">
-						<input type="checkbox">
-							<div class="track">
-								<div class="handle"></div>
-							</div>
-						</label>
-						<p>Emergent Communicator Grid</p>
-
-						<br>
-
-						<p class="greyed-out">PIN-Protection</p>
-				</div>
+	<div class="settings-box">
+		<label class="toggle toggle-balanced" style="margin-right:5px;">
+			<input type="checkbox">
+			<div class="track">
+				<div class="handle"></div>
 			</div>
+		</label>
+		<p>Default Grid</p>
+
+		<br>
+
+		<label class="toggle toggle-balanced" style="margin-right:5px;">
+			<input type="checkbox">
+			<div class="track">
+				<div class="handle"></div>
+			</div>
+		</label>
+		<p>Emergent Communicator Grid</p>
+
+		<br>
+
+		<p class="greyed-out">PIN-Protection</p>
+	</div>
+</div>
 
 <!-- About Me Panel -->
-			<!-- <div class="col col-67" id="settings-modal" ng-show="step == 6">
-				<ion-list>
-					<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
-						 <p style="float:left; font-size:.9em; color:#088788;"><i class="icon ion-chevron-left"></i> General</p>
-						<h1 class="centered-title"><strong>About Me Profile</strong></h1>
-					</ion-item>
-				</ion-list>
-				<div ng-include src="'templates/message.html'"></div>
+<!-- <div class="col col-67" id="settings-modal" ng-show="step == 6">
+<ion-list>
+<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
+<p style="float:left; font-size:.9em; color:#088788;"><i class="icon ion-chevron-left"></i> General</p>
+<h1 class="centered-title"><strong>About Me Profile</strong></h1>
+</ion-item>
+</ion-list>
+<div ng-include src="'templates/message.html'"></div>
 
-				 <div class="settings-content">
-				<div class="settings-box">
-					About Me Profile
-				</div>
+<div class="settings-content">
+<div class="settings-box">
+About Me Profile
+</div>
 
-				<p class="about-content">DRAFT TEXT: Fill in the information below to create a board all about your communicator. Fields left blank will not display on the About Me Board. You may also upload an image of your communicator to use as the Boards's symbol.</p>
+<p class="about-content">DRAFT TEXT: Fill in the information below to create a board all about your communicator. Fields left blank will not display on the About Me Board. You may also upload an image of your communicator to use as the Boards's symbol.</p>
 
-				<form ng-submit="SubmitAboutMe()" enctype="multipart/form-data">
-					<div class="about-symbol-select">
-						<p style="margin-left: 10px; margin-top: 65px; margin-bottom: -70px; font-size:.75em;">About Me</p>
+<form ng-submit="SubmitAboutMe()" enctype="multipart/form-data">
+<div class="about-symbol-select">
+<p style="margin-left: 10px; margin-top: 65px; margin-bottom: -70px; font-size:.75em;">About Me</p>
 
-						<img ng-show="!user.userinfo.image" ng-src="img/aac_board_imgs/fakejsonimg/I.png" alt="image" style="width:6%; height:6%; position:relative; z-index:2; margin-bottom:-60px; margin-left:18px; float:left; margin-top:15px;"\>
-						<img ng-show="user.userinfo.image" ng-src="{{user.userinfo.image}}"   alt="image"  style="width: 8%; height: 6%;position:relative; z-index:2; margin-bottom:-60px; margin-left:12px; float:left; margin-top:15px;">
+<img ng-show="!user.userinfo.image" ng-src="img/aac_board_imgs/fakejsonimg/I.png" alt="image" style="width:6%; height:6%; position:relative; z-index:2; margin-bottom:-60px; margin-left:18px; float:left; margin-top:15px;"\>
+<img ng-show="user.userinfo.image" ng-src="{{user.userinfo.image}}"   alt="image"  style="width: 8%; height: 6%;position:relative; z-index:2; margin-bottom:-60px; margin-left:12px; float:left; margin-top:15px;">
 
-						<img src="img/new_dev_assets/board_tile_notched_default.svg" alt="board tile" style="float:left; positon:relative; z-index:0;">
+<img src="img/new_dev_assets/board_tile_notched_default.svg" alt="board tile" style="float:left; positon:relative; z-index:0;">
 
-						 <p style="position:relative; z-index:3; margin-top:-60px">About Me</p>
+<p style="position:relative; z-index:3; margin-top:-60px">About Me</p>
 
-						<p class="board-instructions2" style="float:left; width:60%; margin-left:30px;">Replace About Me Board symbol</p>
+<p class="board-instructions2" style="float:left; width:60%; margin-left:30px;">Replace About Me Board symbol</p>
 
-						<p style="margin-top:20px; margin-left:30px; float: left;">
-							<input type="file" ng-model="file" custom-on-change="uploadFile" accept=".png,.jpg,.gif">
-						</p>
+<p style="margin-top:20px; margin-left:30px; float: left;">
+<input type="file" ng-model="file" custom-on-change="uploadFile" accept=".png,.jpg,.gif">
+</p>
 
-						button class="done-button" style="float:left; margin-top:20px; margin-left:30px;"><p><i class="icon ion-ios-search"></i> Browse...</p></button>
-					</div>
-					<p class="about-content" style="float:left">Nickname
-						<span class="annotation">For example, "Sam"</span>
-						<input type="text">
-					</p>
-					<p class="about-content" style="float:left">Birthday
-						<span class="annotation">For example, "March second"</span>
-						<input type="text">
-					</p>
-					<p class="about-content" style="float:left">Hometown
-						<span class="annotation">For example, "Buffalo"</span>
-						<input type="text">
-					</p>
-					<p class="about-content" style="float:left">Name of best friend
-						<span class="annotation">For example, "Timmy"</span>
-						<input type="text">
-					</p>
-					<p class="about-content" style="float:left">Siblings
-						<span class="annotation">For example, "two little sisters"</span>
-						<input type="text">
-					</p>
-					<p class="about-content" style="float:left">Pets
-						<span class="annotation">For example, "two cats and one hamster"</span>
-						<input type="text">
-					</p>
-					<p class="about-content" style="float:left">Gender
-						<span class="annotation">For example, "girl"</span>
-						<input type="text">
-					</p>
-					<p class="about-content" style="float:left">Age
-						<span class="annotation">For example, "nine"</span>
-						<input type="text">
-					</p>
-					<p class="about-content" style="float:left">Favorite Toy
-						<span class="annotation">For example, "blocks"</span>
-						<input type="text">
-					</p>
-					<p class="about-content" style="float:left">Hobby
-						<span class="annotation">For example, "play video game"</span>
-						<input type="text">
-					</p>
-					<p class="about-content" style="float:left">Favorite sports team
-						<span class="annotation">For example, "Washington Capitals"</span>
-						<input type="text">
-					</p>
-					<p class="about-content" style="float:left">Favorite food
-						<span class="annotation">For example, "hot dogs"</span>
-						<input type="text">
-					</p>
-					<p class="about-content" style="float:left">Favorite ice cream flavor
-						<span class="annotation">For example, "rocky road"</span>
-						<input type="text">
-					</p>
-					<p class="about-content" style="float:left">Favorite color
-						<span class="annotation">For example, "green"</span>
-						<input type="text">
-						<button class="custom-button" style="margin-top:20px;" type="submit" ng-disabled="message">Save</button>
-					</p>
-				</form>
-				 </div>
-			</div> -->
-		</div>
-	</ion-content>
+button class="done-button" style="float:left; margin-top:20px; margin-left:30px;"><p><i class="icon ion-ios-search"></i> Browse...</p></button>
+</div>
+<p class="about-content" style="float:left">Nickname
+<span class="annotation">For example, "Sam"</span>
+<input type="text">
+</p>
+<p class="about-content" style="float:left">Birthday
+<span class="annotation">For example, "March second"</span>
+<input type="text">
+</p>
+<p class="about-content" style="float:left">Hometown
+<span class="annotation">For example, "Buffalo"</span>
+<input type="text">
+</p>
+<p class="about-content" style="float:left">Name of best friend
+<span class="annotation">For example, "Timmy"</span>
+<input type="text">
+</p>
+<p class="about-content" style="float:left">Siblings
+<span class="annotation">For example, "two little sisters"</span>
+<input type="text">
+</p>
+<p class="about-content" style="float:left">Pets
+<span class="annotation">For example, "two cats and one hamster"</span>
+<input type="text">
+</p>
+<p class="about-content" style="float:left">Gender
+<span class="annotation">For example, "girl"</span>
+<input type="text">
+</p>
+<p class="about-content" style="float:left">Age
+<span class="annotation">For example, "nine"</span>
+<input type="text">
+</p>
+<p class="about-content" style="float:left">Favorite Toy
+<span class="annotation">For example, "blocks"</span>
+<input type="text">
+</p>
+<p class="about-content" style="float:left">Hobby
+<span class="annotation">For example, "play video game"</span>
+<input type="text">
+</p>
+<p class="about-content" style="float:left">Favorite sports team
+<span class="annotation">For example, "Washington Capitals"</span>
+<input type="text">
+</p>
+<p class="about-content" style="float:left">Favorite food
+<span class="annotation">For example, "hot dogs"</span>
+<input type="text">
+</p>
+<p class="about-content" style="float:left">Favorite ice cream flavor
+<span class="annotation">For example, "rocky road"</span>
+<input type="text">
+</p>
+<p class="about-content" style="float:left">Favorite color
+<span class="annotation">For example, "green"</span>
+<input type="text">
+<button class="custom-button" style="margin-top:20px;" type="submit" ng-disabled="message">Save</button>
+</p>
+</form>
+</div>
+</div> -->
+</div>
+</ion-content>
 </ion-view>
