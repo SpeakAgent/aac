@@ -54,14 +54,14 @@ i.fa {
   top: -20px; }
 
 .buddy-choice {
-  background-color: #ffffff;
+  background-color: #fff;
   border: 2px solid #50e2e3;
   border-radius: 12px;
   height: 135px;
   width: 135px;
   float: left;
   text-align: center;
-  margin: -36% -3% 50% 15%; }
+  margin: 25px 40px; }
 
 .playing {
   margin-top: -50px; }
