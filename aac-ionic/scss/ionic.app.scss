@@ -769,12 +769,12 @@ input[type="text"]:focus, textarea:focus{
   color: $white;
 }
 
-.settings-box{
-  background-color: $white;
+.settings-box {
+  background-color: #fff;
   margin: 5% 15%;
   padding: 2.7% 18px;
   font-size: 1.2em;
-  width:70%;
+  width: 70%;
   overflow: auto;
 }
 

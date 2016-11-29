@@ -594,7 +594,7 @@ input[type="text"]:focus, textarea:focus {
   color: #ffffff; }
 
 .settings-box {
-  background-color: #ffffff;
+  background-color: #fff;
   margin: 5% 15%;
   padding: 2.7% 18px;
   font-size: 1.2em;
