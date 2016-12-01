@@ -67,7 +67,7 @@
             <div ng-show="!quickbar.lexeme.hidden" ng-click="quickBarTile(quickbar.lexeme);">
               {{ quickbar.lexeme.word.root_word | limitTo: titleLimit }}
               <br />
-              <img  ng-src="{{quickbar.lexeme.symbol.image}}" ng-if="quickbar.lexeme.symbol.image" style="width:40px;height:40px">
+              <img  ng-src="{{quickbar.lexeme.symbol.image | localImage }}" ng-if="quickbar.lexeme.symbol.image" style="width:40px;height:40px">
             </div>
           </div>
 
@@ -75,7 +75,7 @@
             <div ng-show="!quickbar.lexeme2.hidden" ng-click="quickBarTile(quickbar.lexeme2);">
               {{ quickbar.lexeme2.word.root_word | limitTo: titleLimit }}
               <br />
-              <img ng-src="{{quickbar.lexeme2.symbol.image}}" ng-if="quickbar.lexeme2.symbol.image" style="width:40px;height:40px">
+              <img ng-src="{{quickbar.lexeme2.symbol.image | localImage }}" ng-if="quickbar.lexeme2.symbol.image" style="width:40px;height:40px">
             </div>
           </div>
 
@@ -83,14 +83,14 @@
             <div ng-show="!quickbar.lexeme3.hidden" ng-click="quickBarTile(quickbar.lexeme3);">
               {{ quickbar.lexeme3.word.root_word | limitTo: titleLimit }}
               <br />
-              <img ng-src = "{{quickbar.lexeme3.symbol.image}}" ng-if="quickbar.lexeme3.symbol.image" style="width:40px;height:40px">
+              <img ng-src = "{{quickbar.lexeme3.symbol.image | localImage }}" ng-if="quickbar.lexeme3.symbol.image" style="width:40px;height:40px">
             </div>
           </div>
 
           <div class="regulars" ng-class="{'hide-tile': quickbar.lexeme4.hidden}">
             <div ng-show="!quickbar.lexeme4.hidden" ng-click="quickBarTile(quickbar.lexeme4);">
               {{ quickbar.lexeme4.word.root_word | limitTo: titleLimit }}
-              <img ng-src="{{quickbar.lexeme4.symbol.image}}" ng-if="quickbar.lexeme4.symbol.image" style="width:40px;height:40px">
+              <img ng-src="{{quickbar.lexeme4.symbol.image | localImage }}" ng-if="quickbar.lexeme4.symbol.image" style="width:40px;height:40px">
             </div>
           </div>
         </div>
@@ -102,7 +102,7 @@
             <span class="fa fa-eye item-eye" aria-hidden="true" ng-class="{'eye-green': quickbar.lexeme.hidden}" ng-if="quickbar.lexeme.hidden"></span>
             {{ quickbar.lexeme.lexeme | limitTo: titleLimit }}
             <br />
-            <img ng-src="{{quickbar.lexeme.symbol.image}}" style="width:40px;height:40px">
+            <img ng-src="{{quickbar.lexeme.symbol.image | localImage }}" style="width:40px;height:40px">
           </div>
 
           <div class="regulars"
@@ -111,7 +111,7 @@
             <span class="fa fa-eye item-eye" aria-hidden="true" ng-class="{'eye-green': quickbar.lexeme2.hidden}" ng-if="quickbar.lexeme2.hidden"></span>
           {{ quickbar.lexeme2.lexeme | limitTo: titleLimit }}
           <br />
-          <img ng-src="{{quickbar.lexeme2.symbol.image}}" ng-if="quickbar.lexeme2.symbol.image" style="width:40px;height:40px">
+          <img ng-src="{{quickbar.lexeme2.symbol.image | localImage }}" ng-if="quickbar.lexeme2.symbol.image" style="width:40px;height:40px">
         </div>
 
         <div class="regulars" ng-click="hideRegular(quickbar.lexeme3.pk);" ng-class="{'item-dark': quickbar.lexeme3.hidden}">
@@ -119,7 +119,7 @@
           <span class="fa fa-eye item-eye" aria-hidden="true" ng-class="{'eye-green': quickbar.lexeme3.hidden}" ng-if="quickbar.lexeme3.hidden"></span>
           {{ quickbar.lexeme3.lexeme | limitTo: titleLimit }}
           <br />
-          <img ng-src = "{{quickbar.lexeme3.symbol.image}}" ng-if="quickbar.lexeme3.symbol.image" style="width:40px;height:40px">
+          <img ng-src = "{{quickbar.lexeme3.symbol.image | localImage }}" ng-if="quickbar.lexeme3.symbol.image" style="width:40px;height:40px">
         </div>
 
         <div class="regulars"
@@ -128,7 +128,7 @@
           <span class="fa fa-eye item-eye" aria-hidden="true" ng-class="{'eye-green': quickbar.lexeme4.hidden}" ng-if="quickbar.lexeme4.hidden"></span>
         {{ quickbar.lexeme4.lexeme | limitTo: titleLimit }}
         <br />
-        <img ng-src="{{quickbar.lexeme4.symbol.image}}" ng-if="quickbar.lexeme4.symbol.image" style="width:40px;height:40px">
+        <img ng-src="{{quickbar.lexeme4.symbol.image | localImage }}" ng-if="quickbar.lexeme4.symbol.image" style="width:40px;height:40px">
       </div>
     </div>
 
@@ -140,7 +140,7 @@
       <div class="word-builder-input" style="margin-left:-15px">
         <div class="tile" ng-repeat="symbol in selectedTiles" ng-click="clickTile(board.symbols[col+row]);">
           <p ng-bind="symbol.label? (symbol.label | charLimit: titleLimit) : (symbol.word | charLimit: titleLimit)" class="tile-words"></p>
-          <img src = "{{symbol.symbol.image}}" ng-if="symbol.symbol.image" style="width:40px;height:40px">
+          <img src="{{symbol.symbol.image | localImage }}" ng-if="symbol.symbol.image" style="width:40px;height:40px">
         </div>
 
         <img ng-src="{{ imageUrl }}" id="home-section" ng-click="deleteLastTile()" on-tap="onTap()"/>
@@ -156,7 +156,7 @@
             <span ng-show="filled_tiles.indexOf(col+row)!=-1 && !board.symbols[col+row].hidden" ng-click="clickTile(board.symbols[col+row]);">
               <p ng-bind="board.symbols[col+row].label? (board.symbols[col+row].label | charLimit: titleLimit) : (board.symbols[col+row].word | charLimit: titleLimit)"
                  class="tile-words"></p>
-              <img ng-if="board.symbols[col+row].symbol.image" ng-src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px">
+              <img ng-if="board.symbols[col+row].symbol.image" ng-src="{{board.symbols[col+row].symbol.image | localImage }}" style="width:40px;height:40px">
             </span>
           </div>
 
@@ -166,7 +166,7 @@
               <span class="fa fa-eye item-eye" aria-hidden="true" ng-class="{'eye-green': board.symbols[col+row].hidden}" ng-if="board.symbols[col+row].hidden"></span>
 
               <p class="tile-words">{{board.symbols[col+row].word | limitTo: titleLimit}}</p>
-              <img ng-if="board.symbols[col+row].symbol.image" ng-src="{{board.symbols[col+row].symbol.image}}" style="width:40px;height:40px">
+              <img ng-if="board.symbols[col+row].symbol.image" ng-src="{{board.symbols[col+row].symbol.image | localImage }}" style="width:40px;height:40px">
             </span>
           </div>
 
@@ -178,7 +178,7 @@
       <div class="boards" ng-if="selectedBtn2" ng-click="chosenBoard($index);" ng-repeat="userBoard in userBoards | sliceArr:start:end" ng-class="{'activated-board': selectedBoardIndex == userBoard.board.pk, 'hide-tile': userBoard.board.hidden}">
         <div ng-if="!userBoard.board.hidden">
           <p class="tile-words" ng-model="titleLimit">{{userBoard.board.title | charLimit: titleLimit}}</p>
-          <img ng-if="userBoard.board.image" ng-src="{{userBoard.board.image}}" alt="{{userBoard.board.title}}" \>
+          <img ng-if="userBoard.board.image" ng-src="{{userBoard.board.image | localImage }}" alt="{{userBoard.board.title}}" \>
         </div>
       </div>
 
@@ -187,7 +187,7 @@
         <span class="fa fa-eye item-eye" aria-hidden="true" ng-class="{'eye-green': userBoard.board.hidden}" ng-if="userBoard.board.hidden"></span>
 
         <p class="tile-words" ng-model="titleLimit">{{userBoard.board.title | charLimit: titleLimit}}</p>
-        <img ng-if="userBoard.board.image" ng-src="{{userBoard.board.image}}" alt="{{userBoard.board.title}}" \>
+        <img ng-if="userBoard.board.image" ng-src="{{userBoard.board.image | localImage }}" alt="{{userBoard.board.title}}" \>
       </div>
     </div>
   </div>

@@ -814,6 +814,7 @@ input[type="text"]:focus, textarea:focus{
 .tile{
   background-color: #ffffff;
   border: 2px solid $dark-grey;
+  overflow: hidden;
 }
 
 .tile img{

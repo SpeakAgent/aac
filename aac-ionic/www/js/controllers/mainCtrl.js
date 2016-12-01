@@ -13,6 +13,15 @@ app.filter('charLimit', function () {
       };
   });
 
+app.filter('localImage', function () {
+    return function (url) {
+      if(url){
+        return 'img/local_symbols_thumbnail/' + url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf("?"));
+      }
+    };
+});
+
+
 app.controller('mainController',
 function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $ionicPopover, $state, aacService, appConfig, $timeout, $rootScope,
