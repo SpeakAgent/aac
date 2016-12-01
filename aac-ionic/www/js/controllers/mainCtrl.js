@@ -499,7 +499,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           ", Board: " + $scope.board.board.title +
           ", Timestamp: " + moment().format('M/D/YYYY, h:mm:ss a') +
           ", User: " + sessionService.get("username") + ", Mode: " + $scope.activeChat;
-          
+
           analyticService.PhraseEvent("Sentence", "Play Phrase", analyticLabel);
         })
       }
@@ -714,6 +714,12 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $scope.pickme = '';
     $scope.buddySelect = function (buddy){
       $scope.pickme = buddy;
+      if (buddy.name === "Chloe" || buddy.name === "Emma") {
+        console.log(buddy.name);
+        $scope.sayHelloFem();
+      } else {
+        $scope.sayHelloMale();
+      }
     };
 
     $scope.buddyPickMe = function (buddy){
@@ -806,6 +812,30 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
     }
   }
+
+   $scope.sayHelloFem = function(text) {
+     TTS.speak({
+       text: "Hello",
+       rate: sessionService.get('voice_speed'),
+       locale: "en-US"
+     }, function () {
+       // Do Something after success
+     }, function (reason) {
+       // Handle the error case
+     });
+   };
+
+   $scope.sayHelloMale = function(text) {
+     TTS.speak({
+       text: "Hello",
+       rate: sessionService.get('voice_speed'),
+       locale: "en-GB"
+     }, function () {
+       // Do Something after success
+     }, function (reason) {
+       // Handle the error case
+     });
+   };
 
 });
 
