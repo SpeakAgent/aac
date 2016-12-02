@@ -2,9 +2,8 @@ var app = angular.module('Login.Ctrl', ['ionic', 'angular-jwt']);
 
 app.controller('LoginController', function($scope, $http, $location,
   $state, jwtHelper, appConfig, aacService, sessionService, $ionicHistory){
-  
   $ionicHistory.clearHistory();
-
+  $ionicHistory.clearCache();
 
   if(sessionService.get('username')){
       $state.go('main');

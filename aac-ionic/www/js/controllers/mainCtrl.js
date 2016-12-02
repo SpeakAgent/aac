@@ -26,6 +26,11 @@ app.controller('mainController',
 function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $ionicPopover, $state, aacService, appConfig, $timeout, $rootScope,
     moment, sessionService, analyticService, $ionicHistory, $location) {
+
+    $scope.$on('$ionicView.enter', function(){
+      $scope.mainBoardLoader();
+    });
+      
     $scope.doLogout = function() {
       sessionService.destroy('authToken');
       sessionService.destroy('username');
@@ -122,7 +127,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
     }
 
-    $scope.mainBoardLoader();
     $scope.getUserInformation();
   
     $scope.chosenBoard = function(index){

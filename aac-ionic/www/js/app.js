@@ -12,7 +12,7 @@ angular.module('main', ['ionic', 'main.Ctrl', 'settings.Ctrl', 'main.aacService'
                         'boardFactory.Ctrl', 'Login.Ctrl', 'appConfig',
                         'sessionService', 'analyticService', 'angularMoment'])
 
-.run(function($ionicPlatform, $ionicPopup) {
+.run(function($ionicPlatform, $ionicPopup, $state, $timeout, $location, $ionicHistory) {
       $ionicPlatform.ready(function() {
         try {
           window.analytics.startTrackerWithId('UA-54749327-1');
@@ -20,6 +20,22 @@ angular.module('main', ['ionic', 'main.Ctrl', 'settings.Ctrl', 'main.aacService'
           console.log("Google Analytics Unavailable");
         }
       });
+    if (!window.localStorage.username){
+       $timeout(function() {
+         $ionicHistory.currentView($ionicHistory.backView());
+          $state.go('login', {}, {location: 'replace'});
+       });
+   }
+    else{
+      $timeout(function() {
+          $ionicHistory.currentView($ionicHistory.backView());
+          $state.go('main', {}, {location: 'replace'});
+      });
+      
+    }
+
+
+    // $ionicConfigProvider.backButton.previousTitleText(false).text('');
 })
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
   $urlRouterProvider.otherwise('/main');
@@ -60,13 +76,6 @@ angular.module('main', ['ionic', 'main.Ctrl', 'settings.Ctrl', 'main.aacService'
     templateUrl: 'templates/board_factory_new.html'
   })
 
-   if (!window.localStorage.username){
-      window.location.href = '/#/login';
-   }
-    else{
-      window.location.href = '/#/main';
-    }
-
-    $ionicConfigProvider.backButton.previousTitleText(false).text('');
+   
 
 });
