@@ -75,7 +75,4 @@ angular.module('main', ['ionic', 'main.Ctrl', 'settings.Ctrl', 'main.aacService'
     url:'/board_factory/new',
     templateUrl: 'templates/board_factory_new.html'
   })
-
-   
-
 });
