@@ -21,42 +21,52 @@ angular.module('main', ['ionic', 'main.Ctrl', 'settings.Ctrl', 'main.aacService'
         }
       });
 })
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
   $urlRouterProvider.otherwise('/main');
 
   $stateProvider.state('main',{
     controller:'mainController',
     url: '/main',
     templateUrl: 'templates/main.html'
-  });
-
-  $stateProvider.state('login', {
+  })
+  
+  .state('login', {
     controller: 'LoginController',
     url: '/login',
     templateUrl: 'templates/login.html',
   })
-
-  $stateProvider.state('settings',{
+  
+  .state('settings',{
       controller: 'settingsController',
       url:'/settings',
       templateUrl: 'templates/settings.html'
-    });
-
-  $stateProvider.state('board_factory',{
+    })
+    
+    .state('board_factory',{
     controller: 'boardFactoryController',
     url:'/board_factory',
     templateUrl: 'templates/board_factory.html'
   })
-
-  $stateProvider.state('board_factory/:id',{
+  
+  .state('board_factory/:id',{
     controller: 'editBoardController',
     url:'/board_factory/edit/:id',
     templateUrl: 'templates/board_edit.html'
   })
-
-  $stateProvider.state('board_factory/new',{
+  
+  .state('board_factory/new',{
     controller: 'newBoardController',
     url:'/board_factory/new',
     templateUrl: 'templates/board_factory_new.html'
   })
+
+   if (!window.localStorage.username){
+      window.location.href = '/#/login';
+   }
+    else{
+      window.location.href = '/#/main';
+    }
+
+    $ionicConfigProvider.backButton.previousTitleText(false).text('');
+
 });

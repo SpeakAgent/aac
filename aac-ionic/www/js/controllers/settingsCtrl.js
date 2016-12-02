@@ -54,10 +54,6 @@ app.controller('settingsController',
 	        $state.go('login');
 		};
 
-		if (sessionService.get("username") === null) {
-			$scope.doLogout();
-		};
-
 		$scope.getUserInformation = function(){
 			req = {
 				url: appConfig.backendURL + '/user/aac/settings/',
