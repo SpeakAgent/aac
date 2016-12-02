@@ -25,18 +25,11 @@ app.filter('localImage', function () {
 app.controller('mainController',
 function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $ionicPopover, $state, aacService, appConfig, $timeout, $rootScope,
-    moment, sessionService, analyticService) {
-
+    moment, sessionService, analyticService, $ionicHistory, $location) {
     $scope.doLogout = function() {
       sessionService.destroy('authToken');
       sessionService.destroy('username');
       sessionService.destroy('boards');
-
-      $state.go('login');
-    };
-
-    if (sessionService.get("username") === null) {
-      $scope.doLogout();
     };
 
     $scope.columns = aacService.columns;
@@ -131,7 +124,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
     $scope.mainBoardLoader();
     $scope.getUserInformation();
-
+  
     $scope.chosenBoard = function(index){
       $scope.selectedBoardIndex = $scope.userBoards[index].board.pk;
       $scope.board = $scope.userBoards[index];
