@@ -29,6 +29,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
     $scope.$on('$ionicView.enter', function(){
       $scope.mainBoardLoader();
+      $scope.getUserInformation();
     });
       
     $scope.doLogout = function() {
@@ -126,8 +127,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         return true // Do not get the boards
       }
     }
-
-    $scope.getUserInformation();
   
     $scope.chosenBoard = function(index){
       $scope.selectedBoardIndex = $scope.userBoards[index].board.pk;
