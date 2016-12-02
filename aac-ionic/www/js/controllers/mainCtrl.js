@@ -31,7 +31,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       $scope.mainBoardLoader();
       $scope.getUserInformation();
     });
-      
+
     $scope.doLogout = function() {
       sessionService.destroy('authToken');
       sessionService.destroy('username');
@@ -127,7 +127,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         return true // Do not get the boards
       }
     }
-  
+
     $scope.chosenBoard = function(index){
       $scope.selectedBoardIndex = $scope.userBoards[index].board.pk;
       $scope.board = $scope.userBoards[index];
@@ -638,6 +638,8 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
        $scope.activeChat = !$scope.activeChat;
        if (!$scope.activeChat) {
          $scope.speakText("Goodbye");
+       } else {
+         $scope.speakText("Hello");
        }
        $scope.activeAvatar = false;
 

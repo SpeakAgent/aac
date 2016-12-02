@@ -211,8 +211,8 @@ button#btn-styling.button.button-outline.button-calm.button-small {
 i.icon.ion-eye-disabled, .hide-label {
   color: #bfbfbf; }
 
-.done-button i:active {
-  color: white; }
+button.done-button:active i {
+  color: white !important; }
 
 .done-button span {
   font-size: 15px; }
