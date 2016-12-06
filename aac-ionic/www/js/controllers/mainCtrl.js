@@ -415,6 +415,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
 
       $scope.callBuddy = function () {
+        $timeout(function (){
           var app_id = "1409613061631";
           var user_key = "22979a79e76310f4250128edd868e5fa";
           var botname = "uglybuddy";
@@ -443,10 +444,12 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
               $scope.replay = true;
             })
           })
-        }
+        }, 1000);
+      }
 
-        $scope.$on('callBuddyEvent', function(){
+        $scope.$on('callBuddy', function(){
           $scope.callEvent = true;
+          console.log("test");
           $timeout(function (){
             $scope.callEvent = false;
           }, 1000);
@@ -702,7 +705,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $scope.pickme = '';
     $scope.buddySelect = function (buddy){
         var locale = "en-GB";
-        
+
         $scope.pickme = buddy;
 
         if (buddy.type === "Female")
