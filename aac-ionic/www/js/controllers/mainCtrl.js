@@ -124,8 +124,8 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     }
 
     $scope.chosenBoard = function(index){
-      $scope.selectedBoardIndex = $scope.userBoards[index].board.pk;
-      $scope.board = $scope.userBoards[index];
+      $scope.selectedBoardIndex = $scope.userBoards[index + $scope.start].board.pk;
+      $scope.board = $scope.userBoards[index + $scope.start];
     };
 
     $scope.homeButton = function(){
