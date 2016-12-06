@@ -447,9 +447,8 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         }, 1000);
       }
 
-        $scope.$on('callBuddy', function(){
+        $scope.$on('callBuddyEvent', function(){
           $scope.callEvent = true;
-          console.log("test");
           $timeout(function (){
             $scope.callEvent = false;
           }, 1000);
