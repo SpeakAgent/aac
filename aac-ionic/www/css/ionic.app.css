@@ -368,7 +368,8 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2 
 
 #home-section {
   float: right;
-  margin-top: 12px; }
+  margin-top: 12px;
+  width: 73px; }
 
 #home-button-section {
   background: #ffffff;

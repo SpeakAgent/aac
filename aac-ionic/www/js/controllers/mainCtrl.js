@@ -46,6 +46,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $scope.start = 0;
     $scope.end = 24;
     $scope.board = {};
+    $scope.callEvent = 'normal';
 
     $scope.mainBoardLoader = function(){
       // Make sure we have to do this call! Are there boards already saved?
@@ -447,14 +448,8 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         }, 1000);
       }
 
-        $scope.$on('callBuddyEvent', function(){
-          $scope.callEvent = true;
-          $timeout(function (){
-            $scope.callEvent = false;
-          }, 1000);
-        });
-
       $scope.sayPhrase = function () {
+        $scope.callEvent = 'think';
         var pks = [];
         for (i in $scope.selectedTiles) {
           pks.push($scope.selectedTiles[i].pk);
@@ -466,6 +461,8 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         }
 
         $http(req).success(function(data) {
+          $scope.callEvent = 'talk';
+          console.log($scope.callEvent)
           $scope.speakText(data.sentence);
           //Se oculta boton de play
           $scope.play = false;
@@ -503,8 +500,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       $scope.speakText = function(text) {
         var locale = "en-GB";
 
-        console.log($scope.activeAvatar, $scope.selectedBuddy.name, $scope.pickme.name);
-
         if ($scope.activeAvatar && $scope.selectedBuddy.type === "Female")
         {
             locale = "en-US";
@@ -516,7 +511,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           // locale: $scope.getLocale(sessionService.get('synthetic_voice'))
           locale: locale
         }, function () {
-          // Do Something after success
+          $scope.callEvent = 'normal';
         }, function (reason) {
           // Handle the error case
         });
