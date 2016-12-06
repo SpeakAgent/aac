@@ -449,6 +449,10 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
 
       $scope.sayPhrase = function () {
+        if($scope.activeChat){
+          callBuddy()
+        }
+
         $scope.callEvent = 'think';
         var pks = [];
         for (i in $scope.selectedTiles) {
@@ -462,7 +466,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
         $http(req).success(function(data) {
           $scope.callEvent = 'talk';
-          console.log($scope.callEvent)
           $scope.speakText(data.sentence);
           //Se oculta boton de play
           $scope.play = false;

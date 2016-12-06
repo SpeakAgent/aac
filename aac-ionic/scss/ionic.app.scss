@@ -482,6 +482,20 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2{
   width: 73px;
 }
 
+.buddy-normal,
+.buddy-talking{
+  float:right;
+  margin-top:-17px;
+  margin-right:-24%;
+  width:100px;
+}
+
+.buddy-thinking{
+  float:right;
+  margin-top:-17px;
+  margin-right:-33%;
+}
+
 #home-button-section{
   background: $white;
   padding-left: 15px;
