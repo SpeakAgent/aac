@@ -359,9 +359,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         }).error(function (data) {
           $scope.errData = data
         });
-
-
-        return;
       }
 
       for(var x=0; x < $scope.selectedTiles.length; x++){
