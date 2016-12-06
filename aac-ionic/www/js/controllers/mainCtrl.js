@@ -415,39 +415,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         }
       }
 
-      $scope.callBuddy = function () {
-        $timeout(function (){
-          var app_id = "1409613061631";
-          var user_key = "22979a79e76310f4250128edd868e5fa";
-          var botname = "uglybuddy";
-          var text = "Hello";
-
-          // Get a sentence
-          var pks = [];
-          for (i in $scope.selectedTiles) {
-            pks.push($scope.selectedTiles[i].pk);
-          }
-          var sreq = {
-            url: appConfig.backendURL + '/compaction/symbols/',
-            data: {pks: "[" + pks.toString() + "]"},
-            method: 'POST'
-          }
-
-          $http(sreq).success(function(data) {
-            var req = {
-              url: "https://aiaas.pandorabots.com/talk/1409613061631/uglybuddy?input=" + data.sentence + "&user_key=22979a79e76310f4250128edd868e5fa",
-              method: "POST"
-            }
-            $http(req).success(function(data){
-              $scope.speakText(data.responses[0]);
-
-              $scope.play = false;
-              $scope.replay = true;
-            })
-          })
-        }, 1000);
-      }
-
       $scope.sayPhrase = function () {
         if($scope.activeChat){
           callBuddy()
@@ -483,6 +450,41 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           analyticService.PhraseEvent("Sentence", "Play Phrase", analyticLabel);
         })
       }
+
+
+    $scope.callBuddy = function () {
+        $timeout(function (){
+          var app_id = "1409613061631";
+          var user_key = "22979a79e76310f4250128edd868e5fa";
+          var botname = "uglybuddy";
+          var text = "Hello";
+
+          // Get a sentence
+          var pks = [];
+          for (i in $scope.selectedTiles) {
+            pks.push($scope.selectedTiles[i].pk);
+          }
+          var sreq = {
+            url: appConfig.backendURL + '/compaction/symbols/',
+            data: {pks: "[" + pks.toString() + "]"},
+            method: 'POST'
+          }
+
+          $http(sreq).success(function(data) {
+            var req = {
+              url: "https://aiaas.pandorabots.com/talk/1409613061631/uglybuddy?input=" + data.sentence + "&user_key=22979a79e76310f4250128edd868e5fa",
+              method: "POST"
+            }
+            $http(req).success(function(data){
+              $scope.speakText(data.responses[0]);
+
+              $scope.play = false;
+              $scope.replay = true;
+            })
+          })
+        }, 1000);
+      }
+
 
       $scope.sayWord = function() {
         if($scope.selectedIndex.label){
