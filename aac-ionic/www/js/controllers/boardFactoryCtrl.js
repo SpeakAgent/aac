@@ -44,21 +44,18 @@ app.controller('boardFactoryController',
 		$scope.chosenBoard = function(sampleBoard){
 		  $scope.selectedIndex = sampleBoard;
 		  if ($scope.dummyBoards[$scope.selectedIndex].pk == '3'){
-		    console.log($scope.dummyBoards[$scope.selectedIndex].pk);
 		    $scope.getData();
 		  } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '5'){
 		    // $scope.board = aacService.aboutMeBoard;
 		    $scope.aboutcircle = true;
 		  } else if ($scope.dummyBoards[$scope.selectedIndex].pk == '4'){
-		    console.log($scope.board.pk);
 		     $scope.getAboutMe();
 		  }else{
-		    console.log("This icon doesn't have an associated board");
+
 		  }
 		}
 
 		$scope.lastSet = function(index){
-		    console.log("Last Set button is working");
 		    if ($scope.start > 0){
 		      $scope.start = $scope.start - 24;
 		      $scope.end = $scope.end - 24;
@@ -66,12 +63,11 @@ app.controller('boardFactoryController',
 		 }
 
 		$scope.nextSet = function(index){
-		    console.log("Next Set button is working");
 		    if ($scope.end < $scope.dummyBoards.length){
 		      $scope.start = $scope.start + 24;
 		      $scope.end = $scope.end + 24;
 		    }else{
-		      console.log("No more left");
+
 		    }
 		}
 })
@@ -112,11 +108,10 @@ app.controller('editBoardController',
 		    $scope.board();
 		    $scope.selectedTiles.push(tile);
 
-		    console.log($scope.selectedTiles);
 		    $scope.selectedIndex = tile;
 
 		    if($scope.selectedTiles[$scope.selectedIndex] == undefined){
-		      console.log("no index!!");
+
 		    }
 		}
 
@@ -163,7 +158,6 @@ app.controller('editBoardController',
 		 ]
 
 		$scope.moreInputs = function(){
-		    console.log("More Inputs!!!");
 		    $scope.blankInputs.push(
 		      {'placeholder':'ENTER WORD'}, 
 		      {'placeholder':'ENTER WORD'},

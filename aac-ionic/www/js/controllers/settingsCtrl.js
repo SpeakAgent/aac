@@ -14,11 +14,10 @@ app.controller('settingsController',
 	function($http, $scope, $cordovaFileTransfer,
 	$timeout, $window, $state, appConfig, aacService, sessionService){
 		$scope.settings = true;
-		$scope.step = 1;
+		$scope.step = 2;
 		$scope.file = undefined;
 
 		$scope.downloadBoard = function() {
-			console.log("Downloading a board");
 			var req = {
 	          url: appConfig.backendURL + '/board/user/',
 	          data: {user_username: sessionService.get('username')},
@@ -28,18 +27,15 @@ app.controller('settingsController',
 	          }
 	        }
 
-	        console.log("Getting boards", req)
-
 	        $http(req).success(function(data) {
 	          $scope.board = data.boards[0];
 	          $scope.userBoards = data.boards;
 	          $scope.quickbar = data.quickbar;
 	          $scope.filled_tiles = Object.keys($scope.board.symbols)
-	          console.log("Got boards", data)
 	          sessionService.set('boards', angular.toJson(data));
 	        })
 	        .error(function(error) {
-	        	console.log("Could not download", error)
+
 	        })
 		}
 		
@@ -65,9 +61,9 @@ app.controller('settingsController',
 			};
 			$http(req).success(function (data) {
 				$scope.user = data;
-				var synthetic_voice = data.userinfo && data.userinfo.synthetic_voice != null? data.userinfo.synthetic_voice : 'FEMALE';
+				// var synthetic_voice = data.userinfo && data.userinfo.synthetic_voice != null? data.userinfo.synthetic_voice : 'FEMALE';
 				var voice_speed  = data.userinfo && data.userinfo.voice_speed != null? (data.userinfo.voice_speed * 0.01).toFixed(2) : 1.5;
-				sessionService.set('synthetic_voice', synthetic_voice);
+				// sessionService.set('synthetic_voice', synthetic_voice);
 				sessionService.set('voice_speed', voice_speed);
 			})
 		};
@@ -80,7 +76,7 @@ app.controller('settingsController',
 					Authorization: 'JWT ' + sessionService.get('authToken'),
 				},
 				data: {username: sessionService.get("username"),
-					   synthetic_voice: this.user.userinfo.synthetic_voice,
+					//    synthetic_voice: this.user.userinfo.synthetic_voice,
 					   voice_speed: this.user.userinfo.voice_speed}
 			}
 			return $http(user_req)
@@ -155,8 +151,6 @@ app.controller('settingsController',
 				$scope.alertAnimation(message);
 			});
 		}
-
-		$scope.step = 6;
 
 		$scope.panel = function(number){
 			$scope.step = number;

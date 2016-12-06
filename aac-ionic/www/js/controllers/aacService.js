@@ -86,7 +86,6 @@ app.service('aacService', function(){
   //   $http.get(ureq)
   //     .success(function(data){
   //       aacService.data.nukes = data;
-  //       console.log(aacService.data.nukes);
   //     });
 
   //   return aacService;

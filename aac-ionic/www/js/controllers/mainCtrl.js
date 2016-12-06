@@ -59,11 +59,8 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           }
         }
 
-        console.log("Getting boards", req)
-
         $http(req).success(function(data) {
           $scope.board = data.boards[0];
-          console.log(data.boards[0].board.pk);
           $scope.selectedBoardIndex = data.boards[0].board.pk;
           $scope.userBoards = data.boards;
           $scope.quickbar = data.quickbar;
@@ -75,7 +72,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
       } else {
         var data = angular.fromJson(sessionService.get('boards'));
-        console.log(data)
         $scope.userBoards = data.boards
         $scope.selectedBoardIndex = data.boards[0].board.pk;
         $scope.board = data.boards[0];
@@ -94,9 +90,9 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 				data: {username: sessionService.get("username")}
 			};
 			$http(req).success(function (data) {
-          var synthetic_voice = data.userinfo && data.userinfo.synthetic_voice != null? data.userinfo.synthetic_voice : 'FEMALE';
+          // var synthetic_voice = data.userinfo && data.userinfo.synthetic_voice != null? data.userinfo.synthetic_voice : 'FEMALE';
           var voice_speed  = data.userinfo && data.userinfo.voice_speed != null? (data.userinfo.voice_speed * 0.01).toFixed(2) : 1.5;
-          sessionService.set('synthetic_voice', synthetic_voice);
+          // sessionService.set('synthetic_voice', synthetic_voice);
           sessionService.set('voice_speed', voice_speed);
 			}).error(function (data) {
           $scope.errData = data
@@ -120,7 +116,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
       // For now, let's just make a file.
       // window.localStorage['boards'] = angular.toJson(data);
-      // console.log("Saved boards", angular.fromJson(window.localStorage['boards']))
       if (sessionService.get('boards') !== null) {
         return false // Get the boards
       } else {
@@ -245,7 +240,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     btnSection.style.backgroundColor = $scope.colorName[0].primaryColor;
 
     var buttonCircle = document.getElementsByClassName('button-circle');
-    console.log(buttonCircle[1].style.backgroundColor);
 
       var colorChoice = document.getElementsByClassName('color-choice');
 
@@ -354,7 +348,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         }
 
         $http(req).success(function(data) {
-          console.log('loadingData');
           $scope.board = data;
         }).error(function (data) {
           $scope.errData = data
@@ -397,7 +390,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     // PHRASE BAR FUNCTIONS
     $scope.deleteLastTile = function () {
       $scope.selectedTiles.pop();
-      console.log($scope.selectedTiles.length);
       if ($scope.selectedTiles.length <= 0) {
         $scope.play = false;
         $scope.replay = false;
@@ -408,7 +400,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       $scope.quickPhrasePressed.push(phrase);
       // Do this before TTS so that it works when not in emulator
       $timeout(function() {
-        console.log("in timeout")
         $scope.quickPhrasePressed.splice(
           $scope.quickPhrasePressed.indexOf(phrase), 1)
         }, 750)
@@ -424,7 +415,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
 
       $scope.callBuddy = function () {
-          console.log("Buddy called.")
           var app_id = "1409613061631";
           var user_key = "22979a79e76310f4250128edd868e5fa";
           var botname = "uglybuddy";
@@ -442,7 +432,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           }
 
           $http(sreq).success(function(data) {
-            console.log(data)
             var req = {
               url: "https://aiaas.pandorabots.com/talk/1409613061631/uglybuddy?input=" + data.sentence + "&user_key=22979a79e76310f4250128edd868e5fa",
               method: "POST"
@@ -464,7 +453,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         });
 
       $scope.sayPhrase = function () {
-        console.log($scope.selectedTiles);
         var pks = [];
         for (i in $scope.selectedTiles) {
           pks.push($scope.selectedTiles[i].pk);
@@ -474,17 +462,14 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           data: {pks: "[" + pks.toString() + "]"},
           method: 'POST'
         }
-        console.log(req);
 
         $http(req).success(function(data) {
-          console.log(data);
           $scope.speakText(data.sentence);
           //Se oculta boton de play
           $scope.play = false;
           //Se muestra boton de play
           $scope.replay = true;
 
-          console.log($scope.selectedTiles);
 
           var analyticLabel = "Input Phrase: " + $scope.selectedTiles.map(function(elem){return elem.word;}).join(', ') +
           ", Output Phrase: " + data.sentence +
@@ -513,19 +498,21 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         })
       }
 
-      $scope.getLocale = function(voice){
-        if(voice == 'MALE'){
-          return 'en-GB';
-        }else{
-          return 'en-US';
-        }
-      }
-
       $scope.speakText = function(text) {
+        var locale = "en-GB";
+
+        console.log($scope.activeAvatar, $scope.selectedBuddy.name, $scope.pickme.name);
+
+        if ($scope.activeAvatar && $scope.selectedBuddy.type === "Female")
+        {
+            locale = "en-US";
+        }
+
         TTS.speak({
           text: text,
           rate: sessionService.get('voice_speed'),
-          locale: $scope.getLocale(sessionService.get('synthetic_voice'))
+          // locale: $scope.getLocale(sessionService.get('synthetic_voice'))
+          locale: locale
         }, function () {
           // Do Something after success
         }, function (reason) {
@@ -600,7 +587,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
 
   $scope.onTap = function() {
-      console.log("yes?");
       $scope.imageUrl = 'img/AAC_assets/delete_button_tapped.png';
       $timeout(function () {
         $scope.imageUrl = 'img/AAC_assets/delete_button.png';
@@ -633,12 +619,15 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         }
 
        $scope.activeChat = !$scope.activeChat;
+       $scope.pickme = $scope.selectedBuddy;
+
        if (!$scope.activeChat) {
          $scope.speakText("Goodbye");
+         $scope.activeAvatar = false;
        } else {
+         $scope.activeAvatar = true;
          $scope.speakText("Hello");
        }
-       $scope.activeAvatar = false;
 
        $scope.cancelClick = false;
        $scope.clicked = false;
@@ -653,24 +642,28 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $scope.buddies = [
       {
         name: 'Chloe',
+        type: 'Female',
         gif: 'chameleon.gif',
         think: 'chameleon_think.gif',
         talk: 'chameleon_talk.gif'
       },
       {
         name: 'Emma',
+        type: 'Female',
         gif: 'emma.gif',
         think: 'emma_think.gif',
         talk: 'emma_talk.gif'
       },
       {
         name: 'Harry',
+        type: 'Male',
         gif: 'hedgehog.gif',
         think: 'hedgehog_think.gif',
         talk: 'hedgehog_talk.gif'
       },
       {
         name: 'José',
+        type: 'Male',
         gif: 'jose.gif',
         think: 'jose_think.gif',
         talk: 'jose_talk.gif'
@@ -708,20 +701,32 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
     $scope.pickme = '';
     $scope.buddySelect = function (buddy){
-      $scope.pickme = buddy;
-      if (buddy.name === "Chloe" || buddy.name === "Emma") {
-        console.log(buddy.name);
-        $scope.sayHelloFem();
-      } else {
-        $scope.sayHelloMale();
-      }
+        var locale = "en-GB";
+        
+        $scope.pickme = buddy;
+
+        if (buddy.type === "Female")
+        {
+            locale = "en-US";
+        }
+
+        TTS.speak({
+          text: "Hello",
+          rate: sessionService.get('voice_speed'),
+          // locale: $scope.getLocale(sessionService.get('synthetic_voice'))
+          locale: locale
+        }, function () {
+          // Do Something after success
+        }, function (reason) {
+          // Handle the error case
+        });
     };
 
     $scope.buddyPickMe = function (buddy){
+      $scope.activeAvatar = true;
       $rootScope.selectedBuddy = buddy;
       $scope.pickme = '';
       $scope.activeAvatar = false;
-      console.log(buddy);
     };
 
     $scope.cancelBuddySelect = function (){
@@ -731,13 +736,13 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     };
 
      //Modal choose buddy
-     $ionicModal.fromTemplateUrl('templates/aac-partials/_choose_buddie.html',{
-       scope: $scope,
-       animation: 'slide-in-up',
-       backdropClickToClose: false
-     }).then(function(modal){
-       $scope.chooseBuddieModal = modal;
-     });
+    //  $ionicModal.fromTemplateUrl('templates/aac-partials/_choose_buddie.html',{
+    //    scope: $scope,
+    //    animation: 'slide-in-up',
+    //    backdropClickToClose: false
+    //  }).then(function(modal){
+    //    $scope.chooseBuddieModal = modal;
+    //  });
 
      $scope.hideDone = function(){
         if($scope.class === "selected-btn2"){
@@ -807,31 +812,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
     }
   }
-
-   $scope.sayHelloFem = function(text) {
-     TTS.speak({
-       text: "Hello",
-       rate: sessionService.get('voice_speed'),
-       locale: "en-US"
-     }, function () {
-       // Do Something after success
-     }, function (reason) {
-       // Handle the error case
-     });
-   };
-
-   $scope.sayHelloMale = function(text) {
-     TTS.speak({
-       text: "Hello",
-       rate: sessionService.get('voice_speed'),
-       locale: "en-GB"
-     }, function () {
-       // Do Something after success
-     }, function (reason) {
-       // Handle the error case
-     });
-   };
-
 });
 
 app.run(function($ionicPlatform) {
