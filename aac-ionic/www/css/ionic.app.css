@@ -368,7 +368,20 @@ button#btn-styling.button.button-outline.button-calm.button-small.selected-btn2 
 
 #home-section {
   float: right;
-  margin-top: 12px; }
+  margin-top: 12px;
+  width: 73px; }
+
+.buddy-normal,
+.buddy-talking {
+  float: right;
+  margin-top: -17px;
+  margin-right: -24%;
+  width: 100px; }
+
+.buddy-thinking {
+  float: right;
+  margin-top: -17px;
+  margin-right: -33%; }
 
 #home-button-section {
   background: #ffffff;

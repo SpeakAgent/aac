@@ -46,6 +46,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $scope.start = 0;
     $scope.end = 24;
     $scope.board = {};
+    $scope.callEvent = 'normal';
 
     $scope.mainBoardLoader = function(){
       // Make sure we have to do this call! Are there boards already saved?
@@ -414,7 +415,45 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         }
       }
 
-      $scope.callBuddy = function () {
+      $scope.sayPhrase = function () {
+        if($scope.activeChat){
+          callBuddy()
+        }
+
+        $scope.callEvent = 'think';
+        var pks = [];
+        for (i in $scope.selectedTiles) {
+          pks.push($scope.selectedTiles[i].pk);
+        }
+        var req = {
+          url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
+          data: {pks: "[" + pks.toString() + "]"},
+          method: 'POST'
+        }
+
+        $http(req).success(function(data) {
+          $scope.callEvent = 'talk';
+          $scope.speakText(data.sentence);
+          //Se oculta boton de play
+          $scope.play = false;
+          //Se muestra boton de play
+          $scope.replay = true;
+
+
+          var analyticLabel = "Input Phrase: " + $scope.selectedTiles.map(function(elem){return elem.word;}).join(', ') +
+          ", Output Phrase: " + data.sentence +
+          ", Phrase length: " + $scope.selectedTiles.length +
+          ", Board: " + $scope.board.board.title +
+          ", Timestamp: " + moment().format('M/D/YYYY, h:mm:ss a') +
+          ", User: " + sessionService.get("username") + ", Mode: " + $scope.activeChat;
+
+          analyticService.PhraseEvent("Sentence", "Play Phrase", analyticLabel);
+        })
+      }
+
+
+    $scope.callBuddy = function () {
+        $timeout(function (){
           var app_id = "1409613061631";
           var user_key = "22979a79e76310f4250128edd868e5fa";
           var botname = "uglybuddy";
@@ -443,44 +482,9 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
               $scope.replay = true;
             })
           })
-        }
-
-        $scope.$on('callBuddyEvent', function(){
-          $scope.callEvent = true;
-          $timeout(function (){
-            $scope.callEvent = false;
-          }, 1000);
-        });
-
-      $scope.sayPhrase = function () {
-        var pks = [];
-        for (i in $scope.selectedTiles) {
-          pks.push($scope.selectedTiles[i].pk);
-        }
-        var req = {
-          url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
-          data: {pks: "[" + pks.toString() + "]"},
-          method: 'POST'
-        }
-
-        $http(req).success(function(data) {
-          $scope.speakText(data.sentence);
-          //Se oculta boton de play
-          $scope.play = false;
-          //Se muestra boton de play
-          $scope.replay = true;
-
-
-          var analyticLabel = "Input Phrase: " + $scope.selectedTiles.map(function(elem){return elem.word;}).join(', ') +
-          ", Output Phrase: " + data.sentence +
-          ", Phrase length: " + $scope.selectedTiles.length +
-          ", Board: " + $scope.board.board.title +
-          ", Timestamp: " + moment().format('M/D/YYYY, h:mm:ss a') +
-          ", User: " + sessionService.get("username") + ", Mode: " + $scope.activeChat;
-
-          analyticService.PhraseEvent("Sentence", "Play Phrase", analyticLabel);
-        })
+        }, 1000);
       }
+
 
       $scope.sayWord = function() {
         if($scope.selectedIndex.label){
@@ -501,8 +505,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       $scope.speakText = function(text) {
         var locale = "en-GB";
 
-        console.log($scope.activeAvatar, $scope.selectedBuddy.name, $scope.pickme.name);
-
         if ($scope.activeAvatar && $scope.selectedBuddy.type === "Female")
         {
             locale = "en-US";
@@ -514,7 +516,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           // locale: $scope.getLocale(sessionService.get('synthetic_voice'))
           locale: locale
         }, function () {
-          // Do Something after success
+          $scope.callEvent = 'normal';
         }, function (reason) {
           // Handle the error case
         });
@@ -702,7 +704,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $scope.pickme = '';
     $scope.buddySelect = function (buddy){
         var locale = "en-GB";
-        
+
         $scope.pickme = buddy;
 
         if (buddy.type === "Female")

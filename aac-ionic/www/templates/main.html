@@ -45,7 +45,7 @@
     <div class="row" id="regularRow">
       <div class="col col-10" id="regularRowBod">
 
-        <div ng-click="activeChat? callBuddy() : sayPhrase()">
+        <div ng-click="selectedTiles.length > 0? sayPhrase() : ''">
           <img src="img/AAC_assets/avatar_default.png"/>
           <img src="img/AAC_assets/play.png" alt="Play" class="play" ng-show="play">
           <img src="img/AAC_assets/replay.png" alt="Play" class="replay" ng-show="replay">
@@ -136,10 +136,11 @@
           <p ng-bind="symbol.label? (symbol.label | charLimit: titleLimit) : (symbol.word | charLimit: titleLimit)" class="tile-words"></p>
           <img src="{{symbol.symbol.image | localImage }}" ng-if="symbol.symbol.image" style="width:40px;height:40px">
         </div>
-
         <img ng-src="{{ imageUrl }}" id="home-section" ng-click="deleteLastTile()" on-tap="onTap()"/>
-        <img ng-src="img/chat_buddies/{{selectedBuddy.think}}" style="float:right;margin-top:-17px;margin-right:-33%" ng-show="activeChat && !callEvent"/>
-        <img ng-src="img/chat_buddies/{{selectedBuddy.talk}}" style="float:right;margin-top:-17px;margin-right:-24%" ng-show="activeChat && callEvent"/>
+
+        <img ng-src="img/chat_buddies/{{selectedBuddy.gif}}" class="buddy-normal" ng-show="activeChat && callEvent == 'normal'"/>
+        <img ng-src="img/chat_buddies/{{selectedBuddy.talk}}" class="buddy-talking" ng-show="activeChat && callEvent == 'talk'"/>
+        <img ng-src="img/chat_buddies/{{selectedBuddy.think}}" class="buddy-thinking" ng-show="activeChat && callEvent == 'think'"/>
       </div>
     </div>
 
