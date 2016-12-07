@@ -417,7 +417,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
       $scope.sayPhrase = function () {
         if($scope.activeChat){
-          callBuddy()
+          $scope.callBuddy();
         }
 
         $scope.callEvent = 'think';
