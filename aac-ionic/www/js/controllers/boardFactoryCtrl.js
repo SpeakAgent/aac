@@ -16,7 +16,7 @@ app.controller('boardFactoryController',
 
 		$scope.getData = function(){
 		  var req = {
-		    url: 'https://lexemes-dev.herokuapp.com/board/single/',
+		    url: 'https://lexemes-prod.herokuapp.com/board/single/',
 		    data: {pk: 3},
 		    method: 'POST'
 			}
@@ -30,7 +30,7 @@ app.controller('boardFactoryController',
 
 		$scope.getAboutMe = function(){
 		  var req2 = {
-		    url: 'https://lexemes-dev.herokuapp.com/board/single/',
+		    url: 'https://lexemes-prod.herokuapp.com/board/single/',
 		    data: {pk: 4},
 		    method: 'POST'
 		  }
