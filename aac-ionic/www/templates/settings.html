@@ -196,7 +196,7 @@
 			<p>Voice Speed</p>
 			<div class="item range" style="border-color:white;">
 				<div class="avatar-icon-placeholder"></div>
-				<input type="range" name="synth-speed" min="0" max="150" value="{{ user.userinfo.voice_speed }}" ng-model="user.userinfo.voice_speed">
+				<input type="range" name="synth-speed" min="0" max="150" value="{{ ::user.userinfo.voice_speed }}" ng-model="user.userinfo.voice_speed">
 				<div class="avatar-icon-placeholder"></div>
 			</div>
 		</div>
@@ -284,9 +284,9 @@
 	</ion-list>
 
 	<div class="settings-box" ng-controller="mainController">
-		<div id="container" class="buddy-choice" ng-repeat="buddy in buddies" ng-click="buddySelect(buddy)" ng-class="{'pickme-active' : pickme == buddy}">
-			{{buddy.name}} <br>
-			<img ng-src="img/chat_buddies/{{buddy.gif}}" alt="buddy" style="width:70%;" class="originalImg" />
+		<div id="container" class="buddy-choice" ng-repeat="buddy in ::buddies" ng-click="buddySelect(buddy)" ng-class="{'pickme-active' : pickme == buddy}">
+			{{::buddy.name}} <br>
+			<img ng-src="img/chat_buddies/{{::buddy.gif}}" alt="buddy" style="width:70%;" class="originalImg" />
 			<button ng-if="pickme == buddy" class="button-pickme" ng-click="buddyPickMe(buddy);">
 				Pick me!
 			</button>
