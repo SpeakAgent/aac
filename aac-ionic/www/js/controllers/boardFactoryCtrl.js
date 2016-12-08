@@ -7,7 +7,7 @@ app.filter('slice', function(){
 });
 
 app.controller('boardFactoryController',
-	function($http, $scope, $location, $ionicPopover){
+	function($http, $scope, $location, $ionicPopover, appConfig){
 		$scope.start = 0;
 		$scope.end = 24;
 		$scope.board = {};
@@ -16,7 +16,7 @@ app.controller('boardFactoryController',
 
 		$scope.getData = function(){
 		  var req = {
-		    url: 'https://lexemes-prod.herokuapp.com/board/single/',
+		    url: appConfig.backendURL + '/board/single/',
 		    data: {pk: 3},
 		    method: 'POST'
 			}
@@ -30,7 +30,7 @@ app.controller('boardFactoryController',
 
 		$scope.getAboutMe = function(){
 		  var req2 = {
-		    url: 'https://lexemes-prod.herokuapp.com/board/single/',
+		    url: appConfig.backendURL + '/board/single/',
 		    data: {pk: 4},
 		    method: 'POST'
 		  }
