@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 
 var appConfig = angular.module('appConfig', []).constant('appConfig', {
-    'backendURL': 'https://lexemes-dev.herokuapp.com'
+    'backendURL': 'https://lexemes-prod.herokuapp.com'
 })
 
 angular.module('main', ['ionic', 'main.Ctrl', 'settings.Ctrl', 'main.aacService',

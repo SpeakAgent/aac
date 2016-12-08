@@ -51,6 +51,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $scope.mainBoardLoader = function(){
       // Make sure we have to do this call! Are there boards already saved?
       if ($scope.checkBoards()) {
+        console.log("Getting boards")
         var req = {
           url: appConfig.backendURL + '/board/user/',
           data: {user_username: sessionService.get('username')},
@@ -61,6 +62,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         }
 
         $http(req).success(function(data) {
+          console.log("Got boards")
           $scope.board = data.boards[0];
           $scope.selectedBoardIndex = data.boards[0].board.pk;
           $scope.userBoards = data.boards;
@@ -117,6 +119,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
       // For now, let's just make a file.
       // window.localStorage['boards'] = angular.toJson(data);
+      console.log("Checking boards")
       if (sessionService.get('boards') !== null) {
         return false // Get the boards
       } else {
@@ -426,7 +429,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           pks.push($scope.selectedTiles[i].pk);
         }
         var req = {
-          url: 'https://lexemes-dev.herokuapp.com/compaction/symbols/',
+          url: 'https://lexemes-prod.herokuapp.com/compaction/symbols/',
           data: {pks: "[" + pks.toString() + "]"},
           method: 'POST'
         }
