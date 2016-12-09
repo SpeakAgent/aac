@@ -97,12 +97,13 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 			$http(req).success(function (data) {
           // var synthetic_voice = data.userinfo && data.userinfo.synthetic_voice != null? data.userinfo.synthetic_voice : 'FEMALE';
           var voice_speed  = data.userinfo && data.userinfo.voice_speed != null? (data.userinfo.voice_speed * 0.01).toFixed(2) : 1.5;
-          // sessionService.set('synthetic_voice', synthetic_voice);
           sessionService.set('voice_speed', voice_speed);
 			}).error(function (data) {
-          $scope.errData = data
+          sessionService.set('voice_speed', 1.5);
       });
 		};
+
+    console.log(sessionService.get('voice_speed'));
 
     $scope.getHomeBoard = function(){
       for(var y=0; y < $scope.userBoards.length; y++) {
