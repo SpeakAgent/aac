@@ -15,8 +15,12 @@ app.filter('charLimit', function () {
 
 app.filter('localImage', function () {
     return function (url) {
+      console.log("url", url);
       if(url){
+        console.log("Got an url")
+        console.log('img/local_symbols_thumbnail/' + url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf("?")))
         return 'img/local_symbols_thumbnail/' + url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf("?"));
+
       }
     };
 });
@@ -330,6 +334,8 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       if(!tile){
         return;
       }
+
+      console.log(JSON.stringify(tile));
 
       var analyticLabel = "Tile Type: Symbol" + ", Word: " + tile.word + ", Word ID: " + tile.pk +
         ", Part of Speech: " + tile.word_class + ", Board: " + $scope.board.board.title +
