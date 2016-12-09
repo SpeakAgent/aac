@@ -67,6 +67,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           $scope.quickbar = data.quickbar;
           sessionService.set('boards', angular.toJson(data));
           $scope.getHomeBoard();
+          $scope.homeButton();
         }).error(function (data) {
           $scope.errData = data
         });
@@ -78,9 +79,9 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         $scope.userBoards = data.boards
         $scope.quickbar = data.quickbar;
         $scope.getHomeBoard();
+        $scope.homeButton();
       }
 
-      $scope.homeButton();
     };
 
    	$scope.getUserInformation = function(){
