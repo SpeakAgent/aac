@@ -73,12 +73,14 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
       } else {
         var data = angular.fromJson(sessionService.get('boards'));
-        $scope.userBoards = data.boards
-        $scope.selectedBoardIndex = data.boards[0].board.pk;
         $scope.board = data.boards[0];
+        $scope.selectedBoardIndex = data.boards[0].board.pk;
+        $scope.userBoards = data.boards
         $scope.quickbar = data.quickbar;
         $scope.getHomeBoard();
       }
+
+      $scope.homeButton();
     };
 
    	$scope.getUserInformation = function(){
@@ -98,8 +100,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           sessionService.set('voice_speed', 1.5);
       });
 		};
-
-    console.log(sessionService.get('voice_speed'));
 
     $scope.getHomeBoard = function(){
       for(var y=0; y < $scope.userBoards.length; y++) {
