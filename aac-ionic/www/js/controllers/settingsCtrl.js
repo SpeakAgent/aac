@@ -61,14 +61,17 @@ app.controller('settingsController',
 			};
 			$http(req).success(function (data) {
 				$scope.user = data;
-				// var synthetic_voice = data.userinfo && data.userinfo.synthetic_voice != null? data.userinfo.synthetic_voice : 'FEMALE';
+				var synthetic_voice = data.userinfo && data.userinfo.synthetic_voice != null? data.userinfo.synthetic_voice : 'FEMALE';
 				var voice_speed  = data.userinfo && data.userinfo.voice_speed != null? (data.userinfo.voice_speed * 0.01).toFixed(2) : 1.5;
-				// sessionService.set('synthetic_voice', synthetic_voice);
+				sessionService.set('synthetic_voice', synthetic_voice);
 				sessionService.set('voice_speed', voice_speed);
 			})
 		};
 
 		$scope.synthVoiceSubmit = function(){
+			sessionService.set('synthetic_voice', this.user.userinfo.synthetic_voice);
+			sessionService.set('voice_speed', (this.user.userinfo.voice_speed  * 0.01).toFixed(2));
+
 			user_req = {
 				url: appConfig.backendURL + '/user/info/',
 				method: 'POST',
@@ -76,7 +79,7 @@ app.controller('settingsController',
 					Authorization: 'JWT ' + sessionService.get('authToken'),
 				},
 				data: {username: sessionService.get("username"),
-					//    synthetic_voice: this.user.userinfo.synthetic_voice,
+					   synthetic_voice: this.user.userinfo.synthetic_voice,
 					   voice_speed: this.user.userinfo.voice_speed}
 			}
 			return $http(user_req)
@@ -92,12 +95,12 @@ app.controller('settingsController',
 			})
 			.error(function (data) {
 				$window.scrollTo(0, 0);
-				var message = {
-					text: 'An error ocurred updating user information!',
-					type: 'danger',
-					animation: 'slideDown'
-				};
-				$scope.alertAnimation(message);
+				// var message = {
+				// 	text: 'An error ocurred updating user information!',
+				// 	type: 'danger',
+				// 	animation: 'slideDown'
+				// };
+				// $scope.alertAnimation(message);
 			});
 		}
 
@@ -143,12 +146,12 @@ app.controller('settingsController',
 			})
 			.error(function (data) {
 				$window.scrollTo(0, 0);
-				var message = {
-					text: 'An error ocurred updating user information!',
-					type: 'danger',
-					animation: 'slideDown'
-				};
-				$scope.alertAnimation(message);
+				// var message = {
+				// 	text: 'An error ocurred updating user information!',
+				// 	type: 'danger',
+				// 	animation: 'slideDown'
+				// };
+				// $scope.alertAnimation(message);
 			});
 		}
 

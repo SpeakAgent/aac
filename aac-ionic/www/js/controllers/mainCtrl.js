@@ -15,12 +15,8 @@ app.filter('charLimit', function () {
 
 app.filter('localImage', function () {
     return function (url) {
-      console.log("url", url);
       if(url){
-        console.log("Got an url")
-        console.log('img/local_symbols_thumbnail/' + url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf("?")))
         return 'img/local_symbols_thumbnail/' + url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf("?"));
-
       }
     };
 });
@@ -89,6 +85,10 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     };
 
    	$scope.getUserInformation = function(){
+      if(sessionService.get('synthetic_voice') && sessionService.get('voice_speed')){
+				return;
+			}
+
 			req = {
 				url: appConfig.backendURL + '/user/aac/settings/',
 				method: 'POST',
@@ -98,10 +98,12 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 				data: {username: sessionService.get("username")}
 			};
 			$http(req).success(function (data) {
-          // var synthetic_voice = data.userinfo && data.userinfo.synthetic_voice != null? data.userinfo.synthetic_voice : 'FEMALE';
+          var synthetic_voice = data.userinfo && data.userinfo.synthetic_voice != null? data.userinfo.synthetic_voice : 'FEMALE';
+          sessionService.set('synthetic_voice', synthetic_voice);
           var voice_speed  = data.userinfo && data.userinfo.voice_speed != null? (data.userinfo.voice_speed * 0.01).toFixed(2) : 1.5;
           sessionService.set('voice_speed', voice_speed);
 			}).error(function (data) {
+          sessionService.set('synthetic_voice', 'MALE');
           sessionService.set('voice_speed', 1.5);
       });
 		};
@@ -337,8 +339,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         return;
       }
 
-      console.log(JSON.stringify(tile));
-
       var analyticLabel = "Tile Type: Symbol" + ", Word: " + tile.word + ", Word ID: " + tile.pk +
         ", Part of Speech: " + tile.word_class + ", Board: " + $scope.board.board.title +
         ", Timestamp: " + moment().format('M/D/YYYY, h:mm:ss a') +
@@ -513,7 +513,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       $scope.speakText = function(text) {
         var locale = "en-GB";
 
-        if ($scope.activeAvatar && $scope.selectedBuddy.type === "Female")
+        if ($scope.activeAvatar || sessionService.get('synthetic_voice') == 'FEMALE')
         {
             locale = "en-US";
         }
@@ -521,7 +521,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         TTS.speak({
           text: text,
           rate: sessionService.get('voice_speed'),
-          // locale: $scope.getLocale(sessionService.get('synthetic_voice'))
           locale: locale
         }, function () {
           $scope.callEvent = 'normal';
@@ -652,28 +651,28 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $scope.buddies = [
       {
         name: 'Chloe',
-        type: 'Female',
+        type: 'FEMALE',
         gif: 'chameleon.gif',
         think: 'chameleon_think.gif',
         talk: 'chameleon_talk.gif'
       },
       {
         name: 'Emma',
-        type: 'Female',
+        type: 'FEMALE',
         gif: 'emma.gif',
         think: 'emma_think.gif',
         talk: 'emma_talk.gif'
       },
       {
         name: 'Harry',
-        type: 'Male',
+        type: 'FEMALE',
         gif: 'hedgehog.gif',
         think: 'hedgehog_think.gif',
         talk: 'hedgehog_talk.gif'
       },
       {
         name: 'José',
-        type: 'Male',
+        type: 'FEMALE',
         gif: 'jose.gif',
         think: 'jose_think.gif',
         talk: 'jose_talk.gif'
@@ -711,20 +710,12 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
     $scope.pickme = '';
     $scope.buddySelect = function (buddy){
-        var locale = "en-GB";
-
         $scope.pickme = buddy;
-
-        if (buddy.type === "Female")
-        {
-            locale = "en-US";
-        }
 
         TTS.speak({
           text: "Hello",
           rate: sessionService.get('voice_speed'),
-          // locale: $scope.getLocale(sessionService.get('synthetic_voice'))
-          locale: locale
+          locale: "en-US"
         }, function () {
           // Do Something after success
         }, function (reason) {
