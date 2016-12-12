@@ -424,14 +424,17 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
 
       $scope.sayPhrase = function () {
+        console.log("Say Phrase called");
         if($scope.activeChat){
           $scope.callBuddy();
         }
 
         $scope.callEvent = 'think';
         var pks = [];
+        var words = []
         for (i in $scope.selectedTiles) {
           pks.push($scope.selectedTiles[i].pk);
+          words.push($scope.selectedTiles[i].label)
         }
         var req = {
           url: appConfig.backendURL + '/compaction/symbols/',
@@ -440,7 +443,11 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         }
 
         $http(req).success(function(data) {
+          console.log("sayPhrase response", JSON.stringify(data));
           $scope.callEvent = 'talk';
+          if (data.sentence === '') {
+            data.sentence = words.join(' ');
+          }
           $scope.speakText(data.sentence);
           //Se oculta boton de play
           $scope.play = false;
