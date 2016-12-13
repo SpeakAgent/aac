@@ -339,13 +339,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         return;
       }
 
-      var analyticLabel = "Tile Type: Symbol" + ", Word: " + tile.word + ", Word ID: " + tile.pk +
-        ", Part of Speech: " + tile.word_class + ", Board: " + $scope.board.board.title +
-        ", Timestamp: " + moment().format('M/D/YYYY, h:mm:ss a') +
-        ", User: " + sessionService.get("username") + ", Mode: " + $scope.activeChat;
-
-      analyticService.event("Touch", "Tile Touch", analyticLabel);
-
       if(tile.target_board){
         var req = {
           url: appConfig.backendURL + '/board/single/',
@@ -390,6 +383,13 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
         $scope.sayWord();
       }
+
+      var analyticLabel = "Tile Type: Symbol" + ", Word: " + tile.word + ", Word ID: " + tile.pk +
+        ", Part of Speech: " + tile.word_class + ", Board: " + $scope.board.board.title +
+        ", Timestamp: " + moment().format('M/D/YYYY, h:mm:ss a') +
+        ", User: " + sessionService.get("username") + ", Mode: " + $scope.activeChat;
+
+      analyticService.event("Touch", "Tile Touch", analyticLabel);
     }
 
     // $scope.class = "none";
@@ -424,10 +424,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
 
       $scope.sayPhrase = function () {
-        if($scope.activeChat){
-          $scope.callBuddy();
-        }
-
         $scope.callEvent = 'think';
         var pks = [];
         var words = []
@@ -452,6 +448,10 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
             $scope.replay = true;
           }
 
+          if($scope.activeChat){
+            $scope.callBuddy(data);
+          }
+
           var analyticLabel = "Input Phrase: " + $scope.selectedTiles.map(function(elem){return elem.word;}).join(', ') +
           ", Output Phrase: " + data.sentence +
           ", Phrase length: " + $scope.selectedTiles.length +
@@ -464,35 +464,23 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
 
 
-    $scope.callBuddy = function () {
+    $scope.callBuddy = function (dataS) {
         $timeout(function (){
           var app_id = "1409613061631";
           var user_key = "22979a79e76310f4250128edd868e5fa";
           var botname = "uglybuddy";
-          var text = "Hello";
 
           // Get a sentence
-          var pks = [];
-          for (i in $scope.selectedTiles) {
-            pks.push($scope.selectedTiles[i].pk);
+          var req = {
+            url: "https://aiaas.pandorabots.com/talk/1409613061631/uglybuddy?input=" + dataS.sentence + "&user_key=22979a79e76310f4250128edd868e5fa",
+            method: "POST"
           }
-          var sreq = {
-            url: appConfig.backendURL + '/compaction/symbols/',
-            data: {pks: "[" + pks.toString() + "]"},
-            method: 'POST'
-          }
+          
+          $http(req).success(function(data){
+            $scope.speakText(data.responses[0]);
 
-          $http(sreq).success(function(data) {
-            var req = {
-              url: "https://aiaas.pandorabots.com/talk/1409613061631/uglybuddy?input=" + data.sentence + "&user_key=22979a79e76310f4250128edd868e5fa",
-              method: "POST"
-            }
-            $http(req).success(function(data){
-              $scope.speakText(data.responses[0]);
-
-              $scope.play = false;
-              $scope.replay = true;
-            })
+            $scope.play = false;
+            $scope.replay = true;
           })
         }, 1000);
       }
