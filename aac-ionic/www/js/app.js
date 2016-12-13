@@ -37,7 +37,10 @@ angular.module('main', ['ionic', 'main.Ctrl', 'settings.Ctrl', 'main.aacService'
 
     // $ionicConfigProvider.backButton.previousTitleText(false).text('');
 })
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $compileProvider) {
+	
+	$compileProvider.debugInfoEnabled(false);
+
   $urlRouterProvider.otherwise('/main');
 
   $stateProvider.state('main',{

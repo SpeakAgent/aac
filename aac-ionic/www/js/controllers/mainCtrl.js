@@ -424,7 +424,6 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
 
       $scope.sayPhrase = function () {
-        console.log("Say Phrase called");
         if($scope.activeChat){
           $scope.callBuddy();
         }
@@ -443,17 +442,15 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
         }
 
         $http(req).success(function(data) {
-          console.log("sayPhrase response", JSON.stringify(data));
-          $scope.callEvent = 'talk';
-          if (data.sentence === '') {
-            data.sentence = words.join(' ');
+          if (data && data.setence){
+            $scope.callEvent = 'talk';
+            if (data.sentence === '') {
+              data.sentence = words.join(' ');
+            }
+            $scope.speakText(data.sentence);
+            $scope.play = false;
+            $scope.replay = true;
           }
-          $scope.speakText(data.sentence);
-          //Se oculta boton de play
-          $scope.play = false;
-          //Se muestra boton de play
-          $scope.replay = true;
-
 
           var analyticLabel = "Input Phrase: " + $scope.selectedTiles.map(function(elem){return elem.word;}).join(', ') +
           ", Output Phrase: " + data.sentence +
