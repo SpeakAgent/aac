@@ -25,7 +25,8 @@
     "cordova-plugin-file",
     "cordova-plugin-file-transfer",
     "org.apache.cordova.file-transfer",
-    "cordova-plugin-google-analytics"
+    "cordova-plugin-google-analytics",
+    "cordova-plugin-network-information"
   ],
   "cordovaPlatforms": [
     "ios"

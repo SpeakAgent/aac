@@ -8,17 +8,24 @@ var appConfig = angular.module('appConfig', []).constant('appConfig', {
     'backendURL': 'https://lexemes-prod.herokuapp.com'
 })
 
-angular.module('main', ['ionic', 'main.Ctrl', 'settings.Ctrl', 'main.aacService',
+angular.module('main', ['ionic', 'ngCordova', 'main.Ctrl', 'settings.Ctrl', 'main.aacService',
                         'boardFactory.Ctrl', 'Login.Ctrl', 'appConfig',
                         'sessionService', 'analyticService', 'angularMoment'])
 
-.run(function($ionicPlatform, $ionicPopup, $state, $timeout, $location, $ionicHistory) {
+.run(function($ionicPlatform, $ionicPopup, $state, $timeout,
+  $location, $ionicHistory, $cordovaNetwork) {
       $ionicPlatform.ready(function() {
         try {
           window.analytics.startTrackerWithId('UA-54749327-1');
         } catch(error) {
           console.log("Google Analytics Unavailable");
         }
+
+        db = window.sqlitePlugin.openDatabase({name: "my.aacdb", location: 'default'});
+
+        db.transaction(function(tx) {
+          tx.executeSql("CREATE TABLE IF NOT EXISTS Analytics (id integer primary key, category text, action text, label text)");
+        });
       });
     if (!window.localStorage.username){
        $timeout(function() {
@@ -31,11 +38,7 @@ angular.module('main', ['ionic', 'main.Ctrl', 'settings.Ctrl', 'main.aacService'
           $ionicHistory.currentView($ionicHistory.backView());
           $state.go('main', {}, {location: 'replace'});
       });
-      
     }
-
-
-    // $ionicConfigProvider.backButton.previousTitleText(false).text('');
 })
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $compileProvider) {
 	

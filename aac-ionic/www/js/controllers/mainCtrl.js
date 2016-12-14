@@ -21,7 +21,6 @@ app.filter('localImage', function () {
     };
 });
 
-
 app.controller('mainController',
 function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $ionicPopover, $state, aacService, appConfig, $timeout, $rootScope,
