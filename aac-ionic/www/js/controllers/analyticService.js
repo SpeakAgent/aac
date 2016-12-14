@@ -19,13 +19,37 @@ return {
         db.transaction(function(tx) {
           var query = "INSERT INTO Analytics (category, action, label) VALUES (?,?,?)";
 
-          tx.executeSqltx.executeSql(query, [category, action, label]).then(function(res) {
+          tx.executeSql(query, [category, action, label], function(tx, res) {
               console.log("INSERT ID -> " + res.insertId);
           }, function (err) {
               console.error(err);
           });
 
-          tx.executeSqltx.executeSql("SELECT category, action, label FROM Analytics", []).then(function(res) {
+          tx.executeSql("SELECT category, action, label FROM Analytics", [], function(tx, res) {
+            console.log("SELECTED -> " + res.rows.item(0).category + " " + res.rows.item(0).action, res.rows.item(0).label);
+          });
+        });
+      }catch (error){
+        console.log("errorrrrr");
+      }
+   },
+   PhraseEvent: function(category, action, label){
+      try{
+        // window.analytics.trackEvent(category, action, label);
+
+        console.log('test');
+        // console.log($cordovaNetwork.isOnline());
+
+        db.transaction(function(tx) {
+          var query = "INSERT INTO Analytics (category, action, label) VALUES (?,?,?)";
+
+          tx.executeSql(query, [category, action, label], function(tx, res) {
+              console.log("INSERT ID -> " + res.insertId);
+          }, function (err) {
+              console.error(err);
+          });
+
+          tx.executeSql("SELECT category, action, label FROM Analytics", [], function(tx, res) {
             console.log("SELECTED -> " + res.rows.item(0).category + " " + res.rows.item(0).action, res.rows.item(0).label);
           });
         });
@@ -36,7 +60,7 @@ return {
   //  uploadAnalytics: function(){
   //     try{
   //       var query = "SELECT category, action, label FROM Analytics";
-          //tx.executeSqltx.executeSql(db, query, []).then(function(res) {
+          //tx.executeSql(db, query, []).then(function(res) {
   //           if(res.rows.length > 0) {
   //               console.log("SELECTED -> " + res.rows.item(0).firstname + " " + res.rows.item(0).lastname);
                 
