@@ -458,7 +458,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           ", Timestamp: " + moment().format('M/D/YYYY, h:mm:ss a') +
           ", User: " + sessionService.get("username") + ", Mode: " + $scope.activeChat;
 
-          analyticService.PhraseEvent("Sentence", "Play Phrase", analyticLabel);
+          analyticService.event("Sentence", "Play Phrase", analyticLabel);
         })
       }
 

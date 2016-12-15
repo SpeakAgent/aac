@@ -13,19 +13,20 @@ angular.module('main', ['ionic', 'ngCordova', 'main.Ctrl', 'settings.Ctrl', 'mai
                         'sessionService', 'analyticService', 'angularMoment'])
 
 .run(function($ionicPlatform, $ionicPopup, $state, $timeout,
-  $location, $ionicHistory, $cordovaNetwork) {
+  $location, $ionicHistory) {
       $ionicPlatform.ready(function() {
         try {
-          window.analytics.startTrackerWithId('UA-54749327-1');
+          // window.analytics.startTrackerWithId('UA-54749327-1');
+          window.analytics.startTrackerWithId('UA-87583113-1');
+
+          db = window.sqlitePlugin.openDatabase({name: "my.aacdb", location: 'default'});
+
+          db.transaction(function(tx) {
+            tx.executeSql("CREATE TABLE IF NOT EXISTS Analytics (id integer primary key, category text, action text, label text)");
+          });
         } catch(error) {
           console.log("Google Analytics Unavailable");
         }
-
-        db = window.sqlitePlugin.openDatabase({name: "my.aacdb", location: 'default'});
-
-        db.transaction(function(tx) {
-          tx.executeSql("CREATE TABLE IF NOT EXISTS Analytics (id integer primary key, category text, action text, label text)");
-        });
       });
     if (!window.localStorage.username){
        $timeout(function() {

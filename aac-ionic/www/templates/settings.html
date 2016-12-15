@@ -58,12 +58,12 @@
 				<p style="color:#8F8F8F; padding:3px; font-weight:bold; font-style:italic;">Enable/disable live chat buddy</p>
 			</ion-item>
 
-			<ion-item ng-click="panel(1)" class="panels" ng-class="{active: 1 == step}">
+			<ion-item ng-click="panel(1)" class="panels" ng-class="{active: step == 1}">
 			<div class="avatar-icon-placeholder"></div>Settings Access
 			<span class="item-note"><i class="icon ion-chevron-right"></i></span>
 		</ion-item> -->
 
-		<!-- <ion-item ng-click="panel(6)" class="panels" ng-class="{active: 6 == step}">
+		<!-- <ion-item ng-click="panel(6)" class="panels" ng-class="{active: step == 6}">
 		<div class="avatar-icon-placeholder">
 		<img src="img/AAC_assets/icon-aboutme.png" />
 	</div>About Me Profile
@@ -74,21 +74,28 @@
 <ion-list>
 	<div class="item item-divider"><strong>Interface</strong></div>
 
-	<ion-item ng-click="panel(2)" class="panels" ng-class="{active: 2 == step}">
+	<ion-item ng-click="panel(2)" class="panels" ng-class="{active: step == 2}">
 		<div class="avatar-icon-placeholder">
 			<img src="img/AAC_assets/icon-synthetic-voice.png" />
 		</div>Synthetic Voice
 		<span class="item-note"><i class="icon ion-chevron-right"></i></span>
 	</ion-item>
 
-	<ion-item ng-click="panel(11, 'download')" class="panels" ng-class="{active: 11 == step}">
-		<div class="avatar-icon-placeholder">
-			<img src="img/AAC_assets/icon-synthetic-voice.png" />
+	<ion-item ng-click="panel(7)" class="panels" ng-class="{active: step == 7}">
+		<div class="avatar-icon-placeholder upload-bg text-center">
+			<i class="ion-upload settings-icon-format"></i>
+		</div>Upload Local Events
+		<span class="item-note"><i class="icon ion-chevron-right"></i></span>
+	</ion-item>
+
+	<ion-item ng-click="panel(11, 'download')" class="panels" ng-class="{active: step == 11}">
+		<div class="avatar-icon-placeholder upload-bg text-center">
+			<i class="ion-ios-download-outline settings-icon-format"></i>
 		</div>Download board
 		<span class="item-note"><i class="icon ion-chevron-right"></i></span>
 	</ion-item>
 
-	<!-- <ion-item ng-click="panel(3)" class="panels" ng-class="{active: 3 == step}">
+	<!-- <ion-item ng-click="panel(3)" class="panels" ng-class="{active: step == 3}">
 	<div class="avatar-icon-placeholder"></div>Sound Effects
 	<span class="item-note"><i class="icon ion-chevron-right"></i></span>
 </ion-item>
@@ -103,7 +110,7 @@
 </label>
 </ion-item>
 
-<ion-item ng-click="panel(4)" class="panels" ng-class="{active: 4 == step}">
+<ion-item ng-click="panel(4)" class="panels" ng-class="{active: step == 4}">
 <div class="avatar-icon-placeholder"></div>Phrase Bar
 <span class="item-note"><i class="icon ion-chevron-right"></i></span>
 </ion-item> -->
@@ -114,7 +121,7 @@
 <ion-list>
 	<div class="item item-divider"><strong>Personalization</strong></div>
 
-	<ion-item ng-click="panel(13)" class="panels" ng-class="{active: 13 == step}">
+	<ion-item ng-click="panel(13)" class="panels" ng-class="{active: step == 13}">
 		<div class="avatar-icon-placeholder">
 			<img src="img/AAC_assets/icon-choosebuddy.png" />
 		</div>Choose Buddy
@@ -135,7 +142,7 @@
 </label>
 </ion-item>
 
-<ion-item ng-click="panel(5)" class="panels" ng-class="{active: 5 == step}">
+<ion-item ng-click="panel(5)" class="panels" ng-class="{active: step == 5}">
 <div class="avatar-icon-placeholder"></div>Alternate Home Page
 <span class="item-note"><i class="icon ion-chevron-right"></i></span>
 </ion-item>
@@ -269,8 +276,11 @@
 			<h1 class="centered-title"><strong>Download board</strong></h1>
 		</ion-item>
 	</ion-list>
+	<div ng-include src="'templates/message.html'"></div>
 
 	<div class="settings-box">
+		<p>Download board.</p>
+		<br />
 		<button class="custom-button button-block" ng-click="downloadBoard()">Download</button>
 	</div>
 </div>
@@ -325,6 +335,23 @@
 
 		<p class="greyed-out">PIN-Protection</p>
 	</div>
+</div>
+
+<div class="col col-67" id="settings-modal" ng-show="step == 7">
+	<form ng-submit="submitEvents()">
+		<ion-list>
+			<ion-item style="margin-left:5px;margin-top:-6px;width:900px;">
+				<h1 class="centered-title"><strong>Upload Local Analytics</strong></h1>
+			</ion-item>
+		</ion-list>
+		<div ng-include src="'templates/message.html'"></div>
+
+		<div class="settings-box">
+			<p>Upload local analytics into the Google Analytic account.</p>
+			<br />
+			<button type="submit" class="custom-button button-block">Upload</button>
+		</div>
+	</form>
 </div>
 
 <!-- About Me Panel -->

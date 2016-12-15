@@ -11,13 +11,25 @@ app.directive('customOnChange', function() {
 });
 
 app.controller('settingsController',
-	function($http, $scope, $cordovaFileTransfer,
-	$timeout, $window, $state, appConfig, aacService, sessionService){
+	function($http, $scope, $cordovaFileTransfer, analyticService, $cordovaNetwork,
+	$timeout, $state, appConfig, aacService, sessionService){
 		$scope.settings = true;
 		$scope.step = 2;
 		$scope.file = undefined;
 
 		$scope.downloadBoard = function() {
+			if($cordovaNetwork.isOffline()){
+				var message = {
+					text: 'There is no internet connection to download boards.',
+					type: 'success',
+					animation: 'slideDown'
+				};
+
+			  	$scope.alertAnimation(message);
+				
+				return;
+			}
+
 			var req = {
 	          url: appConfig.backendURL + '/board/user/',
 	          data: {user_username: sessionService.get('username')},
@@ -33,6 +45,14 @@ app.controller('settingsController',
 	          $scope.quickbar = data.quickbar;
 	          $scope.filled_tiles = Object.keys($scope.board.symbols)
 	          sessionService.set('boards', angular.toJson(data));
+
+			  var message = {
+				text: 'Boards have been downloaded and updated successfully.',
+				type: 'success',
+				animation: 'slideDown'
+			  };
+
+			  $scope.alertAnimation(message);
 	        })
 	        .error(function(error) {
 
@@ -59,6 +79,7 @@ app.controller('settingsController',
 				},
 				data: {username: sessionService.get("username")}
 			};
+			
 			$http(req).success(function (data) {
 				$scope.user = data;
 				var synthetic_voice = data.userinfo && data.userinfo.synthetic_voice != null? data.userinfo.synthetic_voice : 'FEMALE';
@@ -71,6 +92,16 @@ app.controller('settingsController',
 		$scope.synthVoiceSubmit = function(){
 			sessionService.set('synthetic_voice', this.user.userinfo.synthetic_voice);
 			sessionService.set('voice_speed', (this.user.userinfo.voice_speed  * 0.01).toFixed(2));
+
+			if($cordovaNetwork.isOffline()){
+				var message = {
+					text: 'There is no internet connection to save user synthetic voice settings.',
+					type: 'danger',
+					animation: 'slideDown'
+				};
+			  	$scope.alertAnimation(message);
+				return;
+			}
 
 			user_req = {
 				url: appConfig.backendURL + '/user/info/',
@@ -94,7 +125,6 @@ app.controller('settingsController',
 				$scope.alertAnimation(message);
 			})
 			.error(function (data) {
-				$window.scrollTo(0, 0);
 				// var message = {
 				// 	text: 'An error ocurred updating user information!',
 				// 	type: 'danger',
@@ -139,13 +169,11 @@ app.controller('settingsController',
 					type: 'success',
 					animation: 'slideDown'
 				};
-				$window.scrollTo(0, 0);
 
 				$scope.alertAnimation(message);
 				$scope.getUserInformation();
 			})
 			.error(function (data) {
-				$window.scrollTo(0, 0);
 				// var message = {
 				// 	text: 'An error ocurred updating user information!',
 				// 	type: 'danger',
@@ -153,6 +181,19 @@ app.controller('settingsController',
 				// };
 				// $scope.alertAnimation(message);
 			});
+		}
+
+
+		$scope.submitEvents = function(){
+			var resultMessage = analyticService.uploadLocalEvents();
+
+			var message = {
+				text: resultMessage,
+				type: 'success',
+				animation: 'slideDown'
+			};
+
+			$scope.alertAnimation(message);
 		}
 
 		$scope.panel = function(number){
