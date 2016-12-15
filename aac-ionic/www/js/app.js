@@ -16,8 +16,7 @@ angular.module('main', ['ionic', 'ngCordova', 'main.Ctrl', 'settings.Ctrl', 'mai
   $location, $ionicHistory) {
       $ionicPlatform.ready(function() {
         try {
-          // window.analytics.startTrackerWithId('UA-54749327-1');
-          window.analytics.startTrackerWithId('UA-87583113-1');
+          window.analytics.startTrackerWithId('UA-54749327-1');
 
           db = window.sqlitePlugin.openDatabase({name: "my.aacdb", location: 'default'});
 
