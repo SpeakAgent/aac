@@ -437,16 +437,16 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           method: 'POST'
         }
 
-        $http(req).success(function(data) {
-          if (data && data.setence){
-            $scope.callEvent = 'talk';
-            if (data.sentence === '') {
-              data.sentence = words.join(' ');
-            }
-            $scope.speakText(data.sentence);
-            $scope.play = false;
-            $scope.replay = true;
-          }
+
+        // REMOVE ONCE COMPACTION IS DONE
+
+          $scope.callEvent = 'talk';
+          $scope.speakText(words.join(' '));
+          
+          //Se oculta boton de play
+          $scope.play = false;
+          //Se muestra boton de play
+          $scope.replay = true;
 
           if($scope.activeChat){
             $scope.callBuddy(data);
@@ -460,7 +460,34 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           ", User: " + sessionService.get("username") + ", Mode: " + $scope.activeChat;
 
           analyticService.PhraseEvent("Sentence", "Play Phrase", analyticLabel);
-        })
+
+       // END REMOVE
+
+        // $http(req).success(function(data) {
+        //   console.log("sayPhrase response", JSON.stringify(data));
+        //   $scope.callEvent = 'talk';
+        //   if (data.sentence === '') {
+        //     data.sentence = words.join(' ');
+        //     $scope.speakText(data.sentence);
+        //   } else {
+        //     $scope.speakText(data.sentence);  
+        //   }
+          
+        //   //Se oculta boton de play
+        //   $scope.play = false;
+        //   //Se muestra boton de play
+        //   $scope.replay = true;
+
+
+        //   var analyticLabel = "Input Phrase: " + $scope.selectedTiles.map(function(elem){return elem.word;}).join(', ') +
+        //   ", Output Phrase: " + data.sentence +
+        //   ", Phrase length: " + $scope.selectedTiles.length +
+        //   ", Board: " + $scope.board.board.title +
+        //   ", Timestamp: " + moment().format('M/D/YYYY, h:mm:ss a') +
+        //   ", User: " + sessionService.get("username") + ", Mode: " + $scope.activeChat;
+
+        //   analyticService.PhraseEvent("Sentence", "Play Phrase", analyticLabel);
+        // })
       }
 
 
