@@ -21,7 +21,6 @@ app.filter('localImage', function () {
     };
 });
 
-
 app.controller('mainController',
 function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $ionicPopover, $state, aacService, appConfig, $timeout, $rootScope,
@@ -460,35 +459,8 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           ", Timestamp: " + moment().format('M/D/YYYY, h:mm:ss a') +
           ", User: " + sessionService.get("username") + ", Mode: " + $scope.activeChat;
 
-          analyticService.PhraseEvent("Sentence", "Play Phrase", analyticLabel);
-
-       // END REMOVE
-
-        // $http(req).success(function(data) {
-        //   console.log("sayPhrase response", JSON.stringify(data));
-        //   $scope.callEvent = 'talk';
-        //   if (data.sentence === '') {
-        //     data.sentence = words.join(' ');
-        //     $scope.speakText(data.sentence);
-        //   } else {
-        //     $scope.speakText(data.sentence);  
-        //   }
-          
-        //   //Se oculta boton de play
-        //   $scope.play = false;
-        //   //Se muestra boton de play
-        //   $scope.replay = true;
-
-
-        //   var analyticLabel = "Input Phrase: " + $scope.selectedTiles.map(function(elem){return elem.word;}).join(', ') +
-        //   ", Output Phrase: " + data.sentence +
-        //   ", Phrase length: " + $scope.selectedTiles.length +
-        //   ", Board: " + $scope.board.board.title +
-        //   ", Timestamp: " + moment().format('M/D/YYYY, h:mm:ss a') +
-        //   ", User: " + sessionService.get("username") + ", Mode: " + $scope.activeChat;
-
-        //   analyticService.PhraseEvent("Sentence", "Play Phrase", analyticLabel);
-        // })
+          analyticService.event("Sentence", "Play Phrase", analyticLabel);
+        })
       }
 
 

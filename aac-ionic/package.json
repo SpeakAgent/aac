@@ -24,8 +24,10 @@
     "cordova-plugin-tts",
     "cordova-plugin-file",
     "cordova-plugin-file-transfer",
-    "org.apache.cordova.file-transfer",
-    "cordova-plugin-google-analytics"
+    "cordova-plugin-google-analytics",
+    "cordova-plugin-network-information",
+    "cordova-sqlite-storage",
+    "cordova-sqlite-storage@~1.4.8"
   ],
   "cordovaPlatforms": [
     "ios"
