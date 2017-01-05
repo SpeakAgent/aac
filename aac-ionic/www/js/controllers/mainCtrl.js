@@ -436,23 +436,24 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           method: 'POST'
         }
 
-        $http(req).success(function(data) {
-          if (data && data.setence){
-            $scope.callEvent = 'talk';
-            if (data.sentence === '') {
-              data.sentence = words.join(' ');
-            }
-            $scope.speakText(data.sentence);
-            $scope.play = false;
-            $scope.replay = true;
-          }
+
+        // REMOVE ONCE COMPACTION IS DONE
+
+          $scope.callEvent = 'talk';
+          $scope.speakText(words.join(' '));
+          
+          //Se oculta boton de play
+          $scope.play = false;
+          //Se muestra boton de play
+          $scope.replay = true;
 
           if($scope.activeChat){
-            $scope.callBuddy(data);
+            // $scope.callBuddy(data);
+            $scope.callBuddy(words.join(' '))
           }
 
           var analyticLabel = "Input Phrase: " + $scope.selectedTiles.map(function(elem){return elem.word;}).join(', ') +
-          ", Output Phrase: " + data.sentence +
+          ", Output Phrase: " + words.join(' ') +
           ", Phrase length: " + $scope.selectedTiles.length +
           ", Board: " + $scope.board.board.title +
           ", Timestamp: " + moment().format('M/D/YYYY, h:mm:ss a') +
@@ -464,6 +465,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
 
     $scope.callBuddy = function (dataS) {
+      console.log("Calling buddy")
         $timeout(function (){
           var app_id = "1409613061631";
           var user_key = "22979a79e76310f4250128edd868e5fa";
@@ -602,7 +604,8 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     chat: false
   };
 
-   $scope.activeChat = false;
+   // $scope.activeChat = false;
+   $scope.activeChat = true;
    $scope.buttonChat = function(){
       if ($scope.clicked || $scope.buttons.chat) {
           $scope.cancelClick = true;
