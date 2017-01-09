@@ -26,6 +26,16 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     $ionicPopover, $state, aacService, appConfig, $timeout, $rootScope,
     moment, sessionService, analyticService, $ionicHistory, $location) {
 
+    if (window.localStorage['buddyOn'] == 'true') {
+      console.log(window.localStorage['buddyOn'])
+      $scope.activeChat = true;
+      $scope.activeAvatar = true;
+    } else {
+      $scope.activeChat = false;
+      $scope.activeAvatar = false;
+      window.localStorage['buddyOn'] = false;
+    }
+
     $scope.$on('$ionicView.enter', function(){
       $scope.mainBoardLoader();
       $scope.getUserInformation();
@@ -460,8 +470,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           ", User: " + sessionService.get("username") + ", Mode: " + $scope.activeChat;
 
           analyticService.event("Sentence", "Play Phrase", analyticLabel);
-        })
-      }
+        }
 
 
     $scope.callBuddy = function (dataS) {
@@ -478,6 +487,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
           }
           
           $http(req).success(function(data){
+            console.log(data)
             $scope.speakText(data.responses[0]);
 
             $scope.play = false;
@@ -605,7 +615,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
   };
 
    // $scope.activeChat = false;
-   $scope.activeChat = true;
+   // $scope.activeChat = true;
    $scope.buttonChat = function(){
       if ($scope.clicked || $scope.buttons.chat) {
           $scope.cancelClick = true;
@@ -704,6 +714,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
 
     $scope.pickme = '';
     $scope.buddySelect = function (buddy){
+      console.log("Buddy select called")
         $scope.pickme = buddy;
 
         TTS.speak({
@@ -718,10 +729,13 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
     };
 
     $scope.buddyPickMe = function (buddy){
+      console.log("Pick me called")
       $scope.activeAvatar = true;
       $rootScope.selectedBuddy = buddy;
       $scope.pickme = '';
       $scope.activeAvatar = false;
+      $scope.activeChat = true;
+      window.localStorage['buddyOn'] = true;
     };
 
     $scope.cancelBuddySelect = function (){
