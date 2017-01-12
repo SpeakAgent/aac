@@ -366,7 +366,7 @@ function($http, $scope, $ionicSideMenuDelegate, $ionicModal,
       }
 
       for(var x=0; x < $scope.selectedTiles.length; x++){
-        if($scope.selectedTiles[x].pk == tile.pk){
+        if($scope.selectedTiles[x].pk == tile.pk && $scope.replay != true){
           $scope.selectedIndex = tile;
           return;
         }
